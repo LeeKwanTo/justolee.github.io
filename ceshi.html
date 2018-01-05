@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+
+    <title>测试</title>    
+    
+</head>
+<body>
+
+
+
+<script src="edorm/js/TouchSlide.1.1.js"></script>
+<style type="text/css">
+.focus1 {width:100%;max-width:720px;margin:0 auto;position:relative;overflow:hidden;}
+.focus1 .hd {width:100%;height:11px;position:absolute;z-index:1;bottom:5px;text-align:center;}
+.focus1 .hd ul {display:inline-block;height:5px;padding:3px 5px;background-color:rgba(255,255,255,0);-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:0;vertical-align:top;}
+.focus1 .hd ul li {display:inline-block;width:5px;height:5px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;background:#8C8C8C;margin:0 5px;vertical-align:top;overflow:hidden;}
+.focus1 .hd ul .on {background:#27cc9d;}
+.focus1 .bd {position:relative;z-index:0;}
+.focus1 .bd li img {width:100%; center center no-repeat;}
+.focus1 .bd li a {-webkit-tap-highlight-color:rgba(0,0,0,0);/* 取消链接高亮 */}
+</style>
+<div id="focus1" class="focus1">
+  <div class="hd">
+    <ul></ul>
+  </div>
+  <div class="bd">
+    <ul>
+      <li>
+        <a href="#">
+          <img _src="img/slider1.jpg" /*替换成你自己的图片地址*/ src="images/blank.png" /></a>
+      </li>
+      <li>
+        <a href="#">
+          <img _src="img/slider2.jpg" src="images/blank.png" /></a>
+      </li>
+      <li>
+        <a href="#">
+          <img _src="img/slider3.jpg" src="images/blank.png" /></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    TouchSlide({
+      slideCell: "#focus1",
+      titCell: ".hd ul",
+      mainCell: ".bd ul",
+      effect: "left",
+      autoPlay: true,
+      //自动播放
+      autoPage: true,
+      //自动分页
+      switchLoad: "_src" //切换加载，真实图片路径为"_src" 
+    });
+    var aa = $('#focus1').width();
+    var bb = aa / 1.80;
+    $("#focus1").css({
+      'height': bb
+    });
+    $(".bd li img").css({
+      'height': bb
+    });
+  });</script>
+
+
+
+
+
+    <section style="margin:10px auto;height:80px;">
+        <section  style="margin:5px auto 0px; padding: 5px 10px;box-sizing:border-box; border-top-left-radius: 0.3em; border-top-right-radius: 0.3em; border-bottom-right-radius: 0.3em; border-bottom-left-radius: 0.3em; border: 1px solid #CCC; color: rgb(51, 51, 51); background-color: #eee;">
+            最新华广资讯，点击下方“<span style="color: #607fa6; font-size: 15px;">阅读原文</span>”查看。
+        </section>
+        <blockquote style="white-space: normal; padding: 0px;border:0 none; max-width: 100%; margin: 0;">
+            <p style="margin: 11px auto 0px 8px; width: 0px; height: 0px; box-sizing:border-box;border-width: 20px; border-style: solid; border-color:#27cc9d transparent transparent; z-index: 1;">
+                <br/>
+            </p>
+            <p style="margin: -44px auto 0px 8px; width: 0px; height: 0px; box-sizing:border-box;border-width: 20px; border-style: solid; border-color: #ddd transparent transparent; z-index: 2;">
+                <br/>
+            </p>
+            <p style="margin: -44px auto 0px 8px; width: 0px; height: 0px;box-sizing:border-box; border-width: 20px; border-style: solid; border-color:#27cc9d transparent transparent; z-index: 3;">
+                <br/>
+            </p>
+            <p style="margin: -44px auto 0px 8px; width: 0px; height: 0px;box-sizing:border-box; border-width: 20px; border-style: solid; border-color: #ddd transparent transparent; z-index: 4;">
+                <br/>
+            </p>
+            <p style="margin: -36px auto 0px 16px; width: 0px; height: 0px; box-sizing:border-box;border-width: 12px; border-style: solid; border-color:#27cc9d transparent transparent; z-index: 5;">
+                <br/>
+            </p>
+            <p style="margin: -21px auto -32px 23px; width: 0px; height: 0px;box-sizing:border-box; border-width: 5px; border-style: solid; border-color: #ddd transparent transparent; z-index: 6;">
+                <br/>
+            </p>
+        </blockquote>
+    </section>
+
+<p>
+    <br/>
+</p>
+
+
+
+
+
+
+
+<script type="text/javascript">
+wx.config({
+    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: '', // 必填，公众号的唯一标识
+    timestamp: , // 必填，生成签名的时间戳
+    nonceStr: '', // 必填，生成签名的随机串
+    signature: '',// 必填，签名，见附录1
+    jsApiList: [onMenuShareTimeline,onMenuShareAppMessage] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+wx.ready(function(){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+});
+
+wx.checkJsApi({
+    jsApiList: ['chooseImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+    success: function(res) {
+        // 以键值对的形式返回，可用的api值true，不可用为false
+        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+    }
+});
+
+wx.onMenuShareTimeline({
+    title: '', // 分享标题
+    link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: '', // 分享图标
+    success: function () { 
+        // 用户确认分享后执行的回调函数
+    },
+    cancel: function () { 
+        // 用户取消分享后执行的回调函数
+    }
+});
+
+wx.onMenuShareAppMessage({
+    title: '', // 分享标题
+    desc: '', // 分享描述
+    link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+    imgUrl: '', // 分享图标
+    type: '', // 分享类型,music、video或link，不填默认为link
+    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () { 
+        // 用户确认分享后执行的回调函数
+    },
+    cancel: function () { 
+        // 用户取消分享后执行的回调函数
+    }
+});
+
+
+</script>
+
+
+<script type="text/javascript">
+document.addEventListener('WeixinJSBrigeReady',
+    function onBridgeRead(){
+        WeixinJSBrigeReady.on('menu:share:appmessage',function(argv){
+            WeixinJSBrigeReady.invoke('sendAppMessage',{
+                "img_url":"http://edorm.yowoit.com/img/logo.png",
+                "img_width":"160",
+                "img_height":"160",
+                "link":"http://edorm.yowoit.com/menu/21/c21.html",
+                "desc":"这是描述",
+                "title":"这是标题"
+            },function (res){
+                _report('send_msg',res.err_msg);
+            })
+        });
+        WeixinJSBrigeReady.on('menu:share:timeline',function(argv){
+            WeixinJSBrigeReady.invoke('shareTimeline'{
+                "img_url":"http://edorm.yowoit.com/img/logo.png",
+                "img_width":"160",
+                "img_height":"160",
+                "link":"http://edorm.yowoit.com/menu/21/c21.html",
+                "desc":"这是描述",
+                "title":"这是标题"
+                },function (res){
+                    _report('timeline',res.err_msg);
+            });
+        });
+    },false)
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
