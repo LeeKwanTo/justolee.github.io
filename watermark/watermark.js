@@ -1,67 +1,67 @@
-/***/ (function(modules) { // webpackBootstrap
-/***/ 	// The module cache
-/***/ 	var installedModules = {};
-/***/
-/***/ 	// The require function
-/***/ 	function __webpack_require__(moduleId) {
-/***/
-/***/ 		// Check if module is in cache
-/***/ 		if(installedModules[moduleId]) {
-/***/ 			return installedModules[moduleId].exports;
-/***/ 		}
-/***/ 		// Create a new module (and put it into the cache)
-/***/ 		var module = installedModules[moduleId] = {
-/***/ 			i: moduleId,
-/***/ 			l: false,
-/***/ 			exports: {}
-/***/ 		};
-/***/
-/***/ 		// Execute the module function
-/***/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/***/
-/***/ 		// Flag the module as loaded
-/***/ 		module.l = true;
-/***/
-/***/ 		// Return the exports of the module
-/***/ 		return module.exports;
-/***/ 	}
-/***/
-/***/
-/***/ 	// expose the modules object (__webpack_modules__)
-/***/ 	__webpack_require__.m = modules;
-/***/
-/***/ 	// expose the module cache
-/***/ 	__webpack_require__.c = installedModules;
-/***/
-/***/ 	// define getter function for harmony exports
-/***/ 	__webpack_require__.d = function(exports, name, getter) {
-/***/ 		if(!__webpack_require__.o(exports, name)) {
-/***/ 			Object.defineProperty(exports, name, {
-/***/ 				configurable: false,
-/***/ 				enumerable: true,
-/***/ 				get: getter
-/***/ 			});
-/***/ 		}
-/***/ 	};
-/***/
-/***/ 	// getDefaultExport function for compatibility with non-harmony modules
-/***/ 	__webpack_require__.n = function(module) {
-/***/ 		var getter = module && module.__esModule ?
-/***/ 			function getDefault() { return module['default']; } :
-/***/ 			function getModuleExports() { return module; };
-/***/ 		__webpack_require__.d(getter, 'a', getter);
-/***/ 		return getter;
-/***/ 	};
-/***/
-/***/ 	// Object.prototype.hasOwnProperty.call
-/***/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/***/
-/***/ 	// __webpack_public_path__
-/***/ 	__webpack_require__.p = "";
-/***/
-/***/ 	// Load entry module and return exports
-/***/ 	return __webpack_require__(__webpack_require__.s = 145);
-/***/ })
+/**/ (function(modules) { // webpackBootstrap
+/**/ 	// The module cache
+/**/ 	var installedModules = {};
+/**/
+/**/ 	// The require function
+/**/ 	function __webpack_require__(moduleId) {
+/**/
+/**/ 		// Check if module is in cache
+/**/ 		if(installedModules[moduleId]) {
+/**/ 			return installedModules[moduleId].exports;
+/**/ 		}
+/**/ 		// Create a new module (and put it into the cache)
+/**/ 		var module = installedModules[moduleId] = {
+/**/ 			i: moduleId,
+/**/ 			l: false,
+/**/ 			exports: {}
+/**/ 		};
+/**/
+/**/ 		// Execute the module function
+/**/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/**/
+/**/ 		// Flag the module as loaded
+/**/ 		module.l = true;
+/**/
+/**/ 		// Return the exports of the module
+/**/ 		return module.exports;
+/**/ 	}
+/**/
+/**/
+/**/ 	// expose the modules object (__webpack_modules__)
+/**/ 	__webpack_require__.m = modules;
+/**/
+/**/ 	// expose the module cache
+/**/ 	__webpack_require__.c = installedModules;
+/**/
+/**/ 	// define getter function for harmony exports
+/**/ 	__webpack_require__.d = function(exports, name, getter) {
+/**/ 		if(!__webpack_require__.o(exports, name)) {
+/**/ 			Object.defineProperty(exports, name, {
+/**/ 				configurable: false,
+/**/ 				enumerable: true,
+/**/ 				get: getter
+/**/ 			});
+/**/ 		}
+/**/ 	};
+/**/
+/**/ 	// getDefaultExport function for compatibility with non-harmony modules
+/**/ 	__webpack_require__.n = function(module) {
+/**/ 		var getter = module && module.__esModule ?
+/**/ 			function getDefault() { return module['default']; } :
+/**/ 			function getModuleExports() { return module; };
+/**/ 		__webpack_require__.d(getter, 'a', getter);
+/**/ 		return getter;
+/**/ 	};
+/**/
+/**/ 	// Object.prototype.hasOwnProperty.call
+/**/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/**/
+/**/ 	// __webpack_public_path__
+/**/ 	__webpack_require__.p = "";
+/**/
+/**/ 	// Load entry module and return exports
+/**/ 	return __webpack_require__(__webpack_require__.s = 145);
+/**/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
@@ -83,7 +83,6 @@ if (process.env.NODE_ENV === 'production') {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -102,12 +101,12 @@ if (process.env.NODE_ENV !== 'production') {
   };
 
   // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
+
   var throwOnDirectAccess = true;
   module.exports = __webpack_require__(158)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
+
   module.exports = __webpack_require__(159)();
 }
 
@@ -549,8 +548,6 @@ function deepMerge(target, source) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-2015, Facebook, Inc.
- * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree. An additional grant
@@ -894,8 +891,6 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-2015, Facebook, Inc.
- * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree. An additional grant
@@ -997,8 +992,6 @@ $exports.store = store;
 
 "use strict";
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -1032,11 +1025,8 @@ module.exports = factory(
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- *
  */
 
 
@@ -1094,12 +1084,8 @@ module.exports = invariant;
 
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- *
- * 
  */
 
 function makeEmptyFunction(arg) {
@@ -1236,7 +1222,7 @@ exports.f = __webpack_require__(26) ? Object.defineProperty : function definePro
 "use strict";
 /*
 object-assign
-(c) Sindre Sorhus
+
 @license MIT
 */
 
@@ -1262,14 +1248,12 @@ function shouldUseNative() {
 
 		// Detect buggy property enumeration order in older V8 versions.
 
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
 		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 		test1[5] = 'de';
 		if (Object.getOwnPropertyNames(test1)[0] === '5') {
 			return false;
 		}
 
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
 		var test2 = {};
 		for (var i = 0; i < 10; i++) {
 			test2['_' + String.fromCharCode(i)] = i;
@@ -1281,7 +1265,6 @@ function shouldUseNative() {
 			return false;
 		}
 
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
 		var test3 = {};
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
@@ -1627,7 +1610,6 @@ function _getComputedStyle(elem, name, cs) {
   var d = getDocument(elem);
   computedStyle = computedStyle || d.defaultView.getComputedStyle(elem, null);
 
-  // https://github.com/kissyteam/kissy/issues/61
   if (computedStyle) {
     val = computedStyle.getPropertyValue(name) || computedStyle[name];
   }
@@ -1644,7 +1626,6 @@ var PX = 'px';
 
 function _getComputedStyleIE(elem, name) {
   // currentStyle maybe null
-  // http://msdn.microsoft.com/en-us/library/ms535231.aspx
   var ret = elem[CURRENT_STYLE] && elem[CURRENT_STYLE][name];
 
   // 当 width/height 设置为百分比时，通过 pixelLeft 方式转换的 width/height 值
@@ -1653,7 +1634,6 @@ function _getComputedStyleIE(elem, name) {
   // borderWidth 等值也有问题，但考虑到 borderWidth 设为百分比的概率很小，这里就不考虑了
 
   // From the awesome hack by Dean Edwards
-  // http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
   // If we're not dealing with a regular pixel number
   // but a number that has a weird ending, we need to convert it to pixels
   // exclude left right for relativity
@@ -1935,7 +1915,6 @@ var cssShow = {
   display: 'block'
 };
 
-// fix #119 : https://github.com/kissyteam/kissy/issues/119
 function getWHIgnoreDisplay() {
   for (var _len = arguments.length, args = Array(_len), _key2 = 0; _key2 < _len; _key2++) {
     args[_key2] = arguments[_key2];
@@ -2062,11 +2041,9 @@ mix(utils, domUtils);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- *
  */
 
 
@@ -2086,11 +2063,9 @@ module.exports = emptyObject;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2014-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- *
  */
 
 
@@ -2465,11 +2440,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
-
-
-
 var defaultKey = 'rc_animate_' + Date.now();
 
 
@@ -2824,7 +2794,6 @@ Object.defineProperty(exports, "__esModule", {
 /**
  * @ignore
  * some key-codes definition and utils from closure-library
- * @author yiminghe@gmail.com
  */
 
 var KeyCode = {
@@ -3574,8 +3543,6 @@ module.exports = checkPropTypes;
 
 "use strict";
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
@@ -3593,8 +3560,6 @@ module.exports = ReactPropTypesSecret;
 
 "use strict";
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -4609,7 +4574,7 @@ module.exports = getNative;
 
 /**
  * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * [language type]
  * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
  *
  * @static
@@ -4884,8 +4849,6 @@ function normalizeValidateRules(validate, rules, validateTrigger) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -4963,8 +4926,6 @@ module.exports = EventListener;
 
 "use strict";
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -4980,7 +4941,6 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 /**
  * inlined Object.is polyfill to avoid requiring consumers ship their own
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
  */
 function is(x, y) {
   // SameValue algorithm
@@ -5036,8 +4996,6 @@ module.exports = shallowEqual;
 
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -5077,8 +5035,6 @@ module.exports = containsNode;
 
 "use strict";
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -5109,8 +5065,6 @@ module.exports = focusNode;
 
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -5289,10 +5243,6 @@ var getConfirmation = exports.getConfirmation = function getConfirmation(message
 
 /**
  * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
  */
 var supportsHistory = exports.supportsHistory = function supportsHistory() {
   var ua = window.navigator.userAgent;
@@ -5625,10 +5575,6 @@ var getConfirmation = function getConfirmation(message, callback) {
 
 /**
  * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
  */
 var supportsHistory = function supportsHistory() {
   var ua = window.navigator.userAgent;
@@ -6540,7 +6486,7 @@ var capitalPrefixes = ['Webkit', 'Moz', 'O',
 var prefixes = ['-webkit-', '-moz-', '-o-', 'ms-', ''];
 
 function getStyleProperty(node, name) {
-  // old ff need null, https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
+  // old ff need null
   var style = window.getComputedStyle(node, null);
   var ret = '';
   for (var i = 0; i < prefixes.length; i++) {
@@ -6902,14 +6848,13 @@ var Tooltip = function (_React$Component) {
         }
         // Fix Tooltip won't hide at disabled button
         // mouse events don't trigger at disabled button in Chrome
-        // https://github.com/react-component/tooltip/issues/18
 
     }, {
         key: 'getDisabledCompatibleChildren',
         value: function getDisabledCompatibleChildren(element) {
             if ((element.type.__ANT_BUTTON || element.type === 'button') && element.props.disabled && this.isHoverTrigger()) {
                 // Pick some layout related style properties up to span
-                // Prevent layout bugs like https://github.com/ant-design/ant-design/issues/5254
+                // Prevent layout bugs like
                 var _splitObject = splitObject(element.props.style, ['position', 'left', 'right', 'top', 'bottom', 'float', 'display', 'zIndex']),
                     picked = _splitObject.picked,
                     omited = _splitObject.omited;
@@ -7056,9 +7001,6 @@ function getOffsetParent(element) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_prop_types__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_prop_types__);
-
-
-
 
 
 
@@ -7650,7 +7592,6 @@ var TextArea = function (_React$Component) {
             var props = this.props;
             var otherProps = (0, _omit2['default'])(props, ['prefixCls', 'onPressEnter', 'autosize']);
             var style = (0, _extends3['default'])({}, props.style, this.state.textareaStyles);
-            // Fix https://github.com/ant-design/ant-design/issues/6776
             // Make sure it could be reset when using form.getFieldDecorator
             if ('value' in otherProps) {
                 otherProps.value = otherProps.value || '';
@@ -8085,7 +8026,7 @@ module.exports = __webpack_require__(289);
 
 /**
  * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * [`SameValueZero`]
  * comparison between two values to determine if they are equivalent.
  *
  * @static
@@ -8245,7 +8186,7 @@ function createBaseForm() {
 
         this.instances = {};
         this.cachedBind = {};
-        // HACK: https://github.com/ant-design/ant-design/issues/6406
+
         ['getFieldsValue', 'getFieldValue', 'setFieldsInitialValue', 'getFieldsError', 'getFieldError', 'isFieldValidating', 'isFieldsValidating', 'isFieldsTouched', 'isFieldTouched'].forEach(function (key) {
           return _this[key] = function () {
             var _fieldsStore;
@@ -8799,9 +8740,6 @@ module.exports = set;
 
 
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
@@ -8839,7 +8777,6 @@ function shallowCompare(instance, nextProps, nextState) {
  * differences. Only mixin to components which have simple props and state, or
  * use `forceUpdate()` when you know deep data structures have changed.
  *
- * See https://facebook.github.io/react/docs/pure-render-mixin.html
  */
 var ReactComponentWithPureRenderMixin = {
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
@@ -8931,8 +8868,6 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
  React v16.0.0
  react.production.min.js
 
- Copyright (c) 2013-present, Facebook, Inc.
-
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
 */
@@ -8960,8 +8895,6 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 /* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.0.0
  * react.development.js
  *
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
@@ -8981,8 +8914,6 @@ var emptyFunction = __webpack_require__(21);
 var checkPropTypes = __webpack_require__(55);
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -9072,8 +9003,6 @@ var ReactNoopUpdateQueue = {
 var ReactNoopUpdateQueue_1 = ReactNoopUpdateQueue;
 
 /**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -9082,7 +9011,6 @@ var ReactNoopUpdateQueue_1 = ReactNoopUpdateQueue;
 
 /**
  * Forked from fbjs/warning:
- * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
  *
  * Only change is we use console.warn instead of console.error,
  * and do nothing when 'console' is not supported.
@@ -9267,13 +9195,10 @@ var ReactBaseClasses = {
 };
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule ReactCurrentOwner
- * 
  */
 
 /**
@@ -9442,7 +9367,6 @@ var ReactElement = function (type, key, ref, self, source, owner, props) {
 
 /**
  * Create and return a new ReactElement of the given type.
- * See https://facebook.github.io/react/docs/react-api.html#createelement
  */
 ReactElement.createElement = function (type, config, children) {
   var propName;
@@ -9518,7 +9442,6 @@ ReactElement.createElement = function (type, config, children) {
 
 /**
  * Return a function that produces ReactElements of a given type.
- * See https://facebook.github.io/react/docs/react-api.html#createfactory
  */
 ReactElement.createFactory = function (type) {
   var factory = ReactElement.createElement.bind(null, type);
@@ -9539,7 +9462,6 @@ ReactElement.cloneAndReplaceKey = function (oldElement, newKey) {
 
 /**
  * Clone and return a new ReactElement using element as the starting point.
- * See https://facebook.github.io/react/docs/react-api.html#cloneelement
  */
 ReactElement.cloneElement = function (element, config, children) {
   var propName;
@@ -9605,7 +9527,6 @@ ReactElement.cloneElement = function (element, config, children) {
 
 /**
  * Verifies the object is a ReactElement.
- * See https://facebook.github.io/react/docs/react-api.html#isvalidelement
  * @param {?object} object
  * @return {boolean} True if `object` is a valid component.
  * @final
@@ -9617,13 +9538,10 @@ ReactElement.isValidElement = function (object) {
 var ReactElement_1 = ReactElement;
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
  * @providesModule ReactDebugCurrentFrame
- * 
  */
 
 var ReactDebugCurrentFrame = {};
@@ -9845,8 +9763,6 @@ function forEachSingleChild(bookKeeping, child, name) {
 /**
  * Iterates through children that are typically specified as `props.children`.
  *
- * See https://facebook.github.io/react/docs/react-api.html#react.children.foreach
- *
  * The provided forEachFunc(child, index) will be called for each
  * leaf child.
  *
@@ -9897,8 +9813,6 @@ function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
 /**
  * Maps children that are typically specified as `props.children`.
  *
- * See https://facebook.github.io/react/docs/react-api.html#react.children.map
- *
  * The provided mapFunction(child, key, index) will be called for each
  * leaf child.
  *
@@ -9920,8 +9834,6 @@ function mapChildren(children, func, context) {
  * Count the number of children that are typically specified as
  * `props.children`.
  *
- * See https://facebook.github.io/react/docs/react-api.html#react.children.count
- *
  * @param {?*} children Children tree container.
  * @return {number} The number of children.
  */
@@ -9932,8 +9844,6 @@ function countChildren(children, context) {
 /**
  * Flatten a children object (typically specified as `props.children`) and
  * return an array with appropriately re-keyed children.
- *
- * See https://facebook.github.io/react/docs/react-api.html#react.children.toarray
  */
 function toArray(children) {
   var result = [];
@@ -9951,8 +9861,6 @@ var ReactChildren = {
 var ReactChildren_1 = ReactChildren;
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -9964,8 +9872,6 @@ var ReactVersion = '16.0.0';
 /**
  * Returns the first child in a collection of children and verifies that there
  * is only one child in the collection.
- *
- * See https://facebook.github.io/react/docs/react-api.html#react.children.only
  *
  * The current implementation of this function assumes that a single child gets
  * passed without a wrapper, but the purpose of this helper function is to
@@ -9983,8 +9889,6 @@ function onlyChild(children) {
 var onlyChild_1 = onlyChild;
 
 /**
- * Copyright (c) 2016-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -9997,8 +9901,6 @@ var describeComponentFrame$1 = function (name, source, ownerName) {
 };
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -10364,7 +10266,6 @@ if (canUseCollections) {
   var rootByKey = {};
 
   // Use non-numeric keys to prevent V8 performance issues:
-  // https://github.com/facebook/react/pull/7232
   var getKeyFromID = function (id) {
     return '.' + id;
   };
@@ -10667,8 +10568,6 @@ module.exports = ReactEntry;
  React v16.0.0
  react-dom.production.min.js
 
- Copyright (c) 2013-present, Facebook, Inc.
-
  This source code is licensed under the MIT license found in the
  LICENSE file in the root directory of this source tree.
  Modernizr 3.0.0pre (Custom Build) | MIT
@@ -10929,8 +10828,6 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
 
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -10957,8 +10854,6 @@ module.exports = isTextNode;
 
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -10984,8 +10879,6 @@ module.exports = isNode;
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.0.0
  * react-dom.development.js
- *
- * Copyright (c) 2013-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -11017,8 +10910,6 @@ var focusNode = __webpack_require__(96);
 var getActiveElement = __webpack_require__(97);
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -11027,8 +10918,6 @@ var getActiveElement = __webpack_require__(97);
  */
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -11042,8 +10931,6 @@ var getActiveElement = __webpack_require__(97);
 !react ? invariant(false, 'ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.') : void 0;
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -11379,9 +11266,6 @@ var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\
  *   undefined
  *
  * Although this may be confusing, it performs better in general.
- *
- * @see http://jsperf.com/key-exists
- * @see http://jsperf.com/key-missing
  */
 var DOMProperty = {
   ID_ATTRIBUTE_NAME: 'data-reactid',
@@ -11484,8 +11368,6 @@ var DOMProperty = {
 var DOMProperty_1 = DOMProperty;
 
 /**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -11499,8 +11381,6 @@ var ReactDOMComponentFlags = {
 var ReactDOMComponentFlags_1 = ReactDOMComponentFlags;
 
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
@@ -32519,7 +32399,7 @@ var Container = function (_React$Component) {
       var strDataURI = imgData.substr(22, imgData.length);
       var blob = this.dataURLtoBlob(imgData);
       var objurl = URL.createObjectURL(blob);
-      target.download = 'SimpleTool.png';
+      target.download = 'justo.png';
       target.href = objurl;
     }
   }, {
