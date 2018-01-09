@@ -100,12 +100,10 @@ if (process.env.NODE_ENV !== 'production') {
       object.$$typeof === REACT_ELEMENT_TYPE;
   };
 
-  // By explicitly using `prop-types` you are opting into new development behavior.
 
   var throwOnDirectAccess = true;
   module.exports = __webpack_require__(158)(isValidElement, throwOnDirectAccess);
 } else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
 
   module.exports = __webpack_require__(159)();
 }
@@ -285,12 +283,7 @@ exports.default = function (obj, key, value) {
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2016 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 (function () {
 	'use strict';
@@ -325,7 +318,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
 	} else if (true) {
-		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 			return classNames;
 		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -358,7 +350,6 @@ var formatRegExp = /%[sdj%]/g;
 
 var warning = function warning() {};
 
-// don't print warning message when in production env or node runtime
 if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined' && typeof document !== 'undefined') {
   warning = function warning(type, errors) {
     if (typeof console !== 'undefined' && console.warn) {
@@ -556,12 +547,6 @@ function deepMerge(target, source) {
 
 
 
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
 
 var warning = function() {};
 
@@ -596,8 +581,6 @@ if (process.env.NODE_ENV !== 'production') {
         console.error(message);
       }
       try {
-        // This error was thrown as a convenience so that you can use this stack
-        // to find the callsite that caused this warning to fire.
         throw new Error(message);
       } catch(x) {}
     }
@@ -612,13 +595,8 @@ module.exports = warning;
 /* 11 */
 /***/ (function(module, exports) {
 
-// shim for using process in browser
 var process = module.exports = {};
 
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
 
 var cachedSetTimeout;
 var cachedClearTimeout;
@@ -651,23 +629,18 @@ function defaultClearTimeout () {
 } ())
 function runTimeout(fun) {
     if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
         return setTimeout(fun, 0);
     }
-    // if setTimeout wasn't available but was latter defined
     if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
         cachedSetTimeout = setTimeout;
         return setTimeout(fun, 0);
     }
     try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
         return cachedSetTimeout(fun, 0);
     } catch(e){
         try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
             return cachedSetTimeout.call(null, fun, 0);
         } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
             return cachedSetTimeout.call(this, fun, 0);
         }
     }
@@ -676,24 +649,18 @@ function runTimeout(fun) {
 }
 function runClearTimeout(marker) {
     if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
         return clearTimeout(marker);
     }
-    // if clearTimeout wasn't available but was latter defined
     if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
         cachedClearTimeout = clearTimeout;
         return clearTimeout(marker);
     }
     try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
         return cachedClearTimeout(marker);
     } catch (e){
         try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
             return cachedClearTimeout.call(null, marker);
         } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
             return cachedClearTimeout.call(this, marker);
         }
     }
@@ -758,7 +725,6 @@ process.nextTick = function (fun) {
     }
 };
 
-// v8 likes predictible objects
 function Item(fun, array) {
     this.fun = fun;
     this.array = array;
@@ -833,7 +799,6 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
   if (
     typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
     typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
@@ -841,28 +806,16 @@ function checkDCE() {
     return;
   }
   if (process.env.NODE_ENV !== 'production') {
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
     throw new Error('^_^');
   }
   try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
     __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
   } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
     console.error(err);
   }
 }
 
 if (process.env.NODE_ENV === 'production') {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
   checkDCE();
   module.exports = __webpack_require__(148);
 } else {
@@ -883,7 +836,6 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 /* 15 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 16 */
@@ -899,16 +851,6 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 
 
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
 
 var invariant = function(condition, format, a, b, c, d, e, f) {
   if (process.env.NODE_ENV !== 'production') {
@@ -991,11 +933,6 @@ $exports.store = store;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
 
 
 
@@ -1009,7 +946,6 @@ if (typeof React === 'undefined') {
   );
 }
 
-// Hack to grab NoopUpdateQueue from isomorphic React
 var ReactNoopUpdateQueue = new React.Component().updater;
 
 module.exports = factory(
@@ -1031,16 +967,6 @@ module.exports = factory(
 
 
 
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
 
 var validateFormat = function validateFormat(format) {};
 
@@ -1083,10 +1009,6 @@ module.exports = invariant;
 "use strict";
 
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 
 function makeEmptyFunction(arg) {
   return function () {
@@ -1094,11 +1016,6 @@ function makeEmptyFunction(arg) {
   };
 }
 
-/**
- * This function accepts and discards inputs; it has no side effects. This is
- * primarily useful idiomatically for overridable function endpoints which
- * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
- */
 var emptyFunction = function emptyFunction() {};
 
 emptyFunction.thatReturns = makeEmptyFunction;
@@ -1137,16 +1054,11 @@ var $export = function (type, name, source) {
   var key, own, out;
   if (IS_GLOBAL) source = name;
   for (key in source) {
-    // contains in native
     own = !IS_FORCED && target && target[key] !== undefined;
     if (own && key in exports) continue;
-    // export native or passed
     out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
     exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
     : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
     : IS_WRAP && target[key] == out ? (function (C) {
       var F = function (a, b, c) {
         if (this instanceof C) {
@@ -1159,17 +1071,13 @@ var $export = function (type, name, source) {
       };
       F[PROTOTYPE] = C[PROTOTYPE];
       return F;
-    // make static versions for prototype methods
     })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
     if (IS_PROTO) {
       (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
       if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
     }
   }
 };
-// type bitmap
 $export.F = 1;   // forced
 $export.G = 2;   // global
 $export.S = 4;   // static
@@ -1185,10 +1093,8 @@ module.exports = $export;
 /* 23 */
 /***/ (function(module, exports) {
 
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
   : Function('return this')();
 if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 
@@ -1220,14 +1126,8 @@ exports.f = __webpack_require__(26) ? Object.defineProperty : function definePro
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/*
-object-assign
-
-@license MIT
-*/
 
 
-/* eslint-disable no-unused-vars */
 var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
@@ -1246,7 +1146,6 @@ function shouldUseNative() {
 			return false;
 		}
 
-		// Detect buggy property enumeration order in older V8 versions.
 
 		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 		test1[5] = 'de';
@@ -1276,7 +1175,6 @@ function shouldUseNative() {
 
 		return true;
 	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
 		return false;
 	}
 }
@@ -1313,7 +1211,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// Thank's IE8 for his funny defineProperty
 module.exports = !__webpack_require__(31)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
@@ -1333,7 +1230,6 @@ module.exports = function (it, key) {
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = __webpack_require__(110);
 var defined = __webpack_require__(67);
 module.exports = function (it) {
@@ -1523,17 +1419,6 @@ function getClientPosition(elem) {
   x = box.left;
   y = box.top;
 
-  // In IE, most of the time, 2 extra pixels are added to the top and left
-  // due to the implicit 2-pixel inset border.  In IE6/7 quirks mode and
-  // IE6 standards mode, this border can be overridden by setting the
-  // document element's border to zero -- thus, we cannot rely on the
-  // offset always being 2 pixels.
-
-  // In quirks mode, the offset can be determined by querying the body's
-  // clientLeft/clientTop, but in standards mode, it is found by querying
-  // the document element's clientLeft/clientTop.  Since we already called
-  // getClientBoundingRect we have already forced a reflow, so it is not
-  // too expensive just to query them all.
 
   // ie 下应该减去窗口的边框吧，毕竟默认 absolute 都是相对窗口定位的
   // 窗口边框标准是设 documentElement ,quirks 时设置 body
@@ -1584,13 +1469,7 @@ function getOffset(el) {
   return pos;
 }
 
-/**
- * A crude way of determining if an object is a window
- * @member util
- */
 function isWindow(obj) {
-  // must use == for ie8
-  /* eslint eqeqeq:0 */
   return obj !== null && obj !== undefined && obj == obj.window;
 }
 
@@ -1625,7 +1504,6 @@ var LEFT = 'left';
 var PX = 'px';
 
 function _getComputedStyleIE(elem, name) {
-  // currentStyle maybe null
   var ret = elem[CURRENT_STYLE] && elem[CURRENT_STYLE][name];
 
   // 当 width/height 设置为百分比时，通过 pixelLeft 方式转换的 width/height 值
@@ -1633,24 +1511,17 @@ function _getComputedStyleIE(elem, name) {
   // 在 ie 下不对，需要直接用 offset 方式
   // borderWidth 等值也有问题，但考虑到 borderWidth 设为百分比的概率很小，这里就不考虑了
 
-  // From the awesome hack by Dean Edwards
-  // If we're not dealing with a regular pixel number
-  // but a number that has a weird ending, we need to convert it to pixels
-  // exclude left right for relativity
   if (_RE_NUM_NO_PX.test(ret) && !RE_POS.test(name)) {
     // Remember the original values
     var style = elem.style;
     var left = style[LEFT];
     var rsLeft = elem[RUNTIME_STYLE][LEFT];
 
-    // prevent flashing of content
     elem[RUNTIME_STYLE][LEFT] = elem[CURRENT_STYLE][LEFT];
 
-    // Put in the new values to get a computed value out
     style[LEFT] = name === 'fontSize' ? '1em' : ret || 0;
     ret = style.pixelLeft + PX;
 
-    // Revert the changed values
     style[LEFT] = left;
 
     elem[RUNTIME_STYLE][LEFT] = rsLeft;
@@ -1794,7 +1665,6 @@ function swap(elem, options, callback) {
   var style = elem.style;
   var name = void 0;
 
-  // Remember the old values, and insert the new ones
   for (name in options) {
     if (options.hasOwnProperty(name)) {
       old[name] = style[name];
@@ -1804,7 +1674,6 @@ function swap(elem, options, callback) {
 
   callback.call(elem);
 
-  // Revert the old values
   for (name in options) {
     if (options.hasOwnProperty(name)) {
       style[name] = old[name];
@@ -1840,15 +1709,12 @@ each(['Width', 'Height'], function (name) {
   domUtils['doc' + name] = function (refWin) {
     var d = refWin.document;
     return Math.max(
-    // firefox chrome documentElement.scrollHeight< body.scrollHeight
-    // ie standard mode : documentElement.scrollHeight> body.scrollHeight
     d.documentElement['scroll' + name],
     // quirks : documentElement.scrollHeight 最大等于可视窗口多一点？
     d.body['scroll' + name], domUtils['viewport' + name](d));
   };
 
   domUtils['viewport' + name] = function (win) {
-    // pc browser includes scrollbar in window.innerWidth
     var prop = 'client' + name;
     var doc = win.document;
     var body = doc.body;
@@ -1882,12 +1748,10 @@ function getWH(elem, name, ex) {
   var cssBoxValue = 0;
   if (borderBoxValue === null || borderBoxValue === undefined || borderBoxValue <= 0) {
     borderBoxValue = undefined;
-    // Fall back to computed then un computed css if necessary
     cssBoxValue = getComputedStyleX(elem, name);
     if (cssBoxValue === null || cssBoxValue === undefined || Number(cssBoxValue) < 0) {
       cssBoxValue = elem.style[name] || 0;
     }
-    // Normalize '', auto, and prepare for extra
     cssBoxValue = parseFloat(cssBoxValue) || 0;
   }
   if (extra === undefined) {
@@ -1922,8 +1786,6 @@ function getWHIgnoreDisplay() {
 
   var val = void 0;
   var elem = args[0];
-  // in case elem is window
-  // elem.offsetWidth === undefined
   if (elem.offsetWidth !== 0) {
     val = getWH.apply(undefined, args);
   } else {
@@ -2041,7 +1903,6 @@ mix(utils, domUtils);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
@@ -2072,12 +1933,6 @@ module.exports = emptyObject;
 
 var emptyFunction = __webpack_require__(21);
 
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
 
 var warning = emptyFunction;
 
@@ -2095,9 +1950,6 @@ if (process.env.NODE_ENV !== 'production') {
       console.error(message);
     }
     try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
       throw new Error(message);
     } catch (x) {}
   };
@@ -2311,11 +2163,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var createLocation = function createLocation(path, state, key, currentLocation) {
   var location = void 0;
   if (typeof path === 'string') {
-    // Two-arg form: push(path, state)
     location = Object(__WEBPACK_IMPORTED_MODULE_2__PathUtils__["d" /* parsePath */])(path);
     location.state = state;
   } else {
-    // One-arg form: push(location)
     location = _extends({}, path);
 
     if (location.pathname === undefined) location.pathname = '';
@@ -2348,14 +2198,12 @@ var createLocation = function createLocation(path, state, key, currentLocation) 
   if (key) location.key = key;
 
   if (currentLocation) {
-    // Resolve incomplete/relative pathname relative to current location.
     if (!location.pathname) {
       location.pathname = currentLocation.pathname;
     } else if (location.pathname.charAt(0) !== '/') {
       location.pathname = Object(__WEBPACK_IMPORTED_MODULE_0_resolve_pathname__["default"])(location.pathname, currentLocation.pathname);
     }
   } else {
-    // When there is no prior location and pathname is empty, set it to /
     if (!location.pathname) {
       location.pathname = '/';
     }
@@ -2372,7 +2220,6 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
 var $keys = __webpack_require__(109);
 var enumBugKeys = __webpack_require__(71);
 
@@ -2403,7 +2250,6 @@ exports.f = {}.propertyIsEnumerable;
 /* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 7.1.13 ToObject(argument)
 var defined = __webpack_require__(67);
 module.exports = function (it) {
   return Object(defined(it));
@@ -2505,7 +2351,6 @@ var Animate = function (_React$Component) {
       this.nextProps = nextProps;
       var nextChildren = Object(__WEBPACK_IMPORTED_MODULE_8__ChildrenUtils__["e" /* toArrayChildren */])(getChildrenFromProps(nextProps));
       var props = this.props;
-      // exclusive needs immediate response
       if (props.exclusive) {
         Object.keys(this.currentlyAnimatingKeys).forEach(function (key) {
           _this3.stop(key);
@@ -2513,9 +2358,7 @@ var Animate = function (_React$Component) {
       }
       var showProp = props.showProp;
       var currentlyAnimatingKeys = this.currentlyAnimatingKeys;
-      // last props children if exclusive
       var currentChildren = props.exclusive ? Object(__WEBPACK_IMPORTED_MODULE_8__ChildrenUtils__["e" /* toArrayChildren */])(getChildrenFromProps(props)) : this.state.children;
-      // in case destroy in showProp mode
       var newChildren = [];
       if (showProp) {
         currentChildren.forEach(function (currentChild) {
@@ -2539,7 +2382,6 @@ var Animate = function (_React$Component) {
         newChildren = Object(__WEBPACK_IMPORTED_MODULE_8__ChildrenUtils__["d" /* mergeChildren */])(currentChildren, nextChildren);
       }
 
-      // need render to avoid update
       this.setState({
         children: newChildren
       });
@@ -2702,7 +2544,6 @@ var _initialiseProps = function _initialiseProps() {
   var _this5 = this;
 
   this.performEnter = function (key) {
-    // may already remove by exclusive
     if (_this5.childrenRefs[key]) {
       _this5.currentlyAnimatingKeys[key] = true;
       _this5.childrenRefs[key].componentWillEnter(_this5.handleDoneAdding.bind(_this5, key, 'enter'));
@@ -2719,13 +2560,11 @@ var _initialiseProps = function _initialiseProps() {
   this.handleDoneAdding = function (key, type) {
     var props = _this5.props;
     delete _this5.currentlyAnimatingKeys[key];
-    // if update on exclusive mode, skip check
     if (props.exclusive && props !== _this5.nextProps) {
       return;
     }
     var currentChildren = Object(__WEBPACK_IMPORTED_MODULE_8__ChildrenUtils__["e" /* toArrayChildren */])(getChildrenFromProps(props));
     if (!_this5.isValidChildByKey(currentChildren, key)) {
-      // exclusive will not need this
       _this5.performLeave(key);
     } else {
       if (type === 'appear') {
@@ -2743,7 +2582,6 @@ var _initialiseProps = function _initialiseProps() {
   };
 
   this.performLeave = function (key) {
-    // may already remove by exclusive
     if (_this5.childrenRefs[key]) {
       _this5.currentlyAnimatingKeys[key] = true;
       _this5.childrenRefs[key].componentWillLeave(_this5.handleDoneLeaving.bind(_this5, key));
@@ -2753,12 +2591,10 @@ var _initialiseProps = function _initialiseProps() {
   this.handleDoneLeaving = function (key) {
     var props = _this5.props;
     delete _this5.currentlyAnimatingKeys[key];
-    // if update on exclusive mode, skip check
     if (props.exclusive && props !== _this5.nextProps) {
       return;
     }
     var currentChildren = Object(__WEBPACK_IMPORTED_MODULE_8__ChildrenUtils__["e" /* toArrayChildren */])(getChildrenFromProps(props));
-    // in case state change is too fast
     if (_this5.isValidChildByKey(currentChildren, key)) {
       _this5.performEnter(key);
     } else {
@@ -2791,437 +2627,115 @@ var _initialiseProps = function _initialiseProps() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-/**
- * @ignore
- * some key-codes definition and utils from closure-library
- */
 
 var KeyCode = {
-  /**
-   * MAC_ENTER
-   */
   MAC_ENTER: 3,
-  /**
-   * BACKSPACE
-   */
   BACKSPACE: 8,
-  /**
-   * TAB
-   */
   TAB: 9,
-  /**
-   * NUMLOCK on FF/Safari Mac
-   */
   NUM_CENTER: 12, // NUMLOCK on FF/Safari Mac
-  /**
-   * ENTER
-   */
   ENTER: 13,
-  /**
-   * SHIFT
-   */
   SHIFT: 16,
-  /**
-   * CTRL
-   */
   CTRL: 17,
-  /**
-   * ALT
-   */
   ALT: 18,
-  /**
-   * PAUSE
-   */
   PAUSE: 19,
-  /**
-   * CAPS_LOCK
-   */
   CAPS_LOCK: 20,
-  /**
-   * ESC
-   */
   ESC: 27,
-  /**
-   * SPACE
-   */
   SPACE: 32,
-  /**
-   * PAGE_UP
-   */
   PAGE_UP: 33, // also NUM_NORTH_EAST
-  /**
-   * PAGE_DOWN
-   */
   PAGE_DOWN: 34, // also NUM_SOUTH_EAST
-  /**
-   * END
-   */
   END: 35, // also NUM_SOUTH_WEST
-  /**
-   * HOME
-   */
   HOME: 36, // also NUM_NORTH_WEST
-  /**
-   * LEFT
-   */
   LEFT: 37, // also NUM_WEST
-  /**
-   * UP
-   */
   UP: 38, // also NUM_NORTH
-  /**
-   * RIGHT
-   */
   RIGHT: 39, // also NUM_EAST
-  /**
-   * DOWN
-   */
   DOWN: 40, // also NUM_SOUTH
-  /**
-   * PRINT_SCREEN
-   */
   PRINT_SCREEN: 44,
-  /**
-   * INSERT
-   */
   INSERT: 45, // also NUM_INSERT
-  /**
-   * DELETE
-   */
   DELETE: 46, // also NUM_DELETE
-  /**
-   * ZERO
-   */
   ZERO: 48,
-  /**
-   * ONE
-   */
   ONE: 49,
-  /**
-   * TWO
-   */
   TWO: 50,
-  /**
-   * THREE
-   */
   THREE: 51,
-  /**
-   * FOUR
-   */
   FOUR: 52,
-  /**
-   * FIVE
-   */
   FIVE: 53,
-  /**
-   * SIX
-   */
   SIX: 54,
-  /**
-   * SEVEN
-   */
   SEVEN: 55,
-  /**
-   * EIGHT
-   */
   EIGHT: 56,
-  /**
-   * NINE
-   */
   NINE: 57,
-  /**
-   * QUESTION_MARK
-   */
   QUESTION_MARK: 63, // needs localization
-  /**
-   * A
-   */
   A: 65,
-  /**
-   * B
-   */
   B: 66,
-  /**
-   * C
-   */
   C: 67,
-  /**
-   * D
-   */
   D: 68,
-  /**
-   * E
-   */
   E: 69,
-  /**
-   * F
-   */
   F: 70,
-  /**
-   * G
-   */
   G: 71,
-  /**
-   * H
-   */
   H: 72,
-  /**
-   * I
-   */
   I: 73,
-  /**
-   * J
-   */
   J: 74,
-  /**
-   * K
-   */
   K: 75,
-  /**
-   * L
-   */
   L: 76,
-  /**
-   * M
-   */
   M: 77,
-  /**
-   * N
-   */
   N: 78,
-  /**
-   * O
-   */
   O: 79,
-  /**
-   * P
-   */
   P: 80,
-  /**
-   * Q
-   */
   Q: 81,
-  /**
-   * R
-   */
   R: 82,
-  /**
-   * S
-   */
   S: 83,
-  /**
-   * T
-   */
   T: 84,
-  /**
-   * U
-   */
   U: 85,
-  /**
-   * V
-   */
   V: 86,
-  /**
-   * W
-   */
   W: 87,
-  /**
-   * X
-   */
   X: 88,
-  /**
-   * Y
-   */
   Y: 89,
-  /**
-   * Z
-   */
   Z: 90,
-  /**
-   * META
-   */
   META: 91, // WIN_KEY_LEFT
-  /**
-   * WIN_KEY_RIGHT
-   */
   WIN_KEY_RIGHT: 92,
-  /**
-   * CONTEXT_MENU
-   */
   CONTEXT_MENU: 93,
-  /**
-   * NUM_ZERO
-   */
   NUM_ZERO: 96,
-  /**
-   * NUM_ONE
-   */
   NUM_ONE: 97,
-  /**
-   * NUM_TWO
-   */
   NUM_TWO: 98,
-  /**
-   * NUM_THREE
-   */
   NUM_THREE: 99,
-  /**
-   * NUM_FOUR
-   */
   NUM_FOUR: 100,
-  /**
-   * NUM_FIVE
-   */
   NUM_FIVE: 101,
-  /**
-   * NUM_SIX
-   */
   NUM_SIX: 102,
-  /**
-   * NUM_SEVEN
-   */
   NUM_SEVEN: 103,
-  /**
-   * NUM_EIGHT
-   */
   NUM_EIGHT: 104,
-  /**
-   * NUM_NINE
-   */
   NUM_NINE: 105,
-  /**
-   * NUM_MULTIPLY
-   */
   NUM_MULTIPLY: 106,
-  /**
-   * NUM_PLUS
-   */
   NUM_PLUS: 107,
-  /**
-   * NUM_MINUS
-   */
   NUM_MINUS: 109,
-  /**
-   * NUM_PERIOD
-   */
   NUM_PERIOD: 110,
-  /**
-   * NUM_DIVISION
-   */
   NUM_DIVISION: 111,
-  /**
-   * F1
-   */
   F1: 112,
-  /**
-   * F2
-   */
   F2: 113,
-  /**
-   * F3
-   */
   F3: 114,
-  /**
-   * F4
-   */
   F4: 115,
-  /**
-   * F5
-   */
   F5: 116,
-  /**
-   * F6
-   */
   F6: 117,
-  /**
-   * F7
-   */
   F7: 118,
-  /**
-   * F8
-   */
   F8: 119,
-  /**
-   * F9
-   */
   F9: 120,
-  /**
-   * F10
-   */
   F10: 121,
-  /**
-   * F11
-   */
   F11: 122,
-  /**
-   * F12
-   */
   F12: 123,
-  /**
-   * NUMLOCK
-   */
   NUMLOCK: 144,
-  /**
-   * SEMICOLON
-   */
   SEMICOLON: 186, // needs localization
-  /**
-   * DASH
-   */
   DASH: 189, // needs localization
-  /**
-   * EQUALS
-   */
   EQUALS: 187, // needs localization
-  /**
-   * COMMA
-   */
   COMMA: 188, // needs localization
-  /**
-   * PERIOD
-   */
   PERIOD: 190, // needs localization
-  /**
-   * SLASH
-   */
   SLASH: 191, // needs localization
-  /**
-   * APOSTROPHE
-   */
   APOSTROPHE: 192, // needs localization
-  /**
-   * SINGLE_QUOTE
-   */
   SINGLE_QUOTE: 222, // needs localization
-  /**
-   * OPEN_SQUARE_BRACKET
-   */
   OPEN_SQUARE_BRACKET: 219, // needs localization
-  /**
-   * BACKSLASH
-   */
   BACKSLASH: 220, // needs localization
-  /**
-   * CLOSE_SQUARE_BRACKET
-   */
   CLOSE_SQUARE_BRACKET: 221, // needs localization
-  /**
-   * WIN_KEY
-   */
   WIN_KEY: 224,
-  /**
-   * MAC_FF_META
-   */
   MAC_FF_META: 224, // Firefox (Gecko) fires this for the meta key instead of 91
-  /**
-   * WIN_IME
-   */
   WIN_IME: 229
 };
 
-/*
- whether text and modified key is entered at the same time.
- */
 KeyCode.isTextModifyingKeyEvent = function isTextModifyingKeyEvent(e) {
   var keyCode = e.keyCode;
   if (e.altKey && !e.ctrlKey || e.metaKey ||
@@ -3230,8 +2744,6 @@ KeyCode.isTextModifyingKeyEvent = function isTextModifyingKeyEvent(e) {
     return false;
   }
 
-  // The following keys are quite harmless, even in combination with
-  // CTRL, ALT or SHIFT.
   switch (keyCode) {
     case KeyCode.ALT:
     case KeyCode.CAPS_LOCK:
@@ -3262,9 +2774,6 @@ KeyCode.isTextModifyingKeyEvent = function isTextModifyingKeyEvent(e) {
   }
 };
 
-/*
- whether character is entered.
- */
 KeyCode.isCharacterKey = function isCharacterKey(keyCode) {
   if (keyCode >= KeyCode.ZERO && keyCode <= KeyCode.NINE) {
     return true;
@@ -3278,7 +2787,6 @@ KeyCode.isCharacterKey = function isCharacterKey(keyCode) {
     return true;
   }
 
-  // Safari sends zero key code for non-latin characters.
   if (window.navigation.userAgent.indexOf('WebKit') !== -1 && keyCode === 0) {
     return true;
   }
@@ -3379,29 +2887,6 @@ function loopMenuItemRecusively(children, keys, ret) {
 /* 51 */
 /***/ (function(module, exports) {
 
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
 var isArray = Array.isArray;
 
 module.exports = isArray;
@@ -3413,7 +2898,6 @@ module.exports = isArray;
 
 var getNative = __webpack_require__(88);
 
-/* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
 
 module.exports = nativeCreate;
@@ -3425,14 +2909,6 @@ module.exports = nativeCreate;
 
 var eq = __webpack_require__(136);
 
-/**
- * Gets the index at which the `key` is found in `array` of key-value pairs.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {*} key The key to search for.
- * @returns {number} Returns the index of the matched value, else `-1`.
- */
 function assocIndexOf(array, key) {
   var length = array.length;
   while (length--) {
@@ -3452,14 +2928,6 @@ module.exports = assocIndexOf;
 
 var isKeyable = __webpack_require__(342);
 
-/**
- * Gets the data for `map`.
- *
- * @private
- * @param {Object} map The map to query.
- * @param {string} key The reference key.
- * @returns {*} Returns the map data.
- */
 function getMapData(map, key) {
   var data = map.__data__;
   return isKeyable(key)
@@ -3491,28 +2959,12 @@ if (process.env.NODE_ENV !== 'production') {
   var loggedTypeFailures = {};
 }
 
-/**
- * Assert that the values match with the type specs.
- * Error messages are memorized and will only be shown once.
- *
- * @param {object} typeSpecs Map of name to a ReactPropType
- * @param {object} values Runtime values that need to be type-checked
- * @param {string} location e.g. "prop", "context", "child context"
- * @param {string} componentName Name of the component for error messages.
- * @param {?Function} getStack Returns the component stack.
- * @private
- */
 function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
   if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
       if (typeSpecs.hasOwnProperty(typeSpecName)) {
         var error;
-        // Prop type validation may throw. In case they do, we don't want to
-        // fail the render phase where it didn't fail before. So we log it.
-        // After these have been cleaned up, we'll let them throw.
         try {
-          // This is intentionally an invariant that gets caught. It's the same
-          // behavior as without this statement except with a better message.
           invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
           error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
         } catch (ex) {
@@ -3520,8 +2972,6 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         }
         warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
-          // Only monitor this failure once because there tends to be a lot of the
-          // same error.
           loggedTypeFailures[error.message] = true;
 
           var stack = getStack ? getStack() : '';
@@ -3542,10 +2992,6 @@ module.exports = checkPropTypes;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 
 
 
@@ -3559,22 +3005,11 @@ module.exports = ReactPropTypesSecret;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
 
 
 
 var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 
-/**
- * Simple, lightweight module assisting with the detection and context of
- * Worker. Helps avoid circular dependencies and allows code to reason about
- * whether or not they are in a Worker, even if they never include the main
- * `ReactWorker` dependency.
- */
 var ExecutionEnvironment = {
 
   canUseDOM: canUseDOM,
@@ -3618,11 +3053,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var createLocation = exports.createLocation = function createLocation(path, state, key, currentLocation) {
   var location = void 0;
   if (typeof path === 'string') {
-    // Two-arg form: push(path, state)
     location = (0, _PathUtils.parsePath)(path);
     location.state = state;
   } else {
-    // One-arg form: push(location)
     location = _extends({}, path);
 
     if (location.pathname === undefined) location.pathname = '';
@@ -3655,14 +3088,12 @@ var createLocation = exports.createLocation = function createLocation(path, stat
   if (key) location.key = key;
 
   if (currentLocation) {
-    // Resolve incomplete/relative pathname relative to current location.
     if (!location.pathname) {
       location.pathname = currentLocation.pathname;
     } else if (location.pathname.charAt(0) !== '/') {
       location.pathname = (0, _resolvePathname2.default)(location.pathname, currentLocation.pathname);
     }
   } else {
-    // When there is no prior location and pathname is empty, set it to /
     if (!location.pathname) {
       location.pathname = '/';
     }
@@ -3704,9 +3135,6 @@ var createTransitionManager = function createTransitionManager() {
   };
 
   var confirmTransitionTo = function confirmTransitionTo(location, action, getUserConfirmation, callback) {
-    // TODO: If another transition starts while we're still confirming
-    // the previous one, we may end up in a weird state. Figure out the
-    // best way to handle this.
     if (prompt != null) {
       var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
 
@@ -3719,7 +3147,6 @@ var createTransitionManager = function createTransitionManager() {
           callback(true);
         }
       } else {
-        // Return false from a transition hook to cancel the transition.
         callback(result !== false);
       }
     } else {
@@ -3772,7 +3199,6 @@ exports.default = createTransitionManager;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__ = __webpack_require__(61);
-// Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Router__["a" /* default */]);
@@ -3803,9 +3229,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-/**
- * The public API for putting history on context.
- */
 
 var Router = function (_React$Component) {
   _inherits(Router, _React$Component);
@@ -3855,9 +3278,6 @@ var Router = function (_React$Component) {
 
     __WEBPACK_IMPORTED_MODULE_1_invariant___default()(children == null || __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.count(children) === 1, 'A <Router> may have only one child element');
 
-    // Do this here so we can setState when a <Redirect> changes the
-    // location in componentWillMount. This happens e.g. when doing
-    // server rendering using a <StaticRouter>.
     this.unlisten = history.listen(function () {
       _this2.setState({
         match: _this2.computeMatch(history.location.pathname)
@@ -3927,9 +3347,6 @@ var compilePath = function compilePath(pattern, options) {
   return compiledPattern;
 };
 
-/**
- * Public API for matching a URL pathname to a path pattern.
- */
 var matchPath = function matchPath(pathname) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -3996,9 +3413,6 @@ var createTransitionManager = function createTransitionManager() {
   };
 
   var confirmTransitionTo = function confirmTransitionTo(location, action, getUserConfirmation, callback) {
-    // TODO: If another transition starts while we're still confirming
-    // the previous one, we may end up in a weird state. Figure out the
-    // best way to handle this.
     if (prompt != null) {
       var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
 
@@ -4011,7 +3425,6 @@ var createTransitionManager = function createTransitionManager() {
           callback(true);
         }
       } else {
-        // Return false from a transition hook to cancel the transition.
         callback(result !== false);
       }
     } else {
@@ -4088,10 +3501,7 @@ module.exports = function (fn, that, length) {
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = __webpack_require__(40);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
   if (!isObject(it)) return it;
   var fn, val;
@@ -4117,7 +3527,6 @@ module.exports = function (it) {
 /* 67 */
 /***/ (function(module, exports) {
 
-// 7.2.1 RequireObjectCoercible(argument)
 module.exports = function (it) {
   if (it == undefined) throw TypeError("Can't call method on  " + it);
   return it;
@@ -4128,7 +3537,6 @@ module.exports = function (it) {
 /* 68 */
 /***/ (function(module, exports) {
 
-// 7.1.4 ToInteger
 var ceil = Math.ceil;
 var floor = Math.floor;
 module.exports = function (it) {
@@ -4163,7 +3571,6 @@ module.exports = function (key) {
 /* 71 */
 /***/ (function(module, exports) {
 
-// IE 8- don't enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
@@ -4187,7 +3594,6 @@ module.exports = true;
 /* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(30);
 var dPs = __webpack_require__(203);
 var enumBugKeys = __webpack_require__(71);
@@ -4195,9 +3601,7 @@ var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
-  // Thrash, waste and sodomy: IE GC bug
   var iframe = __webpack_require__(108)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
@@ -4206,8 +3610,6 @@ var createDict = function () {
   iframe.style.display = 'none';
   __webpack_require__(204).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
-  // createDict = iframe.contentWindow.Object;
-  // html.removeChild(iframe);
   iframeDocument = iframe.contentWindow.document;
   iframeDocument.open();
   iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
@@ -4223,7 +3625,6 @@ module.exports = Object.create || function create(O, Properties) {
     Empty[PROTOTYPE] = anObject(O);
     result = new Empty();
     Empty[PROTOTYPE] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
     result[IE_PROTO] = O;
   } else result = createDict();
   return Properties === undefined ? result : dPs(result, Properties);
@@ -4310,7 +3711,6 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 function addEventListenerWrap(target, eventType, cb) {
-  /* eslint camelcase: 2 */
   var callback = _reactDom2['default'].unstable_batchedUpdates ? function run(e) {
     _reactDom2['default'].unstable_batchedUpdates(cb, e);
   } : cb;
@@ -4353,33 +3753,6 @@ module.exports = exports['default'];
 var baseHas = __webpack_require__(310),
     hasPath = __webpack_require__(311);
 
-/**
- * Checks if `path` is a direct property of `object`.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The object to query.
- * @param {Array|string} path The path to check.
- * @returns {boolean} Returns `true` if `path` exists, else `false`.
- * @example
- *
- * var object = { 'a': { 'b': 2 } };
- * var other = _.create({ 'a': _.create({ 'b': 2 }) });
- *
- * _.has(object, 'a');
- * // => true
- *
- * _.has(object, 'a.b');
- * // => true
- *
- * _.has(object, ['a', 'b']);
- * // => true
- *
- * _.has(other, 'a');
- * // => false
- */
 function has(object, path) {
   return object != null && hasPath(object, path, baseHas);
 }
@@ -4396,14 +3769,6 @@ var isArray = __webpack_require__(51),
     stringToPath = __webpack_require__(317),
     toString = __webpack_require__(346);
 
-/**
- * Casts `value` to a path array if it's not one.
- *
- * @private
- * @param {*} value The value to inspect.
- * @param {Object} [object] The object to query keys on.
- * @returns {Array} Returns the cast property path array.
- */
 function castPath(value, object) {
   if (isArray(value)) {
     return value;
@@ -4421,26 +3786,8 @@ module.exports = castPath;
 var baseGetTag = __webpack_require__(84),
     isObjectLike = __webpack_require__(87);
 
-/** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
 
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
 function isSymbol(value) {
   return typeof value == 'symbol' ||
     (isObjectLike(value) && baseGetTag(value) == symbolTag);
@@ -4457,20 +3804,11 @@ var Symbol = __webpack_require__(85),
     getRawTag = __webpack_require__(315),
     objectToString = __webpack_require__(316);
 
-/** `Object#toString` result references. */
 var nullTag = '[object Null]',
     undefinedTag = '[object Undefined]';
 
-/** Built-in value references. */
 var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
 function baseGetTag(value) {
   if (value == null) {
     return value === undefined ? undefinedTag : nullTag;
@@ -4489,7 +3827,6 @@ module.exports = baseGetTag;
 
 var root = __webpack_require__(86);
 
-/** Built-in value references. */
 var Symbol = root.Symbol;
 
 module.exports = Symbol;
@@ -4501,10 +3838,8 @@ module.exports = Symbol;
 
 var freeGlobal = __webpack_require__(313);
 
-/** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
 
-/** Used as a reference to the global object. */
 var root = freeGlobal || freeSelf || Function('return this')();
 
 module.exports = root;
@@ -4514,30 +3849,6 @@ module.exports = root;
 /* 87 */
 /***/ (function(module, exports) {
 
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
 function isObjectLike(value) {
   return value != null && typeof value == 'object';
 }
@@ -4552,14 +3863,6 @@ module.exports = isObjectLike;
 var baseIsNative = __webpack_require__(324),
     getValue = __webpack_require__(329);
 
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
 function getNative(object, key) {
   var value = getValue(object, key);
   return baseIsNative(value) ? value : undefined;
@@ -4572,31 +3875,6 @@ module.exports = getNative;
 /* 89 */
 /***/ (function(module, exports) {
 
-/**
- * Checks if `value` is the
- * [language type]
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
 function isObject(value) {
   var type = typeof value;
   return value != null && (type == 'object' || type == 'function');
@@ -4611,16 +3889,8 @@ module.exports = isObject;
 
 var isSymbol = __webpack_require__(83);
 
-/** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
 
-/**
- * Converts `value` to a string key if it's not a string or symbol.
- *
- * @private
- * @param {*} value The value to inspect.
- * @returns {string|symbol} Returns the key.
- */
 function toKey(value) {
   if (typeof value == 'string' || isSymbol(value)) {
     return value;
@@ -4673,14 +3943,12 @@ function getDisplayName(WrappedComponent) {
 }
 
 function argumentContainer(Container, WrappedComponent) {
-  /* eslint no-param-reassign:0 */
   Container.displayName = 'Form(' + getDisplayName(WrappedComponent) + ')';
   Container.WrappedComponent = WrappedComponent;
   return (0, _hoistNonReactStatics2['default'])(Container, WrappedComponent);
 }
 
 function getValueFromEvent(e) {
-  // support custom element
   if (!e || !e.target) {
     return e;
   }
@@ -4839,7 +4107,6 @@ function normalizeValidateRules(validate, rules, validateTrigger) {
 /* 92 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 93 */
@@ -4848,28 +4115,10 @@ function normalizeValidateRules(validate, rules, validateTrigger) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 var emptyFunction = __webpack_require__(21);
 
-/**
- * Upstream version of event listener. Does not take into account specific
- * nature of platform.
- */
 var EventListener = {
-  /**
-   * Listen to DOM events during the bubble phase.
-   *
-   * @param {DOMEventTarget} target DOM element to register listener on.
-   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
-   * @param {function} callback Callback function.
-   * @return {object} Object with a `remove` method.
-   */
   listen: function listen(target, eventType, callback) {
     if (target.addEventListener) {
       target.addEventListener(eventType, callback, false);
@@ -4888,14 +4137,6 @@ var EventListener = {
     }
   },
 
-  /**
-   * Listen to DOM events during the capture phase.
-   *
-   * @param {DOMEventTarget} target DOM element to register listener on.
-   * @param {string} eventType Event type, e.g. 'click' or 'mouseover'.
-   * @param {function} callback Callback function.
-   * @return {object} Object with a `remove` method.
-   */
   capture: function capture(target, eventType, callback) {
     if (target.addEventListener) {
       target.addEventListener(eventType, callback, true);
@@ -4925,29 +4166,13 @@ module.exports = EventListener;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- * 
- */
-
-/*eslint-disable no-self-compare */
 
 
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-/**
- * inlined Object.is polyfill to avoid requiring consumers ship their own
- */
 function is(x, y) {
-  // SameValue algorithm
   if (x === y) {
-    // Steps 1-5, 7-10
-    // Steps 6.b-6.e: +0 != -0
-    // Added the nonzero y check to make Flow happy, but it is redundant
     return x !== 0 || y !== 0 || 1 / x === 1 / y;
   } else {
     // Step 6.a: NaN == NaN
@@ -4955,11 +4180,6 @@ function is(x, y) {
   }
 }
 
-/**
- * Performs equality by iterating through keys on an object and returning false
- * when any key has values which are not strictly equal between the arguments.
- * Returns true when the values of all keys are strictly equal.
- */
 function shallowEqual(objA, objB) {
   if (is(objA, objB)) {
     return true;
@@ -4976,7 +4196,6 @@ function shallowEqual(objA, objB) {
     return false;
   }
 
-  // Test for A's keys different from B.
   for (var i = 0; i < keysA.length; i++) {
     if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
       return false;
@@ -4995,20 +4214,9 @@ module.exports = shallowEqual;
 "use strict";
 
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- */
 
 var isTextNode = __webpack_require__(149);
 
-/*eslint-disable no-bitwise */
-
-/**
- * Checks if a given DOM node contains or is another DOM node.
- */
 function containsNode(outerNode, innerNode) {
   if (!outerNode || !innerNode) {
     return false;
@@ -5034,22 +4242,9 @@ module.exports = containsNode;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
 
-
-
-/**
- * @param {DOMElement} node input/textarea to focus
- */
 
 function focusNode(node) {
-  // IE8 can throw "Can't move focus to the control because it is invisible,
-  // not enabled, or of a type that does not accept the focus." for all kinds of
-  // reasons that are too expensive and fragile to test.
   try {
     node.focus();
   } catch (e) {}
@@ -5064,25 +4259,6 @@ module.exports = focusNode;
 "use strict";
 
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-/* eslint-disable fb-www/typeof-undefined */
-
-/**
- * Same as document.activeElement but wraps in a try-catch block. In IE it is
- * not safe to call document.activeElement if there is nothing focused.
- *
- * The activeElement will be null only if the document or document body is not
- * yet defined.
- *
- * @param {?DOMDocument} doc Defaults to current document.
- * @return {?DOMElement}
- */
 function getActiveElement(doc) /*?DOMElement*/{
   doc = doc || (typeof document !== 'undefined' ? document : undefined);
   if (typeof doc === 'undefined') {
@@ -5107,7 +4283,6 @@ function isAbsolute(pathname) {
   return pathname.charAt(0) === '/';
 }
 
-// About 1.5x faster than the two-arg version of Array#splice()
 function spliceOne(list, index) {
   for (var i = index, k = i + 1, n = list.length; k < n; i += 1, k += 1) {
     list[i] = list[k];
@@ -5116,7 +4291,6 @@ function spliceOne(list, index) {
   list.pop();
 }
 
-// This implementation is based heavily on node's url.parse
 function resolvePathname(to) {
   var from = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
@@ -5128,10 +4302,8 @@ function resolvePathname(to) {
   var mustEndAbs = isToAbs || isFromAbs;
 
   if (to && isAbsolute(to)) {
-    // to is absolute
     fromParts = toParts;
   } else if (toParts.length) {
-    // to is relative, drop the filename
     fromParts.pop();
     fromParts = fromParts.concat(toParts);
   }
@@ -5241,9 +4413,6 @@ var getConfirmation = exports.getConfirmation = function getConfirmation(message
   return callback(window.confirm(message));
 }; // eslint-disable-line no-alert
 
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- */
 var supportsHistory = exports.supportsHistory = function supportsHistory() {
   var ua = window.navigator.userAgent;
 
@@ -5252,26 +4421,14 @@ var supportsHistory = exports.supportsHistory = function supportsHistory() {
   return window.history && 'pushState' in window.history;
 };
 
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
 var supportsPopStateOnHashChange = exports.supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
   return window.navigator.userAgent.indexOf('Trident') === -1;
 };
 
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
 var supportsGoWithoutReloadUsingHash = exports.supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
   return window.navigator.userAgent.indexOf('Firefox') === -1;
 };
 
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
 var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
   return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 };
@@ -5305,9 +4462,6 @@ var isModifiedEvent = function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 };
 
-/**
- * The public API for rendering a history-aware <a>.
- */
 
 var Link = function (_React$Component) {
   _inherits(Link, _React$Component);
@@ -5392,7 +4546,6 @@ Link.contextTypes = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__ = __webpack_require__(103);
-// Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Route__["a" /* default */]);
@@ -5429,9 +4582,6 @@ var isEmptyChildren = function isEmptyChildren(children) {
   return __WEBPACK_IMPORTED_MODULE_2_react___default.a.Children.count(children) === 0;
 };
 
-/**
- * The public API for matching a single path and rendering.
- */
 
 var Route = function (_React$Component) {
   _inherits(Route, _React$Component);
@@ -5573,9 +4723,6 @@ var getConfirmation = function getConfirmation(message, callback) {
   return callback(window.confirm(message));
 }; // eslint-disable-line no-alert
 
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- */
 var supportsHistory = function supportsHistory() {
   var ua = window.navigator.userAgent;
 
@@ -5584,26 +4731,14 @@ var supportsHistory = function supportsHistory() {
   return window.history && 'pushState' in window.history;
 };
 
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
 var supportsPopStateOnHashChange = function supportsPopStateOnHashChange() {
   return window.navigator.userAgent.indexOf('Trident') === -1;
 };
 
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
 var supportsGoWithoutReloadUsingHash = function supportsGoWithoutReloadUsingHash() {
   return window.navigator.userAgent.indexOf('Firefox') === -1;
 };
 
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
 var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
   return event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
 };
@@ -6846,15 +5981,11 @@ var Tooltip = function (_React$Component) {
             }
             return false;
         }
-        // Fix Tooltip won't hide at disabled button
-        // mouse events don't trigger at disabled button in Chrome
 
     }, {
         key: 'getDisabledCompatibleChildren',
         value: function getDisabledCompatibleChildren(element) {
             if ((element.type.__ANT_BUTTON || element.type === 'button') && element.props.disabled && this.isHoverTrigger()) {
-                // Pick some layout related style properties up to span
-                // Prevent layout bugs like
                 var _splitObject = splitObject(element.props.style, ['position', 'left', 'right', 'top', 'bottom', 'float', 'display', 'zIndex']),
                     picked = _splitObject.picked,
                     omited = _splitObject.omited;
@@ -7149,7 +6280,6 @@ var enhancer = function enhancer(WrappedComponent) {
 /* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(22);
 var core = __webpack_require__(14);
 var fails = __webpack_require__(31);
@@ -7309,7 +6439,6 @@ var Input = function (_Component) {
         key: 'renderLabeledInput',
         value: function renderLabeledInput(children) {
             var props = this.props;
-            // Not wrap when there is not addons
             if (!props.addonBefore && !props.addonAfter) {
                 return children;
             }
@@ -7326,8 +6455,6 @@ var Input = function (_Component) {
                 props.addonAfter
             ) : null;
             var className = (0, _classnames2['default'])(props.prefixCls + '-wrapper', (0, _defineProperty3['default'])({}, wrapperClassName, addonBefore || addonAfter));
-            // Need another wrapper for changing display:table to display:inline-block
-            // and put style prop in wrapper
             if (addonBefore || addonAfter) {
                 return _react2['default'].createElement(
                     'span',
@@ -7381,13 +6508,10 @@ var Input = function (_Component) {
             var _props2 = this.props,
                 value = _props2.value,
                 className = _props2.className;
-            // Fix https://fb.me/react-unknown-prop
 
             var otherProps = (0, _omit2['default'])(this.props, ['prefixCls', 'onPressEnter', 'addonBefore', 'addonAfter', 'prefix', 'suffix']);
             if ('value' in this.props) {
                 otherProps.value = fixControlledValue(value);
-                // Input elements must be either controlled or uncontrolled,
-                // specify either the value prop, or the defaultValue prop, but not both.
                 delete otherProps.defaultValue;
             }
             return this.renderLabeledIcon(_react2['default'].createElement('input', (0, _extends3['default'])({}, otherProps, { className: (0, _classnames2['default'])(this.getInputClassName(), className), onKeyDown: this.handleKeyDown, ref: 'input' })));
@@ -7558,7 +6682,6 @@ var TextArea = function (_React$Component) {
     }, {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
-            // Re-render with the new content then recalculate the height as required.
             if (this.props.value !== nextProps.value) {
                 if (this.nextFrameActionId) {
                     clearNextFrameAction(this.nextFrameActionId);
@@ -7796,7 +6919,6 @@ var MenuMixin = {
     } else {
       var originalActiveKey = this.state.activeKey;
       var activeKey = getActiveKey(nextProps, originalActiveKey);
-      // fix: this.setState(), parent.render(),
       if (activeKey !== originalActiveKey) {
         props = {
           activeKey: activeKey
@@ -7815,7 +6937,6 @@ var MenuMixin = {
   },
 
 
-  // all keyboard events callbacks run from here at first
   onKeyDown: function onKeyDown(e) {
     var _this = this;
 
@@ -7863,10 +6984,6 @@ var MenuMixin = {
         activeKey: hover ? key : null
       });
     } else {}
-    // keep active for sub menu for click active
-    // empty
-
-    // clear last open status
     if (hover && mode !== 'inline') {
       var activeItem = this.getFlatInstanceArray().filter(function (c) {
         return c && c.props.eventKey === activeKey;
@@ -7951,8 +7068,6 @@ var MenuMixin = {
       domProps.onKeyDown = this.onKeyDown;
     }
     return (
-      // ESLint is not smart enough to know that the type of `children` was checked.
-      /* eslint-disable */
       _react2["default"].createElement(
         _DOMWrap2["default"],
         (0, _extends3["default"])({
@@ -7963,7 +7078,6 @@ var MenuMixin = {
         }, domProps),
         _react2["default"].Children.map(props.children, this.renderMenuItem)
       )
-      /*eslint-enable */
 
     );
   },
@@ -7977,7 +7091,6 @@ var MenuMixin = {
     if (direction < 0) {
       children = children.concat().reverse();
     }
-    // find current activeIndex
     var activeIndex = -1;
     children.every(function (c, ci) {
       if (c && c.props.eventKey === activeKey) {
@@ -8024,38 +7137,6 @@ module.exports = __webpack_require__(289);
 /* 136 */
 /***/ (function(module, exports) {
 
-/**
- * Performs a
- * [`SameValueZero`]
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
 function eq(value, other) {
   return value === other || (value !== value && other !== other);
 }
@@ -8067,20 +7148,10 @@ module.exports = eq;
 /* 137 */
 /***/ (function(module, exports) {
 
-/** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
 
-/** Used to detect unsigned integer values. */
 var reIsUint = /^(?:0|[1-9]\d*)$/;
 
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
 function isIndex(value, length) {
   length = length == null ? MAX_SAFE_INTEGER : length;
   return !!length &&
@@ -8322,8 +7393,6 @@ function createBaseForm() {
         var leadingFieldMeta = this.fieldsStore.getFieldMeta(leadingName);
         if (nameIfNested.isNested) {
           leadingFieldMeta.virtual = !exclusive;
-          // exclusive allow getFieldProps('x', {initialValue})
-          // non-exclusive does not allow getFieldProps('x', {initialValue})
           leadingFieldMeta.hidden = !exclusive;
           leadingFieldMeta.exclusive = exclusive;
         }
@@ -8348,7 +7417,6 @@ function createBaseForm() {
           inputProps[action] = _this3.getCacheBind(name, action, _this3.onCollectValidate);
         });
 
-        // make sure that the value will be collect
         if (trigger && validateTriggers.indexOf(trigger) === -1) {
           inputProps[trigger] = this.getCacheBind(name, trigger, this.onCollect);
         }
@@ -8429,7 +7497,6 @@ function createBaseForm() {
       },
       saveRef: function saveRef(name, _, component) {
         if (!component) {
-          // after destroy, delete data
           this.fieldsStore.clearField(name);
           delete this.instances[name];
           delete this.cachedBind[name];
@@ -8477,7 +7544,6 @@ function createBaseForm() {
           allFields[name] = newField;
         });
         this.setFields(allFields);
-        // in case normalize
         Object.keys(allValues).forEach(function (f) {
           allValues[f] = _this5.fieldsStore.getFieldValue(f);
         });
@@ -8506,7 +7572,6 @@ function createBaseForm() {
           Object.keys(allRules).forEach(function (name) {
             var fieldErrors = (0, _get2['default'])(errorsGroup, name);
             var nowField = _this5.fieldsStore.getField(name);
-            // avoid concurrency problems
             if (nowField.value !== allValues[name]) {
               expired.push({
                 name: name
@@ -8633,17 +7698,6 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util__ = __webpack_require__(9);
 
 
-/**
- *  Rule for validating required fields.
- *
- *  @param rule The validation rule.
- *  @param value The value of the field on the source object.
- *  @param source The source object being validated.
- *  @param errors An array of errors that this rule may add
- *  validation errors to.
- *  @param options The validation options.
- *  @param options.messages The validation messages.
- */
 function required(rule, value, source, errors, options, type) {
   if (rule.required && (!source.hasOwnProperty(rule.field) || __WEBPACK_IMPORTED_MODULE_0__util__["e" /* isEmptyValue */](value, type || rule.type))) {
     errors.push(__WEBPACK_IMPORTED_MODULE_0__util__["d" /* format */](options.messages.required, rule.fullField));
@@ -8658,31 +7712,6 @@ function required(rule, value, source, errors, options, type) {
 
 var baseGet = __webpack_require__(384);
 
-/**
- * Gets the value at `path` of `object`. If the resolved value is
- * `undefined`, the `defaultValue` is returned in its place.
- *
- * @static
- * @memberOf _
- * @since 3.7.0
- * @category Object
- * @param {Object} object The object to query.
- * @param {Array|string} path The path of the property to get.
- * @param {*} [defaultValue] The value returned for `undefined` resolved values.
- * @returns {*} Returns the resolved value.
- * @example
- *
- * var object = { 'a': [{ 'b': { 'c': 3 } }] };
- *
- * _.get(object, 'a[0].b.c');
- * // => 3
- *
- * _.get(object, ['a', '0', 'b', 'c']);
- * // => 3
- *
- * _.get(object, 'a.b.c', 'default');
- * // => 'default'
- */
 function get(object, path, defaultValue) {
   var result = object == null ? undefined : baseGet(object, path);
   return result === undefined ? defaultValue : result;
@@ -8697,34 +7726,6 @@ module.exports = get;
 
 var baseSet = __webpack_require__(385);
 
-/**
- * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,
- * it's created. Arrays are created for missing index properties while objects
- * are created for all other missing properties. Use `_.setWith` to customize
- * `path` creation.
- *
- * **Note:** This method mutates `object`.
- *
- * @static
- * @memberOf _
- * @since 3.7.0
- * @category Object
- * @param {Object} object The object to modify.
- * @param {Array|string} path The path of the property to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns `object`.
- * @example
- *
- * var object = { 'a': [{ 'b': { 'c': 3 } }] };
- *
- * _.set(object, 'a[0].b.c', 4);
- * console.log(object.a[0].b.c);
- * // => 4
- *
- * _.set(object, ['x', '0', 'y', 'z'], 5);
- * console.log(object.x[0].y.z);
- * // => 5
- */
 function set(object, path, value) {
   return object == null ? object : baseSet(object, path, value);
 }
@@ -8739,13 +7740,6 @@ module.exports = set;
 "use strict";
 
 
-/**
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
- * @providesModule ReactComponentWithPureRenderMixin
- */
 
 var shallowEqual = __webpack_require__(392);
 
@@ -8753,31 +7747,6 @@ function shallowCompare(instance, nextProps, nextState) {
   return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
 }
 
-/**
- * If your React component's render function is "pure", e.g. it will render the
- * same result given the same props and state, provide this mixin for a
- * considerable performance boost.
- *
- * Most React components have pure render functions.
- *
- * Example:
- *
- *   var ReactComponentWithPureRenderMixin =
- *     require('ReactComponentWithPureRenderMixin');
- *   React.createClass({
- *     mixins: [ReactComponentWithPureRenderMixin],
- *
- *     render: function() {
- *       return <div className={this.props.className}>foo</div>;
- *     }
- *   });
- *
- * Note: This only checks shallow equality for props and state. If these contain
- * complex data structures this mixin may have false-negatives for deeper
- * differences. Only mixin to components which have simple props and state, or
- * use `forceUpdate()` when you know deep data structures have changed.
- *
- */
 var ReactComponentWithPureRenderMixin = {
   shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
@@ -8864,13 +7833,6 @@ _reactDom2.default.render(_react2.default.createElement(App, null), document.get
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/*
- React v16.0.0
- react.production.min.js
-
- This source code is licensed under the MIT license found in the
- LICENSE file in the root directory of this source tree.
-*/
 var f=__webpack_require__(25),p=__webpack_require__(36);__webpack_require__(20);var r=__webpack_require__(21);
 function t(a){for(var b=arguments.length-1,d="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,e=0;e<b;e++)d+="\x26args[]\x3d"+encodeURIComponent(arguments[e+1]);b=Error(d+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var u={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function v(a,b,d){this.props=a;this.context=b;this.refs=p;this.updater=d||u}v.prototype.isReactComponent={};v.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?t("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};v.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
@@ -8913,13 +7875,6 @@ var invariant = __webpack_require__(20);
 var emptyFunction = __webpack_require__(21);
 var checkPropTypes = __webpack_require__(55);
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule reactProdInvariant
- * 
- */
 
 {
   var warning = require$$0;
@@ -8932,69 +7887,19 @@ function warnNoop(publicInstance, callerName) {
   }
 }
 
-/**
- * This is the abstract API for an update queue.
- */
 var ReactNoopUpdateQueue = {
-  /**
-   * Checks whether or not this composite component is mounted.
-   * @param {ReactClass} publicInstance The instance we want to test.
-   * @return {boolean} True if mounted, false otherwise.
-   * @protected
-   * @final
-   */
   isMounted: function (publicInstance) {
     return false;
   },
 
-  /**
-   * Forces an update. This should only be invoked when it is known with
-   * certainty that we are **not** in a DOM transaction.
-   *
-   * You may want to call this when you know that some deeper aspect of the
-   * component's state has changed but `setState` was not called.
-   *
-   * This will not invoke `shouldComponentUpdate`, but it will invoke
-   * `componentWillUpdate` and `componentDidUpdate`.
-   *
-   * @param {ReactClass} publicInstance The instance that should rerender.
-   * @param {?function} callback Called after component is updated.
-   * @param {?string} callerName name of the calling function in the public API.
-   * @internal
-   */
   enqueueForceUpdate: function (publicInstance, callback, callerName) {
     warnNoop(publicInstance, 'forceUpdate');
   },
 
-  /**
-   * Replaces all of the state. Always use this or `setState` to mutate state.
-   * You should treat `this.state` as immutable.
-   *
-   * There is no guarantee that `this.state` will be immediately updated, so
-   * accessing `this.state` after calling this method may return the old value.
-   *
-   * @param {ReactClass} publicInstance The instance that should rerender.
-   * @param {object} completeState Next state.
-   * @param {?function} callback Called after component is updated.
-   * @param {?string} callerName name of the calling function in the public API.
-   * @internal
-   */
   enqueueReplaceState: function (publicInstance, completeState, callback, callerName) {
     warnNoop(publicInstance, 'replaceState');
   },
 
-  /**
-   * Sets a subset of the state. This only exists because _pendingState is
-   * internal. This provides a merging strategy that is not available to deep
-   * properties which is confusing. TODO: Expose pendingState or don't use it
-   * during the merge.
-   *
-   * @param {ReactClass} publicInstance The instance that should rerender.
-   * @param {object} partialState Next partial state to be merged with state.
-   * @param {?function} callback Called after component is updated.
-   * @param {?string} Name of the calling function in the public API.
-   * @internal
-   */
   enqueueSetState: function (publicInstance, partialState, callback, callerName) {
     warnNoop(publicInstance, 'setState');
   }
@@ -9002,25 +7907,6 @@ var ReactNoopUpdateQueue = {
 
 var ReactNoopUpdateQueue_1 = ReactNoopUpdateQueue;
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule lowPriorityWarning
- */
-
-/**
- * Forked from fbjs/warning:
- *
- * Only change is we use console.warn instead of console.error,
- * and do nothing when 'console' is not supported.
- * This really simplifies the code.
- * ---
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
 
 var lowPriorityWarning = function () {};
 
@@ -9038,9 +7924,6 @@ var lowPriorityWarning = function () {};
       console.warn(message);
     }
     try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
       throw new Error(message);
     } catch (x) {}
   };
@@ -9061,73 +7944,24 @@ var lowPriorityWarning = function () {};
 
 var lowPriorityWarning_1 = lowPriorityWarning;
 
-/**
- * Base class helpers for the updating state of a component.
- */
 function ReactComponent(props, context, updater) {
   this.props = props;
   this.context = context;
   this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
   this.updater = updater || ReactNoopUpdateQueue_1;
 }
 
 ReactComponent.prototype.isReactComponent = {};
 
-/**
- * Sets a subset of the state. Always use this to mutate
- * state. You should treat `this.state` as immutable.
- *
- * There is no guarantee that `this.state` will be immediately updated, so
- * accessing `this.state` after calling this method may return the old value.
- *
- * There is no guarantee that calls to `setState` will run synchronously,
- * as they may eventually be batched together.  You can provide an optional
- * callback that will be executed when the call to setState is actually
- * completed.
- *
- * When a function is provided to setState, it will be called at some point in
- * the future (not synchronously). It will be called with the up to date
- * component arguments (state, props, context). These values can be different
- * from this.* because your function may be called after receiveProps but before
- * shouldComponentUpdate, and this new state, props, and context will not yet be
- * assigned to this.
- *
- * @param {object|function} partialState Next partial state or function to
- *        produce next partial state to be merged with current state.
- * @param {?function} callback Called after state is updated.
- * @final
- * @protected
- */
 ReactComponent.prototype.setState = function (partialState, callback) {
   !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? invariant(false, 'setState(...): takes an object of state variables to update or a function which returns an object of state variables.') : void 0;
   this.updater.enqueueSetState(this, partialState, callback, 'setState');
 };
 
-/**
- * Forces an update. This should only be invoked when it is known with
- * certainty that we are **not** in a DOM transaction.
- *
- * You may want to call this when you know that some deeper aspect of the
- * component's state has changed but `setState` was not called.
- *
- * This will not invoke `shouldComponentUpdate`, but it will invoke
- * `componentWillUpdate` and `componentDidUpdate`.
- *
- * @param {?function} callback Called after update is complete.
- * @final
- * @protected
- */
 ReactComponent.prototype.forceUpdate = function (callback) {
   this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
 };
 
-/**
- * Deprecated APIs. These APIs used to exist on classic React classes but since
- * we would like to deprecate them, we're not going to move them over to this
- * modern base class. Instead, we define a getter that warns if it's accessed.
- */
 {
   var deprecatedAPIs = {
     isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
@@ -9148,16 +7982,10 @@ ReactComponent.prototype.forceUpdate = function (callback) {
   }
 }
 
-/**
- * Base class helpers for the updating state of a component.
- */
 function ReactPureComponent(props, context, updater) {
-  // Duplicated from ReactComponent.
   this.props = props;
   this.context = context;
   this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
   this.updater = updater || ReactNoopUpdateQueue_1;
 }
 
@@ -9165,23 +7993,18 @@ function ComponentDummy() {}
 ComponentDummy.prototype = ReactComponent.prototype;
 var pureComponentPrototype = ReactPureComponent.prototype = new ComponentDummy();
 pureComponentPrototype.constructor = ReactPureComponent;
-// Avoid an extra prototype jump for these methods.
 objectAssign$1(pureComponentPrototype, ReactComponent.prototype);
 pureComponentPrototype.isPureReactComponent = true;
 
 function ReactAsyncComponent(props, context, updater) {
-  // Duplicated from ReactComponent.
   this.props = props;
   this.context = context;
   this.refs = emptyObject;
-  // We initialize the default updater but the real one gets injected by the
-  // renderer.
   this.updater = updater || ReactNoopUpdateQueue_1;
 }
 
 var asyncComponentPrototype = ReactAsyncComponent.prototype = new ComponentDummy();
 asyncComponentPrototype.constructor = ReactAsyncComponent;
-// Avoid an extra prototype jump for these methods.
 objectAssign$1(asyncComponentPrototype, ReactComponent.prototype);
 asyncComponentPrototype.unstable_isAsyncReactComponent = true;
 asyncComponentPrototype.render = function () {
@@ -9194,24 +8017,7 @@ var ReactBaseClasses = {
   AsyncComponent: ReactAsyncComponent
 };
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactCurrentOwner
- */
-
-/**
- * Keeps track of the current owner.
- *
- * The current owner is the component who should own any components that are
- * currently being constructed.
- */
 var ReactCurrentOwner = {
-  /**
-   * @internal
-   * @type {ReactComponent}
-   */
   current: null
 };
 
@@ -9223,8 +8029,6 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
   var warning$2 = require$$0;
 }
 
-// The Symbol used to tag the ReactElement type. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
 var REACT_ELEMENT_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
 
 var RESERVED_PROPS = {
@@ -9289,67 +8093,33 @@ function defineRefPropWarningGetter(props, displayName) {
   });
 }
 
-/**
- * Factory method to create a new React element. This no longer adheres to
- * the class pattern, so do not use new to call it. Also, no instanceof check
- * will work. Instead test $$typeof field against Symbol.for('react.element') to check
- * if something is a React Element.
- *
- * @param {*} type
- * @param {*} key
- * @param {string|object} ref
- * @param {*} self A *temporary* helper to detect places where `this` is
- * different from the `owner` when React.createElement is called, so that we
- * can warn. We want to get rid of owner and replace string `ref`s with arrow
- * functions, and as long as `this` and owner are the same, there will be no
- * change in behavior.
- * @param {*} source An annotation object (added by a transpiler or otherwise)
- * indicating filename, line number, and/or other information.
- * @param {*} owner
- * @param {*} props
- * @internal
- */
 var ReactElement = function (type, key, ref, self, source, owner, props) {
   var element = {
-    // This tag allow us to uniquely identify this as a React Element
     $$typeof: REACT_ELEMENT_TYPE$1,
 
-    // Built-in properties that belong on the element
     type: type,
     key: key,
     ref: ref,
     props: props,
 
-    // Record the component responsible for creating this element.
     _owner: owner
   };
 
   {
-    // The validation flag is currently mutative. We put it on
-    // an external backing store so that we can freeze the whole object.
-    // This can be replaced with a WeakMap once they are implemented in
-    // commonly used development environments.
     element._store = {};
 
-    // To make comparing ReactElements easier for testing purposes, we make
-    // the validation flag non-enumerable (where possible, which should
-    // include every environment we run tests in), so the test framework
-    // ignores it.
     Object.defineProperty(element._store, 'validated', {
       configurable: false,
       enumerable: false,
       writable: true,
       value: false
     });
-    // self and source are DEV only properties.
     Object.defineProperty(element, '_self', {
       configurable: false,
       enumerable: false,
       writable: false,
       value: self
     });
-    // Two elements created in two different places should be considered
-    // equal for testing purposes and therefore we hide it from enumeration.
     Object.defineProperty(element, '_source', {
       configurable: false,
       enumerable: false,
@@ -9365,13 +8135,9 @@ var ReactElement = function (type, key, ref, self, source, owner, props) {
   return element;
 };
 
-/**
- * Create and return a new ReactElement of the given type.
- */
 ReactElement.createElement = function (type, config, children) {
   var propName;
 
-  // Reserved names are extracted
   var props = {};
 
   var key = null;
@@ -9389,7 +8155,6 @@ ReactElement.createElement = function (type, config, children) {
 
     self = config.__self === undefined ? null : config.__self;
     source = config.__source === undefined ? null : config.__source;
-    // Remaining properties are added to a new props object
     for (propName in config) {
       if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
         props[propName] = config[propName];
@@ -9397,8 +8162,6 @@ ReactElement.createElement = function (type, config, children) {
     }
   }
 
-  // Children can be more than one argument, and those are transferred onto
-  // the newly allocated props object.
   var childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
     props.children = children;
@@ -9415,7 +8178,6 @@ ReactElement.createElement = function (type, config, children) {
     props.children = childArray;
   }
 
-  // Resolve default props
   if (type && type.defaultProps) {
     var defaultProps = type.defaultProps;
     for (propName in defaultProps) {
@@ -9440,16 +8202,8 @@ ReactElement.createElement = function (type, config, children) {
   return ReactElement(type, key, ref, self, source, ReactCurrentOwner_1.current, props);
 };
 
-/**
- * Return a function that produces ReactElements of a given type.
- */
 ReactElement.createFactory = function (type) {
   var factory = ReactElement.createElement.bind(null, type);
-  // Expose the type on the factory and the prototype so that it can be
-  // easily accessed on elements. E.g. `<Foo />.type === Foo`.
-  // This should not be named `constructor` since this may not be the function
-  // that created the element, and it may not even be a constructor.
-  // Legacy hook TODO: Warn if this is accessed
   factory.type = type;
   return factory;
 };
@@ -9460,31 +8214,20 @@ ReactElement.cloneAndReplaceKey = function (oldElement, newKey) {
   return newElement;
 };
 
-/**
- * Clone and return a new ReactElement using element as the starting point.
- */
 ReactElement.cloneElement = function (element, config, children) {
   var propName;
 
-  // Original props are copied
   var props = objectAssign$1({}, element.props);
 
-  // Reserved names are extracted
   var key = element.key;
   var ref = element.ref;
-  // Self is preserved since the owner is preserved.
   var self = element._self;
-  // Source is preserved since cloneElement is unlikely to be targeted by a
-  // transpiler, and the original source is probably a better indicator of the
-  // true owner.
   var source = element._source;
 
-  // Owner will be preserved, unless ref is overridden
   var owner = element._owner;
 
   if (config != null) {
     if (hasValidRef(config)) {
-      // Silently steal the ref from the parent.
       ref = config.ref;
       owner = ReactCurrentOwner_1.current;
     }
@@ -9492,7 +8235,6 @@ ReactElement.cloneElement = function (element, config, children) {
       key = '' + config.key;
     }
 
-    // Remaining properties override existing props
     var defaultProps;
     if (element.type && element.type.defaultProps) {
       defaultProps = element.type.defaultProps;
@@ -9500,7 +8242,6 @@ ReactElement.cloneElement = function (element, config, children) {
     for (propName in config) {
       if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
         if (config[propName] === undefined && defaultProps !== undefined) {
-          // Resolve default props
           props[propName] = defaultProps[propName];
         } else {
           props[propName] = config[propName];
@@ -9509,8 +8250,6 @@ ReactElement.cloneElement = function (element, config, children) {
     }
   }
 
-  // Children can be more than one argument, and those are transferred onto
-  // the newly allocated props object.
   var childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
     props.children = children;
@@ -9525,29 +8264,16 @@ ReactElement.cloneElement = function (element, config, children) {
   return ReactElement(element.type, key, ref, self, source, owner, props);
 };
 
-/**
- * Verifies the object is a ReactElement.
- * @param {?object} object
- * @return {boolean} True if `object` is a valid component.
- * @final
- */
 ReactElement.isValidElement = function (object) {
   return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE$1;
 };
 
 var ReactElement_1 = ReactElement;
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactDebugCurrentFrame
- */
 
 var ReactDebugCurrentFrame = {};
 
 {
-  // Component that is being worked on
   ReactDebugCurrentFrame.getCurrentStack = null;
 
   ReactDebugCurrentFrame.getStackAddendum = function () {
@@ -9570,19 +8296,11 @@ var ReactDebugCurrentFrame_1 = ReactDebugCurrentFrame;
 
 var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
 var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-// The Symbol used to tag the ReactElement type. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
 var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
 
 var SEPARATOR = '.';
 var SUBSEPARATOR = ':';
 
-/**
- * Escape and wrap key so it is safe to use as a reactid
- *
- * @param {string} key to be escaped.
- * @return {string} the escaped key.
- */
 function escape(key) {
   var escapeRegex = /[=:]/g;
   var escaperLookup = {
@@ -9596,10 +8314,6 @@ function escape(key) {
   return '$' + escapedString;
 }
 
-/**
- * TODO: Test that a single child and an array with one item have the same key
- * pattern.
- */
 
 var didWarnAboutMaps = false;
 
@@ -9641,29 +8355,16 @@ function releaseTraverseContext(traverseContext) {
   }
 }
 
-/**
- * @param {?*} children Children tree container.
- * @param {!string} nameSoFar Name of the key path so far.
- * @param {!function} callback Callback to invoke with each child found.
- * @param {?*} traverseContext Used to pass information throughout the traversal
- * process.
- * @return {!number} The number of children in this subtree.
- */
 function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
   var type = typeof children;
 
   if (type === 'undefined' || type === 'boolean') {
-    // All of the above are perceived as null.
     children = null;
   }
 
   if (children === null || type === 'string' || type === 'number' ||
-  // The following is inlined from ReactElement. This means we can optimize
-  // some checks. React Fiber also inlines this logic for similar purposes.
   type === 'object' && children.$$typeof === REACT_ELEMENT_TYPE) {
     callback(traverseContext, children,
-    // If it's the only child, treat the name as if it was wrapped in an array
-    // so that it's consistent if the number of children grows.
     nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar);
     return 1;
   }
@@ -9683,7 +8384,6 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
     var iteratorFn = ITERATOR_SYMBOL && children[ITERATOR_SYMBOL] || children[FAUX_ITERATOR_SYMBOL];
     if (typeof iteratorFn === 'function') {
       {
-        // Warn about using Maps as children
         if (iteratorFn === children.entries) {
           warning$1(didWarnAboutMaps, 'Using Maps as children is unsupported and will likely yield ' + 'unexpected results. Convert it to a sequence/iterable of keyed ' + 'ReactElements instead.%s', getStackAddendum());
           didWarnAboutMaps = true;
@@ -9711,22 +8411,6 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
   return subtreeCount;
 }
 
-/**
- * Traverses children that are typically specified as `props.children`, but
- * might also be specified through attributes:
- *
- * - `traverseAllChildren(this.props.children, ...)`
- * - `traverseAllChildren(this.props.leftPanelChildren, ...)`
- *
- * The `traverseContext` is an optional argument that is passed through the
- * entire traversal. It can be used to store accumulations or anything else that
- * the callback might find relevant.
- *
- * @param {?*} children Children tree object.
- * @param {!function} callback To invoke upon traversing each child.
- * @param {?*} traverseContext Context for traversal.
- * @return {!number} The number of children in this subtree.
- */
 function traverseAllChildren(children, callback, traverseContext) {
   if (children == null) {
     return 0;
@@ -9735,21 +8419,11 @@ function traverseAllChildren(children, callback, traverseContext) {
   return traverseAllChildrenImpl(children, '', callback, traverseContext);
 }
 
-/**
- * Generate a key string that identifies a component within a set.
- *
- * @param {*} component A component that could contain a manual key.
- * @param {number} index Index that is used if a manual key is not provided.
- * @return {string}
- */
 function getComponentKey(component, index) {
-  // Do some typechecking here since we call this blindly. We want to ensure
-  // that we don't block potential future ES APIs.
   if (typeof component === 'object' && component !== null && component.key != null) {
     // Explicit key
     return escape(component.key);
   }
-  // Implicit key determined by the index in the set
   return index.toString(36);
 }
 
@@ -9760,16 +8434,6 @@ function forEachSingleChild(bookKeeping, child, name) {
   func.call(context, child, bookKeeping.count++);
 }
 
-/**
- * Iterates through children that are typically specified as `props.children`.
- *
- * The provided forEachFunc(child, index) will be called for each
- * leaf child.
- *
- * @param {?*} children Children tree container.
- * @param {function(*, int)} forEachFunc
- * @param {*} forEachContext Context for forEachContext.
- */
 function forEachChildren(children, forEachFunc, forEachContext) {
   if (children == null) {
     return children;
@@ -9792,8 +8456,6 @@ function mapSingleChildIntoContext(bookKeeping, child, childKey) {
   } else if (mappedChild != null) {
     if (ReactElement_1.isValidElement(mappedChild)) {
       mappedChild = ReactElement_1.cloneAndReplaceKey(mappedChild,
-      // Keep both the (mapped) and old keys if they differ, just as
-      // traverseAllChildren used to do for objects as children
       keyPrefix + (mappedChild.key && (!child || child.key !== mappedChild.key) ? escapeUserProvidedKey(mappedChild.key) + '/' : '') + childKey);
     }
     result.push(mappedChild);
@@ -9810,17 +8472,6 @@ function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
   releaseTraverseContext(traverseContext);
 }
 
-/**
- * Maps children that are typically specified as `props.children`.
- *
- * The provided mapFunction(child, key, index) will be called for each
- * leaf child.
- *
- * @param {?*} children Children tree container.
- * @param {function(*, int)} func The map function.
- * @param {*} context Context for mapFunction.
- * @return {object} Object containing the ordered map of results.
- */
 function mapChildren(children, func, context) {
   if (children == null) {
     return children;
@@ -9830,21 +8481,10 @@ function mapChildren(children, func, context) {
   return result;
 }
 
-/**
- * Count the number of children that are typically specified as
- * `props.children`.
- *
- * @param {?*} children Children tree container.
- * @return {number} The number of children.
- */
 function countChildren(children, context) {
   return traverseAllChildren(children, emptyFunction.thatReturnsNull, null);
 }
 
-/**
- * Flatten a children object (typically specified as `props.children`) and
- * return an array with appropriately re-keyed children.
- */
 function toArray(children) {
   var result = [];
   mapIntoWithKeyPrefixInternal(children, result, null, emptyFunction.thatReturnsArgument);
@@ -9860,27 +8500,9 @@ var ReactChildren = {
 
 var ReactChildren_1 = ReactChildren;
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactVersion
- */
 
 var ReactVersion = '16.0.0';
 
-/**
- * Returns the first child in a collection of children and verifies that there
- * is only one child in the collection.
- *
- * The current implementation of this function assumes that a single child gets
- * passed without a wrapper, but the purpose of this helper function is to
- * abstract away the particular structure of children.
- *
- * @param {?object} children Child collection structure.
- * @return {ReactElement} The first and only `ReactElement` contained in the
- * structure.
- */
 function onlyChild(children) {
   !ReactElement_1.isValidElement(children) ? invariant(false, 'React.Children.only expected to receive a single React element child.') : void 0;
   return children;
@@ -9888,25 +8510,11 @@ function onlyChild(children) {
 
 var onlyChild_1 = onlyChild;
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * 
- * @providesModule describeComponentFrame
- */
 
 var describeComponentFrame$1 = function (name, source, ownerName) {
   return '\n    in ' + (name || 'Unknown') + (source ? ' (at ' + source.fileName.replace(/^.*[\\\/]/, '') + ':' + source.lineNumber + ')' : ownerName ? ' (created by ' + ownerName + ')' : '');
 };
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule getComponentName
- * 
- */
 
 function getComponentName$1(instanceOrFiber) {
   if (typeof instanceOrFiber.getName === 'function') {
@@ -9988,11 +8596,6 @@ function getSourceInfoErrorAddendum(elementProps) {
   return '';
 }
 
-/**
- * Warn if there's no key explicitly set on dynamic arrays of children or
- * object keys are not valid. This allows us to keep track of children between
- * updates.
- */
 var ownerHasKeyUseWarning = {};
 
 function getCurrentComponentErrorInfo(parentType) {
@@ -10007,17 +8610,6 @@ function getCurrentComponentErrorInfo(parentType) {
   return info;
 }
 
-/**
- * Warn if the element doesn't have an explicit key assigned to it.
- * This element is in an array. The array could grow and shrink or be
- * reordered. All children that haven't already been validated are required to
- * have a "key" property assigned to it. Error statuses are cached so a warning
- * will only be shown once.
- *
- * @internal
- * @param {ReactElement} element Element that requires a key.
- * @param {*} parentType element's parent's type.
- */
 function validateExplicitKey(element, parentType) {
   if (!element._store || element._store.validated || element.key != null) {
     return;
@@ -10030,12 +8622,8 @@ function validateExplicitKey(element, parentType) {
   }
   ownerHasKeyUseWarning[currentComponentErrorInfo] = true;
 
-  // Usually the current owner is the offender, but if it accepts children as a
-  // property, it may be the creator of the child that's responsible for
-  // assigning it a key.
   var childOwner = '';
   if (element && element._owner && element._owner !== ReactCurrentOwner_1.current) {
-    // Give the component that originally created this child.
     childOwner = ' It was passed a child from ' + getComponentName(element._owner) + '.';
   }
 
@@ -10046,15 +8634,6 @@ function validateExplicitKey(element, parentType) {
   currentlyValidatingElement = null;
 }
 
-/**
- * Ensure that every element either is passed in a static location, in an
- * array with an explicit keys property defined, or in an object literal
- * with valid key property.
- *
- * @internal
- * @param {ReactNode} node Statically passed child of any type.
- * @param {*} parentType node's parent's type.
- */
 function validateChildKeys(node, parentType) {
   if (typeof node !== 'object') {
     return;
@@ -10067,15 +8646,12 @@ function validateChildKeys(node, parentType) {
       }
     }
   } else if (ReactElement_1.isValidElement(node)) {
-    // This element was passed in a valid location.
     if (node._store) {
       node._store.validated = true;
     }
   } else if (node) {
     var iteratorFn = ITERATOR_SYMBOL$1 && node[ITERATOR_SYMBOL$1] || node[FAUX_ITERATOR_SYMBOL$1];
     if (typeof iteratorFn === 'function') {
-      // Entry iterators used to provide implicit keys,
-      // but now we print a separate warning for them later.
       if (iteratorFn !== node.entries) {
         var iterator = iteratorFn.call(node);
         var step;
@@ -10089,12 +8665,6 @@ function validateChildKeys(node, parentType) {
   }
 }
 
-/**
- * Given an element, validate that its props follow the propTypes definition,
- * provided by the type.
- *
- * @param {ReactElement} element
- */
 function validatePropTypes(element) {
   var componentClass = element.type;
   if (typeof componentClass !== 'function') {
@@ -10116,8 +8686,6 @@ function validatePropTypes(element) {
 var ReactElementValidator$1 = {
   createElement: function (type, props, children) {
     var validType = typeof type === 'string' || typeof type === 'function';
-    // We warn in this case but don't throw. We expect the element creation to
-    // succeed and there will likely be errors in render.
     if (!validType) {
       var info = '';
       if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
@@ -10138,17 +8706,10 @@ var ReactElementValidator$1 = {
 
     var element = ReactElement_1.createElement.apply(this, arguments);
 
-    // The result can be nullish if a mock or a custom function is used.
-    // TODO: Drop this when these are no longer allowed as the type argument.
     if (element == null) {
       return element;
     }
 
-    // Skip key warning if the type isn't valid since our key validation logic
-    // doesn't expect a non-string/function type and can throw confusing errors.
-    // We don't want exception behavior to differ between dev and prod.
-    // (Rendering will throw with a helpful message and as soon as the type is
-    // fixed, the key warnings will appear.)
     if (validType) {
       for (var i = 2; i < arguments.length; i++) {
         validateChildKeys(arguments[i], type);
@@ -10162,7 +8723,6 @@ var ReactElementValidator$1 = {
 
   createFactory: function (type) {
     var validatedFactory = ReactElementValidator$1.createElement.bind(null, type);
-    // Legacy hook TODO: Warn if this is accessed
     validatedFactory.type = type;
 
     {
@@ -10198,14 +8758,10 @@ var ReactElementValidator_1 = ReactElementValidator$1;
 }
 
 function isNative(fn) {
-  // Based on isNative() from Lodash
   var funcToString = Function.prototype.toString;
   var reIsNative = RegExp('^' + funcToString
-  // Take an example native function source for comparison
   .call(Object.prototype.hasOwnProperty)
-  // Strip regex characters so we can use it for regex
   .replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
-  // Remove hasOwnProperty from the template to make it generic
   .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
   try {
     var source = funcToString.call(fn);
@@ -10216,15 +8772,10 @@ function isNative(fn) {
 }
 
 var canUseCollections =
-// Array.from
 typeof Array.from === 'function' &&
-// Map
 typeof Map === 'function' && isNative(Map) &&
-// Map.prototype.keys
 Map.prototype != null && typeof Map.prototype.keys === 'function' && isNative(Map.prototype.keys) &&
-// Set
 typeof Set === 'function' && isNative(Set) &&
-// Set.prototype.keys
 Set.prototype != null && typeof Set.prototype.keys === 'function' && isNative(Set.prototype.keys);
 
 var setItem;
@@ -10265,7 +8816,6 @@ if (canUseCollections) {
   var itemByKey = {};
   var rootByKey = {};
 
-  // Use non-numeric keys to prevent V8 performance issues:
   var getKeyFromID = function (id) {
     return '.' + id;
   };
@@ -10353,9 +8903,6 @@ var ReactComponentTreeHook = {
       !nextChild.isMounted ? invariant(false, 'Expected onMountComponent() to fire for the child before its parent includes it in onSetChildren().') : void 0;
       if (nextChild.parentID == null) {
         nextChild.parentID = id;
-        // TODO: This shouldn't be necessary but mounting a new root during in
-        // componentWillMount currently causes not-yet-mounted components to
-        // be purged from our tree data so their parent id is missing.
       }
       !(nextChild.parentID === id) ? invariant(false, 'Expected onBeforeMountComponent() parent and onSetChildren() to be consistent (%s has parents %s and %s).', nextChildID, nextChild.parentID, id) : void 0;
     }
@@ -10374,8 +8921,6 @@ var ReactComponentTreeHook = {
   onBeforeUpdateComponent: function (id, element) {
     var item = getItem(id);
     if (!item || !item.isMounted) {
-      // We may end up here as a result of setState() in componentWillUnmount().
-      // In this case, ignore the element.
       return;
     }
     item.element = element;
@@ -10392,8 +8937,6 @@ var ReactComponentTreeHook = {
   onUpdateComponent: function (id) {
     var item = getItem(id);
     if (!item || !item.isMounted) {
-      // We may end up here as a result of setState() in componentWillUnmount().
-      // In this case, ignore the element.
       return;
     }
     item.updateCount++;
@@ -10401,11 +8944,6 @@ var ReactComponentTreeHook = {
   onUnmountComponent: function (id) {
     var item = getItem(id);
     if (item) {
-      // We need to check if it exists.
-      // `item` might not exist if it is inside an error boundary, and a sibling
-      // error boundary child threw while mounting. Then this instance never
-      // got a chance to mount, but it still gets an unmounting event during
-      // the error boundary cleanup.
       item.isMounted = false;
       var isRoot = item.parentID === 0;
       if (isRoot) {
@@ -10416,7 +8954,6 @@ var ReactComponentTreeHook = {
   },
   purgeUnmountedComponents: function () {
     if (ReactComponentTreeHook._preventPurging) {
-      // Should only be used for testing.
       return;
     }
 
@@ -10537,14 +9074,12 @@ var React = {
 
   __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
     ReactCurrentOwner: ReactCurrentOwner_1,
-    // Used by renderers to avoid bundling object-assign twice in UMD bundles:
     assign: objectAssign$1
   }
 };
 
 {
   objectAssign$1(React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, {
-    // These should not be included in production.
     ReactComponentTreeHook: ReactComponentTreeHook_1,
     ReactDebugCurrentFrame: ReactDebugCurrentFrame_1
   });
@@ -10564,14 +9099,6 @@ module.exports = ReactEntry;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/*
- React v16.0.0
- react-dom.production.min.js
-
- This source code is licensed under the MIT license found in the
- LICENSE file in the root directory of this source tree.
- Modernizr 3.0.0pre (Custom Build) | MIT
-*/
 var aa=__webpack_require__(0);__webpack_require__(20);var l=__webpack_require__(57),n=__webpack_require__(25),ba=__webpack_require__(93),ca=__webpack_require__(21),da=__webpack_require__(36),ea=__webpack_require__(94),fa=__webpack_require__(95),ha=__webpack_require__(96),ia=__webpack_require__(97);
 function w(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:w("227");
 function ja(a){switch(a){case "svg":return"http://www.w3.org/2000/svg";case "math":return"http://www.w3.org/1998/Math/MathML";default:return"http://www.w3.org/1999/xhtml"}}
@@ -10827,19 +9354,9 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
 "use strict";
 
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 var isNode = __webpack_require__(150);
 
-/**
- * @param {*} object The object to check.
- * @return {boolean} Whether or not the object is a DOM text node.
- */
 function isTextNode(object) {
   return isNode(object) && object.nodeType == 3;
 }
@@ -10853,17 +9370,6 @@ module.exports = isTextNode;
 "use strict";
 
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
-
-/**
- * @param {*} object The object to check.
- * @return {boolean} Whether or not the object is a DOM node.
- */
 function isNode(object) {
   var doc = object ? object.ownerDocument || object : document;
   var defaultView = doc.defaultView || window;
@@ -10909,33 +9415,12 @@ var containsNode = __webpack_require__(95);
 var focusNode = __webpack_require__(96);
 var getActiveElement = __webpack_require__(97);
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule reactProdInvariant
- * 
- */
-
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule checkReact
- * 
- */
 
 
 
 
 !react ? invariant(false, 'ReactDOM was loaded before React. Make sure you load the React package before loading ReactDOM.') : void 0;
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule DOMNamespaces
- */
 
 var HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
 var MATH_NAMESPACE = 'http://www.w3.org/1998/Math/MathML';
@@ -10947,7 +9432,6 @@ var Namespaces = {
   svg: SVG_NAMESPACE
 };
 
-// Assumes there is no parent namespace.
 function getIntrinsicNamespace(type) {
   switch (type) {
     case 'svg':
@@ -10961,14 +9445,11 @@ function getIntrinsicNamespace(type) {
 
 function getChildNamespace$1(parentNamespace, type) {
   if (parentNamespace == null || parentNamespace === HTML_NAMESPACE) {
-    // No (or default) parent namespace: potential entry point.
     return getIntrinsicNamespace(type);
   }
   if (parentNamespace === SVG_NAMESPACE && type === 'foreignObject') {
-    // We're leaving SVG.
     return HTML_NAMESPACE;
   }
-  // By default, pass namespace below.
   return parentNamespace;
 }
 
@@ -10982,24 +9463,12 @@ var DOMNamespaces = {
 	getChildNamespace: getChildNamespace_1
 };
 
-/**
- * Injectable ordering of event plugins.
- */
 var eventPluginOrder = null;
 
-/**
- * Injectable mapping from names to event plugin modules.
- */
 var namesToPlugins = {};
 
-/**
- * Recomputes the plugin list using the injected plugins and plugin ordering.
- *
- * @private
- */
 function recomputePluginOrdering() {
   if (!eventPluginOrder) {
-    // Wait until an `eventPluginOrder` is injected.
     return;
   }
   for (var pluginName in namesToPlugins) {
@@ -11018,14 +9487,6 @@ function recomputePluginOrdering() {
   }
 }
 
-/**
- * Publishes an event so that it can be dispatched by the supplied plugin.
- *
- * @param {object} dispatchConfig Dispatch configuration for the event.
- * @param {object} PluginModule Plugin publishing the event.
- * @return {boolean} True if the event was successfully published.
- * @private
- */
 function publishEventForPlugin(dispatchConfig, pluginModule, eventName) {
   !!EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName) ? invariant(false, 'EventPluginHub: More than one plugin attempted to publish the same event name, `%s`.', eventName) : void 0;
   EventPluginRegistry.eventNameDispatchConfigs[eventName] = dispatchConfig;
@@ -11046,13 +9507,6 @@ function publishEventForPlugin(dispatchConfig, pluginModule, eventName) {
   return false;
 }
 
-/**
- * Publishes a registration name that is used to identify dispatched events.
- *
- * @param {string} registrationName Registration name to add.
- * @param {object} PluginModule Plugin publishing the event.
- * @private
- */
 function publishRegistrationName(registrationName, pluginModule, eventName) {
   !!EventPluginRegistry.registrationNameModules[registrationName] ? invariant(false, 'EventPluginHub: More than one plugin attempted to publish the same registration name, `%s`.', registrationName) : void 0;
   EventPluginRegistry.registrationNameModules[registrationName] = pluginModule;
@@ -11068,50 +9522,16 @@ function publishRegistrationName(registrationName, pluginModule, eventName) {
   }
 }
 
-/**
- * Registers plugins so that they can extract and dispatch events.
- *
- * @see {EventPluginHub}
- */
 var EventPluginRegistry = {
-  /**
-   * Ordered list of injected plugins.
-   */
   plugins: [],
 
-  /**
-   * Mapping from event name to dispatch config
-   */
   eventNameDispatchConfigs: {},
 
-  /**
-   * Mapping from registration name to plugin module
-   */
   registrationNameModules: {},
 
-  /**
-   * Mapping from registration name to event name
-   */
   registrationNameDependencies: {},
 
-  /**
-   * Mapping from lowercase registration names to the properly cased version,
-   * used to warn in the case of missing event handlers. Available
-   * only in true.
-   * @type {Object}
-   */
   possibleRegistrationNames: {},
-  // Trust the developer to only use possibleRegistrationNames in true
-
-  /**
-   * Injects an ordering of plugins (by plugin name). This allows the ordering
-   * to be decoupled from injection of the actual plugins so that ordering is
-   * always deterministic regardless of packaging, on-the-fly injection, etc.
-   *
-   * @param {array} InjectedEventPluginOrder
-   * @internal
-   * @see {EventPluginHub.injection.injectEventPluginOrder}
-   */
   injectEventPluginOrder: function (injectedEventPluginOrder) {
     !!eventPluginOrder ? invariant(false, 'EventPluginRegistry: Cannot inject event plugin ordering more than once. You are likely trying to load more than one copy of React.') : void 0;
     // Clone the ordering so it cannot be dynamically mutated.
@@ -11119,16 +9539,6 @@ var EventPluginRegistry = {
     recomputePluginOrdering();
   },
 
-  /**
-   * Injects plugins to be used by `EventPluginHub`. The plugin names must be
-   * in the ordering injected by `injectEventPluginOrder`.
-   *
-   * Plugins can be injected as part of page initialization or on-the-fly.
-   *
-   * @param {object} injectedNamesToPlugins Map from names to plugin modules.
-   * @internal
-   * @see {EventPluginHub.injection.injectEventPluginsByName}
-   */
   injectEventPluginsByName: function (injectedNamesToPlugins) {
     var isOrderingDirty = false;
     for (var pluginName in injectedNamesToPlugins) {
@@ -11150,8 +9560,6 @@ var EventPluginRegistry = {
 
 var EventPluginRegistry_1 = EventPluginRegistry;
 
-// These attributes should be all lowercase to allow for
-// case insensitive checks
 var RESERVED_PROPS = {
   children: true,
   dangerouslySetInnerHTML: true,
@@ -11168,10 +9576,6 @@ function checkMask(value, bitmask) {
 }
 
 var DOMPropertyInjection = {
-  /**
-   * Mapping from normalized, camelcased property names to a configuration that
-   * specifies how the associated DOM property should be accessed or rendered.
-   */
   MUST_USE_PROPERTY: 0x1,
   HAS_BOOLEAN_VALUE: 0x4,
   HAS_NUMERIC_VALUE: 0x8,
@@ -11179,29 +9583,6 @@ var DOMPropertyInjection = {
   HAS_OVERLOADED_BOOLEAN_VALUE: 0x20,
   HAS_STRING_BOOLEAN_VALUE: 0x40,
 
-  /**
-   * Inject some specialized knowledge about the DOM. This takes a config object
-   * with the following properties:
-   *
-   * Properties: object mapping DOM property name to one of the
-   * DOMPropertyInjection constants or null. If your attribute isn't in here,
-   * it won't get written to the DOM.
-   *
-   * DOMAttributeNames: object mapping React attribute name to the DOM
-   * attribute name. Attribute names not specified use the **lowercase**
-   * normalized name.
-   *
-   * DOMAttributeNamespaces: object mapping React attribute name to the DOM
-   * attribute namespace URL. (Attribute names not specified use no namespace.)
-   *
-   * DOMPropertyNames: similar to DOMAttributeNames but for DOM properties.
-   * Property names not specified use the normalized name.
-   *
-   * DOMMutationMethods: Properties that require special mutation methods. If
-   * `value` is undefined, the mutation method should unset the property.
-   *
-   * @param {object} domPropertyConfig the config as described above.
-   */
   injectDOMPropertyConfig: function (domPropertyConfig) {
     var Injection = DOMPropertyInjection;
     var Properties = domPropertyConfig.Properties || {};
@@ -11244,29 +9625,12 @@ var DOMPropertyInjection = {
         propertyInfo.mutationMethod = DOMMutationMethods[propName];
       }
 
-      // Downcase references to whitelist properties to check for membership
-      // without case-sensitivity. This allows the whitelist to pick up
-      // `allowfullscreen`, which should be written using the property configuration
-      // for `allowFullscreen`
       DOMProperty.properties[propName] = propertyInfo;
     }
   }
 };
 
-/* eslint-disable max-len */
 var ATTRIBUTE_NAME_START_CHAR = ':A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD';
-/* eslint-enable max-len */
-
-/**
- * DOMProperty exports lookup objects that can be used like functions:
- *
- *   > DOMProperty.isValid['id']
- *   true
- *   > DOMProperty.isValid['foobar']
- *   undefined
- *
- * Although this may be confusing, it performs better in general.
- */
 var DOMProperty = {
   ID_ATTRIBUTE_NAME: 'data-reactid',
   ROOT_ATTRIBUTE_NAME: 'data-reactroot',
@@ -11274,40 +9638,8 @@ var DOMProperty = {
   ATTRIBUTE_NAME_START_CHAR: ATTRIBUTE_NAME_START_CHAR,
   ATTRIBUTE_NAME_CHAR: ATTRIBUTE_NAME_START_CHAR + '\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040',
 
-  /**
-   * Map from property "standard name" to an object with info about how to set
-   * the property in the DOM. Each object contains:
-   *
-   * attributeName:
-   *   Used when rendering markup or with `*Attribute()`.
-   * attributeNamespace
-   * propertyName:
-   *   Used on DOM node instances. (This includes properties that mutate due to
-   *   external factors.)
-   * mutationMethod:
-   *   If non-null, used instead of the property or `setAttribute()` after
-   *   initial render.
-   * mustUseProperty:
-   *   Whether the property must be accessed and mutated as an object property.
-   * hasBooleanValue:
-   *   Whether the property should be removed when set to a falsey value.
-   * hasNumericValue:
-   *   Whether the property must be numeric or parse as a numeric and should be
-   *   removed when set to a falsey value.
-   * hasPositiveNumericValue:
-   *   Whether the property must be positive numeric or parse as a positive
-   *   numeric and should be removed when set to a falsey value.
-   * hasOverloadedBooleanValue:
-   *   Whether the property can be used as a flag as well as with a value.
-   *   Removed when strictly equal to false; present without a value when
-   *   strictly equal to true; present with a value otherwise.
-   */
   properties: {},
 
-  /**
-   * Checks whether a property name is a writeable attribute.
-   * @method
-   */
   shouldSetAttribute: function (name, value) {
     if (DOMProperty.isReservedProp(name)) {
       return false;
@@ -11327,7 +9659,6 @@ var DOMProperty = {
       case 'object':
         return true;
       default:
-        // function, symbol
         return false;
     }
   },
@@ -11348,15 +9679,6 @@ var DOMProperty = {
   },
 
 
-  /**
-   * Checks to see if a property name is within the list of properties
-   * reserved for internal React operations. These properties should
-   * not be set on an HTML element.
-   *
-   * @private
-   * @param {string} name
-   * @return {boolean} If the name is within reserved props
-   */
   isReservedProp: function (name) {
     return RESERVED_PROPS.hasOwnProperty(name);
   },
@@ -11367,12 +9689,6 @@ var DOMProperty = {
 
 var DOMProperty_1 = DOMProperty;
 
-/**
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactDOMComponentFlags
- */
 
 var ReactDOMComponentFlags = {
   hasCachedChildNodes: 1 << 0
@@ -11423,20 +9739,10 @@ var internalInstanceKey = '__reactInternalInstance$' + randomKey;
 
 var internalEventHandlersKey = '__reactEventHandlers$' + randomKey;
 
-/**
- * Check if a given node should be cached.
- */
 function shouldPrecacheNode(node, nodeID) {
   return node.nodeType === ELEMENT_NODE$1 && node.getAttribute(ATTR_NAME) === '' + nodeID || node.nodeType === COMMENT_NODE$1 && node.nodeValue === ' react-text: ' + nodeID + ' ' || node.nodeType === COMMENT_NODE$1 && node.nodeValue === ' react-empty: ' + nodeID + ' ';
 }
 
-/**
- * Drill down (through composites and empty components) until we get a host or
- * host text component.
- *
- * This is pretty polymorphic but unavoidable with the current structure we have
- * for `_renderedChildren`.
- */
 function getRenderedHostOrTextFromComponent(component) {
   var rendered;
   while (rendered = component._renderedComponent) {
@@ -11445,10 +9751,6 @@ function getRenderedHostOrTextFromComponent(component) {
   return component;
 }
 
-/**
- * Populate `_hostNode` on the rendered host/text component with the given
- * DOM node. The passed `inst` can be a composite.
- */
 function precacheNode(inst, node) {
   var hostInst = getRenderedHostOrTextFromComponent(inst);
   hostInst._hostNode = node;
@@ -11467,20 +9769,6 @@ function uncacheNode(inst) {
   }
 }
 
-/**
- * Populate `_hostNode` on each child of `inst`, assuming that the children
- * match up with the DOM (element) children of `node`.
- *
- * We cache entire levels at once to avoid an n^2 problem where we access the
- * children of a node sequentially and have to walk from the start to our target
- * node every time.
- *
- * Since we update `_renderedChildren` and the actual DOM at (slightly)
- * different times, we could race here and see a newer `_renderedChildren` than
- * the DOM nodes we see. To avoid this, ReactMultiChild calls
- * `prepareToManageChildren` before we change `_renderedChildren`, at which
- * time the container's child nodes are always cached (until it unmounts).
- */
 function precacheChildNodes(inst, node) {
   if (inst._flags & Flags.hasCachedChildNodes) {
     return;
@@ -11494,40 +9782,30 @@ function precacheChildNodes(inst, node) {
     var childInst = children[name];
     var childID = getRenderedHostOrTextFromComponent(childInst)._domID;
     if (childID === 0) {
-      // We're currently unmounting this child in ReactMultiChild; skip it.
       continue;
     }
-    // We assume the child nodes are in the same order as the child instances.
     for (; childNode !== null; childNode = childNode.nextSibling) {
       if (shouldPrecacheNode(childNode, childID)) {
         precacheNode(childInst, childNode);
         continue outer;
       }
     }
-    // We reached the end of the DOM children without finding an ID match.
     invariant(false, 'Unable to find element with ID %s.', childID);
   }
   inst._flags |= Flags.hasCachedChildNodes;
 }
 
-/**
- * Given a DOM node, return the closest ReactDOMComponent or
- * ReactDOMTextComponent instance ancestor.
- */
 function getClosestInstanceFromNode(node) {
   if (node[internalInstanceKey]) {
     return node[internalInstanceKey];
   }
 
-  // Walk up the tree until we find an ancestor whose instance we have cached.
   var parents = [];
   while (!node[internalInstanceKey]) {
     parents.push(node);
     if (node.parentNode) {
       node = node.parentNode;
     } else {
-      // Top of the tree. This node must not be part of a React tree (or is
-      // unmounted, potentially).
       return null;
     }
   }
@@ -11535,7 +9813,6 @@ function getClosestInstanceFromNode(node) {
   var closest;
   var inst = node[internalInstanceKey];
   if (inst.tag === HostComponent || inst.tag === HostText) {
-    // In Fiber, this will always be the deepest root.
     return inst;
   }
   for (; node && (inst = node[internalInstanceKey]); node = parents.pop()) {
@@ -11548,10 +9825,6 @@ function getClosestInstanceFromNode(node) {
   return closest;
 }
 
-/**
- * Given a DOM node, return the ReactDOMComponent or ReactDOMTextComponent
- * instance, or null if the node was not rendered by this React.
- */
 function getInstanceFromNode(node) {
   var inst = node[internalInstanceKey];
   if (inst) {
@@ -11571,26 +9844,17 @@ function getInstanceFromNode(node) {
   }
 }
 
-/**
- * Given a ReactDOMComponent or ReactDOMTextComponent, return the corresponding
- * DOM node.
- */
 function getNodeFromInstance(inst) {
   if (inst.tag === HostComponent || inst.tag === HostText) {
-    // In Fiber this, is just the state node right now. We assume it will be
-    // a host component or host text.
     return inst.stateNode;
   }
 
-  // Without this first invariant, passing a non-DOM-component triggers the next
-  // invariant for a missing parent, which is super confusing.
   !(inst._hostNode !== undefined) ? invariant(false, 'getNodeFromInstance: Invalid argument.') : void 0;
 
   if (inst._hostNode) {
     return inst._hostNode;
   }
 
-  // Walk up the tree until we find an ancestor whose DOM node we have cached.
   var parents = [];
   while (!inst._hostNode) {
     parents.push(inst);
@@ -11598,8 +9862,6 @@ function getNodeFromInstance(inst) {
     inst = inst._hostParent;
   }
 
-  // Now parents contains each ancestor that does *not* have a cached native
-  // node, and `inst` is the deepest ancestor that does.
   for (; parents.length; inst = parents.pop()) {
     precacheChildNodes(inst, inst._hostNode);
   }
@@ -11629,30 +9891,8 @@ var ReactDOMComponentTree = {
 
 var ReactDOMComponentTree_1 = ReactDOMComponentTree;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactInstanceMap
- */
-
-/**
- * `ReactInstanceMap` maintains a mapping from a public facing stateful
- * instance (key) and the internal representation (value). This allows public
- * methods to accept the user facing instance as an argument and map them back
- * to internal methods.
- */
-
-// TODO: Replace this with ES6: var ReactInstanceMap = new Map();
 
 var ReactInstanceMap = {
-  /**
-   * This API should be called `delete` but we'd have to make sure to always
-   * transform these to strings for IE support. When this transform is fully
-   * supported we can rename it.
-   */
   remove: function (key) {
     key._reactInternalFiber = undefined;
   },
@@ -11687,24 +9927,13 @@ var ReactGlobalSharedState = {
 
 var ReactGlobalSharedState_1 = ReactGlobalSharedState;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule getComponentName
- * 
- */
 
 function getComponentName(instanceOrFiber) {
   if (typeof instanceOrFiber.getName === 'function') {
-    // Stack reconciler
     var instance = instanceOrFiber;
     return instance.getName();
   }
   if (typeof instanceOrFiber.tag === 'number') {
-    // Fiber reconciler
     var fiber = instanceOrFiber;
     var type = fiber.type;
 
@@ -11720,18 +9949,8 @@ function getComponentName(instanceOrFiber) {
 
 var getComponentName_1 = getComponentName;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactTypeOfSideEffect
- * 
- */
 
 var ReactTypeOfSideEffect = {
-  // Don't change these two values:
   NoEffect: 0, //           0b00000000
   PerformedWork: 1, //      0b00000001
   // You can change the rest (and add more).
@@ -11769,8 +9988,6 @@ var UNMOUNTED = 3;
 function isFiberMountedImpl(fiber) {
   var node = fiber;
   if (!fiber.alternate) {
-    // If there is no alternate, this might be a new tree that isn't inserted
-    // yet. If it is, then it will have a pending insertion effect on it.
     if ((node.effectTag & Placement) !== NoEffect) {
       return MOUNTING;
     }
@@ -12264,13 +10481,6 @@ var validateEventDispatches;
   };
 }
 
-/**
- * Dispatch the event to the listener.
- * @param {SyntheticEvent} event SyntheticEvent to handle
- * @param {boolean} simulated If the event is simulated (changes exn behavior)
- * @param {function} listener Application-level callback
- * @param {*} inst Internal component instance
- */
 function executeDispatch(event, simulated, listener, inst) {
   var type = event.type || 'unknown-event';
   event.currentTarget = EventPluginUtils.getNodeFromInstance(inst);
@@ -12278,9 +10488,6 @@ function executeDispatch(event, simulated, listener, inst) {
   event.currentTarget = null;
 }
 
-/**
- * Standard/simple iteration through an event's collected dispatches.
- */
 function executeDispatchesInOrder(event, simulated) {
   var dispatchListeners = event._dispatchListeners;
   var dispatchInstances = event._dispatchInstances;
@@ -12292,7 +10499,6 @@ function executeDispatchesInOrder(event, simulated) {
       if (event.isPropagationStopped()) {
         break;
       }
-      // Listeners and Instances are two parallel arrays that are always in sync.
       executeDispatch(event, simulated, dispatchListeners[i], dispatchInstances[i]);
     }
   } else if (dispatchListeners) {
@@ -16493,8 +14699,6 @@ function getStackAddendum$2(debugID) {
     }
 
     if (EventPluginRegistry_1.plugins.length === 0 && EVENT_NAME_REGEX.test(name)) {
-      // If no event plugins have been injected, we might be in a server environment.
-      // Don't check events in this case.
       return true;
     }
 
@@ -16513,7 +14717,6 @@ function getStackAddendum$2(debugID) {
       return true;
     }
 
-    // Let the ARIA attribute hook validate ARIA attributes
     if (rARIA$1.test(name) || rARIACamel$1.test(name)) {
       return true;
     }
@@ -16550,7 +14753,6 @@ function getStackAddendum$2(debugID) {
 
     var isReserved = DOMProperty_1.isReservedProp(name);
 
-    // Known attributes should match the casing specified in the property config.
     if (possibleStandardNames.hasOwnProperty(lowerCasedName)) {
       var standardName = possibleStandardNames[lowerCasedName];
       if (standardName !== name) {
@@ -16559,8 +14761,6 @@ function getStackAddendum$2(debugID) {
         return true;
       }
     } else if (!isReserved && name !== lowerCasedName) {
-      // Unknown attributes should have lowercase casing since that's how they
-      // will be cased anyway with server rendering.
       warning$16(false, 'React does not recognize the `%s` prop on a DOM element. If you ' + 'intentionally want it to appear in the DOM as a custom ' + 'attribute, spell it as lowercase `%s` instead. ' + 'If you accidentally passed it from a parent component, remove ' + 'it from the DOM element.%s', name, lowerCasedName, getStackAddendum$2(debugID));
       warnedProperties$1[name] = true;
       return true;
@@ -16572,13 +14772,10 @@ function getStackAddendum$2(debugID) {
       return true;
     }
 
-    // Now that we've validated casing, do not validate
-    // data types for reserved props
     if (isReserved) {
       return true;
     }
 
-    // Warn when a known attribute is a bad type
     if (!DOMProperty_1.shouldSetAttribute(name, value)) {
       warnedProperties$1[name] = true;
       return false;
@@ -16615,9 +14812,7 @@ function validateProperties$2(type, props, debugID /* Stack only */) {
 }
 
 var ReactDOMUnknownPropertyHook$1 = {
-  // Fiber
   validateProperties: validateProperties$2,
-  // Stack
   onBeforeMountComponent: function (debugID, element) {
     if (true && element != null && typeof element.type === 'string') {
       validateProperties$2(element.type, element.props, debugID);
@@ -16676,10 +14871,6 @@ var getIntrinsicNamespace$1 = DOMNamespaces.getIntrinsicNamespace;
 
 {
   var warnedUnknownTags = {
-    // Chrome is the only major browser not shipping <time>. But as of July
-    // 2017 it intends to ship it due to widespread usage. We intentionally
-    // *don't* warn for <time> even if it's unrecognized by Chrome because
-    // it soon will be, and many apps have been using it anyway.
     time: true
   };
 
@@ -16722,8 +14913,6 @@ var getIntrinsicNamespace$1 = DOMNamespaces.getIntrinsicNamespace;
   };
 
   var testDocument;
-  // Parse the HTML and read it back to normalize the HTML string so that it
-  // can be used for comparison.
   var normalizeHTML = function (parent, html) {
     if (!testDocument) {
       testDocument = document.implementation.createHTMLDocument();
@@ -16744,8 +14933,6 @@ function getOwnerDocumentFromRootContainer(rootContainerElement) {
   return rootContainerElement.nodeType === DOCUMENT_NODE$1 ? rootContainerElement : rootContainerElement.ownerDocument;
 }
 
-// There are so many media events, it makes sense to just
-// maintain a list rather than create a `trapBubbledEvent` for each
 var mediaEvents = {
   topAbort: 'abort',
   topCanPlay: 'canplay',
@@ -16773,15 +14960,6 @@ var mediaEvents = {
 };
 
 function trapClickOnNonInteractiveElement(node) {
-  // Mobile Safari does not fire properly bubble click events on
-  // non-interactive elements, which means delegated click listeners do not
-  // fire. The workaround for this bug involves attaching an empty click
-  // listener on the target node.
-  // http://www.quirksmode.org/blog/archives/2010/09/click_event_del.html
-  // Just set it using the onclick property so that we don't have to manage any
-  // bookkeeping for it. Not sure if we need to clear it when the listener is
-  // removed.
-  // TODO: Only do this for the relevant Safaris maybe?
   node.onclick = emptyFunction;
 }
 
@@ -16794,12 +14972,9 @@ function setInitialDOMProperties(domElement, rootContainerElement, nextProps, is
     if (propKey === STYLE) {
       {
         if (nextProp) {
-          // Freeze the next style object so that we can assume it won't be
-          // mutated. We have already warned for this in the past.
           Object.freeze(nextProp);
         }
       }
-      // Relies on `updateStylesByID` not mutating `styleUpdates`.
       CSSPropertyOperations_1.setValueForStyles(domElement, nextProp);
     } else if (propKey === DANGEROUSLY_SET_INNER_HTML) {
       var nextHtml = nextProp ? nextProp[HTML] : undefined;
@@ -16824,16 +14999,12 @@ function setInitialDOMProperties(domElement, rootContainerElement, nextProps, is
     } else if (isCustomComponentTag) {
       DOMPropertyOperations_1.setValueForAttribute(domElement, propKey, nextProp);
     } else if (nextProp != null) {
-      // If we're updating to null or undefined, we should remove the property
-      // from the DOM node instead of inadvertently setting to a string. This
-      // brings us in line with the same behavior we have on initial render.
       DOMPropertyOperations_1.setValueForProperty(domElement, propKey, nextProp);
     }
   }
 }
 
 function updateDOMProperties(domElement, updatePayload, wasCustomComponentTag, isCustomComponentTag) {
-  // TODO: Handle wasCustomComponentTag
   for (var i = 0; i < updatePayload.length; i += 2) {
     var propKey = updatePayload[i];
     var propValue = updatePayload[i + 1];
@@ -16852,9 +15023,6 @@ function updateDOMProperties(domElement, updatePayload, wasCustomComponentTag, i
     } else if (propValue != null) {
       DOMPropertyOperations_1.setValueForProperty(domElement, propKey, propValue);
     } else {
-      // If we're updating to null or undefined, we should remove the property
-      // from the DOM node instead of inadvertently setting to a string. This
-      // brings us in line with the same behavior we have on initial render.
       DOMPropertyOperations_1.deleteValueForProperty(domElement, propKey);
     }
   }
@@ -16862,7 +15030,6 @@ function updateDOMProperties(domElement, updatePayload, wasCustomComponentTag, i
 
 var ReactDOMFiberComponent = {
   createElement: function (type, props, rootContainerElement, parentNamespace) {
-    // We create tags in the namespace of their parent container, except HTML
     var ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement);
     var domElement;
     var namespaceURI = parentNamespace;
@@ -16872,26 +15039,17 @@ var ReactDOMFiberComponent = {
     if (namespaceURI === HTML_NAMESPACE$1) {
       {
         var isCustomComponentTag = isCustomComponent_1(type, props);
-        // Should this check be gated by parent namespace? Not sure we want to
-        // allow <SVG> or <mATH>.
         warning$3(isCustomComponentTag || type === type.toLowerCase(), '<%s /> is using uppercase HTML. Always use lowercase HTML tags ' + 'in React.', type);
       }
 
       if (type === 'script') {
-        // Create the script via .innerHTML so its "parser-inserted" flag is
-        // set to true and it does not execute
         var div = ownerDocument.createElement('div');
         div.innerHTML = '<script><' + '/script>'; // eslint-disable-line
-        // This is guaranteed to yield a script element.
         var firstChild = div.firstChild;
         domElement = div.removeChild(firstChild);
       } else if (typeof props.is === 'string') {
-        // $FlowIssue `createElement` should be updated for Web Components
         domElement = ownerDocument.createElement(type, { is: props.is });
       } else {
-        // Separate else branch instead of using `props.is || undefined` above because of a Firefox bug.
-        // See discussion in https://github.com/facebook/react/pull/6896
-        // and discussion in https://bugzilla.mozilla.org/show_bug.cgi?id=1276240
         domElement = ownerDocument.createElement(type);
       }
     } else {
@@ -16922,7 +15080,6 @@ var ReactDOMFiberComponent = {
       }
     }
 
-    // TODO: Make sure that we check isMounted before firing any of these events.
     var props;
     switch (tag) {
       case 'iframe':
@@ -16932,7 +15089,6 @@ var ReactDOMFiberComponent = {
         break;
       case 'video':
       case 'audio':
-        // Create listener for each media event
         for (var event in mediaEvents) {
           if (mediaEvents.hasOwnProperty(event)) {
             ReactBrowserEventEmitter_1.trapBubbledEvent(event, mediaEvents[event], domElement);
@@ -16963,8 +15119,6 @@ var ReactDOMFiberComponent = {
         ReactDOMFiberInput.initWrapperState(domElement, rawProps);
         props = ReactDOMFiberInput.getHostProps(domElement, rawProps);
         ReactBrowserEventEmitter_1.trapBubbledEvent('topInvalid', 'invalid', domElement);
-        // For controlled components we always need to ensure we're listening
-        // to onChange. Even if there is no listener.
         ensureListeningTo(rootContainerElement, 'onChange');
         break;
       case 'option':
@@ -16975,16 +15129,12 @@ var ReactDOMFiberComponent = {
         ReactDOMFiberSelect.initWrapperState(domElement, rawProps);
         props = ReactDOMFiberSelect.getHostProps(domElement, rawProps);
         ReactBrowserEventEmitter_1.trapBubbledEvent('topInvalid', 'invalid', domElement);
-        // For controlled components we always need to ensure we're listening
-        // to onChange. Even if there is no listener.
         ensureListeningTo(rootContainerElement, 'onChange');
         break;
       case 'textarea':
         ReactDOMFiberTextarea.initWrapperState(domElement, rawProps);
         props = ReactDOMFiberTextarea.getHostProps(domElement, rawProps);
         ReactBrowserEventEmitter_1.trapBubbledEvent('topInvalid', 'invalid', domElement);
-        // For controlled components we always need to ensure we're listening
-        // to onChange. Even if there is no listener.
         ensureListeningTo(rootContainerElement, 'onChange');
         break;
       default:
@@ -16997,14 +15147,10 @@ var ReactDOMFiberComponent = {
 
     switch (tag) {
       case 'input':
-        // TODO: Make sure we check if this is still unmounted or do any clean
-        // up necessary since we never stop tracking anymore.
         inputValueTracking_1.track(domElement);
         ReactDOMFiberInput.postMountWrapper(domElement, rawProps);
         break;
       case 'textarea':
-        // TODO: Make sure we check if this is still unmounted or do any clean
-        // up necessary since we never stop tracking anymore.
         inputValueTracking_1.track(domElement);
         ReactDOMFiberTextarea.postMountWrapper(domElement, rawProps);
         break;
@@ -17016,7 +15162,6 @@ var ReactDOMFiberComponent = {
         break;
       default:
         if (typeof props.onClick === 'function') {
-          // TODO: This cast may not be sound for SVG, MathML or custom elements.
           trapClickOnNonInteractiveElement(domElement);
         }
         break;
@@ -17024,7 +15169,6 @@ var ReactDOMFiberComponent = {
   },
 
 
-  // Calculate the diff between the two objects.
   diffProperties: function (domElement, tag, lastRawProps, nextRawProps, rootContainerElement) {
     {
       validatePropertiesInDevelopment(tag, nextRawProps);
@@ -17059,7 +15203,6 @@ var ReactDOMFiberComponent = {
         lastProps = lastRawProps;
         nextProps = nextRawProps;
         if (typeof lastProps.onClick !== 'function' && typeof nextProps.onClick === 'function') {
-          // TODO: This cast may not be sound for SVG, MathML or custom elements.
           trapClickOnNonInteractiveElement(domElement);
         }
         break;
@@ -17085,19 +15228,12 @@ var ReactDOMFiberComponent = {
           }
         }
       } else if (propKey === DANGEROUSLY_SET_INNER_HTML || propKey === CHILDREN) {
-        // Noop. This is handled by the clear text mechanism.
       } else if (propKey === SUPPRESS_CONTENT_EDITABLE_WARNING) {
-        // Noop
       } else if (registrationNameModules.hasOwnProperty(propKey)) {
-        // This is a special case. If any listener updates we need to ensure
-        // that the "current" fiber pointer gets updated so we need a commit
-        // to update this element.
         if (!updatePayload) {
           updatePayload = [];
         }
       } else {
-        // For all other deleted properties we add it to the queue. We use
-        // the whitelist in the commit phase instead.
         (updatePayload = updatePayload || []).push(propKey, null);
       }
     }
@@ -17110,13 +15246,10 @@ var ReactDOMFiberComponent = {
       if (propKey === STYLE) {
         {
           if (nextProp) {
-            // Freeze the next style object so that we can assume it won't be
-            // mutated. We have already warned for this in the past.
             Object.freeze(nextProp);
           }
         }
         if (lastProp) {
-          // Unset styles on `lastProp` but not on `nextProp`.
           for (styleName in lastProp) {
             if (lastProp.hasOwnProperty(styleName) && (!nextProp || !nextProp.hasOwnProperty(styleName))) {
               if (!styleUpdates) {
@@ -17125,7 +15258,6 @@ var ReactDOMFiberComponent = {
               styleUpdates[styleName] = '';
             }
           }
-          // Update styles that changed since `lastProp`.
           for (styleName in nextProp) {
             if (nextProp.hasOwnProperty(styleName) && lastProp[styleName] !== nextProp[styleName]) {
               if (!styleUpdates) {
@@ -17135,7 +15267,6 @@ var ReactDOMFiberComponent = {
             }
           }
         } else {
-          // Relies on `updateStylesByID` not mutating `styleUpdates`.
           if (!styleUpdates) {
             if (!updatePayload) {
               updatePayload = [];
@@ -17152,8 +15283,6 @@ var ReactDOMFiberComponent = {
             (updatePayload = updatePayload || []).push(propKey, '' + nextHtml);
           }
         } else {
-          // TODO: It might be too late to clear this if we have children
-          // inserted already.
         }
       } else if (propKey === CHILDREN) {
         if (lastProp !== nextProp && (typeof nextProp === 'string' || typeof nextProp === 'number')) {
@@ -17163,21 +15292,15 @@ var ReactDOMFiberComponent = {
         // Noop
       } else if (registrationNameModules.hasOwnProperty(propKey)) {
         if (nextProp != null) {
-          // We eagerly listen to this even though we haven't committed yet.
           if (true && typeof nextProp !== 'function') {
             warnForInvalidEventListener(propKey, nextProp);
           }
           ensureListeningTo(rootContainerElement, propKey);
         }
         if (!updatePayload && lastProp !== nextProp) {
-          // This is a special case. If any listener updates we need to ensure
-          // that the "current" props pointer gets updated so we need a commit
-          // to update this element.
           updatePayload = [];
         }
       } else {
-        // For any other property we always add it to the queue and then we
-        // filter it out using the whitelist during the commit.
         (updatePayload = updatePayload || []).push(propKey, nextProp);
       }
     }
@@ -17188,32 +15311,21 @@ var ReactDOMFiberComponent = {
   },
 
 
-  // Apply the diff.
   updateProperties: function (domElement, updatePayload, tag, lastRawProps, nextRawProps) {
     var wasCustomComponentTag = isCustomComponent_1(tag, lastRawProps);
     var isCustomComponentTag = isCustomComponent_1(tag, nextRawProps);
-    // Apply the diff.
     updateDOMProperties(domElement, updatePayload, wasCustomComponentTag, isCustomComponentTag);
 
-    // TODO: Ensure that an update gets scheduled if any of the special props
-    // changed.
     switch (tag) {
       case 'input':
-        // Update the wrapper around inputs *after* updating props. This has to
-        // happen after `updateDOMProperties`. Otherwise HTML5 input validations
-        // raise warnings and prevent the new value from being assigned.
         ReactDOMFiberInput.updateWrapper(domElement, nextRawProps);
 
-        // We also check that we haven't missed a value update, such as a
-        // Radio group shifting the checked value to another named radio input.
         inputValueTracking_1.updateValueIfChanged(domElement);
         break;
       case 'textarea':
         ReactDOMFiberTextarea.updateWrapper(domElement, nextRawProps);
         break;
       case 'select':
-        // <select> value update needs to occur after <option> children
-        // reconciliation
         ReactDOMFiberSelect.postUpdateWrapper(domElement, nextRawProps);
         break;
     }
@@ -17228,7 +15340,6 @@ var ReactDOMFiberComponent = {
       }
     }
 
-    // TODO: Make sure that we check isMounted before firing any of these events.
     switch (tag) {
       case 'iframe':
       case 'object':
@@ -17236,7 +15347,6 @@ var ReactDOMFiberComponent = {
         break;
       case 'video':
       case 'audio':
-        // Create listener for each media event
         for (var event in mediaEvents) {
           if (mediaEvents.hasOwnProperty(event)) {
             ReactBrowserEventEmitter_1.trapBubbledEvent(event, mediaEvents[event], domElement);
@@ -17261,8 +15371,6 @@ var ReactDOMFiberComponent = {
       case 'input':
         ReactDOMFiberInput.initWrapperState(domElement, rawProps);
         ReactBrowserEventEmitter_1.trapBubbledEvent('topInvalid', 'invalid', domElement);
-        // For controlled components we always need to ensure we're listening
-        // to onChange. Even if there is no listener.
         ensureListeningTo(rootContainerElement, 'onChange');
         break;
       case 'option':
@@ -17271,15 +15379,11 @@ var ReactDOMFiberComponent = {
       case 'select':
         ReactDOMFiberSelect.initWrapperState(domElement, rawProps);
         ReactBrowserEventEmitter_1.trapBubbledEvent('topInvalid', 'invalid', domElement);
-        // For controlled components we always need to ensure we're listening
-        // to onChange. Even if there is no listener.
         ensureListeningTo(rootContainerElement, 'onChange');
         break;
       case 'textarea':
         ReactDOMFiberTextarea.initWrapperState(domElement, rawProps);
         ReactBrowserEventEmitter_1.trapBubbledEvent('topInvalid', 'invalid', domElement);
-        // For controlled components we always need to ensure we're listening
-        // to onChange. Even if there is no listener.
         ensureListeningTo(rootContainerElement, 'onChange');
         break;
     }
@@ -17292,11 +15396,8 @@ var ReactDOMFiberComponent = {
       for (var i = 0; i < attributes.length; i++) {
         var name = attributes[i].name.toLowerCase();
         switch (name) {
-          // Built-in SSR attribute is whitelisted
           case 'data-reactroot':
             break;
-          // Controlled attributes are not validated
-          // TODO: Only ignore them on controlled tags.
           case 'value':
             break;
           case 'checked':
@@ -17304,8 +15405,6 @@ var ReactDOMFiberComponent = {
           case 'selected':
             break;
           default:
-            // Intentionally use the original name.
-            // See discussion in https://github.com/facebook/react/pull/10676.
             extraAttributeNames.add(attributes[i].name);
         }
       }
@@ -17318,15 +15417,6 @@ var ReactDOMFiberComponent = {
       }
       var nextProp = rawProps[propKey];
       if (propKey === CHILDREN) {
-        // For text content children we compare against textContent. This
-        // might match additional HTML that is hidden when we read it using
-        // textContent. E.g. "foo" will match "f<span>oo</span>" but that still
-        // satisfies our requirement. Our requirement is not to produce perfect
-        // HTML and attributes. Ideally we should preserve structure but it's
-        // ok not to if the visible content is still enough to indicate what
-        // even listeners these nodes might be wired up to.
-        // TODO: Warn if there is more than a single textNode as a child.
-        // TODO: Should we use domElement.firstChild.nodeValue to compare?
         if (typeof nextProp === 'string') {
           if (domElement.textContent !== nextProp) {
             {
@@ -17350,12 +15440,9 @@ var ReactDOMFiberComponent = {
           ensureListeningTo(rootContainerElement, propKey);
         }
       } else {
-        // Validate that the properties correspond to their expected values.
         var serverValue;
         var propertyInfo;
         if (propKey === SUPPRESS_CONTENT_EDITABLE_WARNING ||
-        // Controlled attributes are not validated
-        // TODO: Only ignore them on controlled tags.
         propKey === 'value' || propKey === 'checked' || propKey === 'selected') {
           // Noop
         } else if (propKey === DANGEROUSLY_SET_INNER_HTML) {
@@ -17366,7 +15453,6 @@ var ReactDOMFiberComponent = {
             warnForPropDifference(propKey, serverHTML, expectedHTML);
           }
         } else if (propKey === STYLE) {
-          // $FlowFixMe - Should be inferred as not undefined.
           extraAttributeNames['delete'](propKey);
           var expectedStyle = CSSPropertyOperations_1.createDangerousStringForStyles(nextProp);
           serverValue = domElement.getAttribute('style');
@@ -17374,7 +15460,6 @@ var ReactDOMFiberComponent = {
             warnForPropDifference(propKey, serverValue, expectedStyle);
           }
         } else if (isCustomComponentTag) {
-          // $FlowFixMe - Should be inferred as not undefined.
           extraAttributeNames['delete'](propKey.toLowerCase());
           serverValue = DOMPropertyOperations_1.getValueForAttribute(domElement, propKey, nextProp);
 
@@ -17383,7 +15468,6 @@ var ReactDOMFiberComponent = {
           }
         } else if (DOMProperty_1.shouldSetAttribute(propKey, nextProp)) {
           if (propertyInfo = DOMProperty_1.getPropertyInfo(propKey)) {
-            // $FlowFixMe - Should be inferred as not undefined.
             extraAttributeNames['delete'](propertyInfo.attributeName);
             serverValue = DOMPropertyOperations_1.getValueForProperty(domElement, propKey, nextProp);
           } else {
@@ -17392,10 +15476,8 @@ var ReactDOMFiberComponent = {
               ownNamespace = getIntrinsicNamespace$1(tag);
             }
             if (ownNamespace === HTML_NAMESPACE$1) {
-              // $FlowFixMe - Should be inferred as not undefined.
               extraAttributeNames['delete'](propKey.toLowerCase());
             } else {
-              // $FlowFixMe - Should be inferred as not undefined.
               extraAttributeNames['delete'](propKey);
             }
             serverValue = DOMPropertyOperations_1.getValueForAttribute(domElement, propKey, nextProp);
@@ -17409,37 +15491,25 @@ var ReactDOMFiberComponent = {
     }
 
     {
-      // $FlowFixMe - Should be inferred as not undefined.
       if (extraAttributeNames.size > 0) {
-        // $FlowFixMe - Should be inferred as not undefined.
         warnForExtraAttributes(extraAttributeNames);
       }
     }
 
     switch (tag) {
       case 'input':
-        // TODO: Make sure we check if this is still unmounted or do any clean
-        // up necessary since we never stop tracking anymore.
         inputValueTracking_1.track(domElement);
         ReactDOMFiberInput.postMountWrapper(domElement, rawProps);
         break;
       case 'textarea':
-        // TODO: Make sure we check if this is still unmounted or do any clean
-        // up necessary since we never stop tracking anymore.
         inputValueTracking_1.track(domElement);
         ReactDOMFiberTextarea.postMountWrapper(domElement, rawProps);
         break;
       case 'select':
       case 'option':
-        // For input and textarea we current always set the value property at
-        // post mount to force it to diverge from attributes. However, for
-        // option and select we don't quite do the same thing and select
-        // is not resilient to the DOM state changing so we don't do that here.
-        // TODO: Consider not doing this for input and textarea.
         break;
       default:
         if (typeof rawProps.onClick === 'function') {
-          // TODO: This cast may not be sound for SVG, MathML or custom elements.
           trapClickOnNonInteractiveElement(domElement);
         }
         break;
@@ -17486,10 +15556,6 @@ var ReactDOMFiberComponent = {
   warnForInsertedHydratedText: function (parentNode, text) {
     {
       if (text === '') {
-        // We expect to insert empty text nodes since they're not represented in
-        // the HTML.
-        // TODO: Remove this special case if we can just avoid inserting empty
-        // text nodes.
         return;
       }
       if (didWarnInvalidHydration) {
@@ -17516,13 +15582,6 @@ var ReactDOMFiberComponent = {
 
 var ReactDOMFiberComponent_1 = ReactDOMFiberComponent;
 
-// This is a built-in polyfill for requestIdleCallback. It works by scheduling
-// a requestAnimationFrame, storing the time for the start of the frame, then
-// scheduling a postMessage which gets scheduled after paint. Within the
-// postMessage handler do as much work as possible until time + frame rate.
-// By separating the idle call into a separate event tick we ensure that
-// layout, paint and other browser work is counted against the available time.
-// The frame rate is dynamically adjusted.
 
 
 
@@ -17534,7 +15593,6 @@ var ReactDOMFiberComponent_1 = ReactDOMFiberComponent;
   }
 }
 
-// TODO: There's no way to cancel, because Fiber doesn't atm.
 var rIC = void 0;
 
 if (!ExecutionEnvironment.canUseDOM) {
@@ -17549,7 +15607,6 @@ if (!ExecutionEnvironment.canUseDOM) {
     return 0;
   };
 } else if (typeof requestIdleCallback !== 'function') {
-  // Polyfill requestIdleCallback.
 
   var scheduledRAFCallback = null;
   var scheduledRICCallback = null;
@@ -17558,24 +15615,17 @@ if (!ExecutionEnvironment.canUseDOM) {
   var isAnimationFrameScheduled = false;
 
   var frameDeadline = 0;
-  // We start out assuming that we run at 30fps but then the heuristic tracking
-  // will adjust this value to a faster fps if we get more frequent animation
-  // frames.
   var previousFrameTime = 33;
   var activeFrameTime = 33;
 
   var frameDeadlineObject = {
     timeRemaining: typeof performance === 'object' && typeof performance.now === 'function' ? function () {
-      // We assume that if we have a performance timer that the rAF callback
-      // gets a performance timer value. Not sure if this is always true.
       return frameDeadline - performance.now();
     } : function () {
-      // As a fallback we use Date.now.
       return frameDeadline - Date.now();
     }
   };
 
-  // We use the postMessage trick to defer idle work until after the repaint.
   var messageKey = '__reactIdleCallback$' + Math.random().toString(36).slice(2);
   var idleTick = function (event) {
     if (event.source !== window || event.data !== messageKey) {
@@ -17588,8 +15638,6 @@ if (!ExecutionEnvironment.canUseDOM) {
       callback(frameDeadlineObject);
     }
   };
-  // Assumes that we have addEventListener in this environment. Might need
-  // something better for old IE.
   window.addEventListener('message', idleTick, false);
 
   var animationTick = function (rafTime) {
@@ -17597,17 +15645,8 @@ if (!ExecutionEnvironment.canUseDOM) {
     var nextFrameTime = rafTime - frameDeadline + activeFrameTime;
     if (nextFrameTime < activeFrameTime && previousFrameTime < activeFrameTime) {
       if (nextFrameTime < 8) {
-        // Defensive coding. We don't support higher frame rates than 120hz.
-        // If we get lower than that, it is probably a bug.
         nextFrameTime = 8;
       }
-      // If one frame goes long, then the next one can be short to catch up.
-      // If two frames are short in a row, then that's an indication that we
-      // actually have a higher frame rate than what we're currently optimizing.
-      // We adjust our heuristic dynamically accordingly. For example, if we're
-      // running on 120hz display or 90hz VR display.
-      // Take the max of the two in case one of them was an anomaly due to
-      // missed frame deadlines.
       activeFrameTime = nextFrameTime < previousFrameTime ? previousFrameTime : nextFrameTime;
     } else {
       previousFrameTime = nextFrameTime;
@@ -17625,14 +15664,8 @@ if (!ExecutionEnvironment.canUseDOM) {
   };
 
   rIC = function (callback) {
-    // This assumes that we only schedule one callback at a time because that's
-    // how Fiber uses it.
     scheduledRICCallback = callback;
     if (!isAnimationFrameScheduled) {
-      // If rAF didn't already schedule one, we need to schedule a frame.
-      // TODO: If this rAF doesn't materialize because the browser throttles, we
-      // might want to still have setTimeout trigger rIC as a backup to ensure
-      // that we keep performing work.
       isAnimationFrameScheduled = true;
       requestAnimationFrame(animationTick);
     }
@@ -17648,15 +15681,6 @@ var ReactDOMFrameScheduling = {
 	rIC: rIC_1
 };
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactFeatureFlags
- * 
- */
 
 var ReactFeatureFlags = {
   enableAsyncSubtreeAPI: true
@@ -17664,15 +15688,6 @@ var ReactFeatureFlags = {
 
 var ReactFeatureFlags_1 = ReactFeatureFlags;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactPriorityLevel
- * 
- */
 
 var ReactPriorityLevel = {
   NoWork: 0, // No work is pending.
@@ -17696,29 +15711,12 @@ var HostRoot$2 = ReactTypeOfWork.HostRoot;
   var warning$19 = require$$0;
 }
 
-// Callbacks are not validated until invocation
-
-
-// Singly linked-list of updates. When an update is scheduled, it is added to
-// the queue of the current fiber and the work-in-progress fiber. The two queues
-// are separate but they share a persistent structure.
-//
-// During reconciliation, updates are removed from the work-in-progress fiber,
-// but they remain on the current fiber. That ensures that if a work-in-progress
-// is aborted, the aborted updates are recovered by cloning from current.
-//
-// The work-in-progress queue is always a subset of the current queue.
-//
-// When the tree is committed, the work-in-progress becomes the current.
 
 
 var _queue1 = void 0;
 var _queue2 = void 0;
 
 function comparePriority(a, b) {
-  // When comparing update priorities, treat sync and Task work as equal.
-  // TODO: Could we avoid the need for this by always coercing sync priority
-  // to Task when scheduling an update?
   if ((a === TaskPriority || a === SynchronousPriority) && (b === TaskPriority || b === SynchronousPriority)) {
     return 0;
   }
@@ -17760,7 +15758,6 @@ function insertUpdateIntoQueue(queue, update, insertAfter, insertBefore) {
   if (insertAfter !== null) {
     insertAfter.next = update;
   } else {
-    // This is the first item in the queue.
     update.next = queue.first;
     queue.first = update;
   }
@@ -17768,20 +15765,15 @@ function insertUpdateIntoQueue(queue, update, insertAfter, insertBefore) {
   if (insertBefore !== null) {
     update.next = insertBefore;
   } else {
-    // This is the last item in the queue.
     queue.last = update;
   }
 }
 
-// Returns the update after which the incoming update should be inserted into
-// the queue, or null if it should be inserted at beginning.
 function findInsertionPosition(queue, update) {
   var priorityLevel = update.priorityLevel;
   var insertAfter = null;
   var insertBefore = null;
   if (queue.last !== null && comparePriority(queue.last.priorityLevel, priorityLevel) <= 0) {
-    // Fast path for the common case where the update should be inserted at
-    // the end of the queue.
     insertAfter = queue.last;
   } else {
     insertBefore = queue.first;
@@ -17812,77 +15804,34 @@ function ensureUpdateQueues(fiber) {
   }
 
   _queue1 = queue1;
-  // Return null if there is no alternate queue, or if its queue is the same.
   _queue2 = queue2 !== queue1 ? queue2 : null;
 }
 
-// The work-in-progress queue is a subset of the current queue (if it exists).
-// We need to insert the incoming update into both lists. However, it's possible
-// that the correct position in one list will be different from the position in
-// the other. Consider the following case:
-//
-//     Current:             3-5-6
-//     Work-in-progress:        6
-//
-// Then we receive an update with priority 4 and insert it into each list:
-//
-//     Current:             3-4-5-6
-//     Work-in-progress:        4-6
-//
-// In the current queue, the new update's `next` pointer points to the update
-// with priority 5. But in the work-in-progress queue, the pointer points to the
-// update with priority 6. Because these two queues share the same persistent
-// data structure, this won't do. (This can only happen when the incoming update
-// has higher priority than all the updates in the work-in-progress queue.)
-//
-// To solve this, in the case where the incoming update needs to be inserted
-// into two different positions, we'll make a clone of the update and insert
-// each copy into a separate queue. This forks the list while maintaining a
-// persistent structure, because the update that is added to the work-in-progress
-// is always added to the front of the list.
-//
-// However, if incoming update is inserted into the same position of both lists,
-// we shouldn't make a copy.
-//
-// If the update is cloned, it returns the cloned update.
 function insertUpdate(fiber, update) {
-  // We'll have at least one and at most two distinct update queues.
   ensureUpdateQueues(fiber);
   var queue1 = _queue1;
   var queue2 = _queue2;
 
-  // Warn if an update is scheduled from inside an updater function.
   {
     if (queue1.isProcessing || queue2 !== null && queue2.isProcessing) {
       warning$19(false, 'An update (setState, replaceState, or forceUpdate) was scheduled ' + 'from inside an update function. Update functions should be pure, ' + 'with zero side-effects. Consider using componentDidUpdate or a ' + 'callback.');
     }
   }
 
-  // Find the insertion position in the first queue.
   var insertAfter1 = findInsertionPosition(queue1, update);
   var insertBefore1 = insertAfter1 !== null ? insertAfter1.next : queue1.first;
 
   if (queue2 === null) {
-    // If there's no alternate queue, there's nothing else to do but insert.
     insertUpdateIntoQueue(queue1, update, insertAfter1, insertBefore1);
     return null;
   }
 
-  // If there is an alternate queue, find the insertion position.
   var insertAfter2 = findInsertionPosition(queue2, update);
   var insertBefore2 = insertAfter2 !== null ? insertAfter2.next : queue2.first;
 
-  // Now we can insert into the first queue. This must come after finding both
-  // insertion positions because it mutates the list.
   insertUpdateIntoQueue(queue1, update, insertAfter1, insertBefore1);
 
-  // See if the insertion positions are equal. Be careful to only compare
-  // non-null values.
   if (insertBefore1 === insertBefore2 && insertBefore1 !== null || insertAfter1 === insertAfter2 && insertAfter1 !== null) {
-    // The insertion positions are the same, so when we inserted into the first
-    // queue, it also inserted into the alternate. All we need to do is update
-    // the alternate queue's `first` and `last` pointers, in case they
-    // have changed.
     if (insertAfter2 === null) {
       queue2.first = update;
     }
@@ -17891,8 +15840,6 @@ function insertUpdate(fiber, update) {
     }
     return null;
   } else {
-    // The insertion positions are different, so we need to clone the update and
-    // insert the clone into the alternate queue.
     var update2 = cloneUpdate(update);
     insertUpdateIntoQueue(queue2, update2, insertAfter2, insertBefore2);
     return update2;
@@ -17968,13 +15915,9 @@ function addTopLevelUpdate$1(fiber, partialState, callback, priorityLevel) {
   var update2 = insertUpdate(fiber, update);
 
   if (isTopLevelUnmount) {
-    // TODO: Redesign the top-level mount/update/unmount API to avoid this
-    // special case.
     var queue1 = _queue1;
     var queue2 = _queue2;
 
-    // Drop all updates that are lower-priority, so that the tree is not
-    // remounted. We need to do this for both queues.
     if (queue1 !== null && update.next !== null) {
       update.next = null;
       queue1.last = update;
@@ -17999,37 +15942,26 @@ function getStateFromUpdate(update, instance, prevState, props) {
 
 function beginUpdateQueue(current, workInProgress, queue, instance, prevState, props, priorityLevel) {
   if (current !== null && current.updateQueue === queue) {
-    // We need to create a work-in-progress queue, by cloning the current queue.
     var currentQueue = queue;
     queue = workInProgress.updateQueue = {
       first: currentQueue.first,
       last: currentQueue.last,
-      // These fields are no longer valid because they were already committed.
-      // Reset them.
       callbackList: null,
       hasForceUpdate: false
     };
   }
 
   {
-    // Set this flag so we can warn if setState is called inside the update
-    // function of another setState.
     queue.isProcessing = true;
   }
 
-  // Calculate these using the the existing values as a base.
   var callbackList = queue.callbackList;
   var hasForceUpdate = queue.hasForceUpdate;
 
-  // Applies updates with matching priority to the previous state to create
-  // a new state object.
   var state = prevState;
   var dontMutatePrevState = true;
   var update = queue.first;
   while (update !== null && comparePriority(update.priorityLevel, priorityLevel) <= 0) {
-    // Remove each update from the queue right before it is processed. That way
-    // if setState is called from inside an updater function, the new update
-    // will be inserted in the correct position.
     queue.first = update.next;
     if (queue.first === null) {
       queue.last = null;
@@ -18053,8 +15985,6 @@ function beginUpdateQueue(current, workInProgress, queue, instance, prevState, p
     if (update.isForced) {
       hasForceUpdate = true;
     }
-    // Second condition ignores top-level unmount callbacks if they are not the
-    // last update in the queue, since a subsequent update will cause a remount.
     if (update.callback !== null && !(update.isTopLevelUnmount && update.next !== null)) {
       callbackList = callbackList !== null ? callbackList : [];
       callbackList.push(update.callback);
@@ -18067,12 +15997,10 @@ function beginUpdateQueue(current, workInProgress, queue, instance, prevState, p
   queue.hasForceUpdate = hasForceUpdate;
 
   if (queue.first === null && callbackList === null && !hasForceUpdate) {
-    // The queue is empty and there are no callbacks. We can reset it.
     workInProgress.updateQueue = null;
   }
 
   {
-    // No longer processing.
     queue.isProcessing = false;
   }
 
@@ -18086,7 +16014,6 @@ function commitCallbacks(finishedWork, queue, context) {
     return;
   }
 
-  // Set the list to null to make sure they don't get called more than once.
   queue.callbackList = null;
 
   for (var i = 0; i < callbackList.length; i++) {
@@ -18186,16 +16113,6 @@ var ReactFiberStack = {
 	reset: reset
 };
 
-// Trust the developer to only use this with a true check
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactDebugFiberPerf
- * 
- */
 
 var ReactDebugFiberPerf = null;
 
@@ -18210,31 +16127,18 @@ var ReactDebugFiberPerf = null;
 
   var getComponentName$5 = getComponentName_1;
 
-  // Prefix measurements so that it's possible to filter them.
-  // Longer prefixes are hard to read in DevTools.
   var reactEmoji = '\u269B';
   var warningEmoji = '\u26D4';
   var supportsUserTiming = typeof performance !== 'undefined' && typeof performance.mark === 'function' && typeof performance.clearMarks === 'function' && typeof performance.measure === 'function' && typeof performance.clearMeasures === 'function';
 
-  // Keep track of current fiber so that we know the path to unwind on pause.
-  // TODO: this looks the same as nextUnitOfWork in scheduler. Can we unify them?
   var currentFiber = null;
-  // If we're in the middle of user code, which fiber and method is it?
-  // Reusing `currentFiber` would be confusing for this because user code fiber
-  // can change during commit phase too, but we don't need to unwind it (since
-  // lifecycles in the commit phase don't resemble a tree).
   var currentPhase = null;
   var currentPhaseFiber = null;
-  // Did lifecycle hook schedule an update? This is often a performance problem,
-  // so we will keep track of it, and include it in the report.
-  // Track commits caused by cascading updates.
   var isCommitting = false;
   var hasScheduledUpdateInCurrentCommit = false;
   var hasScheduledUpdateInCurrentPhase = false;
   var commitCountInCurrentWorkLoop = 0;
   var effectCountInCurrentCommit = 0;
-  // During commits, we only show a measurement once per method name
-  // to avoid stretch the commit phase with measurement overhead.
   var labelsInCurrentCommit = new Set();
 
   var formatMarkName = function (markName) {
@@ -18261,11 +16165,6 @@ var ReactDebugFiberPerf = null;
     try {
       performance.measure(formattedLabel, formattedMarkName);
     } catch (err) {}
-    // If previous mark was missing for some reason, this will throw.
-    // This could only happen if React crashed in an unexpected place earlier.
-    // Don't pile on with more errors.
-
-    // Clear marks immediately to avoid growing buffer.
     performance.clearMarks(formattedMarkName);
     performance.clearMeasures(formattedLabel);
   };
@@ -18276,10 +16175,8 @@ var ReactDebugFiberPerf = null;
 
   var getFiberLabel = function (componentName, isMounted, phase) {
     if (phase === null) {
-      // These are composite component total time measurements.
       return componentName + ' [' + (isMounted ? 'update' : 'mount') + ']';
     } else {
-      // Composite component methods.
       return componentName + '.' + phase;
     }
   };
@@ -18291,9 +16188,6 @@ var ReactDebugFiberPerf = null;
     var label = getFiberLabel(componentName, isMounted, phase);
 
     if (isCommitting && labelsInCurrentCommit.has(label)) {
-      // During the commit phase, we don't show duplicate labels because
-      // there is a fixed overhead for every measurement, and we don't
-      // want to stretch the commit phase beyond necessary.
       return false;
     }
     labelsInCurrentCommit.add(label);
@@ -18322,8 +16216,6 @@ var ReactDebugFiberPerf = null;
   };
 
   var shouldIgnoreFiber = function (fiber) {
-    // Host components should be skipped in the timeline.
-    // We could check typeof fiber.type, but does this work with RN?
     switch (fiber.tag) {
       case HostRoot$4:
       case HostComponent$4:
@@ -18347,8 +16239,6 @@ var ReactDebugFiberPerf = null;
   };
 
   var pauseTimers = function () {
-    // Stops all currently active measurements so that they can be resumed
-    // if we continue in a later deferred loop from the same unit of work.
     var fiber = currentFiber;
     while (fiber) {
       if (fiber._debugIsCurrentlyTiming) {
@@ -18368,7 +16258,6 @@ var ReactDebugFiberPerf = null;
   };
 
   var resumeTimers = function () {
-    // Resumes all measurements that were active during the last deferred loop.
     if (currentFiber !== null) {
       resumeTimersRecursively(currentFiber);
     }
@@ -18390,7 +16279,6 @@ var ReactDebugFiberPerf = null;
       if (!supportsUserTiming || shouldIgnoreFiber(fiber)) {
         return;
       }
-      // If we pause, this is the fiber to unwind from.
       currentFiber = fiber;
       if (!beginFiberMark(fiber, null)) {
         return;
@@ -18401,8 +16289,6 @@ var ReactDebugFiberPerf = null;
       if (!supportsUserTiming || shouldIgnoreFiber(fiber)) {
         return;
       }
-      // Remember we shouldn't complete measurement for this fiber.
-      // Otherwise flamechart will be deep even for small updates.
       fiber._debugIsCurrentlyTiming = false;
       clearFiberMark(fiber, null);
     },
@@ -18410,7 +16296,6 @@ var ReactDebugFiberPerf = null;
       if (!supportsUserTiming || shouldIgnoreFiber(fiber)) {
         return;
       }
-      // If we pause, its parent is the fiber to unwind from.
       currentFiber = fiber['return'];
       if (!fiber._debugIsCurrentlyTiming) {
         return;
@@ -18422,7 +16307,6 @@ var ReactDebugFiberPerf = null;
       if (!supportsUserTiming || shouldIgnoreFiber(fiber)) {
         return;
       }
-      // If we pause, its parent is the fiber to unwind from.
       currentFiber = fiber['return'];
       if (!fiber._debugIsCurrentlyTiming) {
         return;
@@ -18458,10 +16342,7 @@ var ReactDebugFiberPerf = null;
         return;
       }
       commitCountInCurrentWorkLoop = 0;
-      // This is top level call.
-      // Any other measurements are performed within.
       beginMark('(React Tree Reconciliation)');
-      // Resume any measurements that were in progress during the last loop.
       resumeTimers();
     },
     stopWorkLoopTimer: function () {
@@ -18470,7 +16351,6 @@ var ReactDebugFiberPerf = null;
       }
       var warning = commitCountInCurrentWorkLoop > 1 ? 'There were cascading updates' : null;
       commitCountInCurrentWorkLoop = 0;
-      // Pause any measurements until the next loop.
       pauseTimers();
       endMark('(React Tree Reconciliation)', '(React Tree Reconciliation)', warning);
     },
@@ -18557,22 +16437,13 @@ var push = ReactFiberStack.push;
   var warnedAboutMissingGetChildContext = {};
 }
 
-// A cursor to the current merged context object on the stack.
 var contextStackCursor = createCursor(emptyObject);
-// A cursor to a boolean indicating whether the context has changed.
 var didPerformWorkStackCursor = createCursor(false);
-// Keep track of the previous context object that was on the stack.
-// We use this to get access to the parent context after we have already
-// pushed the next context provider, and now need to merge their contexts.
 var previousContext = emptyObject;
 
 function getUnmaskedContext(workInProgress) {
   var hasOwnContext = isContextProvider$1(workInProgress);
   if (hasOwnContext) {
-    // If the fiber is a context provider itself, when we read its context
-    // we have already pushed its own child context on the stack. A context
-    // provider should not "see" its own child context. Therefore we read the
-    // previous (parent) context instead for a context provider.
     return previousContext;
   }
   return contextStackCursor.current;
@@ -18593,9 +16464,6 @@ var getMaskedContext = function (workInProgress, unmaskedContext) {
     return emptyObject;
   }
 
-  // Avoid recreating masked context unless unmasked context has changed.
-  // Failing to do this will result in unnecessary calls to componentWillReceiveProps.
-  // This may trigger infinite loops if componentWillReceiveProps calls setState.
   var instance = workInProgress.stateNode;
   if (instance && instance.__reactInternalMemoizedUnmaskedChildContext === unmaskedContext) {
     return instance.__reactInternalMemoizedMaskedChildContext;
@@ -18613,8 +16481,6 @@ var getMaskedContext = function (workInProgress, unmaskedContext) {
     ReactDebugCurrentFiber$2.resetCurrentFiber();
   }
 
-  // Cache unmasked context so we can avoid recreating masked context unless necessary.
-  // Context is created before the class component is instantiated so check for instance.
   if (instance) {
     cacheContext(workInProgress, unmaskedContext, context);
   }
@@ -18662,8 +16528,6 @@ function processChildContext$1(fiber, parentContext, isReconciling) {
   var instance = fiber.stateNode;
   var childContextTypes = fiber.type.childContextTypes;
 
-  // TODO (bvaughn) Replace this behavior with an invariant() in the future.
-  // It has only been added in Fiber to match the (unintentional) behavior in Stack.
   if (typeof instance.getChildContext !== 'function') {
     {
       var componentName = getComponentName_1(fiber) || 'Unknown';
@@ -18689,11 +16553,6 @@ function processChildContext$1(fiber, parentContext, isReconciling) {
   }
   {
     var name = getComponentName_1(fiber) || 'Unknown';
-    // We can only provide accurate element stacks if we pass work-in-progress tree
-    // during the begin or complete phase. However currently this function is also
-    // called from unstable_renderSubtree legacy implementation. In this case it unsafe to
-    // assume anything about the given fiber. We won't pass it down if we aren't sure.
-    // TODO: remove this hack when we delete unstable_renderSubtree in Fiber.
     var workInProgress = isReconciling ? fiber : null;
     ReactDebugCurrentFiber$2.setCurrentFiber(workInProgress, null);
     checkPropTypes$1(childContextTypes, childContext, 'child context', name, ReactDebugCurrentFiber$2.getCurrentFiberStackAddendum);
@@ -18710,13 +16569,8 @@ var pushContextProvider = function (workInProgress) {
   }
 
   var instance = workInProgress.stateNode;
-  // We push the context as early as possible to ensure stack integrity.
-  // If the instance does not exist yet, we will push null at first,
-  // and replace it on the stack later when invalidating the context.
   var memoizedMergedChildContext = instance && instance.__reactInternalMemoizedMergedChildContext || emptyObject;
 
-  // Remember the parent context so we can merge with it later.
-  // Inherit the parent's did-perform-work value to avoid inadvertantly blocking updates.
   previousContext = contextStackCursor.current;
   push(contextStackCursor, memoizedMergedChildContext, workInProgress);
   push(didPerformWorkStackCursor, didPerformWorkStackCursor.current, workInProgress);
@@ -18729,17 +16583,11 @@ var invalidateContextProvider = function (workInProgress, didChange) {
   !instance ? invariant(false, 'Expected to have an instance by this point. This error is likely caused by a bug in React. Please file an issue.') : void 0;
 
   if (didChange) {
-    // Merge parent and own context.
-    // Skip this if we're not updating due to sCU.
-    // This avoids unnecessarily recomputing memoized values.
     var mergedContext = processChildContext$1(workInProgress, previousContext, true);
     instance.__reactInternalMemoizedMergedChildContext = mergedContext;
 
-    // Replace the old (or empty) context with the new one.
-    // It is important to unwind the context in the reverse order.
     pop(didPerformWorkStackCursor, workInProgress);
     pop(contextStackCursor, workInProgress);
-    // Now push the new context and mark that it has changed.
     push(contextStackCursor, mergedContext, workInProgress);
     push(didPerformWorkStackCursor, didChange, workInProgress);
   } else {
@@ -18755,8 +16603,6 @@ var resetContext = function () {
 };
 
 var findCurrentUnmaskedContext$1 = function (fiber) {
-  // Currently this is only used with renderSubtreeIntoContainer; not sure if it
-  // makes sense elsewhere
   !(isFiberMounted$1(fiber) && fiber.tag === ClassComponent$3) ? invariant(false, 'Expected subtree parent to be a mounted class component. This error is likely caused by a bug in React. Please file an issue.') : void 0;
 
   var node = fiber;
@@ -18788,15 +16634,6 @@ var ReactFiberContext = {
 	findCurrentUnmaskedContext: findCurrentUnmaskedContext$1
 };
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactTypeOfInternalContext
- * 
- */
 
 var ReactTypeOfInternalContext = {
   NoContext: 0,
@@ -18826,18 +16663,13 @@ var NoEffect$1 = ReactTypeOfSideEffect.NoEffect;
   var hasBadMapPolyfill = false;
   try {
     var nonExtensibleObject = Object.preventExtensions({});
-    /* eslint-disable no-new */
     new Map([[nonExtensibleObject, null]]);
     new Set([nonExtensibleObject]);
-    /* eslint-enable no-new */
   } catch (e) {
-    // TODO: Consider warning about bad polyfills
     hasBadMapPolyfill = true;
   }
 }
 
-// A Fiber is work on a Component that needs to be done or was done. There can
-// be more than one per component.
 
 
 {
@@ -18845,13 +16677,11 @@ var NoEffect$1 = ReactTypeOfSideEffect.NoEffect;
 }
 
 function FiberNode(tag, key, internalContextTag) {
-  // Instance
   this.tag = tag;
   this.key = key;
   this.type = null;
   this.stateNode = null;
 
-  // Fiber
   this['return'] = null;
   this.child = null;
   this.sibling = null;
@@ -18866,7 +16696,6 @@ function FiberNode(tag, key, internalContextTag) {
 
   this.internalContextTag = internalContextTag;
 
-  // Effects
   this.effectTag = NoEffect$1;
   this.nextEffect = null;
 
@@ -18888,21 +16717,7 @@ function FiberNode(tag, key, internalContextTag) {
   }
 }
 
-// This is a constructor function, rather than a POJO constructor, still
-// please ensure we do the following:
-// 1) Nobody should add any instance methods on this. Instance methods can be
-//    more difficult to predict when they get optimized and they are almost
-//    never inlined properly in static compilers.
-// 2) Nobody should rely on `instanceof Fiber` for type testing. We should
-//    always know when it is a fiber.
-// 3) We might want to experiment with using numeric keys since they are easier
-//    to optimize in a non-JIT environment.
-// 4) We can easily go from a constructor to a createFiber object literal if that
-//    is faster.
-// 5) It should be easy to port this to a C struct and keep a C implementation
-//    compatible.
 var createFiber = function (tag, key, internalContextTag) {
-  // $FlowFixMe: the shapes are exact here but Flow doesn't like constructors
   return new FiberNode(tag, key, internalContextTag);
 };
 
@@ -18910,21 +16725,14 @@ function shouldConstruct(Component) {
   return !!(Component.prototype && Component.prototype.isReactComponent);
 }
 
-// This is used to create an alternate fiber to do work on.
 var createWorkInProgress = function (current, renderPriority) {
   var workInProgress = current.alternate;
   if (workInProgress === null) {
-    // We use a double buffering pooling technique because we know that we'll
-    // only ever need at most two versions of a tree. We pool the "other" unused
-    // node that we're free to reuse. This is lazily created to avoid allocating
-    // extra objects for things that are never updated. It also allow us to
-    // reclaim the extra memory if needed.
     workInProgress = createFiber(current.tag, current.key, current.internalContextTag);
     workInProgress.type = current.type;
     workInProgress.stateNode = current.stateNode;
 
     {
-      // DEV-only fields
       workInProgress._debugID = current._debugID;
       workInProgress._debugSource = current._debugSource;
       workInProgress._debugOwner = current._debugOwner;
@@ -18933,11 +16741,8 @@ var createWorkInProgress = function (current, renderPriority) {
     workInProgress.alternate = current;
     current.alternate = workInProgress;
   } else {
-    // We already have an alternate.
-    // Reset the effect tag.
     workInProgress.effectTag = NoEffect$1;
 
-    // The effect list is no longer valid.
     workInProgress.nextEffect = null;
     workInProgress.firstEffect = null;
     workInProgress.lastEffect = null;
@@ -18950,10 +16755,6 @@ var createWorkInProgress = function (current, renderPriority) {
   workInProgress.memoizedState = current.memoizedState;
   workInProgress.updateQueue = current.updateQueue;
 
-  // pendingProps is set by the parent during reconciliation.
-  // TODO: Pass this as an argument.
-
-  // These will be overridden during the parent's reconciliation
   workInProgress.sibling = current.sibling;
   workInProgress.index = current.index;
   workInProgress.ref = current.ref;
@@ -18985,8 +16786,6 @@ var createFiberFromElement = function (element, internalContextTag, priorityLeve
 };
 
 var createFiberFromFragment = function (elements, internalContextTag, priorityLevel) {
-  // TODO: Consider supporting keyed fragments. Technically, we accidentally
-  // support that in the existing React.
   var fiber = createFiber(Fragment$1, null, internalContextTag);
   fiber.pendingProps = elements;
   fiber.pendingWorkPriority = priorityLevel;
@@ -19009,12 +16808,6 @@ function createFiberFromElementType(type, key, internalContextTag, debugOwner) {
     fiber = createFiber(HostComponent$5, key, internalContextTag);
     fiber.type = type;
   } else if (typeof type === 'object' && type !== null && typeof type.tag === 'number') {
-    // Currently assumed to be a continuation and therefore is a fiber already.
-    // TODO: The yield system is currently broken for updates in some cases.
-    // The reified yield stores a fiber, but we don't know which fiber that is;
-    // the current or a workInProgress? When the continuation gets rendered here
-    // we don't know if we can reuse that fiber or if we need to clone it.
-    // There is probably a clever way to restructure this.
     fiber = type;
   } else {
     var info = '';
@@ -19085,8 +16878,6 @@ var ReactFiber = {
 var createHostRootFiber = ReactFiber.createHostRootFiber;
 
 var createFiberRoot$1 = function (containerInfo) {
-  // Cyclic construction. This cheats the type system right now because
-  // stateNode is any.
   var uninitializedFiber = createHostRootFiber();
   var root = {
     current: uninitializedFiber,
@@ -19113,8 +16904,6 @@ var showDialog = defaultShowDialog;
 function logCapturedError$1(capturedError) {
   var logError = showDialog(capturedError);
 
-  // Allow injected showDialog() to prevent default console.error logging.
-  // This enables renderers like ReactNative to better manage redbox behavior.
   if (logError === false) {
     return;
   }
@@ -19131,7 +16920,6 @@ function logCapturedError$1(capturedError) {
     var componentNameMessage = componentName ? 'The above error occurred in the <' + componentName + '> component:' : 'The above error occurred in one of your React components:';
 
     var errorBoundaryMessage = void 0;
-    // errorBoundaryFound check is sufficient; errorBoundaryName check is to satisfy Flow.
     if (errorBoundaryFound && errorBoundaryName) {
       if (willRetry) {
         errorBoundaryMessage = 'React will try to recreate this component tree from scratch ' + ('using the error boundary you provided, ' + errorBoundaryName + '.');
@@ -19143,19 +16931,11 @@ function logCapturedError$1(capturedError) {
     }
     var combinedMessage = '' + componentNameMessage + componentStack + '\n\n' + ('' + errorBoundaryMessage);
 
-    // In development, we provide our own message with just the component stack.
-    // We don't include the original error message and JS stack because the browser
-    // has already printed it. Even if the application swallows the error, it is still
-    // displayed by the browser thanks to the DEV-only fake event trick in ReactErrorUtils.
     console.error(combinedMessage);
   }
 }
 
 var injection$1 = {
-  /**
-   * Display custom dialog for lifecycle errors.
-   * Return false to prevent default behavior of logging to console.error.
-   */
   injectDialog: function (fn) {
     !(showDialog === defaultShowDialog) ? invariant(false, 'The custom dialog was already injected.') : void 0;
     !(typeof fn === 'function') ? invariant(false, 'Injected showDialog() must be a function.') : void 0;
@@ -19170,18 +16950,6 @@ var ReactFiberErrorLogger = {
 	logCapturedError: logCapturedError_1
 };
 
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactCoroutine
- * 
- */
-
-// The Symbol used to tag the special React types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
 var REACT_COROUTINE_TYPE$1;
 var REACT_YIELD_TYPE$1;
 if (typeof Symbol === 'function' && Symbol['for']) {
@@ -19196,7 +16964,6 @@ var createCoroutine = function (children, handler, props) {
   var key = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
   var coroutine = {
-    // This tag allow us to uniquely identify this as a React Coroutine
     $$typeof: REACT_COROUTINE_TYPE$1,
     key: key == null ? null : '' + key,
     children: children,
@@ -19205,7 +16972,6 @@ var createCoroutine = function (children, handler, props) {
   };
 
   {
-    // TODO: Add _store property for marking this as validated.
     if (Object.freeze) {
       Object.freeze(coroutine.props);
       Object.freeze(coroutine);
@@ -19217,13 +16983,11 @@ var createCoroutine = function (children, handler, props) {
 
 var createYield = function (value) {
   var yieldNode = {
-    // This tag allow us to uniquely identify this as a React Yield
     $$typeof: REACT_YIELD_TYPE$1,
     value: value
   };
 
   {
-    // TODO: Add _store property for marking this as validated.
     if (Object.freeze) {
       Object.freeze(yieldNode);
     }
@@ -19232,16 +16996,10 @@ var createYield = function (value) {
   return yieldNode;
 };
 
-/**
- * Verifies the object is a coroutine object.
- */
 var isCoroutine = function (object) {
   return typeof object === 'object' && object !== null && object.$$typeof === REACT_COROUTINE_TYPE$1;
 };
 
-/**
- * Verifies the object is a yield object.
- */
 var isYield = function (object) {
   return typeof object === 'object' && object !== null && object.$$typeof === REACT_YIELD_TYPE$1;
 };
@@ -19258,27 +17016,13 @@ var ReactCoroutine = {
 	REACT_COROUTINE_TYPE: REACT_COROUTINE_TYPE_1
 };
 
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule ReactPortal
- * 
- */
-
-// The Symbol used to tag the special React types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
 var REACT_PORTAL_TYPE$1 = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.portal') || 0xeaca;
 
 var createPortal$1 = function (children, containerInfo,
-// TODO: figure out the API for cross-renderer implementation.
 implementation) {
   var key = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
   return {
-    // This tag allow us to uniquely identify this as a React Portal
     $$typeof: REACT_PORTAL_TYPE$1,
     key: key == null ? null : '' + key,
     children: children,
@@ -19287,9 +17031,6 @@ implementation) {
   };
 };
 
-/**
- * Verifies the object is a portal object.
- */
 var isPortal = function (object) {
   return typeof object === 'object' && object !== null && object.$$typeof === REACT_PORTAL_TYPE$1;
 };
@@ -19320,11 +17061,6 @@ var REACT_PORTAL_TYPE = ReactPortal.REACT_PORTAL_TYPE;
 
   var warning$24 = require$$0;
   var didWarnAboutMaps = false;
-  /**
-   * Warn if there's no key explicitly set on dynamic arrays of children or
-   * object keys are not valid. This allows us to keep track of children between
-   * updates.
-   */
   var ownerHasKeyUseWarning = {};
 
   var warnForMissingKey = function (child) {
@@ -19372,8 +17108,6 @@ var Deletion$1 = ReactTypeOfSideEffect.Deletion;
 
 var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
 var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
-// The Symbol used to tag the ReactElement type. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
 var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol['for']('react.element') || 0xeac7;
 
 function getIteratorFn(maybeIterable) {
@@ -19399,13 +17133,11 @@ function coerceRef(current, element) {
           !(ownerFiber.tag === ClassComponent$7) ? invariant(false, 'Stateless function components cannot have refs.') : void 0;
           inst = ownerFiber.stateNode;
         } else {
-          // Stack
           inst = owner.getPublicInstance();
         }
       }
       !inst ? invariant(false, 'Missing owner for string ref %s. This error is likely caused by a bug in React. Please file an issue.', mixedRef) : void 0;
       var stringRef = '' + mixedRef;
-      // Check if previous string ref matches new string ref
       if (current !== null && current.ref !== null && current.ref._stringRef === stringRef) {
         return current.ref;
       }
@@ -19441,10 +17173,6 @@ function warnOnFunctionType() {
   warning$24(false, 'Functions are not valid as a React child. This may happen if ' + 'you return a Component instead of <Component /> from render. ' + 'Or maybe you meant to call this function rather than return it.%s', getCurrentFiberStackAddendum$5() || '');
 }
 
-// This wrapper function exists because I expect to clone the code in each path
-// to be able to optimize each path individually by branching early. This needs
-// a compiler or we can do it manually. Helpers that don't need this branching
-// live outside of this function.
 function ChildReconciler(shouldClone, shouldTrackSideEffects) {
   function deleteChild(returnFiber, childToDelete) {
     if (!shouldTrackSideEffects) {
@@ -19452,19 +17180,11 @@ function ChildReconciler(shouldClone, shouldTrackSideEffects) {
       return;
     }
     if (!shouldClone) {
-      // When we're reconciling in place we have a work in progress copy. We
-      // actually want the current copy. If there is no current copy, then we
-      // don't need to track deletion side-effects.
       if (childToDelete.alternate === null) {
         return;
       }
       childToDelete = childToDelete.alternate;
     }
-    // Deletions are added in reversed order so we add it to the front.
-    // At this point, the return fiber's effect list is empty except for
-    // deletions, so we can just append the deletion to the list. The remaining
-    // effects aren't added until the complete phase. Once we implement
-    // resuming, this may not be true.
     var last = returnFiber.lastEffect;
     if (last !== null) {
       last.nextEffect = childToDelete;
@@ -19482,8 +17202,6 @@ function ChildReconciler(shouldClone, shouldTrackSideEffects) {
       return null;
     }
 
-    // TODO: For the shouldClone case, this could be micro-optimized a bit by
-    // assuming that after the first child we've already added everything.
     var childToDelete = currentFirstChild;
     while (childToDelete !== null) {
       deleteChild(returnFiber, childToDelete);
@@ -19493,8 +17211,6 @@ function ChildReconciler(shouldClone, shouldTrackSideEffects) {
   }
 
   function mapRemainingChildren(returnFiber, currentFirstChild) {
-    // Add the remaining children to a temporary map so that we can find them by
-    // keys quickly. Implicit (null) keys get added to this set with their index
     var existingChildren = new Map();
 
     var existingChild = currentFirstChild;
@@ -24727,28 +22443,6 @@ findDOMNode._injectStack = function (fn) {
 
 var findDOMNode_1 = findDOMNode;
 
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule lowPriorityWarning
- */
-
-/**
- * Forked from fbjs/warning:
- * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
- *
- * Only change is we use console.warn instead of console.error,
- * and do nothing when 'console' is not supported.
- * This really simplifies the code.
- * ---
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
 
 var lowPriorityWarning$1 = function () {};
 
@@ -24766,9 +22460,6 @@ var lowPriorityWarning$1 = function () {};
       console.warn(message);
     }
     try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
       throw new Error(message);
     } catch (x) {}
   };
@@ -24797,34 +22488,16 @@ var validateDOMNesting$1 = emptyFunction;
   var _require$13 = ReactDebugCurrentFiber_1,
       getCurrentFiberStackAddendum$6 = _require$13.getCurrentFiberStackAddendum;
 
-  // This validation code was written based on the HTML5 parsing spec:
-  // https://html.spec.whatwg.org/multipage/syntax.html#has-an-element-in-scope
-  //
-  // Note: this does not catch all invalid nesting, nor does it try to (as it's
-  // not clear what practical benefit doing so provides); instead, we warn only
-  // for cases where the parser will give a parse tree differing from what React
-  // intended. For example, <b><div></div></b> is invalid but we don't warn
-  // because it still parses correctly; we do warn for other cases like nested
-  // <p> tags where the beginning of the second element implicitly closes the
-  // first, causing a confusing mess.
-
-  // https://html.spec.whatwg.org/multipage/syntax.html#special
 
 
   var specialTags = ['address', 'applet', 'area', 'article', 'aside', 'base', 'basefont', 'bgsound', 'blockquote', 'body', 'br', 'button', 'caption', 'center', 'col', 'colgroup', 'dd', 'details', 'dir', 'div', 'dl', 'dt', 'embed', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'frame', 'frameset', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'hr', 'html', 'iframe', 'img', 'input', 'isindex', 'li', 'link', 'listing', 'main', 'marquee', 'menu', 'menuitem', 'meta', 'nav', 'noembed', 'noframes', 'noscript', 'object', 'ol', 'p', 'param', 'plaintext', 'pre', 'script', 'section', 'select', 'source', 'style', 'summary', 'table', 'tbody', 'td', 'template', 'textarea', 'tfoot', 'th', 'thead', 'title', 'tr', 'track', 'ul', 'wbr', 'xmp'];
 
-  // https://html.spec.whatwg.org/multipage/syntax.html#has-an-element-in-scope
   var inScopeTags = ['applet', 'caption', 'html', 'table', 'td', 'th', 'marquee', 'object', 'template',
 
-  // https://html.spec.whatwg.org/multipage/syntax.html#html-integration-point
-  // TODO: Distinguish by namespace here -- for <title>, including it here
-  // errs on the side of fewer warnings
   'foreignObject', 'desc', 'title'];
 
-  // https://html.spec.whatwg.org/multipage/syntax.html#has-an-element-in-button-scope
   var buttonScopeTags = inScopeTags.concat(['button']);
 
-  // https://html.spec.whatwg.org/multipage/syntax.html#generate-implied-end-tags
   var impliedEndTags = ['dd', 'dt', 'li', 'option', 'optgroup', 'p', 'rp', 'rt'];
 
   var emptyAncestorInfo = {
@@ -24853,8 +22526,6 @@ var validateDOMNesting$1 = emptyFunction;
       ancestorInfo.pTagInButtonScope = null;
     }
 
-    // See rules for 'li', 'dd', 'dt' start tags in
-    // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-inbody
     if (specialTags.indexOf(tag) !== -1 && tag !== 'address' && tag !== 'div' && tag !== 'p') {
       ancestorInfo.listItemTagAutoclosing = null;
       ancestorInfo.dlItemTagAutoclosing = null;
@@ -24887,53 +22558,32 @@ var validateDOMNesting$1 = emptyFunction;
     return ancestorInfo;
   };
 
-  /**
-   * Returns whether
-   */
   var isTagValidWithParent = function (tag, parentTag) {
-    // First, let's check if we're in an unusual parsing mode...
     switch (parentTag) {
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-inselect
       case 'select':
         return tag === 'option' || tag === 'optgroup' || tag === '#text';
       case 'optgroup':
         return tag === 'option' || tag === '#text';
-      // Strictly speaking, seeing an <option> doesn't mean we're in a <select>
-      // but
       case 'option':
         return tag === '#text';
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intd
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-incaption
-      // No special behavior since these rules fall back to "in body" mode for
-      // all except special table nodes which cause bad parsing behavior anyway.
-
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intr
       case 'tr':
         return tag === 'th' || tag === 'td' || tag === 'style' || tag === 'script' || tag === 'template';
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intbody
       case 'tbody':
       case 'thead':
       case 'tfoot':
         return tag === 'tr' || tag === 'style' || tag === 'script' || tag === 'template';
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-incolgroup
       case 'colgroup':
         return tag === 'col' || tag === 'template';
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-intable
       case 'table':
         return tag === 'caption' || tag === 'colgroup' || tag === 'tbody' || tag === 'tfoot' || tag === 'thead' || tag === 'style' || tag === 'script' || tag === 'template';
-      // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-inhead
       case 'head':
         return tag === 'base' || tag === 'basefont' || tag === 'bgsound' || tag === 'link' || tag === 'meta' || tag === 'title' || tag === 'noscript' || tag === 'noframes' || tag === 'style' || tag === 'script' || tag === 'template';
-      // https://html.spec.whatwg.org/multipage/semantics.html#the-html-element
       case 'html':
         return tag === 'head' || tag === 'body';
       case '#document':
         return tag === 'html';
     }
 
-    // Probably in the "in body" parsing mode, so we outlaw only tag combos
-    // where the parsing rules cause implicit opens or closes to be added.
-    // https://html.spec.whatwg.org/multipage/syntax.html#parsing-main-inbody
     switch (tag) {
       case 'h1':
       case 'h2':
@@ -24960,19 +22610,12 @@ var validateDOMNesting$1 = emptyFunction;
       case 'th':
       case 'thead':
       case 'tr':
-        // These tags are only valid with a few parents that have special child
-        // parsing rules -- if we're down here, then none of those matched and
-        // so we allow it only if we don't know what the parent is, as all other
-        // cases are invalid.
         return parentTag == null;
     }
 
     return true;
   };
 
-  /**
-   * Returns whether
-   */
   var findInvalidAncestorForTag = function (tag, ancestorInfo) {
     switch (tag) {
       case 'address':
@@ -25026,8 +22669,6 @@ var validateDOMNesting$1 = emptyFunction;
         return ancestorInfo.buttonTagInScope;
 
       case 'a':
-        // Spec says something about storing a list of markers, but it sounds
-        // equivalent to this check.
         return ancestorInfo.aTagInScope;
 
       case 'nobr':
@@ -25037,10 +22678,6 @@ var validateDOMNesting$1 = emptyFunction;
     return null;
   };
 
-  /**
-   * Given a ReactCompositeComponent instance, return a list of its recursive
-   * owners, starting at the root and ending with the instance itself.
-   */
   var findOwnerStack = function (instance) {
     if (!instance) {
       return [];
@@ -25081,10 +22718,7 @@ var validateDOMNesting$1 = emptyFunction;
       return getComponentName_1(inst) || UNKNOWN;
     });
     var ownerInfo = [].concat(
-    // If the parent and child instances have a common owner ancestor, start
-    // with that -- otherwise we just start with the parent's owners.
     deepestCommon !== -1 ? getComponentName_1(childOwners[deepestCommon]) || UNKNOWN : [], ancestorOwnerNames, ancestorTag,
-    // If we're warning about an invalid (non-parent) ancestry, add '...'
     isParent ? [] : ['...'], childOwnerNames, childTag).join(' > ');
 
     return ownerInfo;
@@ -25171,11 +22805,6 @@ function getParent(inst) {
   if (typeof inst.tag === 'number') {
     do {
       inst = inst['return'];
-      // TODO: If this is a HostRoot we might want to bail out.
-      // That is depending on if we want nested subtrees (layers) to bubble
-      // events to their parent. We could also go through parentNode on the
-      // host node but that wouldn't work for React Native and doesn't let us
-      // do the portal feature.
     } while (inst && inst.tag !== HostComponent$11);
     if (inst) {
       return inst;
@@ -25184,10 +22813,6 @@ function getParent(inst) {
   return null;
 }
 
-/**
- * Return the lowest common ancestor of A and B, or null if they are in
- * different trees.
- */
 function getLowestCommonAncestor(instA, instB) {
   var depthA = 0;
   for (var tempA = instA; tempA; tempA = getParent(tempA)) {
@@ -25198,19 +22823,16 @@ function getLowestCommonAncestor(instA, instB) {
     depthB++;
   }
 
-  // If A is deeper, crawl up.
   while (depthA - depthB > 0) {
     instA = getParent(instA);
     depthA--;
   }
 
-  // If B is deeper, crawl up.
   while (depthB - depthA > 0) {
     instB = getParent(instB);
     depthB--;
   }
 
-  // Walk in lockstep until we find a match.
   var depth = depthA;
   while (depth--) {
     if (instA === instB || instA === instB.alternate) {
@@ -25222,9 +22844,6 @@ function getLowestCommonAncestor(instA, instB) {
   return null;
 }
 
-/**
- * Return if A is an ancestor of B.
- */
 function isAncestor(instA, instB) {
   while (instB) {
     if (instA === instB || instA === instB.alternate) {
@@ -25235,16 +22854,10 @@ function isAncestor(instA, instB) {
   return false;
 }
 
-/**
- * Return the parent instance of the passed-in instance.
- */
 function getParentInstance(inst) {
   return getParent(inst);
 }
 
-/**
- * Simulates the traversal of a two-phase, capture/bubble event dispatch.
- */
 function traverseTwoPhase(inst, fn, arg) {
   var path = [];
   while (inst) {
@@ -25260,13 +22873,6 @@ function traverseTwoPhase(inst, fn, arg) {
   }
 }
 
-/**
- * Traverses the ID hierarchy and invokes the supplied `cb` on any IDs that
- * should would receive a `mouseEnter` or `mouseLeave` event.
- *
- * Does not invoke the callback on the nearest common ancestor because nothing
- * "entered" or "left" that element.
- */
 function traverseEnterLeave(from, to, fn, argFrom, argTo) {
   var common = from && to ? getLowestCommonAncestor(from, to) : null;
   var pathFrom = [];
@@ -25302,21 +22908,11 @@ var getListener = EventPluginHub_1.getListener;
   var warning$29 = require$$0;
 }
 
-/**
- * Some event types have a notion of different registration names for different
- * "phases" of propagation. This finds listeners by a given phase.
- */
 function listenerAtPhase(inst, event, propagationPhase) {
   var registrationName = event.dispatchConfig.phasedRegistrationNames[propagationPhase];
   return getListener(inst, registrationName);
 }
 
-/**
- * Tags a `SyntheticEvent` with dispatched listeners. Creating this function
- * here, allows us to not have to bind or create functions for each event.
- * Mutating the event's members allows us to not have to create a wrapping
- * "dispatch" object that pairs the event with the listener.
- */
 function accumulateDirectionalDispatches(inst, phase, event) {
   {
     warning$29(inst, 'Dispatching inst must not be null');
@@ -25328,22 +22924,12 @@ function accumulateDirectionalDispatches(inst, phase, event) {
   }
 }
 
-/**
- * Collect dispatches (must be entirely collected before dispatching - see unit
- * tests). Lazily allocate the array to conserve memory.  We must loop through
- * each event and perform the traversal for each one. We cannot perform a
- * single traversal for the entire collection of events because each event may
- * have a different target.
- */
 function accumulateTwoPhaseDispatchesSingle(event) {
   if (event && event.dispatchConfig.phasedRegistrationNames) {
     ReactTreeTraversal.traverseTwoPhase(event._targetInst, accumulateDirectionalDispatches, event);
   }
 }
 
-/**
- * Same as `accumulateTwoPhaseDispatchesSingle`, but skips over the targetID.
- */
 function accumulateTwoPhaseDispatchesSingleSkipTarget(event) {
   if (event && event.dispatchConfig.phasedRegistrationNames) {
     var targetInst = event._targetInst;
@@ -25352,11 +22938,6 @@ function accumulateTwoPhaseDispatchesSingleSkipTarget(event) {
   }
 }
 
-/**
- * Accumulates without regard to direction, does not look for phased
- * registration names. Same as `accumulateDirectDispatchesSingle` but without
- * requiring that the `dispatchMarker` be the same as the dispatched ID.
- */
 function accumulateDispatches(inst, ignoredDirection, event) {
   if (inst && event && event.dispatchConfig.registrationName) {
     var registrationName = event.dispatchConfig.registrationName;
@@ -25368,11 +22949,6 @@ function accumulateDispatches(inst, ignoredDirection, event) {
   }
 }
 
-/**
- * Accumulates dispatches on an `SyntheticEvent`, but only for the
- * `dispatchMarker`.
- * @param {SyntheticEvent} event
- */
 function accumulateDirectDispatchesSingle(event) {
   if (event && event.dispatchConfig.registrationName) {
     accumulateDispatches(event._targetInst, null, event);
@@ -25395,17 +22971,6 @@ function accumulateDirectDispatches(events) {
   forEachAccumulated_1(events, accumulateDirectDispatchesSingle);
 }
 
-/**
- * A small set of propagation patterns, each of which will accept a small amount
- * of information, and generate a set of "dispatch ready event objects" - which
- * are sets of events that have already been annotated with a set of dispatched
- * listener functions/ids. The API is designed this way to discourage these
- * propagation strategies from actually executing the dispatches, since we
- * always want to collect the entire set of dispatches before executing even a
- * single one.
- *
- * @constructor EventPropagators
- */
 var EventPropagators = {
   accumulateTwoPhaseDispatches: accumulateTwoPhaseDispatches,
   accumulateTwoPhaseDispatchesSkipTarget: accumulateTwoPhaseDispatchesSkipTarget,
@@ -25415,17 +22980,6 @@ var EventPropagators = {
 
 var EventPropagators_1 = EventPropagators;
 
-/**
- * This helper object stores information about text content of a target node,
- * allowing comparison of content before and after a given event.
- *
- * Identify the node where selection currently begins, then observe
- * both its text content and its current position in the DOM. Since the
- * browser may natively replace the target node during composition, we can
- * use its position to find its replacement.
- * 
- *
- */
 var compositionState = {
   _root: null,
   _startText: null,
@@ -25492,14 +23046,9 @@ var EVENT_POOL_SIZE = 10;
 
 var shouldBeReleasedProperties = ['dispatchConfig', '_targetInst', 'nativeEvent', 'isDefaultPrevented', 'isPropagationStopped', '_dispatchListeners', '_dispatchInstances'];
 
-/**
- * @interface Event
- * @see http://www.w3.org/TR/DOM-Level-3-Events/
- */
 var EventInterface = {
   type: null,
   target: null,
-  // currentTarget is set when dispatching; no use in copying it here
   currentTarget: emptyFunction.thatReturnsNull,
   eventPhase: null,
   bubbles: null,
@@ -25511,27 +23060,8 @@ var EventInterface = {
   isTrusted: null
 };
 
-/**
- * Synthetic events are dispatched by event plugins, typically in response to a
- * top-level event delegation handler.
- *
- * These systems should generally use pooling to reduce the frequency of garbage
- * collection. The system should check `isPersistent` to determine whether the
- * event should be released into the pool after being dispatched. Users that
- * need a persisted event should invoke `persist`.
- *
- * Synthetic events (and subclasses) implement the DOM Level 3 Events API by
- * normalizing browser quirks. Subclasses do not necessarily have to implement a
- * DOM interface; custom application-specific events can also subclass this.
- *
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {*} targetInst Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @param {DOMEventTarget} nativeEventTarget Target node.
- */
 function SyntheticEvent(dispatchConfig, targetInst, nativeEvent, nativeEventTarget) {
   {
-    // these have a getter/setter for warnings
     delete this.nativeEvent;
     delete this.preventDefault;
     delete this.stopPropagation;
@@ -25596,36 +23126,18 @@ _assign(SyntheticEvent.prototype, {
     if (event.stopPropagation) {
       event.stopPropagation();
     } else if (typeof event.cancelBubble !== 'unknown') {
-      // The ChangeEventPlugin registers a "propertychange" event for
-      // IE. This event does not support bubbling or cancelling, and
-      // any references to cancelBubble throw "Member not found".  A
-      // typeof check of "unknown" circumvents this issue (and is also
-      // IE specific).
       event.cancelBubble = true;
     }
 
     this.isPropagationStopped = emptyFunction.thatReturnsTrue;
   },
 
-  /**
-   * We release all dispatched `SyntheticEvent`s after each event loop, adding
-   * them back into the pool. This allows a way to hold onto a reference that
-   * won't be added back into the pool.
-   */
   persist: function () {
     this.isPersistent = emptyFunction.thatReturnsTrue;
   },
 
-  /**
-   * Checks if this event should be released back into the pool.
-   *
-   * @return {boolean} True if this should not be released, false otherwise.
-   */
   isPersistent: emptyFunction.thatReturnsFalse,
 
-  /**
-   * `PooledClass` looks for `destructor` on each instance it releases.
-   */
   destructor: function () {
     var Interface = this.constructor.Interface;
     for (var propName in Interface) {
@@ -25646,12 +23158,6 @@ _assign(SyntheticEvent.prototype, {
 
 SyntheticEvent.Interface = EventInterface;
 
-/**
- * Helper to reduce boilerplate when creating subclasses.
- *
- * @param {function} Class
- * @param {?object} Interface
- */
 SyntheticEvent.augmentClass = function (Class, Interface) {
   var Super = this;
 
@@ -25668,13 +23174,8 @@ SyntheticEvent.augmentClass = function (Class, Interface) {
   addEventPoolingTo(Class);
 };
 
-/** Proxying after everything set on SyntheticEvent
-  * to resolve Proxy issue on some WebKit browsers
-  * in which some Event properties are set to undefined (GH#10010)
-  */
 {
   if (isProxySupported) {
-    /*eslint-disable no-func-assign */
     SyntheticEvent = new Proxy(SyntheticEvent, {
       construct: function (target, args) {
         return this.apply(target, Object.create(target.prototype), args);
@@ -25692,7 +23193,6 @@ SyntheticEvent.augmentClass = function (Class, Interface) {
         });
       }
     });
-    /*eslint-enable no-func-assign */
   }
 }
 
@@ -25700,13 +23200,6 @@ addEventPoolingTo(SyntheticEvent);
 
 var SyntheticEvent_1 = SyntheticEvent;
 
-/**
-  * Helper to nullify syntheticEvent instance properties when destructing
-  *
-  * @param {String} propName
-  * @param {?object} getVal
-  * @return {object} defineProperty object
-  */
 function getPooledWarningPropertyDefinition(propName, getVal) {
   var isFunction = typeof getVal === 'function';
   return {
@@ -25759,20 +23252,10 @@ function addEventPoolingTo(EventConstructor) {
   EventConstructor.release = releasePooledEvent;
 }
 
-/**
- * @interface Event
- * @see http://www.w3.org/TR/DOM-Level-3-Events/#events-compositionevents
- */
 var CompositionEventInterface = {
   data: null
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticCompositionEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -25781,21 +23264,10 @@ SyntheticEvent_1.augmentClass(SyntheticCompositionEvent, CompositionEventInterfa
 
 var SyntheticCompositionEvent_1 = SyntheticCompositionEvent;
 
-/**
- * @interface Event
- * @see http://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105
- *      /#events-inputevents
- */
 var InputEventInterface = {
   data: null
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticInputEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -25814,20 +23286,10 @@ if (ExecutionEnvironment.canUseDOM && 'documentMode' in document) {
   documentMode = document.documentMode;
 }
 
-// Webkit offers a very useful `textInput` event that can be used to
-// directly represent `beforeInput`. The IE `textinput` event is not as
-// useful, so we don't use it.
 var canUseTextInputEvent = ExecutionEnvironment.canUseDOM && 'TextEvent' in window && !documentMode && !isPresto();
 
-// In IE9+, we have access to composition events, but the data supplied
-// by the native compositionend event may be incorrect. Japanese ideographic
-// spaces, for instance (\u3000) are not recorded correctly.
 var useFallbackCompositionData = ExecutionEnvironment.canUseDOM && (!canUseCompositionEvent || documentMode && documentMode > 8 && documentMode <= 11);
 
-/**
- * Opera <= 12 includes TextEvent in window, but does not fire
- * text input events. Rely on keypress instead.
- */
 function isPresto() {
   var opera = window.opera;
   return typeof opera === 'object' && typeof opera.version === 'function' && parseInt(opera.version(), 10) <= 12;
@@ -25836,7 +23298,6 @@ function isPresto() {
 var SPACEBAR_CODE = 32;
 var SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE);
 
-// Events and their corresponding property names.
 var eventTypes = {
   beforeInput: {
     phasedRegistrationNames: {
@@ -25868,26 +23329,13 @@ var eventTypes = {
   }
 };
 
-// Track whether we've ever handled a keypress on the space key.
 var hasSpaceKeypress = false;
 
-/**
- * Return whether a native keypress event is assumed to be a command.
- * This is required because Firefox fires `keypress` events for key commands
- * (cut, copy, select-all, etc.) even though no character is inserted.
- */
 function isKeypressCommand(nativeEvent) {
   return (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) &&
-  // ctrlKey && altKey is equivalent to AltGr, and is not a command.
   !(nativeEvent.ctrlKey && nativeEvent.altKey);
 }
 
-/**
- * Translate native top level events into event types.
- *
- * @param {string} topLevelType
- * @return {object}
- */
 function getCompositionEventType(topLevelType) {
   switch (topLevelType) {
     case 'topCompositionStart':
@@ -25899,53 +23347,25 @@ function getCompositionEventType(topLevelType) {
   }
 }
 
-/**
- * Does our fallback best-guess model think this event signifies that
- * composition has begun?
- *
- * @param {string} topLevelType
- * @param {object} nativeEvent
- * @return {boolean}
- */
 function isFallbackCompositionStart(topLevelType, nativeEvent) {
   return topLevelType === 'topKeyDown' && nativeEvent.keyCode === START_KEYCODE;
 }
 
-/**
- * Does our fallback mode think that this event is the end of composition?
- *
- * @param {string} topLevelType
- * @param {object} nativeEvent
- * @return {boolean}
- */
 function isFallbackCompositionEnd(topLevelType, nativeEvent) {
   switch (topLevelType) {
     case 'topKeyUp':
-      // Command keys insert or clear IME input.
       return END_KEYCODES.indexOf(nativeEvent.keyCode) !== -1;
     case 'topKeyDown':
-      // Expect IME keyCode on each keydown. If we get any other
-      // code we must have exited earlier.
       return nativeEvent.keyCode !== START_KEYCODE;
     case 'topKeyPress':
     case 'topMouseDown':
     case 'topBlur':
-      // Events are not possible without cancelling IME.
       return true;
     default:
       return false;
   }
 }
 
-/**
- * Google Input Tools provides composition data via a CustomEvent,
- * with the `data` property populated in the `detail` object. If this
- * is available on the event object, use it. If not, this is a plain
- * composition event and we have nothing special to extract.
- *
- * @param {object} nativeEvent
- * @return {?string}
- */
 function getDataFromCustomEvent(nativeEvent) {
   var detail = nativeEvent.detail;
   if (typeof detail === 'object' && 'data' in detail) {
@@ -25954,12 +23374,8 @@ function getDataFromCustomEvent(nativeEvent) {
   return null;
 }
 
-// Track the current IME composition status, if any.
 var isComposing = false;
 
-/**
- * @return {?object} A SyntheticCompositionEvent.
- */
 function extractCompositionEvent(topLevelType, targetInst, nativeEvent, nativeEventTarget) {
   var eventType;
   var fallbackData;
@@ -25979,8 +23395,6 @@ function extractCompositionEvent(topLevelType, targetInst, nativeEvent, nativeEv
   }
 
   if (useFallbackCompositionData) {
-    // The current composition is stored statically and must not be
-    // overwritten while composition continues.
     if (!isComposing && eventType === eventTypes.compositionStart) {
       isComposing = FallbackCompositionState_1.initialize(nativeEventTarget);
     } else if (eventType === eventTypes.compositionEnd) {
@@ -25993,8 +23407,6 @@ function extractCompositionEvent(topLevelType, targetInst, nativeEvent, nativeEv
   var event = SyntheticCompositionEvent_1.getPooled(eventType, targetInst, nativeEvent, nativeEventTarget);
 
   if (fallbackData) {
-    // Inject data generated from fallback path into the synthetic event.
-    // This matches the property of native CompositionEventInterface.
     event.data = fallbackData;
   } else {
     var customData = getDataFromCustomEvent(nativeEvent);
@@ -26007,30 +23419,11 @@ function extractCompositionEvent(topLevelType, targetInst, nativeEvent, nativeEv
   return event;
 }
 
-/**
- * @param {TopLevelTypes} topLevelType Record from `BrowserEventConstants`.
- * @param {object} nativeEvent Native browser event.
- * @return {?string} The string corresponding to this `beforeInput` event.
- */
 function getNativeBeforeInputChars(topLevelType, nativeEvent) {
   switch (topLevelType) {
     case 'topCompositionEnd':
       return getDataFromCustomEvent(nativeEvent);
     case 'topKeyPress':
-      /**
-       * If native `textInput` events are available, our goal is to make
-       * use of them. However, there is a special case: the spacebar key.
-       * In Webkit, preventing default on a spacebar `textInput` event
-       * cancels character insertion, but it *also* causes the browser
-       * to fall back to its default spacebar behavior of scrolling the
-       * page.
-       *
-       * Tracking at:
-       * https://code.google.com/p/chromium/issues/detail?id=355103
-       *
-       * To avoid this issue, use the keypress event as if no `textInput`
-       * event is available.
-       */
       var which = nativeEvent.which;
       if (which !== SPACEBAR_CODE) {
         return null;
@@ -26040,12 +23433,8 @@ function getNativeBeforeInputChars(topLevelType, nativeEvent) {
       return SPACEBAR_CHAR;
 
     case 'topTextInput':
-      // Record the characters to be added to the DOM.
       var chars = nativeEvent.data;
 
-      // If it's a spacebar character, assume that we have already handled
-      // it at the keypress level and bail immediately. Android Chrome
-      // doesn't give us keycodes, so we need to blacklist it.
       if (chars === SPACEBAR_CHAR && hasSpaceKeypress) {
         return null;
       }
@@ -26053,24 +23442,11 @@ function getNativeBeforeInputChars(topLevelType, nativeEvent) {
       return chars;
 
     default:
-      // For other native event types, do nothing.
       return null;
   }
 }
 
-/**
- * For browsers that do not provide the `textInput` event, extract the
- * appropriate string to use for SyntheticInputEvent.
- *
- * @param {string} topLevelType Record from `BrowserEventConstants`.
- * @param {object} nativeEvent Native browser event.
- * @return {?string} The fallback string for this `beforeInput` event.
- */
 function getFallbackBeforeInputChars(topLevelType, nativeEvent) {
-  // If we are currently composing (IME) and using a fallback to do so,
-  // try to extract the composed characters from the fallback object.
-  // If composition event is available, we extract a string only at
-  // compositionevent, otherwise extract it at fallback events.
   if (isComposing) {
     if (topLevelType === 'topCompositionEnd' || !canUseCompositionEvent && isFallbackCompositionEnd(topLevelType, nativeEvent)) {
       var chars = FallbackCompositionState_1.getData();
@@ -26083,33 +23459,9 @@ function getFallbackBeforeInputChars(topLevelType, nativeEvent) {
 
   switch (topLevelType) {
     case 'topPaste':
-      // If a paste event occurs after a keypress, throw out the input
-      // chars. Paste events should not lead to BeforeInput events.
       return null;
     case 'topKeyPress':
-      /**
-       * As of v27, Firefox may fire keypress events even when no character
-       * will be inserted. A few possibilities:
-       *
-       * - `which` is `0`. Arrow keys, Esc key, etc.
-       *
-       * - `which` is the pressed key code, but no char is available.
-       *   Ex: 'AltGr + d` in Polish. There is no modified character for
-       *   this key combination and no character is inserted into the
-       *   document, but FF fires the keypress for char code `100` anyway.
-       *   No `input` event will occur.
-       *
-       * - `which` is the pressed key code, but a command combination is
-       *   being used. Ex: `Cmd+C`. No character is inserted, and no
-       *   `input` event will occur.
-       */
       if (!isKeypressCommand(nativeEvent)) {
-        // IE fires the `keypress` event when a user types an emoji via
-        // Touch keyboard of Windows.  In such a case, the `char` property
-        // holds an emoji character like `\uD83D\uDE0A`.  Because its length
-        // is 2, the property `which` does not represent an emoji correctly.
-        // In such a case, we directly return the `char` property instead of
-        // using `which`.
         if (nativeEvent.char && nativeEvent.char.length > 1) {
           return nativeEvent.char;
         } else if (nativeEvent.which) {
@@ -26124,12 +23476,6 @@ function getFallbackBeforeInputChars(topLevelType, nativeEvent) {
   }
 }
 
-/**
- * Extract a SyntheticInputEvent for `beforeInput`, based on either native
- * `textInput` or fallback behavior.
- *
- * @return {?object} A SyntheticInputEvent.
- */
 function extractBeforeInputEvent(topLevelType, targetInst, nativeEvent, nativeEventTarget) {
   var chars;
 
@@ -26139,8 +23485,6 @@ function extractBeforeInputEvent(topLevelType, targetInst, nativeEvent, nativeEv
     chars = getFallbackBeforeInputChars(topLevelType, nativeEvent);
   }
 
-  // If no characters are being inserted, no BeforeInput event should
-  // be fired.
   if (!chars) {
     return null;
   }
@@ -26152,24 +23496,6 @@ function extractBeforeInputEvent(topLevelType, targetInst, nativeEvent, nativeEv
   return event;
 }
 
-/**
- * Create an `onBeforeInput` event to match
- * http://www.w3.org/TR/2013/WD-DOM-Level-3-Events-20131105/#events-inputevents.
- *
- * This event plugin is based on the native `textInput` event
- * available in Chrome, Safari, Opera, and IE. This event fires after
- * `onKeyPress` and `onCompositionEnd`, but before `onInput`.
- *
- * `beforeInput` is spec'd but not implemented in any browsers, and
- * the `input` event does not provide any useful information about what has
- * actually been added, contrary to the spec. Thus, `textInput` is the best
- * available event to identify the characters that have actually been inserted
- * into the target node.
- *
- * This plugin is also responsible for emitting `composition` events, thus
- * allowing us to share composition fallback code for both `beforeInput` and
- * `composition` event types.
- */
 var BeforeInputEventPlugin = {
   eventTypes: eventTypes,
 
@@ -26180,19 +23506,6 @@ var BeforeInputEventPlugin = {
 
 var BeforeInputEventPlugin_1 = BeforeInputEventPlugin;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule isTextInputElement
- * 
- */
-
-/**
- * @see http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
- */
 
 var supportedInputTypes = {
   color: true,
@@ -26241,20 +23554,13 @@ var eventTypes$1 = {
 function createAndAccumulateChangeEvent(inst, nativeEvent, target) {
   var event = SyntheticEvent_1.getPooled(eventTypes$1.change, inst, nativeEvent, target);
   event.type = 'change';
-  // Flag this event loop as needing state restore.
   ReactControlledComponent_1.enqueueStateRestore(target);
   EventPropagators_1.accumulateTwoPhaseDispatches(event);
   return event;
 }
-/**
- * For IE shims
- */
 var activeElement = null;
 var activeElementInst = null;
 
-/**
- * SECTION: handle `change` event
- */
 function shouldUseChangeEvent(elem) {
   var nodeName = elem.nodeName && elem.nodeName.toLowerCase();
   return nodeName === 'select' || nodeName === 'input' && elem.type === 'file';
@@ -26263,17 +23569,6 @@ function shouldUseChangeEvent(elem) {
 function manualDispatchChangeEvent(nativeEvent) {
   var event = createAndAccumulateChangeEvent(activeElementInst, nativeEvent, getEventTarget_1(nativeEvent));
 
-  // If change and propertychange bubbled, we'd just bind to it like all the
-  // other events and have it go through ReactBrowserEventEmitter. Since it
-  // doesn't, we manually listen for the events and so we have to enqueue and
-  // process the abstract event manually.
-  //
-  // Batching is necessary here in order to ensure that all event handlers run
-  // before the next rerender (including event handlers attached to ancestor
-  // elements instead of directly on the input). Without this, controlled
-  // components don't work properly in conjunction with event bubbling because
-  // the component is rerendered and the value reverted before all the event
-  // handlers can run. See https://github.com/facebook/react/issues/708.
   ReactGenericBatching_1.batchedUpdates(runEventInBatch, event);
 }
 
@@ -26295,31 +23590,17 @@ function getTargetInstForChangeEvent(topLevelType, targetInst) {
   }
 }
 
-/**
- * SECTION: handle `input` event
- */
 var isInputEventSupported = false;
 if (ExecutionEnvironment.canUseDOM) {
-  // IE9 claims to support the input event but fails to trigger it when
-  // deleting text, so we ignore its input events.
   isInputEventSupported = isEventSupported_1('input') && (!document.documentMode || document.documentMode > 9);
 }
 
-/**
- * (For IE <=9) Starts tracking propertychange events on the passed-in element
- * and override the value property so that we can distinguish user events from
- * value changes in JS.
- */
 function startWatchingForValueChange(target, targetInst) {
   activeElement = target;
   activeElementInst = targetInst;
   activeElement.attachEvent('onpropertychange', handlePropertyChange);
 }
 
-/**
- * (For IE <=9) Removes the event listeners from the currently-tracked element,
- * if any exists.
- */
 function stopWatchingForValueChange() {
   if (!activeElement) {
     return;
@@ -26329,10 +23610,6 @@ function stopWatchingForValueChange() {
   activeElementInst = null;
 }
 
-/**
- * (For IE <=9) Handles a propertychange event, sending a `change` event if
- * the value of the active element has changed.
- */
 function handlePropertyChange(nativeEvent) {
   if (nativeEvent.propertyName !== 'value') {
     return;
@@ -26344,16 +23621,6 @@ function handlePropertyChange(nativeEvent) {
 
 function handleEventsForInputEventPolyfill(topLevelType, target, targetInst) {
   if (topLevelType === 'topFocus') {
-    // In IE9, propertychange fires for most input events but is buggy and
-    // doesn't fire when text is deleted, but conveniently, selectionchange
-    // appears to fire in all of the remaining cases so we catch those and
-    // forward the event if the value has changed
-    // In either case, we don't want to call the event handler if the value
-    // is changed from JS so we redefine a setter for `.value` that updates
-    // our activeElementValue variable, allowing us to ignore those changes
-    //
-    // stopWatching() should be a noop here but we call it just in case we
-    // missed a blur event somehow.
     stopWatchingForValueChange();
     startWatchingForValueChange(target, targetInst);
   } else if (topLevelType === 'topBlur') {
@@ -26361,30 +23628,13 @@ function handleEventsForInputEventPolyfill(topLevelType, target, targetInst) {
   }
 }
 
-// For IE8 and IE9.
 function getTargetInstForInputEventPolyfill(topLevelType, targetInst) {
   if (topLevelType === 'topSelectionChange' || topLevelType === 'topKeyUp' || topLevelType === 'topKeyDown') {
-    // On the selectionchange event, the target is just document which isn't
-    // helpful for us so just check activeElement instead.
-    //
-    // 99% of the time, keydown and keyup aren't necessary. IE8 fails to fire
-    // propertychange on the first input event after setting `value` from a
-    // script and fires only keydown, keypress, keyup. Catching keyup usually
-    // gets it and catching keydown lets us fire an event for the first
-    // keystroke if user does a key repeat (it'll be a little delayed: right
-    // before the second keystroke). Other input methods (e.g., paste) seem to
-    // fire selectionchange normally.
     return getInstIfValueChanged(activeElementInst);
   }
 }
 
-/**
- * SECTION: handle `click` event
- */
 function shouldUseClickEvent(elem) {
-  // Use the `click` event to detect changes to checkbox and radio inputs.
-  // This approach works across all browsers, whereas `change` does not fire
-  // until `blur` in IE8.
   var nodeName = elem.nodeName;
   return nodeName && nodeName.toLowerCase() === 'input' && (elem.type === 'checkbox' || elem.type === 'radio');
 }
@@ -26402,35 +23652,22 @@ function getTargetInstForInputOrChangeEvent(topLevelType, targetInst) {
 }
 
 function handleControlledInputBlur(inst, node) {
-  // TODO: In IE, inst is occasionally null. Why?
   if (inst == null) {
     return;
   }
 
-  // Fiber and ReactDOM keep wrapper state in separate places
   var state = inst._wrapperState || node._wrapperState;
 
   if (!state || !state.controlled || node.type !== 'number') {
     return;
   }
 
-  // If controlled, assign the value attribute to the current value on blur
   var value = '' + node.value;
   if (node.getAttribute('value') !== value) {
     node.setAttribute('value', value);
   }
 }
 
-/**
- * This plugin creates an `onChange` event that normalizes change events
- * across form elements. This event fires at a time when it's possible to
- * change the element's value without seeing a flicker.
- *
- * Supported elements are:
- * - input (see `isTextInputElement`)
- * - textarea
- * - select
- */
 var ChangeEventPlugin = {
   eventTypes: eventTypes$1,
 
@@ -26465,7 +23702,6 @@ var ChangeEventPlugin = {
       handleEventFunc(topLevelType, targetNode, targetInst);
     }
 
-    // When blurring, set the value attribute for number inputs
     if (topLevelType === 'topBlur') {
       handleControlledInputBlur(targetInst, targetNode);
     }
@@ -26474,33 +23710,11 @@ var ChangeEventPlugin = {
 
 var ChangeEventPlugin_1 = ChangeEventPlugin;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule DOMEventPluginOrder
- */
-
-/**
- * Module that is injectable into `EventPluginHub`, that specifies a
- * deterministic ordering of `EventPlugin`s. A convenient way to reason about
- * plugins, without having to package every one of them. This is better than
- * having plugins be ordered in the same order that they are injected because
- * that ordering would be influenced by the packaging order.
- * `ResponderEventPlugin` must occur before `SimpleEventPlugin` so that
- * preventing default on events is convenient in `SimpleEventPlugin` handlers.
- */
 
 var DOMEventPluginOrder = ['ResponderEventPlugin', 'SimpleEventPlugin', 'TapEventPlugin', 'EnterLeaveEventPlugin', 'ChangeEventPlugin', 'SelectEventPlugin', 'BeforeInputEventPlugin'];
 
 var DOMEventPluginOrder_1 = DOMEventPluginOrder;
 
-/**
- * @interface UIEvent
- * @see http://www.w3.org/TR/DOM-Level-3-Events/
- */
 var UIEventInterface = {
   view: function (event) {
     if (event.view) {
@@ -26509,12 +23723,10 @@ var UIEventInterface = {
 
     var target = getEventTarget_1(event);
     if (target.window === target) {
-      // target is a window object
       return target;
     }
 
     var doc = target.ownerDocument;
-    // TODO: Figure out why `ownerDocument` is sometimes undefined in IE8.
     if (doc) {
       return doc.defaultView || doc.parentWindow;
     } else {
@@ -26526,12 +23738,6 @@ var UIEventInterface = {
   }
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticEvent}
- */
 function SyntheticUIEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -26540,19 +23746,6 @@ SyntheticEvent_1.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 var SyntheticUIEvent_1 = SyntheticUIEvent;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule getEventModifierState
- */
-
-/**
- * Translation from modifier key to the associated property in the event.
- * @see http://www.w3.org/TR/DOM-Level-3-Events/#keys-Modifiers
- */
 
 var modifierKeyToProp = {
   Alt: 'altKey',
@@ -26561,9 +23754,6 @@ var modifierKeyToProp = {
   Shift: 'shiftKey'
 };
 
-// IE8 does not implement getModifierState so we simply map it to the only
-// modifier keys exposed by the event itself, does not support Lock-keys.
-// Currently, all major browsers except Chrome seems to support Lock-keys.
 function modifierStateGetter(keyArg) {
   var syntheticEvent = this;
   var nativeEvent = syntheticEvent.nativeEvent;
@@ -26580,10 +23770,6 @@ function getEventModifierState(nativeEvent) {
 
 var getEventModifierState_1 = getEventModifierState;
 
-/**
- * @interface MouseEvent
- * @see http://www.w3.org/TR/DOM-Level-3-Events/
- */
 var MouseEventInterface = {
   screenX: null,
   screenY: null,
@@ -26603,12 +23789,6 @@ var MouseEventInterface = {
   }
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticMouseEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticUIEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -26631,28 +23811,18 @@ var eventTypes$2 = {
 var EnterLeaveEventPlugin = {
   eventTypes: eventTypes$2,
 
-  /**
-   * For almost every interaction we care about, there will be both a top-level
-   * `mouseover` and `mouseout` event that occurs. Only use `mouseout` so that
-   * we do not extract duplicate events. However, moving the mouse into the
-   * browser from outside will not fire a `mouseout` event. In this case, we use
-   * the `mouseover` top-level event.
-   */
   extractEvents: function (topLevelType, targetInst, nativeEvent, nativeEventTarget) {
     if (topLevelType === 'topMouseOver' && (nativeEvent.relatedTarget || nativeEvent.fromElement)) {
       return null;
     }
     if (topLevelType !== 'topMouseOut' && topLevelType !== 'topMouseOver') {
-      // Must not be a mouse in or mouse out - ignoring.
       return null;
     }
 
     var win;
     if (nativeEventTarget.window === nativeEventTarget) {
-      // `nativeEventTarget` is probably a window object.
       win = nativeEventTarget;
     } else {
-      // TODO: Figure out why `ownerDocument` is sometimes undefined in IE8.
       var doc = nativeEventTarget.ownerDocument;
       if (doc) {
         win = doc.defaultView || doc.parentWindow;
@@ -26668,13 +23838,11 @@ var EnterLeaveEventPlugin = {
       var related = nativeEvent.relatedTarget || nativeEvent.toElement;
       to = related ? ReactDOMComponentTree_1.getClosestInstanceFromNode(related) : null;
     } else {
-      // Moving to a node from outside the window.
       from = null;
       to = targetInst;
     }
 
     if (from === to) {
-      // Nothing pertains to our managed components.
       return null;
     }
 
@@ -26722,19 +23890,8 @@ var activeElementInst$1 = null;
 var lastSelection = null;
 var mouseDown = false;
 
-// Track whether all listeners exists for this plugin. If none exist, we do
-// not extract events. See #3639.
 var isListeningToAllDependencies = ReactBrowserEventEmitter_1.isListeningToAllDependencies;
 
-/**
- * Get an object which is a unique representation of the current selection.
- *
- * The return value will not be consistent across nodes or browsers, but
- * two identical selections on the same node will return identical objects.
- *
- * @param {DOMElement} node
- * @return {object}
- */
 function getSelection(node) {
   if ('selectionStart' in node && ReactInputSelection_1.hasSelectionCapabilities(node)) {
     return {
@@ -26752,22 +23909,11 @@ function getSelection(node) {
   }
 }
 
-/**
- * Poll selection to see whether it's changed.
- *
- * @param {object} nativeEvent
- * @return {?SyntheticEvent}
- */
 function constructSelectEvent(nativeEvent, nativeEventTarget) {
-  // Ensure we have the right element, and that the user is not dragging a
-  // selection (this matches native `select` event behavior). In HTML5, select
-  // fires only on input and textarea thus if there's no focused element we
-  // won't dispatch.
   if (mouseDown || activeElement$1 == null || activeElement$1 !== getActiveElement()) {
     return null;
   }
 
-  // Only fire when selection has actually changed.
   var currentSelection = getSelection(activeElement$1);
   if (!lastSelection || !shallowEqual(lastSelection, currentSelection)) {
     lastSelection = currentSelection;
@@ -26785,20 +23931,6 @@ function constructSelectEvent(nativeEvent, nativeEventTarget) {
   return null;
 }
 
-/**
- * This plugin creates an `onSelect` event that normalizes select events
- * across form elements.
- *
- * Supported elements are:
- * - input (see `isTextInputElement`)
- * - textarea
- * - contentEditable
- *
- * This differs from native browser implementations in the following ways:
- * - Fires on contentEditable fields as well as inputs.
- * - Fires for collapsed selection.
- * - Fires after user input.
- */
 var SelectEventPlugin = {
   eventTypes: eventTypes$3,
 
@@ -26811,7 +23943,6 @@ var SelectEventPlugin = {
     var targetNode = targetInst ? ReactDOMComponentTree_1.getNodeFromInstance(targetInst) : window;
 
     switch (topLevelType) {
-      // Track the input node that has focus.
       case 'topFocus':
         if (isTextInputElement_1(targetNode) || targetNode.contentEditable === 'true') {
           activeElement$1 = targetNode;
@@ -26824,8 +23955,6 @@ var SelectEventPlugin = {
         activeElementInst$1 = null;
         lastSelection = null;
         break;
-      // Don't fire the event while the user is dragging. This matches the
-      // semantics of the native select event.
       case 'topMouseDown':
         mouseDown = true;
         break;
@@ -26833,20 +23962,10 @@ var SelectEventPlugin = {
       case 'topMouseUp':
         mouseDown = false;
         return constructSelectEvent(nativeEvent, nativeEventTarget);
-      // Chrome and IE fire non-standard event when selection is changed (and
-      // sometimes when it hasn't). IE's event fires out of order with respect
-      // to key and input events on deletion, so we discard it.
-      //
-      // Firefox doesn't support selectionchange, so check selection status
-      // after each key entry. The selection changes after keydown and before
-      // keyup, but we check on keydown as well in the case of holding down a
-      // key, when multiple keydown events are fired but only one keyup is.
-      // This is also our approach for IE handling, for the reason above.
       case 'topSelectionChange':
         if (skipSelectionChangeEvent) {
           break;
         }
-      // falls through
       case 'topKeyDown':
       case 'topKeyUp':
         return constructSelectEvent(nativeEvent, nativeEventTarget);
@@ -26858,23 +23977,12 @@ var SelectEventPlugin = {
 
 var SelectEventPlugin_1 = SelectEventPlugin;
 
-/**
- * @interface Event
- * @see http://www.w3.org/TR/css3-animations/#AnimationEvent-interface
- * @see https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent
- */
 var AnimationEventInterface = {
   animationName: null,
   elapsedTime: null,
   pseudoElement: null
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticEvent}
- */
 function SyntheticAnimationEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -26883,22 +23991,12 @@ SyntheticEvent_1.augmentClass(SyntheticAnimationEvent, AnimationEventInterface);
 
 var SyntheticAnimationEvent_1 = SyntheticAnimationEvent;
 
-/**
- * @interface Event
- * @see http://www.w3.org/TR/clipboard-apis/
- */
 var ClipboardEventInterface = {
   clipboardData: function (event) {
     return 'clipboardData' in event ? event.clipboardData : window.clipboardData;
   }
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticClipboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -26907,20 +24005,10 @@ SyntheticEvent_1.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 var SyntheticClipboardEvent_1 = SyntheticClipboardEvent;
 
-/**
- * @interface FocusEvent
- * @see http://www.w3.org/TR/DOM-Level-3-Events/
- */
 var FocusEventInterface = {
   relatedTarget: null
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticFocusEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticUIEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -26929,25 +24017,6 @@ SyntheticUIEvent_1.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 var SyntheticFocusEvent_1 = SyntheticFocusEvent;
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @providesModule getEventCharCode
- */
-
-/**
- * `charCode` represents the actual "character code" and is safe to use with
- * `String.fromCharCode`. As such, only keys that correspond to printable
- * characters produce a valid `charCode`, the only exception to this is Enter.
- * The Tab-key is considered non-printable and does not have a `charCode`,
- * presumably because it does not produce a tab-character in browsers.
- *
- * @param {object} nativeEvent Native browser event.
- * @return {number} Normalized `charCode` property.
- */
 
 function getEventCharCode(nativeEvent) {
   var charCode;
@@ -26956,17 +24025,13 @@ function getEventCharCode(nativeEvent) {
   if ('charCode' in nativeEvent) {
     charCode = nativeEvent.charCode;
 
-    // FF does not set `charCode` for the Enter-key, check against `keyCode`.
     if (charCode === 0 && keyCode === 13) {
       charCode = 13;
     }
   } else {
-    // IE8 does not implement `charCode`, but `keyCode` has the correct value.
     charCode = keyCode;
   }
 
-  // Some non-printable keys are reported in `charCode`/`keyCode`, discard them.
-  // Must not discard the (non-)printable Enter-key.
   if (charCode >= 32 || charCode === 13) {
     return charCode;
   }
@@ -26976,10 +24041,6 @@ function getEventCharCode(nativeEvent) {
 
 var getEventCharCode_1 = getEventCharCode;
 
-/**
- * Normalization of deprecated HTML5 `key` values
- * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names
- */
 var normalizeKey = {
   Esc: 'Escape',
   Spacebar: ' ',
@@ -26995,11 +24056,6 @@ var normalizeKey = {
   MozPrintableKey: 'Unidentified'
 };
 
-/**
- * Translation from legacy `keyCode` to HTML5 `key`
- * Only special keys supported, all others depend on keyboard layout or browser
- * @see https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Key_names
- */
 var translateToKey = {
   8: 'Backspace',
   9: 'Tab',
@@ -27039,34 +24095,20 @@ var translateToKey = {
   224: 'Meta'
 };
 
-/**
- * @param {object} nativeEvent Native browser event.
- * @return {string} Normalized `key` property.
- */
 function getEventKey(nativeEvent) {
   if (nativeEvent.key) {
-    // Normalize inconsistent values reported by browsers due to
-    // implementations of a working draft specification.
-
-    // FireFox implements `key` but returns `MozPrintableKey` for all
-    // printable characters (normalized to `Unidentified`), ignore it.
     var key = normalizeKey[nativeEvent.key] || nativeEvent.key;
     if (key !== 'Unidentified') {
       return key;
     }
   }
 
-  // Browser does not implement `key`, polyfill as much of it as we can.
   if (nativeEvent.type === 'keypress') {
     var charCode = getEventCharCode_1(nativeEvent);
 
-    // The enter-key is technically both printable and non-printable and can
-    // thus be captured by `keypress`, no other non-printable key should.
     return charCode === 13 ? 'Enter' : String.fromCharCode(charCode);
   }
   if (nativeEvent.type === 'keydown' || nativeEvent.type === 'keyup') {
-    // While user keyboard layout determines the actual meaning of each
-    // `keyCode` value, almost all function keys have a universal value.
     return translateToKey[nativeEvent.keyCode] || 'Unidentified';
   }
   return '';
@@ -27074,10 +24116,6 @@ function getEventKey(nativeEvent) {
 
 var getEventKey_1 = getEventKey;
 
-/**
- * @interface KeyboardEvent
- * @see http://www.w3.org/TR/DOM-Level-3-Events/
- */
 var KeyboardEventInterface = {
   key: getEventKey_1,
   location: null,
@@ -27088,34 +24126,19 @@ var KeyboardEventInterface = {
   repeat: null,
   locale: null,
   getModifierState: getEventModifierState_1,
-  // Legacy Interface
   charCode: function (event) {
-    // `charCode` is the result of a KeyPress event and represents the value of
-    // the actual printable character.
-
-    // KeyPress is deprecated, but its replacement is not yet final and not
-    // implemented in any major browser. Only KeyPress has charCode.
     if (event.type === 'keypress') {
       return getEventCharCode_1(event);
     }
     return 0;
   },
   keyCode: function (event) {
-    // `keyCode` is the result of a KeyDown/Up event and represents the value of
-    // physical keyboard key.
-
-    // The actual meaning of the value depends on the users' keyboard layout
-    // which cannot be detected. Assuming that it is a US keyboard layout
-    // provides a surprisingly accurate mapping for US and European users.
-    // Due to this, it is left to the user to implement at this time.
     if (event.type === 'keydown' || event.type === 'keyup') {
       return event.keyCode;
     }
     return 0;
   },
   which: function (event) {
-    // `which` is an alias for either `keyCode` or `charCode` depending on the
-    // type of the event.
     if (event.type === 'keypress') {
       return getEventCharCode_1(event);
     }
@@ -27126,12 +24149,6 @@ var KeyboardEventInterface = {
   }
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticKeyboardEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticUIEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -27140,20 +24157,10 @@ SyntheticUIEvent_1.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 var SyntheticKeyboardEvent_1 = SyntheticKeyboardEvent;
 
-/**
- * @interface DragEvent
- * @see http://www.w3.org/TR/DOM-Level-3-Events/
- */
 var DragEventInterface = {
   dataTransfer: null
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticDragEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticMouseEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -27162,10 +24169,6 @@ SyntheticMouseEvent_1.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 var SyntheticDragEvent_1 = SyntheticDragEvent;
 
-/**
- * @interface TouchEvent
- * @see http://www.w3.org/TR/touch-events/
- */
 var TouchEventInterface = {
   touches: null,
   targetTouches: null,
@@ -27177,12 +24180,6 @@ var TouchEventInterface = {
   getModifierState: getEventModifierState_1
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticUIEvent}
- */
 function SyntheticTouchEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticUIEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -27191,23 +24188,12 @@ SyntheticUIEvent_1.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 var SyntheticTouchEvent_1 = SyntheticTouchEvent;
 
-/**
- * @interface Event
- * @see http://www.w3.org/TR/2009/WD-css3-transitions-20090320/#transition-events-
- * @see https://developer.mozilla.org/en-US/docs/Web/API/TransitionEvent
- */
 var TransitionEventInterface = {
   propertyName: null,
   elapsedTime: null,
   pseudoElement: null
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticEvent}
- */
 function SyntheticTransitionEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -27216,10 +24202,6 @@ SyntheticEvent_1.augmentClass(SyntheticTransitionEvent, TransitionEventInterface
 
 var SyntheticTransitionEvent_1 = SyntheticTransitionEvent;
 
-/**
- * @interface WheelEvent
- * @see http://www.w3.org/TR/DOM-Level-3-Events/
- */
 var WheelEventInterface = {
   deltaX: function (event) {
     return 'deltaX' in event ? event.deltaX : // Fallback to `wheelDeltaX` for Webkit and normalize (right is positive).
@@ -27232,19 +24214,9 @@ var WheelEventInterface = {
   },
   deltaZ: null,
 
-  // Browsers without "deltaMode" is reporting in raw wheel delta where one
-  // notch on the scroll is always +/- 120, roughly equivalent to pixels.
-  // A good approximation of DOM_DELTA_LINE (1) is 5% of viewport size or
-  // ~40 pixels, for DOM_DELTA_SCREEN (2) it is 87.5% of viewport size.
   deltaMode: null
 };
 
-/**
- * @param {object} dispatchConfig Configuration used to dispatch this event.
- * @param {string} dispatchMarker Marker identifying the event target.
- * @param {object} nativeEvent Native browser event.
- * @extends {SyntheticMouseEvent}
- */
 function SyntheticWheelEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget) {
   return SyntheticMouseEvent_1.call(this, dispatchConfig, dispatchMarker, nativeEvent, nativeEventTarget);
 }
@@ -27253,24 +24225,6 @@ SyntheticMouseEvent_1.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 var SyntheticWheelEvent_1 = SyntheticWheelEvent;
 
-/**
- * Turns
- * ['abort', ...]
- * into
- * eventTypes = {
- *   'abort': {
- *     phasedRegistrationNames: {
- *       bubbled: 'onAbort',
- *       captured: 'onAbortCapture',
- *     },
- *     dependencies: ['topAbort'],
- *   },
- *   ...
- * };
- * topLevelEventsToDispatchConfig = {
- *   'topAbort': { sameConfig }
- * };
- */
 var eventTypes$4 = {};
 var topLevelEventsToDispatchConfig = {};
 ['abort', 'animationEnd', 'animationIteration', 'animationStart', 'blur', 'cancel', 'canPlay', 'canPlayThrough', 'click', 'close', 'contextMenu', 'copy', 'cut', 'doubleClick', 'drag', 'dragEnd', 'dragEnter', 'dragExit', 'dragLeave', 'dragOver', 'dragStart', 'drop', 'durationChange', 'emptied', 'encrypted', 'ended', 'error', 'focus', 'input', 'invalid', 'keyDown', 'keyPress', 'keyUp', 'load', 'loadedData', 'loadedMetadata', 'loadStart', 'mouseDown', 'mouseMove', 'mouseOut', 'mouseOver', 'mouseUp', 'paste', 'pause', 'play', 'playing', 'progress', 'rateChange', 'reset', 'scroll', 'seeked', 'seeking', 'stalled', 'submit', 'suspend', 'timeUpdate', 'toggle', 'touchCancel', 'touchEnd', 'touchMove', 'touchStart', 'transitionEnd', 'volumeChange', 'waiting', 'wheel'].forEach(function (event) {
@@ -27330,18 +24284,12 @@ var SimpleEventPlugin = {
       case 'topToggle':
       case 'topVolumeChange':
       case 'topWaiting':
-        // HTML Events
-        // @see http://www.w3.org/TR/html5/index.html#events-0
         EventConstructor = SyntheticEvent_1;
         break;
       case 'topKeyPress':
-        // Firefox creates a keypress event for function keys too. This removes
-        // the unwanted keypress events. Enter is however both printable and
-        // non-printable. One would expect Tab to be as well (but it isn't).
         if (getEventCharCode_1(nativeEvent) === 0) {
           return null;
         }
-      /* falls through */
       case 'topKeyDown':
       case 'topKeyUp':
         EventConstructor = SyntheticKeyboardEvent_1;
@@ -27351,18 +24299,13 @@ var SimpleEventPlugin = {
         EventConstructor = SyntheticFocusEvent_1;
         break;
       case 'topClick':
-        // Firefox creates a click event on right mouse clicks. This removes the
-        // unwanted click events.
         if (nativeEvent.button === 2) {
           return null;
         }
-      /* falls through */
       case 'topDoubleClick':
       case 'topMouseDown':
       case 'topMouseMove':
       case 'topMouseUp':
-      // TODO: Disabled elements should not respond to mouse events
-      /* falls through */
       case 'topMouseOut':
       case 'topMouseOver':
       case 'topContextMenu':
@@ -27415,16 +24358,9 @@ var SimpleEventPlugin_1 = SimpleEventPlugin;
 
 ReactDOMEventListener_1.setHandleTopLevel(ReactBrowserEventEmitter_1.handleTopLevel);
 
-/**
- * Inject modules for resolving DOM hierarchy and plugin ordering.
- */
 EventPluginHub_1.injection.injectEventPluginOrder(DOMEventPluginOrder_1);
 EventPluginUtils_1.injection.injectComponentTree(ReactDOMComponentTree_1);
 
-/**
- * Some important event plugins included by default (without having to require
- * them).
- */
 EventPluginHub_1.injection.injectEventPluginsByName({
   SimpleEventPlugin: SimpleEventPlugin_1,
   EnterLeaveEventPlugin: EnterLeaveEventPlugin_1,
@@ -27441,18 +24377,10 @@ var HAS_OVERLOADED_BOOLEAN_VALUE = DOMProperty_1.injection.HAS_OVERLOADED_BOOLEA
 var HAS_STRING_BOOLEAN_VALUE = DOMProperty_1.injection.HAS_STRING_BOOLEAN_VALUE;
 
 var HTMLDOMPropertyConfig = {
-  // When adding attributes to this list, be sure to also add them to
-  // the `possibleStandardNames` module to ensure casing and incorrect
-  // name warnings.
   Properties: {
     allowFullScreen: HAS_BOOLEAN_VALUE,
-    // IE only true/false iFrame attribute
-    // https://msdn.microsoft.com/en-us/library/ms533072(v=vs.85).aspx
     allowTransparency: HAS_STRING_BOOLEAN_VALUE,
-    // specifies target context for links with `preload` type
     async: HAS_BOOLEAN_VALUE,
-    // autoFocus is polyfilled/normalized by AutoFocusUtils
-    // autoFocus: HAS_BOOLEAN_VALUE,
     autoPlay: HAS_BOOLEAN_VALUE,
     capture: HAS_BOOLEAN_VALUE,
     checked: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
@@ -27467,8 +24395,6 @@ var HTMLDOMPropertyConfig = {
     formNoValidate: HAS_BOOLEAN_VALUE,
     hidden: HAS_BOOLEAN_VALUE,
     loop: HAS_BOOLEAN_VALUE,
-    // Caution; `option.selected` is not updated if `select.multiple` is
-    // disabled with `removeAttribute`.
     multiple: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
     muted: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
     noValidate: HAS_BOOLEAN_VALUE,
@@ -27484,23 +24410,14 @@ var HTMLDOMPropertyConfig = {
     selected: MUST_USE_PROPERTY | HAS_BOOLEAN_VALUE,
     size: HAS_POSITIVE_NUMERIC_VALUE,
     start: HAS_NUMERIC_VALUE,
-    // support for projecting regular DOM Elements via V1 named slots ( shadow dom )
     span: HAS_POSITIVE_NUMERIC_VALUE,
     spellCheck: HAS_STRING_BOOLEAN_VALUE,
-    // Style must be explicitly set in the attribute list. React components
-    // expect a style object
     style: 0,
-    // itemScope is for for Microdata support.
-    // See http://schema.org/docs/gs.html
     itemScope: HAS_BOOLEAN_VALUE,
-    // These attributes must stay in the white-list because they have
-    // different attribute names (see DOMAttributeNames below)
     acceptCharset: 0,
     className: 0,
     htmlFor: 0,
     httpEquiv: 0,
-    // Attributes with mutation methods must be specified in the whitelist
-    // Set the string boolean flag to allow the behavior
     value: HAS_STRING_BOOLEAN_VALUE
   },
   DOMAttributeNames: {
@@ -27515,20 +24432,9 @@ var HTMLDOMPropertyConfig = {
         return node.removeAttribute('value');
       }
 
-      // Number inputs get special treatment due to some edge cases in
-      // Chrome. Let everything else assign the value attribute as normal.
-      // https://github.com/facebook/react/issues/7253#issuecomment-236074326
       if (node.type !== 'number' || node.hasAttribute('value') === false) {
         node.setAttribute('value', '' + value);
       } else if (node.validity && !node.validity.badInput && node.ownerDocument.activeElement !== node) {
-        // Don't assign an attribute if validation reports bad
-        // input. Chrome will clear the value. Additionally, don't
-        // operate on inputs that have focus, otherwise Chrome might
-        // strip off trailing decimal places and cause the user's
-        // cursor position to jump to the beginning of the input.
-        //
-        // In ReactDOMInput, we have an onBlur event that will trigger
-        // this function again when focus is lost.
         node.setAttribute('value', '' + value);
       }
     }
@@ -27545,19 +24451,6 @@ var NS = {
   xml: 'http://www.w3.org/XML/1998/namespace'
 };
 
-/**
- * This is a list of all SVG attributes that need special casing,
- * namespacing, or boolean value assignment.
- *
- * When adding attributes to this list, be sure to also add them to
- * the `possibleStandardNames` module to ensure casing and incorrect
- * name warnings.
- *
- * SVG Attributes List:
- * https://www.w3.org/TR/SVG/attindex.html
- * SMIL Spec:
- * https://www.w3.org/TR/smil
- */
 var ATTRS = ['accent-height', 'alignment-baseline', 'arabic-form', 'baseline-shift', 'cap-height', 'clip-path', 'clip-rule', 'color-interpolation', 'color-interpolation-filters', 'color-profile', 'color-rendering', 'dominant-baseline', 'enable-background', 'fill-opacity', 'fill-rule', 'flood-color', 'flood-opacity', 'font-family', 'font-size', 'font-size-adjust', 'font-stretch', 'font-style', 'font-variant', 'font-weight', 'glyph-name', 'glyph-orientation-horizontal', 'glyph-orientation-vertical', 'horiz-adv-x', 'horiz-origin-x', 'image-rendering', 'letter-spacing', 'lighting-color', 'marker-end', 'marker-mid', 'marker-start', 'overline-position', 'overline-thickness', 'paint-order', 'panose-1', 'pointer-events', 'rendering-intent', 'shape-rendering', 'stop-color', 'stop-opacity', 'strikethrough-position', 'strikethrough-thickness', 'stroke-dasharray', 'stroke-dashoffset', 'stroke-linecap', 'stroke-linejoin', 'stroke-miterlimit', 'stroke-opacity', 'stroke-width', 'text-anchor', 'text-decoration', 'text-rendering', 'underline-position', 'underline-thickness', 'unicode-bidi', 'unicode-range', 'units-per-em', 'v-alphabetic', 'v-hanging', 'v-ideographic', 'v-mathematical', 'vector-effect', 'vert-adv-y', 'vert-origin-x', 'vert-origin-y', 'word-spacing', 'writing-mode', 'x-height', 'xlink:actuate', 'xlink:arcrole', 'xlink:href', 'xlink:role', 'xlink:show', 'xlink:title', 'xlink:type', 'xml:base', 'xmlns:xlink', 'xml:lang', 'xml:space'];
 
 var SVGDOMPropertyConfig = {
@@ -27653,13 +24546,6 @@ findDOMNode_1._injectFiber(function (fiber) {
 var eventsEnabled = null;
 var selectionInformation = null;
 
-/**
- * True if the supplied DOM node is a valid node element.
- *
- * @param {?DOMElement} node The candidate DOM node.
- * @return {boolean} True if the DOM is a valid DOM node.
- * @internal
- */
 function isValidContainer(node) {
   return !!(node && (node.nodeType === ELEMENT_NODE || node.nodeType === DOCUMENT_NODE || node.nodeType === DOCUMENT_FRAGMENT_NODE || node.nodeType === COMMENT_NODE && node.nodeValue === ' react-mount-point-unstable '));
 }
@@ -27777,10 +24663,7 @@ var DOMRenderer = ReactFiberReconciler({
     domElement.focus();
   },
   commitUpdate: function (domElement, updatePayload, type, oldProps, newProps, internalInstanceHandle) {
-    // Update the props handle so that we know which props are the ones with
-    // with current event handlers.
     updateFiberProps(domElement, newProps);
-    // Apply the diff to the DOM node.
     updateProperties(domElement, updatePayload, type, oldProps, newProps);
   },
   shouldSetTextContent: function (type, props) {
@@ -27839,14 +24722,12 @@ var DOMRenderer = ReactFiberReconciler({
   },
   canHydrateTextInstance: function (instance, text) {
     if (text === '') {
-      // Empty strings are not parsed by HTML so there won't be a correct match here.
       return false;
     }
     return instance.nodeType === TEXT_NODE;
   },
   getNextHydratableSibling: function (instance) {
     var node = instance.nextSibling;
-    // Skip non-hydratable nodes.
     while (node && node.nodeType !== ELEMENT_NODE && node.nodeType !== TEXT_NODE) {
       node = node.nextSibling;
     }
@@ -27854,7 +24735,6 @@ var DOMRenderer = ReactFiberReconciler({
   },
   getFirstHydratableChild: function (parentInstance) {
     var next = parentInstance.firstChild;
-    // Skip non-hydratable nodes.
     while (next && next.nodeType !== ELEMENT_NODE && next.nodeType !== TEXT_NODE) {
       next = next.nextSibling;
     }
@@ -27862,8 +24742,6 @@ var DOMRenderer = ReactFiberReconciler({
   },
   hydrateInstance: function (instance, type, props, rootContainerInstance, hostContext, internalInstanceHandle) {
     precacheFiberNode(internalInstanceHandle, instance);
-    // TODO: Possibly defer this until the commit phase where all the events
-    // get attached.
     updateFiberProps(instance, props);
     var parentNamespace = void 0;
     {
@@ -27923,7 +24801,6 @@ function renderSubtreeIntoContainer(parentComponent, children, container, forceH
   var root = container._reactRootContainer;
   if (!root) {
     var shouldHydrate = forceHydrate || shouldHydrateDueToLegacyHeuristic(container);
-    // First clear any existing content.
     if (!shouldHydrate) {
       var warned = false;
       var rootSibling = void 0;
@@ -27945,7 +24822,6 @@ function renderSubtreeIntoContainer(parentComponent, children, container, forceH
     }
     var newRoot = DOMRenderer.createContainer(container);
     root = container._reactRootContainer = newRoot;
-    // Initial mount should not be batched.
     DOMRenderer.unbatchedUpdates(function () {
       DOMRenderer.updateContainer(children, newRoot, parentComponent, callback);
     });
@@ -27959,7 +24835,6 @@ function createPortal(children, container) {
   var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
   !isValidContainer(container) ? invariant(false, 'Target container is not a DOM element.') : void 0;
-  // TODO: pass ReactDOM portal implementation as third argument
   return ReactPortal.createPortal(children, container, null, key);
 }
 
@@ -27967,7 +24842,6 @@ var ReactDOMFiber = {
   createPortal: createPortal,
 
   hydrate: function (element, container, callback) {
-    // TODO: throw or warn if we couldn't hydrate?
     return renderSubtreeIntoContainer(null, element, container, true, callback);
   },
   render: function (element, container, callback) {
@@ -27987,21 +24861,17 @@ var ReactDOMFiber = {
         warning(!renderedByDifferentReact, "unmountComponentAtNode(): The node you're attempting to unmount " + 'was rendered by another copy of React.');
       }
 
-      // Unmount should not be batched.
       DOMRenderer.unbatchedUpdates(function () {
         renderSubtreeIntoContainer(null, null, container, false, function () {
           container._reactRootContainer = null;
         });
       });
-      // If you call unmountComponentAtNode twice in quick succession, you'll
-      // get `true` twice. That's probably fine?
       return true;
     } else {
       {
         var _rootEl = getReactRootElementInContainer(container);
         var hasNonRootReactChild = !!(_rootEl && ReactDOMComponentTree_1.getInstanceFromNode(_rootEl));
 
-        // Check if the container itself is a React root node.
         var isContainerReactRoot = container.nodeType === 1 && isValidContainer(container.parentNode) && !!container.parentNode._reactRootContainer;
 
         warning(!hasNonRootReactChild, "unmountComponentAtNode(): The node you're attempting to unmount " + 'was rendered by React and is not a top-level container. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its container.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.');
@@ -28014,8 +24884,6 @@ var ReactDOMFiber = {
 
   findDOMNode: findDOMNode_1,
 
-  // Temporary alias since we already shipped React 16 RC with it.
-  // TODO: remove in React 17.
   unstable_createPortal: createPortal,
 
   unstable_batchedUpdates: ReactGenericBatching_1.batchedUpdates,
@@ -28025,9 +24893,7 @@ var ReactDOMFiber = {
   flushSync: DOMRenderer.flushSync,
 
   __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: {
-    // For TapEventPlugin which is popular in open source
     EventPluginHub: EventPluginHub_1,
-    // Used by test-utils
     EventPluginRegistry: EventPluginRegistry_1,
     EventPropagators: EventPropagators_1,
     ReactControlledComponent: ReactControlledComponent_1,
@@ -28039,7 +24905,6 @@ var ReactDOMFiber = {
 var foundDevTools = injectInternals({
   findFiberByHostInstance: ReactDOMComponentTree_1.getClosestInstanceFromNode,
   findHostInstanceByFiber: DOMRenderer.findHostInstance,
-  // This is an enum because we may add more (e.g. profiler build)
   bundleType: 1,
   version: ReactVersion,
   rendererPackageName: 'react-dom'
@@ -28047,10 +24912,8 @@ var foundDevTools = injectInternals({
 
 {
   if (!foundDevTools && ExecutionEnvironment.canUseDOM && window.top === window.self) {
-    // If we're in Chrome or Firefox, provide a download link if not installed.
     if (navigator.userAgent.indexOf('Chrome') > -1 && navigator.userAgent.indexOf('Edge') === -1 || navigator.userAgent.indexOf('Firefox') > -1) {
       var protocol = window.location.protocol;
-      // Don't warn in exotic cases like chrome-extension://.
       if (/^(https?|file):$/.test(protocol)) {
         console.info('%cDownload the React DevTools ' + 'for a better development experience: ' + 'https://fb.me/react-devtools' + (protocol === 'file:' ? '\nYou might need to use a local HTTP server (instead of file://): ' + 'https://fb.me/react-devtools-faq' : ''), 'font-weight:bold');
       }
@@ -28072,14 +24935,6 @@ module.exports = ReactDOMFiberEntry;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 
 
@@ -28087,22 +24942,6 @@ var hyphenate = __webpack_require__(153);
 
 var msPattern = /^ms-/;
 
-/**
- * Hyphenates a camelcased CSS property name, for example:
- *
- *   > hyphenateStyleName('backgroundColor')
- *   < "background-color"
- *   > hyphenateStyleName('MozTransition')
- *   < "-moz-transition"
- *   > hyphenateStyleName('msTransition')
- *   < "-ms-transition"
- *
- * As Modernizr suggests (http://modernizr.com/docs/#prefixed), an `ms` prefix
- * is converted to `-ms-`.
- *
- * @param {string} string
- * @return {string}
- */
 function hyphenateStyleName(string) {
   return hyphenate(string).replace(msPattern, '-ms-');
 }
@@ -28116,29 +24955,9 @@ module.exports = hyphenateStyleName;
 "use strict";
 
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 var _uppercasePattern = /([A-Z])/g;
 
-/**
- * Hyphenates a camelcased string, for example:
- *
- *   > hyphenate('backgroundColor')
- *   < "background-color"
- *
- * For CSS style names, use `hyphenateStyleName` instead which works properly
- * with all vendor prefixes, including `ms`.
- *
- * @param {string} string
- * @return {string}
- */
 function hyphenate(string) {
   return string.replace(_uppercasePattern, '-$1').toLowerCase();
 }
@@ -28150,14 +24969,6 @@ module.exports = hyphenate;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 
 
@@ -28165,23 +24976,6 @@ var camelize = __webpack_require__(155);
 
 var msPattern = /^-ms-/;
 
-/**
- * Camelcases a hyphenated CSS property name, for example:
- *
- *   > camelizeStyleName('background-color')
- *   < "backgroundColor"
- *   > camelizeStyleName('-moz-transition')
- *   < "MozTransition"
- *   > camelizeStyleName('-ms-transition')
- *   < "msTransition"
- *
- * As Andi Smith suggests
- * (http://www.andismith.com/blog/2012/02/modernizr-prefixed/), an `-ms` prefix
- * is converted to lowercase `ms`.
- *
- * @param {string} string
- * @return {string}
- */
 function camelizeStyleName(string) {
   return camelize(string.replace(msPattern, 'ms-'));
 }
@@ -28195,26 +24989,9 @@ module.exports = camelizeStyleName;
 "use strict";
 
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 var _hyphenPattern = /-(.)/g;
 
-/**
- * Camelcases a hyphenated string, for example:
- *
- *   > camelize('background-color')
- *   < "backgroundColor"
- *
- * @param {string} string
- * @return {string}
- */
 function camelize(string) {
   return string.replace(_hyphenPattern, function (_, character) {
     return character.toUpperCase();
@@ -28230,24 +25007,11 @@ module.exports = camelize;
 "use strict";
 
 
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 var performance = __webpack_require__(157);
 
 var performanceNow;
 
-/**
- * Detect if we can use `window.performance.now()` and gracefully fallback to
- * `Date.now()` if it doesn't exist. We need to support Firefox < 15 for now
- * because of Facebook's testing infrastructure.
- */
 if (performance.now) {
   performanceNow = function performanceNow() {
     return performance.now();
@@ -28265,14 +25029,6 @@ module.exports = performanceNow;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @typechecks
- */
 
 
 
@@ -28313,20 +25069,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
   var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
 
-  /**
-   * Returns the iterator method function contained on the iterable object.
-   *
-   * Be sure to invoke the function with the iterable as context:
-   *
-   *     var iteratorFn = getIteratorFn(myIterable);
-   *     if (iteratorFn) {
-   *       var iterator = iteratorFn.call(myIterable);
-   *       ...
-   *     }
-   *
-   * @param {?object} maybeIterable
-   * @return {?function}
-   */
   function getIteratorFn(maybeIterable) {
     var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
     if (typeof iteratorFn === 'function') {
@@ -28334,57 +25076,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     }
   }
 
-  /**
-   * Collection of methods that allow declaration and validation of props that are
-   * supplied to React components. Example usage:
-   *
-   *   var Props = require('ReactPropTypes');
-   *   var MyArticle = React.createClass({
-   *     propTypes: {
-   *       // An optional string prop named "description".
-   *       description: Props.string,
-   *
-   *       // A required enum prop named "category".
-   *       category: Props.oneOf(['News','Photos']).isRequired,
-   *
-   *       // A prop named "dialog" that requires an instance of Dialog.
-   *       dialog: Props.instanceOf(Dialog).isRequired
-   *     },
-   *     render: function() { ... }
-   *   });
-   *
-   * A more formal specification of how these methods are used:
-   *
-   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
-   *   decl := ReactPropTypes.{type}(.isRequired)?
-   *
-   * Each and every declaration produces a function with the same signature. This
-   * allows the creation of custom validation functions. For example:
-   *
-   *  var MyLink = React.createClass({
-   *    propTypes: {
-   *      // An optional string or URI prop named "href".
-   *      href: function(props, propName, componentName) {
-   *        var propValue = props[propName];
-   *        if (propValue != null && typeof propValue !== 'string' &&
-   *            !(propValue instanceof URI)) {
-   *          return new Error(
-   *            'Expected a string or an URI for ' + propName + ' in ' +
-   *            componentName
-   *          );
-   *        }
-   *      }
-   *    },
-   *    render: function() {...}
-   *  });
-   *
-   * @internal
-   */
 
   var ANONYMOUS = '<<anonymous>>';
 
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
   var ReactPropTypes = {
     array: createPrimitiveTypeChecker('array'),
     bool: createPrimitiveTypeChecker('boolean'),
@@ -28406,36 +25100,17 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     exact: createStrictShapeTypeChecker,
   };
 
-  /**
-   * inlined Object.is polyfill to avoid requiring consumers ship their own
-   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-   */
-  /*eslint-disable no-self-compare*/
   function is(x, y) {
-    // SameValue algorithm
     if (x === y) {
-      // Steps 1-5, 7-10
-      // Steps 6.b-6.e: +0 != -0
       return x !== 0 || 1 / x === 1 / y;
     } else {
-      // Step 6.a: NaN == NaN
       return x !== x && y !== y;
     }
   }
-  /*eslint-enable no-self-compare*/
-
-  /**
-   * We use an Error-like object for backward compatibility as people may call
-   * PropTypes directly and inspect their output. However, we don't use real
-   * Errors anymore. We don't inspect their stack anyway, and creating them
-   * is prohibitively expensive if they are created too often, such as what
-   * happens in oneOfType() for any type before the one that matched.
-   */
   function PropTypeError(message) {
     this.message = message;
     this.stack = '';
   }
-  // Make `instanceof Error` still work for returned errors.
   PropTypeError.prototype = Error.prototype;
 
   function createChainableTypeChecker(validate) {
@@ -28449,7 +25124,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
       if (secret !== ReactPropTypesSecret) {
         if (throwOnDirectAccess) {
-          // New behavior only for users of `prop-types` package
           invariant(
             false,
             'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
@@ -28457,11 +25131,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
             'Read more at http://fb.me/use-check-prop-types'
           );
         } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
-          // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
             !manualPropTypeCallCache[cacheKey] &&
-            // Avoid spamming the console because they are often not actionable except for lib authors
             manualPropTypeWarningCount < 3
           ) {
             warning(
@@ -28503,9 +25175,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       var propValue = props[propName];
       var propType = getPropType(propValue);
       if (propType !== expectedType) {
-        // `propValue` being instance of, say, date/regexp, pass the 'object'
-        // check, but we can offer a more precise error message here rather than
-        // 'of type `object`'.
         var preciseType = getPreciseType(propValue);
 
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
@@ -28679,8 +25348,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       if (propType !== 'object') {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
       }
-      // We need to check all keys in case some are required but missing from
-      // props.
       var allKeys = assign({}, props[propName], shapeTypes);
       for (var key in allKeys) {
         var checker = shapeTypes[key];
@@ -28729,7 +25396,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
               }
             }
           } else {
-            // Iterator will provide entry [k,v] tuples rather than values.
             while (!(step = iterator.next()).done) {
               var entry = step.value;
               if (entry) {
@@ -28750,17 +25416,14 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   }
 
   function isSymbol(propType, propValue) {
-    // Native Symbol.
     if (propType === 'symbol') {
       return true;
     }
 
-    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
     if (propValue['@@toStringTag'] === 'Symbol') {
       return true;
     }
 
-    // Fallback for non-spec compliant Symbols which are polyfilled.
     if (typeof Symbol === 'function' && propValue instanceof Symbol) {
       return true;
     }
@@ -28768,16 +25431,12 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     return false;
   }
 
-  // Equivalent of `typeof` but with special handling for array and regexp.
   function getPropType(propValue) {
     var propType = typeof propValue;
     if (Array.isArray(propValue)) {
       return 'array';
     }
     if (propValue instanceof RegExp) {
-      // Old webkits (at least until Android 4.0) return 'function' rather than
-      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
-      // passes PropTypes.object.
       return 'object';
     }
     if (isSymbol(propType, propValue)) {
@@ -28786,8 +25445,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     return propType;
   }
 
-  // This handles more types than `getPropType`. Only used for error messages.
-  // See `createPrimitiveTypeChecker`.
   function getPreciseType(propValue) {
     if (typeof propValue === 'undefined' || propValue === null) {
       return '' + propValue;
@@ -28803,8 +25460,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     return propType;
   }
 
-  // Returns a string that is postfixed to a warning about an invalid type.
-  // For example, "undefined" or "of type array"
   function getPostfixForTypeWarning(value) {
     var type = getPreciseType(value);
     switch (type) {
@@ -28820,7 +25475,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     }
   }
 
-  // Returns class name of the object, if any.
   function getClassName(propValue) {
     if (!propValue.constructor || !propValue.constructor.name) {
       return ANONYMOUS;
@@ -28841,12 +25495,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 
 
 
@@ -28857,7 +25505,6 @@ var ReactPropTypesSecret = __webpack_require__(56);
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
     if (secret === ReactPropTypesSecret) {
-      // It is still safe when called from React.
       return;
     }
     invariant(
@@ -28871,8 +25518,6 @@ module.exports = function() {
   function getShim() {
     return shim;
   };
-  // Important!
-  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
     bool: shim,
@@ -28968,27 +25613,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
 /* 162 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -29013,11 +25637,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-
-/**
- * The public API for a <Router> that uses HTML5 history.
- */
 
 var BrowserRouter = function (_React$Component) {
   _inherits(BrowserRouter, _React$Component);
@@ -29096,16 +25715,10 @@ var getHistoryState = function getHistoryState() {
   try {
     return window.history.state || {};
   } catch (e) {
-    // IE 11 sometimes throws when accessing window.history.state
-    // See https://github.com/ReactTraining/history/pull/289
     return {};
   }
 };
 
-/**
- * Creates a history object that uses the HTML5 history API including
- * pushState, replaceState, and the popstate event.
- */
 var createBrowserHistory = function createBrowserHistory() {
   var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -29159,7 +25772,6 @@ var createBrowserHistory = function createBrowserHistory() {
   };
 
   var handlePopState = function handlePopState(event) {
-    // Ignore extraneous popstate events in WebKit.
     if ((0, _DOMUtils.isExtraneousPopstateEvent)(event)) return;
 
     handlePop(getDOMLocation(event.state));
@@ -29191,9 +25803,6 @@ var createBrowserHistory = function createBrowserHistory() {
   var revertPop = function revertPop(fromLocation) {
     var toLocation = history.location;
 
-    // TODO: We could probably make this more reliable by
-    // keeping a list of keys we've seen in sessionStorage.
-    // Instead, we just default to 0 for keys we don't know.
 
     var toIndex = allKeys.indexOf(toLocation.key);
 
@@ -29214,7 +25823,6 @@ var createBrowserHistory = function createBrowserHistory() {
   var initialLocation = getDOMLocation(getHistoryState());
   var allKeys = [initialLocation.key];
 
-  // Public interface
 
   var createHref = function createHref(location) {
     return basename + (0, _PathUtils.createPath)(location);
@@ -29395,9 +26003,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-/**
- * The public API for a <Router> that uses window.location.hash.
- */
 
 var HashRouter = function (_React$Component) {
   _inherits(HashRouter, _React$Component);
@@ -29488,8 +26093,6 @@ var HashPathCoders = {
 };
 
 var getHashPath = function getHashPath() {
-  // We can't use window.location.hash here because it's not
-  // consistent across browsers - Firefox will pre-decode it!
   var href = window.location.href;
   var hashIndex = href.indexOf('#');
   return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
@@ -29553,7 +26156,6 @@ var createHashHistory = function createHashHistory() {
     var encodedPath = encodePath(path);
 
     if (path !== encodedPath) {
-      // Ensure we always have a properly-encoded hash.
       replaceHashPath(encodedPath);
     } else {
       var location = getDOMLocation();
@@ -29589,9 +26191,6 @@ var createHashHistory = function createHashHistory() {
   var revertPop = function revertPop(fromLocation) {
     var toLocation = history.location;
 
-    // TODO: We could probably make this more reliable by
-    // keeping a list of paths we've seen in sessionStorage.
-    // Instead, we just default to 0 for paths we don't know.
 
     var toIndex = allPaths.lastIndexOf((0, _PathUtils.createPath)(toLocation));
 
@@ -29609,7 +26208,6 @@ var createHashHistory = function createHashHistory() {
     }
   };
 
-  // Ensure the hash is encoded properly before doing anything else.
   var path = getHashPath();
   var encodedPath = encodePath(path);
 
@@ -29618,7 +26216,6 @@ var createHashHistory = function createHashHistory() {
   var initialLocation = getDOMLocation();
   var allPaths = [(0, _PathUtils.createPath)(initialLocation)];
 
-  // Public interface
 
   var createHref = function createHref(location) {
     return '#' + encodePath(basename + (0, _PathUtils.createPath)(location));
@@ -29638,9 +26235,6 @@ var createHashHistory = function createHashHistory() {
       var hashChanged = getHashPath() !== encodedPath;
 
       if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a PUSH, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
         ignorePath = path;
         pushHashPath(encodedPath);
 
@@ -29673,9 +26267,6 @@ var createHashHistory = function createHashHistory() {
       var hashChanged = getHashPath() !== encodedPath;
 
       if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
         ignorePath = path;
         replaceHashPath(encodedPath);
       }
@@ -29771,7 +26362,6 @@ exports.default = createHashHistory;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__ = __webpack_require__(167);
-// Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_MemoryRouter__["a" /* default */]);
@@ -29802,9 +26392,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-/**
- * The public API for a <Router> that stores location in memory.
- */
 
 var MemoryRouter = function (_React$Component) {
   _inherits(MemoryRouter, _React$Component);
@@ -29874,9 +26461,6 @@ var clamp = function clamp(n, lowerBound, upperBound) {
   return Math.min(Math.max(n, lowerBound), upperBound);
 };
 
-/**
- * Creates a history object that stores locations in memory.
- */
 var createMemoryHistory = function createMemoryHistory() {
   var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var getUserConfirmation = props.getUserConfirmation,
@@ -29907,7 +26491,6 @@ var createMemoryHistory = function createMemoryHistory() {
     return typeof entry === 'string' ? (0, _LocationUtils.createLocation)(entry, undefined, createKey()) : (0, _LocationUtils.createLocation)(entry, undefined, entry.key || createKey());
   });
 
-  // Public interface
 
   var createHref = _PathUtils.createPath;
 
@@ -29968,8 +26551,6 @@ var createMemoryHistory = function createMemoryHistory() {
           index: nextIndex
         });
       } else {
-        // Mimic the behavior of DOM histories by
-        // causing a render after a cancelled POP.
         setState();
       }
     });
@@ -30041,9 +26622,6 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 
 
-/**
- * A <Link> wrapper that knows if it's "active" or not.
- */
 var NavLink = function NavLink(_ref) {
   var to = _ref.to,
       exact = _ref.exact,
@@ -30106,40 +26684,17 @@ NavLink.defaultProps = {
 
 var isarray = __webpack_require__(171)
 
-/**
- * Expose `pathToRegexp`.
- */
 module.exports = pathToRegexp
 module.exports.parse = parse
 module.exports.compile = compile
 module.exports.tokensToFunction = tokensToFunction
 module.exports.tokensToRegExp = tokensToRegExp
 
-/**
- * The main path matching regexp utility.
- *
- * @type {RegExp}
- */
 var PATH_REGEXP = new RegExp([
-  // Match escaped characters that would otherwise appear in future matches.
-  // This allows the user to escape special characters that won't transform.
   '(\\\\.)',
-  // Match Express-style parameters and un-named parameters with a prefix
-  // and optional suffixes. Matches appear as:
-  //
-  // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
-  // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
-  // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
   '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))'
 ].join('|'), 'g')
 
-/**
- * Parse a string for the raw tokens.
- *
- * @param  {string}  str
- * @param  {Object=} options
- * @return {!Array}
- */
 function parse (str, options) {
   var tokens = []
   var key = 0
@@ -30155,7 +26710,6 @@ function parse (str, options) {
     path += str.slice(index, offset)
     index = offset + m.length
 
-    // Ignore already escaped sequences.
     if (escaped) {
       path += escaped[1]
       continue
@@ -30169,7 +26723,6 @@ function parse (str, options) {
     var modifier = res[6]
     var asterisk = res[7]
 
-    // Push the current path onto the tokens.
     if (path) {
       tokens.push(path)
       path = ''
@@ -30193,12 +26746,10 @@ function parse (str, options) {
     })
   }
 
-  // Match any characters still remaining.
   if (index < str.length) {
     path += str.substr(index)
   }
 
-  // If the path exists, push it onto the end.
   if (path) {
     tokens.push(path)
   }
@@ -30206,49 +26757,25 @@ function parse (str, options) {
   return tokens
 }
 
-/**
- * Compile a string to a template function for the path.
- *
- * @param  {string}             str
- * @param  {Object=}            options
- * @return {!function(Object=, Object=)}
- */
 function compile (str, options) {
   return tokensToFunction(parse(str, options))
 }
 
-/**
- * Prettier encoding of URI path segments.
- *
- * @param  {string}
- * @return {string}
- */
 function encodeURIComponentPretty (str) {
   return encodeURI(str).replace(/[\/?#]/g, function (c) {
     return '%' + c.charCodeAt(0).toString(16).toUpperCase()
   })
 }
 
-/**
- * Encode the asterisk parameter. Similar to `pretty`, but allows slashes.
- *
- * @param  {string}
- * @return {string}
- */
 function encodeAsterisk (str) {
   return encodeURI(str).replace(/[?#]/g, function (c) {
     return '%' + c.charCodeAt(0).toString(16).toUpperCase()
   })
 }
 
-/**
- * Expose a method for transforming tokens into the path function.
- */
 function tokensToFunction (tokens) {
-  // Compile all the tokens into regexps.
   var matches = new Array(tokens.length)
 
-  // Compile all the patterns before compilation.
   for (var i = 0; i < tokens.length; i++) {
     if (typeof tokens[i] === 'object') {
       matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$')
@@ -30275,7 +26802,6 @@ function tokensToFunction (tokens) {
 
       if (value == null) {
         if (token.optional) {
-          // Prepend partial segment prefixes.
           if (token.partial) {
             path += token.prefix
           }
@@ -30325,57 +26851,24 @@ function tokensToFunction (tokens) {
   }
 }
 
-/**
- * Escape a regular expression string.
- *
- * @param  {string} str
- * @return {string}
- */
 function escapeString (str) {
   return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1')
 }
 
-/**
- * Escape the capturing group by escaping special characters and meaning.
- *
- * @param  {string} group
- * @return {string}
- */
 function escapeGroup (group) {
   return group.replace(/([=!:$\/()])/g, '\\$1')
 }
 
-/**
- * Attach the keys as a property of the regexp.
- *
- * @param  {!RegExp} re
- * @param  {Array}   keys
- * @return {!RegExp}
- */
 function attachKeys (re, keys) {
   re.keys = keys
   return re
 }
 
-/**
- * Get the flags for a regexp from the options.
- *
- * @param  {Object} options
- * @return {string}
- */
 function flags (options) {
   return options.sensitive ? '' : 'i'
 }
 
-/**
- * Pull out keys from a regexp.
- *
- * @param  {!RegExp} path
- * @param  {!Array}  keys
- * @return {!RegExp}
- */
 function regexpToRegexp (path, keys) {
-  // Use a negative lookahead to match only capturing groups.
   var groups = path.source.match(/\((?!\?)/g)
 
   if (groups) {
@@ -30396,14 +26889,6 @@ function regexpToRegexp (path, keys) {
   return attachKeys(path, keys)
 }
 
-/**
- * Transform an array into a regexp.
- *
- * @param  {!Array}  path
- * @param  {Array}   keys
- * @param  {!Object} options
- * @return {!RegExp}
- */
 function arrayToRegexp (path, keys, options) {
   var parts = []
 
@@ -30416,26 +26901,10 @@ function arrayToRegexp (path, keys, options) {
   return attachKeys(regexp, keys)
 }
 
-/**
- * Create a path regexp from string input.
- *
- * @param  {string}  path
- * @param  {!Array}  keys
- * @param  {!Object} options
- * @return {!RegExp}
- */
 function stringToRegexp (path, keys, options) {
   return tokensToRegExp(parse(path, options), keys, options)
 }
 
-/**
- * Expose a function for taking tokens and returning a RegExp.
- *
- * @param  {!Array}          tokens
- * @param  {(Array|Object)=} keys
- * @param  {Object=}         options
- * @return {!RegExp}
- */
 function tokensToRegExp (tokens, keys, options) {
   if (!isarray(keys)) {
     options = /** @type {!Object} */ (keys || options)
@@ -30448,7 +26917,6 @@ function tokensToRegExp (tokens, keys, options) {
   var end = options.end !== false
   var route = ''
 
-  // Iterate over the tokens and create our regexp string.
   for (var i = 0; i < tokens.length; i++) {
     var token = tokens[i]
 
@@ -30481,10 +26949,6 @@ function tokensToRegExp (tokens, keys, options) {
   var delimiter = escapeString(options.delimiter || '/')
   var endsWithDelimiter = route.slice(-delimiter.length) === delimiter
 
-  // In non-strict mode we allow a slash at the end of match. If the path to
-  // match already ends with a slash, we remove it for consistency. The slash
-  // is valid at the end of a path match, not in the middle. This is important
-  // in non-ending mode, where "/test/" shouldn't match "/test//route".
   if (!strict) {
     route = (endsWithDelimiter ? route.slice(0, -delimiter.length) : route) + '(?:' + delimiter + '(?=$))?'
   }
@@ -30492,26 +26956,13 @@ function tokensToRegExp (tokens, keys, options) {
   if (end) {
     route += '$'
   } else {
-    // In non-ending mode, we need the capturing groups to match as much as
-    // possible by using a positive lookahead to the end or next path segment.
+
     route += strict && endsWithDelimiter ? '' : '(?=' + delimiter + '|$)'
   }
 
   return attachKeys(new RegExp('^' + route, flags(options)), keys)
 }
 
-/**
- * Normalize the given path string, returning a regular expression.
- *
- * An empty array can be passed in for the keys, which will hold the
- * placeholder key descriptions. For example, using `/user/:id`, `keys` will
- * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
- *
- * @param  {(string|RegExp|Array)} path
- * @param  {(Array|Object)=}       keys
- * @param  {Object=}               options
- * @return {!RegExp}
- */
 function pathToRegexp (path, keys, options) {
   if (!isarray(keys)) {
     options = /** @type {!Object} */ (keys || options)
@@ -30547,7 +26998,6 @@ module.exports = Array.isArray || function (arr) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__ = __webpack_require__(173);
-// Written in this round about way for babel-transform-imports
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_router_es_Prompt__["a" /* default */]);
@@ -30573,10 +27023,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-/**
- * The public API for prompting the user before navigating away
- * from a screen with a component.
- */
 
 var Prompt = function (_React$Component) {
   _inherits(Prompt, _React$Component);
@@ -50029,7 +46475,6 @@ Expr = Sizzle.selectors = {
 
 Expr.pseudos["nth"] = Expr.pseudos["eq"];
 
-// Add button/input type pseudos
 for ( i in { radio: true, checkbox: true, file: true, password: true, image: true } ) {
 	Expr.pseudos[ i ] = createInputPseudo( i );
 }
@@ -50037,7 +46482,6 @@ for ( i in { submit: true, reset: true } ) {
 	Expr.pseudos[ i ] = createButtonPseudo( i );
 }
 
-// Easy API for creating new setFilters
 function setFilters() {}
 setFilters.prototype = Expr.filters = Expr.pseudos;
 Expr.setFilters = new setFilters();
@@ -50057,10 +46501,8 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
 
 	while ( soFar ) {
 
-		// Comma and first run
 		if ( !matched || (match = rcomma.exec( soFar )) ) {
 			if ( match ) {
-				// Don't consume trailing commas as valid
 				soFar = soFar.slice( match[0].length ) || soFar;
 			}
 			groups.push( (tokens = []) );
@@ -50068,18 +46510,15 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
 
 		matched = false;
 
-		// Combinators
 		if ( (match = rcombinators.exec( soFar )) ) {
 			matched = match.shift();
 			tokens.push({
 				value: matched,
-				// Cast descendant combinators to space
 				type: match[0].replace( rtrim, " " )
 			});
 			soFar = soFar.slice( matched.length );
 		}
 
-		// Filters
 		for ( type in Expr.filter ) {
 			if ( (match = matchExpr[ type ].exec( soFar )) && (!preFilters[ type ] ||
 				(match = preFilters[ type ]( match ))) ) {
@@ -50098,14 +46537,10 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
 		}
 	}
 
-	// Return the length of the invalid excess
-	// if we're just parsing
-	// Otherwise, throw an error or return tokens
 	return parseOnly ?
 		soFar.length :
 		soFar ?
 			Sizzle.error( selector ) :
-			// Cache the tokens
 			tokenCache( selector, groups ).slice( 0 );
 };
 
@@ -50127,7 +46562,6 @@ function addCombinator( matcher, combinator, base ) {
 		doneName = done++;
 
 	return combinator.first ?
-		// Check against closest ancestor/preceding element
 		function( elem, context, xml ) {
 			while ( (elem = elem[ dir ]) ) {
 				if ( elem.nodeType === 1 || checkNonElements ) {
@@ -50137,12 +46571,10 @@ function addCombinator( matcher, combinator, base ) {
 			return false;
 		} :
 
-		// Check against all ancestor/preceding elements
 		function( elem, context, xml ) {
 			var oldCache, uniqueCache, outerCache,
 				newCache = [ dirruns, doneName ];
 
-			// We can't set arbitrary data on XML nodes, so they don't benefit from combinator caching
 			if ( xml ) {
 				while ( (elem = elem[ dir ]) ) {
 					if ( elem.nodeType === 1 || checkNonElements ) {
@@ -50156,8 +46588,6 @@ function addCombinator( matcher, combinator, base ) {
 					if ( elem.nodeType === 1 || checkNonElements ) {
 						outerCache = elem[ expando ] || (elem[ expando ] = {});
 
-						// Support: IE <9 only
-						// Defend against cloned attroperties (jQuery gh-1709)
 						uniqueCache = outerCache[ elem.uniqueID ] || (outerCache[ elem.uniqueID ] = {});
 
 						if ( skip && skip === elem.nodeName.toLowerCase() ) {
@@ -50165,13 +46595,10 @@ function addCombinator( matcher, combinator, base ) {
 						} else if ( (oldCache = uniqueCache[ key ]) &&
 							oldCache[ 0 ] === dirruns && oldCache[ 1 ] === doneName ) {
 
-							// Assign to newCache so results back-propagate to previous elements
 							return (newCache[ 2 ] = oldCache[ 2 ]);
 						} else {
-							// Reuse newcache so results back-propagate to previous elements
 							uniqueCache[ key ] = newCache;
 
-							// A match means we're done; a fail means we have to keep checking
 							if ( (newCache[ 2 ] = matcher( elem, context, xml )) ) {
 								return true;
 							}
@@ -50240,36 +46667,28 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 			postMap = [],
 			preexisting = results.length,
 
-			// Get initial elements from seed or context
 			elems = seed || multipleContexts( selector || "*", context.nodeType ? [ context ] : context, [] ),
 
-			// Prefilter to get matcher input, preserving a map for seed-results synchronization
 			matcherIn = preFilter && ( seed || !selector ) ?
 				condense( elems, preMap, preFilter, context, xml ) :
 				elems,
 
 			matcherOut = matcher ?
-				// If we have a postFinder, or filtered seed, or non-seed postFilter or preexisting results,
 				postFinder || ( seed ? preFilter : preexisting || postFilter ) ?
 
-					// ...intermediate processing is necessary
 					[] :
 
-					// ...otherwise use results directly
 					results :
 				matcherIn;
 
-		// Find primary matches
 		if ( matcher ) {
 			matcher( matcherIn, matcherOut, context, xml );
 		}
 
-		// Apply postFilter
 		if ( postFilter ) {
 			temp = condense( matcherOut, postMap );
 			postFilter( temp, [], context, xml );
 
-			// Un-match failing elements by moving them back to matcherIn
 			i = temp.length;
 			while ( i-- ) {
 				if ( (elem = temp[i]) ) {
@@ -50281,19 +46700,16 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 		if ( seed ) {
 			if ( postFinder || preFilter ) {
 				if ( postFinder ) {
-					// Get the final matcherOut by condensing this intermediate into postFinder contexts
 					temp = [];
 					i = matcherOut.length;
 					while ( i-- ) {
 						if ( (elem = matcherOut[i]) ) {
-							// Restore matcherIn since elem is not yet a final match
 							temp.push( (matcherIn[i] = elem) );
 						}
 					}
 					postFinder( null, (matcherOut = []), temp, xml );
 				}
 
-				// Move matched elements from seed to results to keep them synchronized
 				i = matcherOut.length;
 				while ( i-- ) {
 					if ( (elem = matcherOut[i]) &&
@@ -50304,7 +46720,6 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 				}
 			}
 
-		// Add elements to results, through postFinder if defined
 		} else {
 			matcherOut = condense(
 				matcherOut === results ?
@@ -50327,7 +46742,6 @@ function matcherFromTokens( tokens ) {
 		implicitRelative = leadingRelative || Expr.relative[" "],
 		i = leadingRelative ? 1 : 0,
 
-		// The foundational matcher ensures that elements are reachable from top-level context(s)
 		matchContext = addCombinator( function( elem ) {
 			return elem === checkContext;
 		}, implicitRelative, true ),
@@ -50339,7 +46753,6 @@ function matcherFromTokens( tokens ) {
 				(checkContext = context).nodeType ?
 					matchContext( elem, context, xml ) :
 					matchAnyContext( elem, context, xml ) );
-			// Avoid hanging onto element (issue #299)
 			checkContext = null;
 			return ret;
 		} ];
@@ -50350,9 +46763,7 @@ function matcherFromTokens( tokens ) {
 		} else {
 			matcher = Expr.filter[ tokens[i].type ].apply( null, tokens[i].matches );
 
-			// Return special upon seeing a positional matcher
 			if ( matcher[ expando ] ) {
-				// Find the next relative operator (if any) for proper handling
 				j = ++i;
 				for ( ; j < len; j++ ) {
 					if ( Expr.relative[ tokens[j].type ] ) {
@@ -50362,7 +46773,6 @@ function matcherFromTokens( tokens ) {
 				return setMatcher(
 					i > 1 && elementMatcher( matchers ),
 					i > 1 && toSelector(
-						// If the preceding token was a descendant combinator, insert an implicit any-element `*`
 						tokens.slice( 0, i - 1 ).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" })
 					).replace( rtrim, "$1" ),
 					matcher,
@@ -50388,9 +46798,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				unmatched = seed && [],
 				setMatched = [],
 				contextBackup = outermostContext,
-				// We must always have either seed elements or outermost context
 				elems = seed || byElement && Expr.find["TAG"]( "*", outermost ),
-				// Use integer dirruns iff this is the outermost matcher
 				dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1),
 				len = elems.length;
 
@@ -50398,9 +46806,6 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				outermostContext = context === document || context || outermost;
 			}
 
-			// Add elements passing elementMatchers directly to results
-			// Support: IE<9, Safari
-			// Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
 			for ( ; i !== len && (elem = elems[i]) != null; i++ ) {
 				if ( byElement && elem ) {
 					j = 0;
@@ -50419,31 +46824,19 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 					}
 				}
 
-				// Track unmatched elements for set filters
 				if ( bySet ) {
-					// They will have gone through all possible matchers
 					if ( (elem = !matcher && elem) ) {
 						matchedCount--;
 					}
 
-					// Lengthen the array for every element, matched or not
 					if ( seed ) {
 						unmatched.push( elem );
 					}
 				}
 			}
 
-			// `i` is now the count of elements visited above, and adding it to `matchedCount`
-			// makes the latter nonnegative.
 			matchedCount += i;
 
-			// Apply set filters to unmatched elements
-			// NOTE: This can be skipped if there are no unmatched elements (i.e., `matchedCount`
-			// equals `i`), unless we didn't visit _any_ elements in the above loop because we have
-			// no element matchers and no seed.
-			// Incrementing an initially-string "0" `i` allows `i` to remain a string only in that
-			// case, which will result in a "00" `matchedCount` that differs from `i` but is also
-			// numerically zero.
 			if ( bySet && i !== matchedCount ) {
 				j = 0;
 				while ( (matcher = setMatchers[j++]) ) {
@@ -50451,7 +46844,6 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				}
 
 				if ( seed ) {
-					// Reintegrate element matches to eliminate the need for sorting
 					if ( matchedCount > 0 ) {
 						while ( i-- ) {
 							if ( !(unmatched[i] || setMatched[i]) ) {
@@ -50460,14 +46852,11 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 						}
 					}
 
-					// Discard index placeholder values to get only actual matches
 					setMatched = condense( setMatched );
 				}
 
-				// Add matches to results
 				push.apply( results, setMatched );
 
-				// Seedless set matches succeeding multiple successful matchers stipulate sorting
 				if ( outermost && !seed && setMatched.length > 0 &&
 					( matchedCount + setMatchers.length ) > 1 ) {
 
@@ -50475,7 +46864,6 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				}
 			}
 
-			// Override manipulation of globals by nested matchers
 			if ( outermost ) {
 				dirruns = dirrunsUnique;
 				outermostContext = contextBackup;
@@ -50496,7 +46884,6 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 		cached = compilerCache[ selector + " " ];
 
 	if ( !cached ) {
-		// Generate a function of recursive functions that can be used to check each element
 		if ( !match ) {
 			match = tokenize( selector );
 		}
@@ -50510,24 +46897,13 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
 			}
 		}
 
-		// Cache the compiled function
 		cached = compilerCache( selector, matcherFromGroupMatchers( elementMatchers, setMatchers ) );
 
-		// Save selector and tokenization
 		cached.selector = selector;
 	}
 	return cached;
 };
 
-/**
- * A low-level selection function that works with Sizzle's compiled
- *  selector functions
- * @param {String|Function} selector A selector or a pre-compiled
- *  selector function built with Sizzle.compile
- * @param {Element} context
- * @param {Array} [results]
- * @param {Array} [seed] A set of elements to match against
- */
 select = Sizzle.select = function( selector, context, results, seed ) {
 	var i, tokens, token, type, find,
 		compiled = typeof selector === "function" && selector,
@@ -50535,11 +46911,8 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 
 	results = results || [];
 
-	// Try to minimize operations if there is only one selector in the list and no seed
-	// (the latter of which guarantees us context)
 	if ( match.length === 1 ) {
 
-		// Reduce context if the leading compound selector is an ID
 		tokens = match[0] = match[0].slice( 0 );
 		if ( tokens.length > 2 && (token = tokens[0]).type === "ID" &&
 				context.nodeType === 9 && documentIsHTML && Expr.relative[ tokens[1].type ] ) {
@@ -50548,7 +46921,6 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 			if ( !context ) {
 				return results;
 
-			// Precompiled matchers will still verify ancestry, so step up a level
 			} else if ( compiled ) {
 				context = context.parentNode;
 			}
@@ -50556,23 +46928,19 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 			selector = selector.slice( tokens.shift().value.length );
 		}
 
-		// Fetch a seed set for right-to-left matching
 		i = matchExpr["needsContext"].test( selector ) ? 0 : tokens.length;
 		while ( i-- ) {
 			token = tokens[i];
 
-			// Abort if we hit a combinator
 			if ( Expr.relative[ (type = token.type) ] ) {
 				break;
 			}
 			if ( (find = Expr.find[ type ]) ) {
-				// Search, expanding context for leading sibling combinators
 				if ( (seed = find(
 					token.matches[0].replace( runescape, funescape ),
 					rsibling.test( tokens[0].type ) && testContext( context.parentNode ) || context
 				)) ) {
 
-					// If seed is empty or no tokens remain, we can return early
 					tokens.splice( i, 1 );
 					selector = seed.length && toSelector( tokens );
 					if ( !selector ) {
@@ -50586,8 +46954,6 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 		}
 	}
 
-	// Compile and execute a filtering function if one is not provided
-	// Provide `match` to avoid retokenization if we modified the selector above
 	( compiled || compile( selector, match ) )(
 		seed,
 		context,
@@ -50598,28 +46964,16 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 	return results;
 };
 
-// One-time assignments
-
-// Sort stability
 support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 
-// Support: Chrome 14-35+
-// Always assume duplicates if they aren't passed to the comparison function
 support.detectDuplicates = !!hasDuplicate;
 
-// Initialize against the default document
 setDocument();
 
-// Support: Webkit<537.32 - Safari 6.0.3/Chrome 25 (fixed in Chrome 27)
-// Detached nodes confoundingly follow *each other*
 support.sortDetached = assert(function( el ) {
-	// Should return 1, but returns 4 (following)
 	return el.compareDocumentPosition( document.createElement("fieldset") ) & 1;
 });
 
-// Support: IE<8
-// Prevent attribute/property "interpolation"
-// https://msdn.microsoft.com/en-us/library/ms536429%28VS.85%29.aspx
 if ( !assert(function( el ) {
 	el.innerHTML = "<a href='#'></a>";
 	return el.firstChild.getAttribute("href") === "#" ;
@@ -50631,8 +46985,6 @@ if ( !assert(function( el ) {
 	});
 }
 
-// Support: IE<9
-// Use defaultValue in place of getAttribute("value")
 if ( !support.attributes || !assert(function( el ) {
 	el.innerHTML = "<input/>";
 	el.firstChild.setAttribute( "value", "" );
@@ -50645,8 +46997,6 @@ if ( !support.attributes || !assert(function( el ) {
 	});
 }
 
-// Support: IE<9
-// Use getAttributeNode to fetch booleans when getAttribute lies
 if ( !assert(function( el ) {
 	return el.getAttribute("disabled") == null;
 }) ) {
@@ -50670,7 +47020,6 @@ return Sizzle;
 jQuery.find = Sizzle;
 jQuery.expr = Sizzle.selectors;
 
-// Deprecated
 jQuery.expr[ ":" ] = jQuery.expr.pseudos;
 jQuery.uniqueSort = jQuery.unique = Sizzle.uniqueSort;
 jQuery.text = Sizzle.getText;
@@ -50725,7 +47074,6 @@ var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|
 
 var risSimple = /^.[^:#\[\.,]*$/;
 
-// Implement the identical functionality for filter and not
 function winnow( elements, qualifier, not ) {
 	if ( jQuery.isFunction( qualifier ) ) {
 		return jQuery.grep( elements, function( elem, i ) {
@@ -50733,26 +47081,22 @@ function winnow( elements, qualifier, not ) {
 		} );
 	}
 
-	// Single element
 	if ( qualifier.nodeType ) {
 		return jQuery.grep( elements, function( elem ) {
 			return ( elem === qualifier ) !== not;
 		} );
 	}
 
-	// Arraylike of elements (jQuery, arguments, Array)
 	if ( typeof qualifier !== "string" ) {
 		return jQuery.grep( elements, function( elem ) {
 			return ( indexOf.call( qualifier, elem ) > -1 ) !== not;
 		} );
 	}
 
-	// Simple selector that can be filtered directly, removing non-Elements
 	if ( risSimple.test( qualifier ) ) {
 		return jQuery.filter( qualifier, elements, not );
 	}
 
-	// Complex selector, compare the two sets, removing non-Elements
 	qualifier = jQuery.filter( qualifier, elements );
 	return jQuery.grep( elements, function( elem ) {
 		return ( indexOf.call( qualifier, elem ) > -1 ) !== not && elem.nodeType === 1;
@@ -50809,8 +47153,6 @@ jQuery.fn.extend( {
 		return !!winnow(
 			this,
 
-			// If this is a positional/relative selector, check membership in the returned set
-			// so $("p:first").is("p:last") won't return true for a doc with two "p".
 			typeof selector === "string" && rneedsContext.test( selector ) ?
 				jQuery( selector ) :
 				selector || [],
@@ -50820,67 +47162,47 @@ jQuery.fn.extend( {
 } );
 
 
-// Initialize a jQuery object
-
-
-// A central reference to the root jQuery(document)
 var rootjQuery,
 
-	// A simple way to check for HTML strings
-	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
-	// Strict HTML recognition (#11290: must start with <)
-	// Shortcut simple #id case for speed
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
 
 	init = jQuery.fn.init = function( selector, context, root ) {
 		var match, elem;
 
-		// HANDLE: $(""), $(null), $(undefined), $(false)
 		if ( !selector ) {
 			return this;
 		}
 
-		// Method init() accepts an alternate rootjQuery
-		// so migrate can support jQuery.sub (gh-2101)
 		root = root || rootjQuery;
 
-		// Handle HTML strings
 		if ( typeof selector === "string" ) {
 			if ( selector[ 0 ] === "<" &&
 				selector[ selector.length - 1 ] === ">" &&
 				selector.length >= 3 ) {
 
-				// Assume that strings that start and end with <> are HTML and skip the regex check
 				match = [ null, selector, null ];
 
 			} else {
 				match = rquickExpr.exec( selector );
 			}
 
-			// Match html or make sure no context is specified for #id
 			if ( match && ( match[ 1 ] || !context ) ) {
 
-				// HANDLE: $(html) -> $(array)
 				if ( match[ 1 ] ) {
 					context = context instanceof jQuery ? context[ 0 ] : context;
 
-					// Option to run scripts is true for back-compat
-					// Intentionally let the error be thrown if parseHTML is not present
 					jQuery.merge( this, jQuery.parseHTML(
 						match[ 1 ],
 						context && context.nodeType ? context.ownerDocument || context : document,
 						true
 					) );
 
-					// HANDLE: $(html, props)
 					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
 						for ( match in context ) {
 
-							// Properties of context are called as methods if possible
 							if ( jQuery.isFunction( this[ match ] ) ) {
 								this[ match ]( context[ match ] );
 
-							// ...and otherwise set as attributes
 							} else {
 								this.attr( match, context[ match ] );
 							}
@@ -50889,58 +47211,46 @@ var rootjQuery,
 
 					return this;
 
-				// HANDLE: $(#id)
 				} else {
 					elem = document.getElementById( match[ 2 ] );
 
 					if ( elem ) {
 
-						// Inject the element directly into the jQuery object
 						this[ 0 ] = elem;
 						this.length = 1;
 					}
 					return this;
 				}
 
-			// HANDLE: $(expr, $(...))
 			} else if ( !context || context.jquery ) {
 				return ( context || root ).find( selector );
 
-			// HANDLE: $(expr, context)
-			// (which is just equivalent to: $(context).find(expr)
 			} else {
 				return this.constructor( context ).find( selector );
 			}
 
-		// HANDLE: $(DOMElement)
 		} else if ( selector.nodeType ) {
 			this[ 0 ] = selector;
 			this.length = 1;
 			return this;
 
-		// HANDLE: $(function)
-		// Shortcut for document ready
 		} else if ( jQuery.isFunction( selector ) ) {
 			return root.ready !== undefined ?
 				root.ready( selector ) :
 
-				// Execute immediately if ready is not present
 				selector( jQuery );
 		}
 
 		return jQuery.makeArray( selector, this );
 	};
 
-// Give the init function the jQuery prototype for later instantiation
 init.prototype = jQuery.fn;
 
-// Initialize central reference
 rootjQuery = jQuery( document );
 
 
 var rparentsprev = /^(?:parents|prev(?:Until|All))/,
 
-	// Methods guaranteed to produce a unique set when starting from a unique set
 	guaranteedUnique = {
 		children: true,
 		contents: true,
@@ -50993,23 +47303,18 @@ jQuery.fn.extend( {
 		return this.pushStack( matched.length > 1 ? jQuery.uniqueSort( matched ) : matched );
 	},
 
-	// Determine the position of an element within the set
 	index: function( elem ) {
 
-		// No argument, return index in parent
 		if ( !elem ) {
 			return ( this[ 0 ] && this[ 0 ].parentNode ) ? this.first().prevAll().length : -1;
 		}
 
-		// Index in selector
 		if ( typeof elem === "string" ) {
 			return indexOf.call( jQuery( elem ), this[ 0 ] );
 		}
 
-		// Locate the position of the desired element
 		return indexOf.call( this,
 
-			// If it receives a jQuery object, the first element is used
 			elem.jquery ? elem[ 0 ] : elem
 		);
 	},
@@ -51074,9 +47379,6 @@ jQuery.each( {
             return elem.contentDocument;
         }
 
-        // Support: IE 9 - 11 only, iOS 7 only, Android Browser <=4.3 only
-        // Treat the template element as a regular one in browsers that
-        // don't support it.
         if ( nodeName( elem, "template" ) ) {
             elem = elem.content || elem;
         }
@@ -51097,12 +47399,10 @@ jQuery.each( {
 
 		if ( this.length > 1 ) {
 
-			// Remove duplicates
 			if ( !guaranteedUnique[ name ] ) {
 				jQuery.uniqueSort( matched );
 			}
 
-			// Reverse order for parents* and prev-derivatives
 			if ( rparentsprev.test( name ) ) {
 				matched.reverse();
 			}
@@ -51115,7 +47415,6 @@ var rnothtmlwhite = ( /[^\x20\t\r\n\f]+/g );
 
 
 
-// Convert String-formatted options into Object-formatted ones
 function createOptions( options ) {
 	var object = {};
 	jQuery.each( options.match( rnothtmlwhite ) || [], function( _, flag ) {
@@ -51124,110 +47423,67 @@ function createOptions( options ) {
 	return object;
 }
 
-/*
- * Create a callback list using the following parameters:
- *
- *	options: an optional list of space-separated options that will change how
- *			the callback list behaves or a more traditional option object
- *
- * By default a callback list will act like an event callback list and can be
- * "fired" multiple times.
- *
- * Possible options:
- *
- *	once:			will ensure the callback list can only be fired once (like a Deferred)
- *
- *	memory:			will keep track of previous values and will call any callback added
- *					after the list has been fired right away with the latest "memorized"
- *					values (like a Deferred)
- *
- *	unique:			will ensure a callback can only be added once (no duplicate in the list)
- *
- *	stopOnFalse:	interrupt callings when a callback returns false
- *
- */
 jQuery.Callbacks = function( options ) {
 
-	// Convert options from String-formatted to Object-formatted if needed
-	// (we check in cache first)
 	options = typeof options === "string" ?
 		createOptions( options ) :
 		jQuery.extend( {}, options );
 
-	var // Flag to know if list is currently firing
+	var
 		firing,
 
-		// Last fire value for non-forgettable lists
 		memory,
 
-		// Flag to know if list was already fired
 		fired,
 
-		// Flag to prevent firing
 		locked,
 
-		// Actual callback list
 		list = [],
 
-		// Queue of execution data for repeatable lists
 		queue = [],
 
-		// Index of currently firing callback (modified by add/remove as needed)
 		firingIndex = -1,
 
-		// Fire callbacks
 		fire = function() {
 
-			// Enforce single-firing
 			locked = locked || options.once;
 
-			// Execute callbacks for all pending executions,
-			// respecting firingIndex overrides and runtime changes
 			fired = firing = true;
 			for ( ; queue.length; firingIndex = -1 ) {
 				memory = queue.shift();
 				while ( ++firingIndex < list.length ) {
 
-					// Run callback and check for early termination
 					if ( list[ firingIndex ].apply( memory[ 0 ], memory[ 1 ] ) === false &&
 						options.stopOnFalse ) {
 
-						// Jump to end and forget the data so .add doesn't re-fire
 						firingIndex = list.length;
 						memory = false;
 					}
 				}
 			}
 
-			// Forget the data if we're done with it
 			if ( !options.memory ) {
 				memory = false;
 			}
 
 			firing = false;
 
-			// Clean up if we're done firing for good
 			if ( locked ) {
 
-				// Keep an empty list if we have data for future add calls
 				if ( memory ) {
 					list = [];
 
-				// Otherwise, this object is spent
 				} else {
 					list = "";
 				}
 			}
 		},
 
-		// Actual Callbacks object
 		self = {
 
-			// Add a callback or a collection of callbacks to the list
 			add: function() {
 				if ( list ) {
 
-					// If we have memory from a past run, we should fire after adding
 					if ( memory && !firing ) {
 						firingIndex = list.length - 1;
 						queue.push( memory );
@@ -51241,7 +47497,6 @@ jQuery.Callbacks = function( options ) {
 								}
 							} else if ( arg && arg.length && jQuery.type( arg ) !== "string" ) {
 
-								// Inspect recursively
 								add( arg );
 							}
 						} );
@@ -51254,14 +47509,12 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Remove a callback from the list
 			remove: function() {
 				jQuery.each( arguments, function( _, arg ) {
 					var index;
 					while ( ( index = jQuery.inArray( arg, list, index ) ) > -1 ) {
 						list.splice( index, 1 );
 
-						// Handle firing indexes
 						if ( index <= firingIndex ) {
 							firingIndex--;
 						}
@@ -51270,15 +47523,12 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Check if a given callback is in the list.
-			// If no argument is given, return whether or not list has callbacks attached.
 			has: function( fn ) {
 				return fn ?
 					jQuery.inArray( fn, list ) > -1 :
 					list.length > 0;
 			},
 
-			// Remove all callbacks from the list
 			empty: function() {
 				if ( list ) {
 					list = [];
@@ -51286,9 +47536,6 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Disable .fire and .add
-			// Abort any current/pending executions
-			// Clear all callbacks and values
 			disable: function() {
 				locked = queue = [];
 				list = memory = "";
@@ -51298,9 +47545,6 @@ jQuery.Callbacks = function( options ) {
 				return !list;
 			},
 
-			// Disable .fire
-			// Also disable .add unless we have memory (since it would have no effect)
-			// Abort any pending executions
 			lock: function() {
 				locked = queue = [];
 				if ( !memory && !firing ) {
@@ -51312,7 +47556,6 @@ jQuery.Callbacks = function( options ) {
 				return !!locked;
 			},
 
-			// Call all callbacks with the given context and arguments
 			fireWith: function( context, args ) {
 				if ( !locked ) {
 					args = args || [];
@@ -51325,13 +47568,11 @@ jQuery.Callbacks = function( options ) {
 				return this;
 			},
 
-			// Call all the callbacks with the given arguments
 			fire: function() {
 				self.fireWith( this, arguments );
 				return this;
 			},
 
-			// To know if the callbacks have already been called at least once
 			fired: function() {
 				return !!fired;
 			}
@@ -51353,30 +47594,19 @@ function adoptValue( value, resolve, reject, noValue ) {
 
 	try {
 
-		// Check for promise aspect first to privilege synchronous behavior
 		if ( value && jQuery.isFunction( ( method = value.promise ) ) ) {
 			method.call( value ).done( resolve ).fail( reject );
 
-		// Other thenables
 		} else if ( value && jQuery.isFunction( ( method = value.then ) ) ) {
 			method.call( value, resolve, reject );
 
-		// Other non-thenables
 		} else {
 
-			// Control `resolve` arguments by letting Array#slice cast boolean `noValue` to integer:
-			// * false: [ value ].slice( 0 ) => resolve( value )
-			// * true: [ value ].slice( 1 ) => resolve()
 			resolve.apply( undefined, [ value ].slice( noValue ) );
 		}
 
-	// For Promises/A+, convert exceptions into rejections
-	// Since jQuery.when doesn't unwrap thenables, we can skip the extra checks appearing in
-	// Deferred#then to conditionally suppress rejection.
 	} catch ( value ) {
 
-		// Support: Android 4.0 only
-		// Strict mode functions invoked without .call/.apply get global-object context
 		reject.apply( undefined, [ value ] );
 	}
 }
@@ -51386,8 +47616,6 @@ jQuery.extend( {
 	Deferred: function( func ) {
 		var tuples = [
 
-				// action, add listener, callbacks,
-				// ... .then handlers, argument index, [final state]
 				[ "notify", "progress", jQuery.Callbacks( "memory" ),
 					jQuery.Callbacks( "memory" ), 2 ],
 				[ "resolve", "done", jQuery.Callbacks( "once memory" ),
@@ -51408,19 +47636,14 @@ jQuery.extend( {
 					return promise.then( null, fn );
 				},
 
-				// Keep pipe for back-compat
 				pipe: function( /* fnDone, fnFail, fnProgress */ ) {
 					var fns = arguments;
 
 					return jQuery.Deferred( function( newDefer ) {
 						jQuery.each( tuples, function( i, tuple ) {
 
-							// Map tuples (progress, done, fail) to arguments (done, fail, progress)
 							var fn = jQuery.isFunction( fns[ tuple[ 4 ] ] ) && fns[ tuple[ 4 ] ];
 
-							// deferred.progress(function() { bind to newDefer or newDefer.notify })
-							// deferred.done(function() { bind to newDefer or newDefer.resolve })
-							// deferred.fail(function() { bind to newDefer or newDefer.reject })
 							deferred[ tuple[ 1 ] ]( function() {
 								var returned = fn && fn.apply( this, arguments );
 								if ( returned && jQuery.isFunction( returned.promise ) ) {
@@ -51448,38 +47671,24 @@ jQuery.extend( {
 								mightThrow = function() {
 									var returned, then;
 
-									// Support: Promises/A+ section 2.3.3.3.3
-									// https://promisesaplus.com/#point-59
-									// Ignore double-resolution attempts
 									if ( depth < maxDepth ) {
 										return;
 									}
 
 									returned = handler.apply( that, args );
 
-									// Support: Promises/A+ section 2.3.1
-									// https://promisesaplus.com/#point-48
 									if ( returned === deferred.promise() ) {
 										throw new TypeError( "Thenable self-resolution" );
 									}
 
-									// Support: Promises/A+ sections 2.3.3.1, 3.5
-									// https://promisesaplus.com/#point-54
-									// https://promisesaplus.com/#point-75
-									// Retrieve `then` only once
 									then = returned &&
 
-										// Support: Promises/A+ section 2.3.4
-										// https://promisesaplus.com/#point-64
-										// Only check objects and functions for thenability
 										( typeof returned === "object" ||
 											typeof returned === "function" ) &&
 										returned.then;
 
-									// Handle a returned thenable
 									if ( jQuery.isFunction( then ) ) {
 
-										// Special processors (notify) just wait for resolution
 										if ( special ) {
 											then.call(
 												returned,
@@ -51487,10 +47696,8 @@ jQuery.extend( {
 												resolve( maxDepth, deferred, Thrower, special )
 											);
 
-										// Normal processors (resolve) also hook into progress
 										} else {
 
-											// ...and disregard older resolution values
 											maxDepth++;
 
 											then.call(
@@ -51502,23 +47709,17 @@ jQuery.extend( {
 											);
 										}
 
-									// Handle all other returned values
 									} else {
 
-										// Only substitute handlers pass on context
-										// and multiple values (non-spec behavior)
 										if ( handler !== Identity ) {
 											that = undefined;
 											args = [ returned ];
 										}
 
-										// Process the value(s)
-										// Default process is resolve
 										( special || deferred.resolveWith )( that, args );
 									}
 								},
 
-								// Only normal processors (resolve) catch and reject exceptions
 								process = special ?
 									mightThrow :
 									function() {
@@ -51531,13 +47732,8 @@ jQuery.extend( {
 													process.stackTrace );
 											}
 
-											// Support: Promises/A+ section 2.3.3.3.4.1
-											// https://promisesaplus.com/#point-61
-											// Ignore post-resolution exceptions
 											if ( depth + 1 >= maxDepth ) {
 
-												// Only substitute handlers pass on context
-												// and multiple values (non-spec behavior)
 												if ( handler !== Thrower ) {
 													that = undefined;
 													args = [ e ];
@@ -51548,16 +47744,10 @@ jQuery.extend( {
 										}
 									};
 
-							// Support: Promises/A+ section 2.3.3.3.1
-							// https://promisesaplus.com/#point-57
-							// Re-resolve promises immediately to dodge false rejection from
-							// subsequent errors
 							if ( depth ) {
 								process();
 							} else {
 
-								// Call an optional hook to record the stack, in case of exception
-								// since it's otherwise lost when execution goes async
 								if ( jQuery.Deferred.getStackHook ) {
 									process.stackTrace = jQuery.Deferred.getStackHook();
 								}
@@ -51568,7 +47758,6 @@ jQuery.extend( {
 
 					return jQuery.Deferred( function( newDefer ) {
 
-						// progress_handlers.add( ... )
 						tuples[ 0 ][ 3 ].add(
 							resolve(
 								0,
@@ -51580,7 +47769,6 @@ jQuery.extend( {
 							)
 						);
 
-						// fulfilled_handlers.add( ... )
 						tuples[ 1 ][ 3 ].add(
 							resolve(
 								0,
@@ -51591,7 +47779,6 @@ jQuery.extend( {
 							)
 						);
 
-						// rejected_handlers.add( ... )
 						tuples[ 2 ][ 3 ].add(
 							resolve(
 								0,
@@ -51604,92 +47791,62 @@ jQuery.extend( {
 					} ).promise();
 				},
 
-				// Get a promise for this deferred
-				// If obj is provided, the promise aspect is added to the object
 				promise: function( obj ) {
 					return obj != null ? jQuery.extend( obj, promise ) : promise;
 				}
 			},
 			deferred = {};
 
-		// Add list-specific methods
 		jQuery.each( tuples, function( i, tuple ) {
 			var list = tuple[ 2 ],
 				stateString = tuple[ 5 ];
 
-			// promise.progress = list.add
-			// promise.done = list.add
-			// promise.fail = list.add
 			promise[ tuple[ 1 ] ] = list.add;
 
-			// Handle state
 			if ( stateString ) {
 				list.add(
 					function() {
 
-						// state = "resolved" (i.e., fulfilled)
-						// state = "rejected"
 						state = stateString;
 					},
 
-					// rejected_callbacks.disable
-					// fulfilled_callbacks.disable
 					tuples[ 3 - i ][ 2 ].disable,
 
-					// progress_callbacks.lock
 					tuples[ 0 ][ 2 ].lock
 				);
 			}
 
-			// progress_handlers.fire
-			// fulfilled_handlers.fire
-			// rejected_handlers.fire
 			list.add( tuple[ 3 ].fire );
 
-			// deferred.notify = function() { deferred.notifyWith(...) }
-			// deferred.resolve = function() { deferred.resolveWith(...) }
-			// deferred.reject = function() { deferred.rejectWith(...) }
 			deferred[ tuple[ 0 ] ] = function() {
 				deferred[ tuple[ 0 ] + "With" ]( this === deferred ? undefined : this, arguments );
 				return this;
 			};
 
-			// deferred.notifyWith = list.fireWith
-			// deferred.resolveWith = list.fireWith
-			// deferred.rejectWith = list.fireWith
 			deferred[ tuple[ 0 ] + "With" ] = list.fireWith;
 		} );
 
-		// Make the deferred a promise
 		promise.promise( deferred );
 
-		// Call given func if any
 		if ( func ) {
 			func.call( deferred, deferred );
 		}
 
-		// All done!
 		return deferred;
 	},
 
-	// Deferred helper
 	when: function( singleValue ) {
 		var
 
-			// count of uncompleted subordinates
 			remaining = arguments.length,
 
-			// count of unprocessed arguments
 			i = remaining,
 
-			// subordinate fulfillment data
 			resolveContexts = Array( i ),
 			resolveValues = slice.call( arguments ),
 
-			// the master Deferred
 			master = jQuery.Deferred(),
 
-			// subordinate callback factory
 			updateFunc = function( i ) {
 				return function( value ) {
 					resolveContexts[ i ] = this;
@@ -51700,12 +47857,10 @@ jQuery.extend( {
 				};
 			};
 
-		// Single- and empty arguments are adopted like Promise.resolve
 		if ( remaining <= 1 ) {
 			adoptValue( singleValue, master.done( updateFunc( i ) ).resolve, master.reject,
 				!remaining );
 
-			// Use .then() to unwrap secondary thenables (cf. gh-3000)
 			if ( master.state() === "pending" ||
 				jQuery.isFunction( resolveValues[ i ] && resolveValues[ i ].then ) ) {
 
@@ -51713,7 +47868,6 @@ jQuery.extend( {
 			}
 		}
 
-		// Multiple arguments are aggregated like Promise.all array elements
 		while ( i-- ) {
 			adoptValue( resolveValues[ i ], updateFunc( i ), master.reject );
 		}
@@ -51723,14 +47877,10 @@ jQuery.extend( {
 } );
 
 
-// These usually indicate a programmer mistake during development,
-// warn about them ASAP rather than swallowing them by default.
 var rerrorNames = /^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;
 
 jQuery.Deferred.exceptionHook = function( error, stack ) {
 
-	// Support: IE 8 - 9 only
-	// Console exists when dev tools are open, which can happen at any time
 	if ( window.console && window.console.warn && error && rerrorNames.test( error.name ) ) {
 		window.console.warn( "jQuery.Deferred exception: " + error.message, error.stack, stack );
 	}
@@ -51748,7 +47898,6 @@ jQuery.readyException = function( error ) {
 
 
 
-// The deferred used on DOM ready
 var readyList = jQuery.Deferred();
 
 jQuery.fn.ready = function( fn ) {
@@ -51756,9 +47905,6 @@ jQuery.fn.ready = function( fn ) {
 	readyList
 		.then( fn )
 
-		// Wrap jQuery.readyException in a function so that the lookup
-		// happens at the time of error handling instead of callback
-		// registration.
 		.catch( function( error ) {
 			jQuery.readyException( error );
 		} );
@@ -51768,80 +47914,60 @@ jQuery.fn.ready = function( fn ) {
 
 jQuery.extend( {
 
-	// Is the DOM ready to be used? Set to true once it occurs.
 	isReady: false,
 
-	// A counter to track how many items to wait for before
-	// the ready event fires. See #6781
 	readyWait: 1,
 
-	// Handle when the DOM is ready
 	ready: function( wait ) {
 
-		// Abort if there are pending holds or we're already ready
 		if ( wait === true ? --jQuery.readyWait : jQuery.isReady ) {
 			return;
 		}
 
-		// Remember that the DOM is ready
 		jQuery.isReady = true;
 
-		// If a normal DOM Ready event fired, decrement, and wait if need be
 		if ( wait !== true && --jQuery.readyWait > 0 ) {
 			return;
 		}
 
-		// If there are functions bound, to execute
 		readyList.resolveWith( document, [ jQuery ] );
 	}
 } );
 
 jQuery.ready.then = readyList.then;
 
-// The ready event handler and self cleanup method
 function completed() {
 	document.removeEventListener( "DOMContentLoaded", completed );
 	window.removeEventListener( "load", completed );
 	jQuery.ready();
 }
 
-// Catch cases where $(document).ready() is called
-// after the browser event has already occurred.
-// Support: IE <=9 - 10 only
-// Older IE sometimes signals "interactive" too soon
 if ( document.readyState === "complete" ||
 	( document.readyState !== "loading" && !document.documentElement.doScroll ) ) {
 
-	// Handle it asynchronously to allow scripts the opportunity to delay ready
 	window.setTimeout( jQuery.ready );
 
 } else {
 
-	// Use the handy event callback
 	document.addEventListener( "DOMContentLoaded", completed );
 
-	// A fallback to window.onload, that will always work
 	window.addEventListener( "load", completed );
 }
 
 
 
 
-// Multifunctional method to get and set values of a collection
-// The value/s can optionally be executed if it's a function
 var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	var i = 0,
 		len = elems.length,
 		bulk = key == null;
 
-	// Sets many values
 	if ( jQuery.type( key ) === "object" ) {
 		chainable = true;
 		for ( i in key ) {
 			access( elems, fn, i, key[ i ], true, emptyGet, raw );
 		}
 
-	// Sets one value
 	} else if ( value !== undefined ) {
 		chainable = true;
 
@@ -51851,12 +47977,10 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 
 		if ( bulk ) {
 
-			// Bulk operations run against the entire set
 			if ( raw ) {
 				fn.call( elems, value );
 				fn = null;
 
-			// ...except when executing function values
 			} else {
 				bulk = fn;
 				fn = function( elem, key, value ) {
@@ -51880,7 +48004,6 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 		return elems;
 	}
 
-	// Gets
 	if ( bulk ) {
 		return fn.call( elems );
 	}
@@ -51889,12 +48012,6 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 };
 var acceptData = function( owner ) {
 
-	// Accepts only:
-	//  - Node
-	//    - Node.ELEMENT_NODE
-	//    - Node.DOCUMENT_NODE
-	//  - Object
-	//    - Any
 	return owner.nodeType === 1 || owner.nodeType === 9 || !( +owner.nodeType );
 };
 
@@ -51911,26 +48028,16 @@ Data.prototype = {
 
 	cache: function( owner ) {
 
-		// Check if the owner object already has a cache
 		var value = owner[ this.expando ];
 
-		// If not, create one
 		if ( !value ) {
 			value = {};
 
-			// We can accept data for non-element nodes in modern browsers,
-			// but we should not, see #8335.
-			// Always return an empty object.
 			if ( acceptData( owner ) ) {
 
-				// If it is a node unlikely to be stringify-ed or looped over
-				// use plain assignment
 				if ( owner.nodeType ) {
 					owner[ this.expando ] = value;
 
-				// Otherwise secure it in a non-enumerable property
-				// configurable must be true to allow the property to be
-				// deleted when data is removed
 				} else {
 					Object.defineProperty( owner, this.expando, {
 						value: value,
@@ -51946,15 +48053,11 @@ Data.prototype = {
 		var prop,
 			cache = this.cache( owner );
 
-		// Handle: [ owner, key, value ] args
-		// Always use camelCase key (gh-2257)
 		if ( typeof data === "string" ) {
 			cache[ jQuery.camelCase( data ) ] = value;
 
-		// Handle: [ owner, { properties } ] args
 		} else {
 
-			// Copy the properties one-by-one to the cache object
 			for ( prop in data ) {
 				cache[ jQuery.camelCase( prop ) ] = data[ prop ];
 			}
@@ -51965,38 +48068,18 @@ Data.prototype = {
 		return key === undefined ?
 			this.cache( owner ) :
 
-			// Always use camelCase key (gh-2257)
 			owner[ this.expando ] && owner[ this.expando ][ jQuery.camelCase( key ) ];
 	},
 	access: function( owner, key, value ) {
 
-		// In cases where either:
-		//
-		//   1. No key was specified
-		//   2. A string key was specified, but no value provided
-		//
-		// Take the "read" path and allow the get method to determine
-		// which value to return, respectively either:
-		//
-		//   1. The entire cache object
-		//   2. The data stored at the key
-		//
 		if ( key === undefined ||
 				( ( key && typeof key === "string" ) && value === undefined ) ) {
 
 			return this.get( owner, key );
 		}
 
-		// When the key is not a string, or both a key and value
-		// are specified, set or extend (existing objects) with either:
-		//
-		//   1. An object of properties
-		//   2. A key and value
-		//
 		this.set( owner, key, value );
 
-		// Since the "set" path can have two possible entry points
-		// return the expected data based on which path was taken[*]
 		return value !== undefined ? value : key;
 	},
 	remove: function( owner, key ) {
@@ -52009,17 +48092,12 @@ Data.prototype = {
 
 		if ( key !== undefined ) {
 
-			// Support array or space separated string of keys
 			if ( Array.isArray( key ) ) {
 
-				// If key is an array of keys...
-				// We always set camelCase keys, so remove that.
 				key = key.map( jQuery.camelCase );
 			} else {
 				key = jQuery.camelCase( key );
 
-				// If a key with the spaces exists, use it.
-				// Otherwise, create an array by matching non-whitespace
 				key = key in cache ?
 					[ key ] :
 					( key.match( rnothtmlwhite ) || [] );
@@ -52032,13 +48110,8 @@ Data.prototype = {
 			}
 		}
 
-		// Remove the expando if there's no more data
 		if ( key === undefined || jQuery.isEmptyObject( cache ) ) {
 
-			// Support: Chrome <=35 - 45
-			// Webkit & Blink performance suffers when deleting properties
-			// from DOM nodes, so set to undefined instead
-			// https://bugs.chromium.org/p/chromium/issues/detail?id=378607 (bug restricted)
 			if ( owner.nodeType ) {
 				owner[ this.expando ] = undefined;
 			} else {
@@ -52057,15 +48130,6 @@ var dataUser = new Data();
 
 
 
-//	Implementation Summary
-//
-//	1. Enforce API surface and semantic compatibility with 1.9.x branch
-//	2. Improve the module's maintainability by reducing the storage
-//		paths to a single mechanism.
-//	3. Use the same single mechanism to support "private" and "user" data.
-//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-//	5. Avoid exposing implementation details on user objects (eg. expando properties)
-//	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
 	rmultiDash = /[A-Z]/g;
@@ -52083,7 +48147,6 @@ function getData( data ) {
 		return null;
 	}
 
-	// Only convert to a number if it doesn't change the string
 	if ( data === +data + "" ) {
 		return +data;
 	}
@@ -52098,8 +48161,6 @@ function getData( data ) {
 function dataAttr( elem, key, data ) {
 	var name;
 
-	// If nothing was found internally, try to fetch any
-	// data from the HTML5 data-* attribute
 	if ( data === undefined && elem.nodeType === 1 ) {
 		name = "data-" + key.replace( rmultiDash, "-$&" ).toLowerCase();
 		data = elem.getAttribute( name );
@@ -52109,7 +48170,6 @@ function dataAttr( elem, key, data ) {
 				data = getData( data );
 			} catch ( e ) {}
 
-			// Make sure we set the data so it isn't changed later
 			dataUser.set( elem, key, data );
 		} else {
 			data = undefined;
@@ -57233,7 +53293,6 @@ jQuery.fn.extend( {
 	},
 	undelegate: function( selector, types, fn ) {
 
-		// ( namespace ) or ( selector, types [, fn] )
 		return arguments.length === 1 ?
 			this.off( selector, "**" ) :
 			this.off( types, selector || "**", fn );
@@ -57265,10 +53324,8 @@ if ( true ) {
 
 var
 
-	// Map over jQuery in case of overwrite
 	_jQuery = window.jQuery,
 
-	// Map over the $ in case of overwrite
 	_$ = window.$;
 
 jQuery.noConflict = function( deep ) {
