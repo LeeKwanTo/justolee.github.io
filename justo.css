@@ -1,0 +1,84 @@
+html {
+	font-size: 62.5%;
+	/*10 ÷ 16 × 100% = 62.5%*/
+
+}
+body {
+	font-size: 1.5rem;
+	/*1.5 × 10px = 15px */
+	margin: 0;
+}
+
+h1 { 
+	font-size: 2.2rem;
+	/*2.2 × 10px = 22px*/
+}
+
+.zhuti {
+	width: 100%;
+}
+
+@media(max-width: 768px){
+	.zhuti{
+		margin-top: 4rem;
+	}
+}
+
+/*左半部分*/
+.leftpart {
+	width: 38.2%;
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	float:left;
+	background-image: url(bigpic.jpg);
+	background-size: cover;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	position: fixed;
+}
+
+
+
+@media(max-width: 768px){
+	.leftpart {
+		width: 100%;
+		box-sizing: border-box;
+		-moz-box-sizing:border-box; /* Firefox */
+		-webkit-box-sizing:border-box; /* Safari */
+		position: relative;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: 700px;
+  }
+}
+
+/*右半部分*/
+.rightpart {
+	width: 61.8%;
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+  float: right;
+}
+
+@media(max-width: 768px){
+	.rightpart{
+		width: 100%;
+		box-sizing: border-box;
+		-moz-box-sizing:border-box; /* Firefox */
+		-webkit-box-sizing:border-box; /* Safari */
+  }
+}
+
+.menu{
+	height: 4rem;
+	background-color: #f1f1f1;
+}
+@media(max-width: 768px){
+	.menu{
+		position: absolute;
+		top: 0;
+	}
+}
