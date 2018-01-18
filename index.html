@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html lang="zh-cn">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+	<!--禁止转码-->
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" >
 	<link rel="stylesheet" href="justo.css">
 	<Link Rel="SHORTCUT ICON" href="img/icon.ico">
 	<title>Justo's blog - 李钧陶个人博客</title>    
 	<meta name="keywords" content="李钧陶,书剑钧陶,justo" >
 	<meta name="description" content="李钧陶个人博客 Justo's blog" >
+	<meta name="author" content="Justo,lee@justo.top">
 </head>
 
 <body>
+<div id="menuclick" class="menu_list menu_show"></div>
 	<div class="zhuti">
-
+		<menu>
+			<ul>
+				<li class="option"><a href="javascript:void(0)" onclick="hidemenu()"  onmouseover="showmenu()">菜单1</a></li>
+				<li class="option">菜单2</li>
+			</ul>
+		</menu>
 <!--左半部分-->
 		<div class="leftpart">
 	  	
@@ -22,14 +31,95 @@
 
 <!--右半部分-->
 		<div class="rightpart">
-			<div class="menu">
-			这是菜单部分
+			
+			<div class="jieshao">
+				<div class="logo">
+				
+				</div>
+				<p>
+				我是 李钧陶<br>
+				I'm Justo<br>
+				90后，曾经的傲娇少年，如今的务实派，热爱阅读，文字，记录这一路摸爬滚打的足迹。<br>
+				告别玛丽苏，走出舒适区，愿我们都活成强大、理性、睿智的人。<br>
+				一个能写点文字，即将到工地报到搬砖的理工男。<br>
+				大三学生<br>
+				就读于<br>
+				华南理工大学广州学院
+				</p>
+				<!--文章列表-->
+				<div class="wenzhang">
+					<div class="article">
+						<img src="weixin.jpg" >
+						<div>
+							<span class="article-date">October 12, 2016</span>
+							<h2><a href="single.html">How to be an effective web developer</a></h2>
+							<p>How two simple exercises changed my life</p>
+						</div>
+					</div>
+
+					<div class="article">
+						<img src="weixin.jpg" >
+						<div>
+							<span class="article-date">October 12, 2016</span>
+							<h2><a href="single.html">How to be an effective web developer</a></h2>
+							<p>How two simple exercises changed my life</p>
+						</div>
+					</div>
+				</div>
+				<p>
+				我是 李钧陶<br>
+				I'm Justo<br>
+				90后，曾经的傲娇少年，如今的务实派，热爱阅读，文字，记录这一路摸爬滚打的足迹。<br>
+				告别玛丽苏，走出舒适区，愿我们都活成强大、理性、睿智的人。<br>
+				一个能写点文字，即将到工地报到搬砖的理工男。<br>
+				大三学生<br>
+				就读于<br>
+				华南理工大学广州学院
+				</p>
+
+<div id="wxImg" style="display:none;back-ground:#f00;position:fixed;bottom:10rem"><img src="weixin.jpg"></div>
+				<div class="connect">			
+
+					<a href="javascript:void(0)" onMouseOut="hideImg()"  onmouseover="showImg()">
+					<svg class="icon" aria-hidden="true">
+					  <use xlink:href="#icon-wechat"></use>
+					</svg>
+					</a>
+
+					<svg class="icon" aria-hidden="true">
+					  <use xlink:href="#icon-facebook"></use>
+					</svg>
+					<svg class="icon" aria-hidden="true">
+					  <use xlink:href="#icon-weibo"></use>
+					</svg>
+					<svg class="icon" aria-hidden="true">
+					  <use xlink:href="#icon-mail"></use>
+					</svg>
+				</div>
 			</div>
-		我是 李钧陶<br>
-		I'm Justo
+			<footer>
+			版权所有
+			</footer>
 		</div>
 
 	</div>
+	<script src="./iconfont.js"></script>
+	<script type="text/javascript">
+function  showImg(){
+document.getElementById("wxImg").style.display='block';
+}
+function hideImg(){
+document.getElementById("wxImg").style.display='none';
+}
 
+function hidemenu(){
+document.getElementById("menuclick").style.display='none';
+}
+function  showmenu(){
+document.getElementById("menuclick").style.display='block';
+}
+
+
+</script>
 </body>
 </html>
