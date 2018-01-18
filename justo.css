@@ -14,6 +14,20 @@ h1 {
 	/*2.2 × 10px = 22px*/
 }
 
+footer{
+	  background: blue;
+  clear: both;
+  padding: 20px 20px !important;
+}
+
+.icon {
+   width: 2rem; height: 2rem;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+   margin-top: 1rem;
+}
+
 .zhuti {
 	width: 100%;
 }
@@ -31,7 +45,7 @@ h1 {
 	-moz-box-sizing:border-box; /* Firefox */
 	-webkit-box-sizing:border-box; /* Safari */
 	float:left;
-	background-image: url(http://justo.top/bigpic.jpg);
+	background-image: url(bigpic.jpg);
 	background-size: cover;
 	top: 0;
 	left: 0;
@@ -72,13 +86,147 @@ h1 {
   }
 }
 
-.menu{
+menu{
+	margin: 0;
+	padding: 0;
 	height: 4rem;
-	background-color: #f1f1f1;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 61.8%;
+	z-index: 999;
+	background: #aaaaaa;
+	
 }
 @media(max-width: 768px){
-	.menu{
-		position: absolute;
-		top: 0;
+	menu{
+		width:100%;
 	}
 }
+
+menu ul{
+	margin: 0;
+}
+
+a{
+	text-decoration:none;
+	color: #fff
+}
+
+.option{
+	width: 33%;
+	float: right;
+	line-height: 4rem;
+	display: block;
+}
+
+
+.jieshao{
+	margin-top: 4rem;
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+}
+
+@media(max-width: 768px){
+	.jieshao{
+		margin-top: 0
+	}
+}
+
+.logo{
+	text-align: center;
+	height: 30rem;
+	background-image: url(justologo.png);
+}
+
+.logo img{
+	width: 80%;
+
+}
+
+.connect{
+	background: #4d4d4d;
+	height: 4rem;
+	text-align: center;
+}
+
+.menu_list { width: 90%;  height: 80%;background:rgba(48,52,53,.9); position: fixed; z-index: 9999;-webkit-transition: all .5s;
+      transition: all 0.5s;display: none;}
+
+.menu_show {bottom: 0;right: 0;animation: more_list 0.5s;-webkit-animation: more_list 0.5s;}
+@keyframes more_list {
+      from {
+        right: -900px;
+        bottom: 0px;
+      }
+      to {
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    @-webkit-keyframes more_list {
+      from {
+        right: -900px;
+        bottom: 0px;
+      }
+      to {
+        right:0;
+        bottom: 0;
+      }
+    }
+
+
+.article {
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 50px 0;
+}
+
+@media screen and (max-width: 768px) {
+.article {
+    text-align: left;
+    padding: 30px;
+  }
+}
+.article > img {
+  float: right;
+  width: 10%;
+  margin-bottom: 30px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+@media screen and (max-width: 768px) {
+.article > img {
+    float: none;
+    width: 50%;
+  }
+}
+.article > div {
+  width: 77%;
+  float: left;
+  margin-right: 5%;
+  margin-top: 0px;
+}
+
+
+
+.article-date {
+  color: #b3b3b3;
+  margin-bottom: 10px;
+  display: block;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: .05em;
+}
+
+.wenzhang{
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+}
+
