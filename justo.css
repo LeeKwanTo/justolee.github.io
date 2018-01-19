@@ -7,6 +7,7 @@ body {
 	font-size: 1.5rem;
 	/*1.5 × 10px = 15px */
 	margin: 0;
+	font-family: 微软雅黑
 }
 
 h1 { 
@@ -14,19 +15,22 @@ h1 {
 	/*2.2 × 10px = 22px*/
 }
 
-footer{
-	  background: blue;
-  clear: both;
-  padding: 20px 20px !important;
+a {
+	color: #607fa6;
+	text-decoration:none;
 }
 
-.icon {
-   width: 2rem; height: 2rem;
-   vertical-align: -0.15em;
-   fill: currentColor;
-   overflow: hidden;
-   margin-top: 1rem;
+footer{
+	background: #fff;
+	clear: both;
+	padding: 2rem 2rem !important;
+	font-size: 1.2rem;
+	text-align: center;
+	border-top: solid 0.1rem;
+	border-color: #000;
 }
+
+
 
 .zhuti {
 	width: 100%;
@@ -34,7 +38,7 @@ footer{
 
 @media(max-width: 768px){
 	.zhuti{
-		margin-top: 4rem;
+		margin-top: 0rem;
 	}
 }
 
@@ -68,6 +72,57 @@ footer{
   }
 }
 
+.mymane{
+	position: absolute;
+	bottom: 10rem;
+	left: 3rem;
+	font-size: 3rem;
+}
+
+.language{
+	position: absolute;
+	bottom: 7rem;
+	left: 3rem;
+	font-size: 1.5rem;
+	border-bottom: 0.2rem solid ;
+	border-color: blue;
+}
+
+.down{
+	display: none;
+}
+
+@media(max-width: 768px){
+	.down{
+		display: block;
+		position: absolute;
+		bottom: 1rem;
+		text-align: center;
+		width: 100%;
+		animation: down 3s infinite;
+		-webkit-animation: down 3s infinite;
+	}
+}
+
+@keyframes down {
+      from {
+        bottom: 1rem;
+      }
+      to {
+
+        bottom: 0;
+      }
+    }
+
+    @-webkit-keyframes down {
+      from {
+        bottom: 1rem;
+      }
+      to {
+        bottom: 0;
+      }
+    }
+
 /*右半部分*/
 .rightpart {
 	width: 61.8%;
@@ -89,13 +144,14 @@ footer{
 menu{
 	margin: 0;
 	padding: 0;
-	height: 4rem;
+	height: 5rem;
 	position: fixed;
 	top: 0;
 	right: 0;
 	width: 61.8%;
 	z-index: 999;
-	background: #aaaaaa;
+	/*菜单栏设为透明*/
+	background: rgba(255,255,255,0);
 	
 }
 @media(max-width: 768px){
@@ -106,26 +162,56 @@ menu{
 
 menu ul{
 	margin: 0;
+	padding: 0;
 }
 
-a{
-	text-decoration:none;
-	color: #fff
+.menu-close{
+	font-size: 4.5rem;
+	line-height: 5rem;
+	height: 5rem;
+	width: 100%;
+	background: #fff;
+	text-align: right;
+}
+
+.menu-button{
+	font-size: 2.5rem;
+	float: right;
+	display: block;
+	width:6rem;
+	height:4rem;
+	line-height:4rem;
+	color:#555555;
+	text-align:center;
+	background:rgba(255,255,255,0.5);
+	-moz-border-radius: 1rem;
+	-webkit-border-radius: 1rem;
+	border-radius:1rem;
+	border: solid 0.1rem;
+	margin-top: 1rem;
+	margin-right: 1rem;
 }
 
 .option{
-	width: 33%;
-	float: right;
-	line-height: 4rem;
-	display: block;
+	padding: 0;
 }
 
+.option li {
+	font-size: 2rem;
+	line-height: 8rem;
+	height: 8rem;
+	border-bottom: 1px solid #f2f2f2;
+	/*去掉li的小圆点*/
+	list-style: none;
+	margin: 0 1rem;
+}
 
 .jieshao{
 	margin-top: 4rem;
 	box-sizing: border-box;
 	-moz-box-sizing:border-box; /* Firefox */
 	-webkit-box-sizing:border-box; /* Safari */
+	letter-spacing: 0.1rem;
 }
 
 @media(max-width: 768px){
@@ -136,25 +222,45 @@ a{
 
 .logo{
 	text-align: center;
-	height: 30rem;
+	height: 18rem;
 	background-image: url(justologo.png);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
-.logo img{
-	width: 80%;
-
+.self-introduction {
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: #4d4d4d;
+	margin: 0 2rem;
 }
 
-.connect{
-	background: #4d4d4d;
-	height: 4rem;
-	text-align: center;
+
+
+
+.menu_list {
+	width: 38.2%;
+	height: 100%;
+	background:rgba(48,52,53,.9);
+	position: fixed;
+	z-index: 9999;
+	-webkit-transition: all .5s;
+    transition: all 0.5s;
+    display: none;
 }
 
-.menu_list { width: 90%;  height: 80%;background:rgba(48,52,53,.9); position: fixed; z-index: 9999;-webkit-transition: all .5s;
-      transition: all 0.5s;display: none;}
+@media(max-width: 768px){
+	.menu_list{
+		width: 61.8%
+	}
+}
 
-.menu_show {bottom: 0;right: 0;animation: more_list 0.5s;-webkit-animation: more_list 0.5s;}
+.menu_show {
+	bottom: 0;
+	right: 0;
+	animation: more_list 0.5s;
+	-webkit-animation: more_list 0.5s;
+}
 @keyframes more_list {
       from {
         right: -900px;
@@ -178,41 +284,46 @@ a{
     }
 
 
+
 .article {
   float: left;
-  width: 100%;
+  width: 90%;
   border-bottom: 1px solid #f2f2f2;
-  padding: 50px 0;
+  padding: 5rem 5%;
 }
 
 @media screen and (max-width: 768px) {
 .article {
     text-align: left;
-    padding: 30px;
+    padding: 3rem 5%;
   }
 }
-.article > img {
-  float: right;
-  width: 10%;
-  margin-bottom: 30px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
+.article img {
+	float: right;
+	width: 30%;
+	margin-bottom: 30px;
+	-webkit-border-radius: .3rem;
+	-moz-border-radius: .3rem;
+	-ms-border-radius: .3rem;
+	border-radius: .3rem;
 }
 @media screen and (max-width: 768px) {
-.article > img {
+.article img {
     float: none;
-    width: 50%;
+    width: 100%;
   }
 }
-.article > div {
-  width: 77%;
-  float: left;
-  margin-right: 5%;
-  margin-top: 0px;
+.article div {
+	width: 61.8%;
+	float: left;
+	margin-top: 0px;
 }
 
+@media screen and (max-width: 768px){
+	.article div {
+		width: 100%;
+	}
+}
 
 
 .article-date {
@@ -221,7 +332,6 @@ a{
   display: block;
   text-transform: uppercase;
   font-weight: 100;
-  letter-spacing: .05em;
 }
 
 .wenzhang{
@@ -230,3 +340,45 @@ a{
 	-webkit-box-sizing:border-box; /* Safari */
 }
 
+.more-article{
+	text-align: center;
+	height: 10rem;
+	
+}
+
+.more-article-button{
+	background: yellow;
+	width: 38.2%;
+	height: 5rem;
+	margin: 0 30.9%;
+	border-radius: 1rem;
+	line-height: 5rem;
+}
+
+
+
+.connect{
+	background: #aaaaaa;
+	height: 8rem;
+
+	text-align: center;
+	letter-spacing: 0.1rem;
+}
+
+.connect a {
+	text-decoration:none;
+	color: #fff
+}
+
+.connect-note{
+	line-height: 3rem;
+}
+
+.connect-icon {
+   width: 3rem;
+   height: 3rem;
+
+   fill: currentColor;
+   overflow: hidden;
+   margin: .5rem 1rem;
+}
