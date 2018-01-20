@@ -75,15 +75,17 @@ footer{
 .mymane{
 	position: absolute;
 	bottom: 10rem;
-	left: 3rem;
-	font-size: 3rem;
+	left: 3.5rem;
+	font-weight: normal;
+	color: #4d4d4d;
 }
 
 .language{
 	position: absolute;
 	bottom: 7rem;
-	left: 3rem;
+	left: 3.5rem;
 	font-size: 1.5rem;
+	line-height: 2.5rem;
 	border-bottom: 0.2rem solid ;
 	border-color: blue;
 }
@@ -232,10 +234,13 @@ menu ul{
 	font-size: 1.8rem;
 	font-weight: bold;
 	color: #4d4d4d;
-	margin: 0 2rem;
+	margin: 0 5%;
 }
 
-
+.location{
+	width: 1.8rem;
+	height: 1.8rem;
+}
 
 
 .menu_list {
@@ -283,14 +288,18 @@ menu ul{
       }
     }
 
-
+.article1{
+	border-top: 0.1rem solid #f2f2f2;
+}
 
 .article {
   float: left;
   width: 90%;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 0.1px solid #f2f2f2;
   padding: 5rem 5%;
 }
+
+
 
 @media screen and (max-width: 768px) {
 .article {
@@ -316,7 +325,7 @@ menu ul{
 .article div {
 	width: 61.8%;
 	float: left;
-	margin-top: 0px;
+	margin-top: 0;
 }
 
 @media screen and (max-width: 768px){
@@ -328,16 +337,16 @@ menu ul{
 
 .article-date {
   color: #b3b3b3;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   display: block;
-  text-transform: uppercase;
+  /*英文版中添加，定义仅有大写字母 text-transform: uppercase;*/
   font-weight: 100;
 }
 
-.wenzhang{
-	box-sizing: border-box;
-	-moz-box-sizing:border-box; /* Firefox */
-	-webkit-box-sizing:border-box; /* Safari */
+
+.ellipsis{
+	text-align: center;
+	margin-bottom: 3rem;
 }
 
 .more-article{
@@ -381,4 +390,24 @@ menu ul{
    fill: currentColor;
    overflow: hidden;
    margin: .5rem 1rem;
+}
+
+.qr{
+	display:none;
+	background:#aaaaaa;
+	position:fixed;
+	bottom:15rem;
+	height: 12rem;
+	right:35%;
+	border-radius: 1rem;
+	-moz-border-radius: 1rem;
+	-webkit-border-radius: 1rem;
+	border: solid 0.1rem;
+	color: #000
+}
+
+.qr-note{
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+	text-align: center;
 }
