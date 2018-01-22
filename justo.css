@@ -21,13 +21,14 @@ a {
 }
 
 footer{
-	background: #fff;
+	background: #fcfcfc;
 	clear: both;
 	padding: 2rem 2rem !important;
 	font-size: 1.2rem;
 	text-align: center;
 	border-top: solid 0.1rem;
-	border-color: #000;
+	border-color: #f1f1f1;
+	color: #aaaaaa;
 }
 
 
@@ -51,6 +52,7 @@ footer{
 	float:left;
 	background-image: url(bigpic.jpg);
 	background-size: cover;
+	background-position: top center;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -67,14 +69,13 @@ footer{
 		-webkit-box-sizing:border-box; /* Safari */
 		position: relative;
 		background-repeat: no-repeat;
-		background-position: center center;
-		height: 700px;
+		height: 67rem;
   }
 }
 
 .mymane{
 	position: absolute;
-	bottom: 10rem;
+	bottom: 13rem;
 	left: 3.5rem;
 	font-weight: normal;
 	color: #4d4d4d;
@@ -82,46 +83,57 @@ footer{
 
 .language{
 	position: absolute;
-	bottom: 7rem;
+	bottom: 10rem;
 	left: 3.5rem;
 	font-size: 1.5rem;
 	line-height: 2.5rem;
 	border-bottom: 0.2rem solid ;
-	border-color: blue;
+	border-color: #4d4d4d;
+	color: #4d4d4d;
 }
 
-.down{
+.language:hover{
+	border-color: #878ECD;
+	color: #878ECD;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.push{
 	display: none;
 }
 
 @media(max-width: 768px){
-	.down{
+	.push{
+		width: 4rem;
+		height: 4rem;
 		display: block;
 		position: absolute;
-		bottom: 1rem;
+		bottom: 6rem;
 		text-align: center;
 		width: 100%;
-		animation: down 3s infinite;
-		-webkit-animation: down 3s infinite;
+		animation: push 2s infinite;
+		-webkit-animation: push 2s infinite;
 	}
 }
 
-@keyframes down {
+@keyframes push {
       from {
-        bottom: 1rem;
+        bottom: 5rem;
       }
       to {
 
-        bottom: 0;
+        bottom: 6rem;
       }
     }
 
     @-webkit-keyframes down {
       from {
-        bottom: 1rem;
+        bottom: 5rem;
       }
       to {
-        bottom: 0;
+        bottom: 6rem;
       }
     }
 
@@ -172,8 +184,21 @@ menu ul{
 	line-height: 5rem;
 	height: 5rem;
 	width: 100%;
-	background: #fff;
+	background: rgba(255,255,255,.95);
 	text-align: right;
+	border-bottom: solid .2rem;
+	border-color: #4d4d4d;
+}
+
+.menu-close a {
+	color: #4d4d4d;
+}
+
+.menu-close a:hover{
+	color: rgba(135,142,205,.85);
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
 }
 
 .menu-button{
@@ -183,15 +208,23 @@ menu ul{
 	width:6rem;
 	height:4rem;
 	line-height:4rem;
-	color:#555555;
+	color:#4d4d4d;
 	text-align:center;
-	background:rgba(255,255,255,0.5);
-	-moz-border-radius: 1rem;
-	-webkit-border-radius: 1rem;
-	border-radius:1rem;
-	border: solid 0.1rem;
+	background:rgba(255,255,255,.7);
+	-moz-border-radius: .8rem;
+	-webkit-border-radius: .8rem;
+	border-radius:.8rem;
+	border: solid 0.2rem;
 	margin-top: 1rem;
 	margin-right: 1rem;
+}
+
+.menu-button:hover{
+	background:rgba(255,255,255,.7);
+	color:#878ECD;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
 }
 
 .option{
@@ -202,10 +235,18 @@ menu ul{
 	font-size: 2rem;
 	line-height: 8rem;
 	height: 8rem;
-	border-bottom: 1px solid #f2f2f2;
+	border-bottom: 1px solid #4d4d4d;
 	/*去掉li的小圆点*/
 	list-style: none;
 	margin: 0 1rem;
+	color: #4d4d4d;
+}
+
+.option a:hover li{
+	color: #878ECD;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
 }
 
 .jieshao{
@@ -246,7 +287,7 @@ menu ul{
 .menu_list {
 	width: 38.2%;
 	height: 100%;
-	background:rgba(48,52,53,.9);
+	background:rgba(255,255,255,.95);
 	position: fixed;
 	z-index: 9999;
 	-webkit-transition: all .5s;
@@ -328,12 +369,22 @@ menu ul{
 	margin-top: 0;
 }
 
+.article h2:hover{
+	color: #878ECD;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
 @media screen and (max-width: 768px){
 	.article div {
 		width: 100%;
 	}
 }
 
+.article a {
+	color: #4d4d4d;
+}
 
 .article-date {
   color: #b3b3b3;
@@ -356,40 +407,61 @@ menu ul{
 }
 
 .more-article-button{
-	background: yellow;
+	background: #fff;
 	width: 38.2%;
 	height: 5rem;
 	margin: 0 30.9%;
-	border-radius: 1rem;
+	border-radius: .8rem;
 	line-height: 5rem;
+	color: #B9BBDF;
+	border:solid 0.2rem;
+	letter-spacing: 0.1rem;
 }
 
-
+.more-article-button:hover{
+	background: #B9BBDF;
+	color: #fff;
+	border:solid 0.2rem;
+	border-color: #B9BBDF;
+	-webkit-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
 
 .connect{
-	background: #aaaaaa;
+	background: #fff;
 	height: 8rem;
-
 	text-align: center;
 	letter-spacing: 0.1rem;
 }
 
 .connect a {
 	text-decoration:none;
-	color: #fff
+	color: #aaaaaa;
 }
 
 .connect-note{
 	line-height: 3rem;
+	color: #aaaaaa;
 }
 
 .connect-icon {
-   width: 3rem;
-   height: 3rem;
+	width: 3rem;
+	height: 3rem;
 
-   fill: currentColor;
-   overflow: hidden;
-   margin: .5rem 1rem;
+	fill: currentColor;
+	overflow: hidden;
+	margin: .5rem 1rem;
+}
+
+.connect-icon:hover{
+	color: #878ECD;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
 }
 
 .qr{
@@ -399,9 +471,9 @@ menu ul{
 	bottom:15rem;
 	height: 12rem;
 	right:35%;
-	border-radius: 1rem;
-	-moz-border-radius: 1rem;
-	-webkit-border-radius: 1rem;
+	border-radius: .5rem;
+	-moz-border-radius: .5rem;
+	-webkit-border-radius: .5rem;
 	border: solid 0.1rem;
 	color: #000
 }
@@ -409,5 +481,26 @@ menu ul{
 .qr-note{
 	font-size: 1.2rem;
 	line-height: 1.5rem;
+	text-align: center;
+}
+
+.mailbox{
+	display:none;
+	background:#aaaaaa;
+	position:fixed;
+	bottom:15rem;
+	width: 10rem;
+	height: 4rem;
+	right:25%;
+	border-radius: .5rem;
+	-moz-border-radius: .5rem;
+	-webkit-border-radius: .5rem;
+	border: solid 0.1rem;
+	color: #000
+}
+
+.mail-note{
+	font-size: 1.2rem;
+	line-height: 4rem;
 	text-align: center;
 }
