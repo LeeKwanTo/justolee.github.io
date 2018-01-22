@@ -21,11 +21,11 @@
 	<a href="javascript:void(0)" onclick="hidemenu()" >×&nbsp;&nbsp;</a>
 	</div>
 	<ul class="option">
-		<a href="./blog"><li>博客全部文章</li></a>
-		<a href="./album"><li>相册</li></a>
-		<a href="./blog/guestbook.html"><li>留言板</li></a>
-		<a href="#connect"><li>联系我</li></a>
-		<a href="./reprint.html"><li>转载须知</li></a>
+		<a href="./blog" target="_blank"><li>博客全部文章</li></a>
+		<a href="./album" target="_blank"><li>相册</li></a>
+		<a href="./blog/guestbook.html" target="_blank"><li>留言板</li></a>
+		<a href="#connect" target="_blank"><li>联系我</li></a>
+		<a href="./reprint.html" target="_blank"><li>转载须知</li></a>
 	</ul>
 </div>
 	<div class="zhuti">
@@ -40,20 +40,22 @@
 	  		<h1 class="mymane">
 	  		我是 李钧陶
 	  		</h1>
+	  		<a href="./en.html">
 	  		<div class="language">
-				<a href="./en.html">English</a>
+				English
 	  		</div>
-	  		<a href="#about-justo">
-  			<svg class="down" aria-hidden="true">
-				<use xlink:href="#icon-down"></use>
+	  		</a>
+	  		
+  			<svg class="push" aria-hidden="true">
+				<use xlink:href="#icon-push"></use>
 			</svg>
-			</a>
+			
 		</div>
 
 <!--右半部分-->
 
 		<div class="rightpart">
-			<div class="jieshao" id="about-justo">
+			<div class="jieshao">
 				<div class="logo"></div>
 				<div class="self-introduction">
 
@@ -74,32 +76,36 @@
 				
 
 				<div class="article article1">
+					<a href="single.html" target="_blank">
 					<img src="pic1.jpg" >
 					<div>
 						<span class="article-date">October 12, 2016</span>
-						<h2><a href="single.html">这个是文章的标题，听说标题长一点才吸引人点进来看哦。</a></h2>
+						<h2>这个是文章的标题，听说标题长一点才吸引人点进来看哦。</h2>
 						<p>这是文章的描述，文章的描述长一点有助于别人了解你的文章。</p>
 					</div>
+					</a>
 				</div>
 
 				<div class="article">
+					<a href="single.html" target="_blank">
 					<img src="pic1.jpg" >
 					<div>
 						<span class="article-date">October 12, 2016</span>
-						<h2><a href="single.html">How to be an effective web developer</a></h2>
+						<h2>How to be an effective web developer</h2>
 						<p>How two simple exercises changed my life</p>
 					</div>
+					</a>
 				</div>
 			
 				<div class="ellipsis">
-					.</br>
-					.</br>
-					.</br>
+					•</br>
+					•</br>
+					•</br>
 				</div>
 			<!--进入博客主页-->
 				
 				<div class="more-article">
-					<a href="./blog">
+					<a href="./blog" target="_blank">
 					<div class="more-article-button">
 						查看更多文章
 					</div>
@@ -123,22 +129,27 @@
 				</svg>
 				</a>
 				
-				<a href="https://facebook.com">
+				<a href="https://facebook.com" target="_blank">
 				<svg class="connect-icon" aria-hidden="true">
 				  <use xlink:href="#icon-facebook"></use>
 				</svg>
 				</a>
 
-				<a href="https://weibo.com">
+				<a href="https://weibo.com" target="_blank">
 				<svg class="connect-icon" aria-hidden="true">
 				  <use xlink:href="#icon-weibo"></use>
 				</svg>
 				</a>
-			
+				
+				<div id="mymail" class="mailbox">
+					<div class="mail-note">lee@justo.top</div>
+				</div>
+
+				<a href="javascript:void(0)" onMouseOut="hideMail()"  onmouseover="showMail()">
 				<svg class="connect-icon" aria-hidden="true">
 				  <use xlink:href="#icon-mail"></use>
 				</svg>
-
+				</a>
 				
 			</div>
 			<footer>
@@ -154,6 +165,13 @@ document.getElementById("wxImg").style.display='block';
 }
 function hideImg(){
 document.getElementById("wxImg").style.display='none';
+}
+
+function  showMail(){
+document.getElementById("mymail").style.display='block';
+}
+function hideMail(){
+document.getElementById("mymail").style.display='none';
 }
 
 function hidemenu(){
