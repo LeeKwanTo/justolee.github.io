@@ -7,9 +7,8 @@
 	<!--禁止转码-->
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" >
-	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<link rel="stylesheet" href="justo.css">
-	<Link Rel="SHORTCUT ICON" href="img/icon.ico">
+	<Link Rel="SHORTCUT ICON" href="icon.ico">
 	<title>Justo's blog - 李钧陶个人博客</title>    
 	<meta name="keywords" content="李钧陶,书剑钧陶,justo" >
 	<meta name="description" content="李钧陶个人博客 Justo's blog" >
@@ -17,9 +16,14 @@
 </head>
 
 <body>
-<div id="menuclick" class="menu_list menu_show ">
+<!--弹出白的半透明遮罩-->
+<a href="javascript:void(0)" onclick="hidemenu(),hideShade()" >
+	<div id="menu-shade" class="white-shade"></div>
+</a>
+<div id="menuclick" class="menu-list menu-show"><!--右弹菜单列表-->
+
 	<div class="menu-close">
-	<a href="javascript:void(0)" onclick="hidemenu()" >×&nbsp;&nbsp;</a>
+	<a href="javascript:void(0)" onclick="hidemenu(),hideShade()" >&nbsp;×&nbsp;&nbsp;</a>
 	</div>
 	<ul class="option">
 		<a href="./blog" target="_blank"><li>博客全部文章</li></a>
@@ -29,10 +33,11 @@
 		<a href="./reprint.html" target="_blank"><li>转载须知</li></a>
 	</ul>
 </div>
+
 	<div class="zhuti">
 		<menu>
 			<ul>
-				<a href="javascript:void(0)" onclick="showmenu()"><li class="menu-button">☰</li></a>
+				<a href="javascript:void(0)" onclick="showmenu(),showShade()"><li class="menu-button">☰</li></a>
 				
 			</ul>
 		</menu>
@@ -71,29 +76,28 @@
 				<p>曾经的理想主义者，如今的务实派，热爱阅读，并记录这一路摸爬滚打的足迹。</p>
 				<br>
 				
-				
 				</div>
-				<!--文章列表-->
-				
 
-				<div class="article article1">
-					<a href="single.html" target="_blank">
+				<!--文章列表-->
+
+				<div class="article article-1">
+					<a href="https://www.jianshu.com/p/1b10484e4715" target="_blank">
 					<img src="pic1.jpg" >
 					<div>
-						<span class="article-date">October 12, 2016</span>
-						<h2>这个是文章的标题，听说标题长一点才吸引人点进来看哦。</h2>
-						<p>这是文章的描述，文章的描述长一点有助于别人了解你的文章。</p>
+						<span class="article-date">2017.07.07</span>
+						<h2>“是不是越长大就越难爱上一个人”</h2>
+						<p>原因更多时候不是和以往作了对比，而是我们不再像小时候，爱他穿了件喜欢的白Tee，现在即便是心动也只是适可而止的欣赏……</p>
 					</div>
 					</a>
 				</div>
 
 				<div class="article">
-					<a href="single.html" target="_blank">
-					<img src="pic1.jpg" >
+					<a href="https://www.jianshu.com/p/3ec4e749e0dd" target="_blank">
+					<img src="pic2.jpg" >
 					<div>
-						<span class="article-date">October 12, 2016</span>
-						<h2>How to be an effective web developer</h2>
-						<p>How two simple exercises changed my life</p>
+						<span class="article-date">2017.07.14</span>
+						<h2>工资永远是兼职最大的陷阱</h2>
+						<p>赶紧远离低水平的勤奋</p>
 					</div>
 					</a>
 				</div>
@@ -119,24 +123,24 @@
 				<div class="connect-note">你可以通过以下方式联系我</div>
 
 				<div id="wxImg" class="qr">
-					<img src="weixin.jpg" style="width: 10rem; height: 10rem;">
-					<div class="qr-note">扫描关注公众号</div>
+					<img src="weixin.jpg">
+					<div class="qr-note">关注公众号：书剑钧陶</br>（ID：sjjtgzh）</div>
 				</div>
 			
 				<a href="javascript:void(0)" onMouseOut="hideImg()"  onmouseover="showImg()">
 				
-				<svg class="connect-icon" aria-hidden="true">
+				<svg class="connect-icon wx-icon" aria-hidden="true">
 				  <use xlink:href="#icon-wechat"></use>
 				</svg>
 				</a>
 				
-				<a href="https://facebook.com" target="_blank">
+				<a href="https://www.facebook.com/justo.lee.33" target="_blank">
 				<svg class="connect-icon" aria-hidden="true">
 				  <use xlink:href="#icon-facebook"></use>
 				</svg>
 				</a>
 
-				<a href="https://weibo.com" target="_blank">
+				<a href="https://weibo.com/lijunt" target="_blank">
 				<svg class="connect-icon" aria-hidden="true">
 				  <use xlink:href="#icon-weibo"></use>
 				</svg>
@@ -154,7 +158,7 @@
 				
 			</div>
 			<footer>
-			版权所有
+			2018 李钧陶博客 版权所有 | 内容采用创作共用版权 CC BY-NC-ND/2.5/CN 许可协议
 			</footer>
 		</div>
 
@@ -182,7 +186,12 @@ function  showmenu(){
 document.getElementById("menuclick").style.display='block';
 }
 
-
+function  showShade(){
+document.getElementById("menu-shade").style.display='block';
+}
+function  hideShade(){
+document.getElementById("menu-shade").style.display='none';
+}
 
 </script>
 
