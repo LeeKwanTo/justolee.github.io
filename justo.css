@@ -626,3 +626,9 @@ menu ul{
 	background: #DDE7F2;
 	border-radius: 4px;
 }
+
+/*选中状态*/
+::selection {
+	background: #B9BBDF;
+	color: #fff;
+}
