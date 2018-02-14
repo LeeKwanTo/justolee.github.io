@@ -12,7 +12,7 @@ body {
 }
 
 h1 { 
-	font-size: 2.2rem;
+	font-size: 2.4rem;
 }
 
 h2 {
@@ -27,12 +27,11 @@ a {
 /*版权部分*/
 footer{
 	background: #fcfcfc;
-	clear: both;
-	padding: 2rem 2rem !important;
+	
+	padding: 2rem 2rem;
 	font-size: 1.2rem;
 	text-align: center;
-	border-top: solid 0.1rem;
-	border-color: #f1f1f1;
+	border-top: solid 0.1rem #f1f1f1;
 	color: #aaaaaa;
 }
 
@@ -373,131 +372,35 @@ menu ul{
 .logo{
 	text-align: center;
 	height: 15rem;
-	background-image: url(justologo.png);
+	background-image: url(justologo.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 .self-introduction {
-	font-size: 1.8rem;
-	font-weight: bold;
+	font-size: 1.6rem;
+	line-height: 2;
 	color: #4d4d4d;
 	margin: 0 5%;
 }
 
-.location{
-	width: 1.8rem;
-	height: 1.8rem;
+.location {
+	width: 1.6rem;
+	height: 1.6rem;
 }
 
-
-/*文章部分*/
-.article-1{
-	border-top: 0.1rem solid #f2f2f2;
-}
-
-.article {
-  float: left;
-  width: 90%;
-  border-bottom: 0.1px solid #f2f2f2;
-  padding: 5rem 5%;
-}
-
-@media screen and (max-width: 768px) {
-.article {
-    text-align: left;
-    padding: 3rem 5%;
-  }
-}
-
-.article img {
-	float: right;
-	width: 30%;
-	margin-bottom: 30px;
-	-webkit-border-radius: .3rem;
-	-moz-border-radius: .3rem;
-	-ms-border-radius: .3rem;
-	border-radius: .3rem;
-}
-
-@media screen and (max-width: 768px) {
-.article img {
-    float: none;
-    width: 100%;
-  }
-}
-.article div {
-	width: 61.8%;
-	float: left;
-	margin-top: 0;
-}
-
-@media screen and (max-width: 768px){
-	.article div {
-		width: 100%;
-	}
-}
-
-.article h2:hover{
-	color: #878ECD;
-	transition: 0.3s;
-	-moz-transition:0.3s;
-	-webkit-transition: 0.3s;
-	-o-transition: 0.3s;
-}
-
-.article p {
-	font-size: 1.3rem;
-}
-
-.article a {
+.mywechat {
+	text-align: center;
+	border-top: solid 0.1rem #f1f1f1;
 	color: #4d4d4d;
 }
 
-/*文章日期*/
-.article-date {
-  color: #b3b3b3;
-  margin-bottom: 1rem;
-  display: block;
-  /*英文版中添加，定义仅有大写字母 text-transform: uppercase;*/
-  font-weight: 100;
+.mywechat img {
+	width: 15rem;
+	height: 15rem;
 }
 
-
-.ellipsis{
-	text-align: center;
-	margin-bottom: 3rem;
-}
-
-.more-article{
-	text-align: center;
-	height: 10rem;
-}
-
-.more-article-button{
-	background: #fff;
-	width: 38.2%;
-	height: 5rem;
-	margin: 0 30.9%;
-	border-radius: .8rem;
-	line-height: 5rem;
-	color: #B9BBDF;
-	border:solid 0.2rem;
-	letter-spacing: 0.1rem;
-}
-
-.more-article-button:hover{
-	background: #B9BBDF;
-	color: #fff;
-	border:solid 0.2rem #B9BBDF;
-	box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
-	-webkit-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
-	-moz-box-shadow: 0px 14px 20px -9px rgba(0, 0, 0, 0.75);
-	transition: 0.3s;
-	-moz-transition:0.3s;
-	-webkit-transition: 0.3s;
-	-o-transition: 0.3s;
-}
+/*联系信息*/
 
 .connect{
 	background: #fff;
@@ -543,7 +446,7 @@ menu ul{
       }
       to {
 
-        bottom: .8rem;
+        bottom: .5rem;
       }
     }
 
@@ -552,7 +455,7 @@ menu ul{
         bottom: 0;
       }
       to {
-        bottom: .8rem;
+        bottom: .5rem;
       }
     }
 
