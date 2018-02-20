@@ -35,6 +35,11 @@ footer{
 	color: #aaaaaa;
 }
 
+.view{
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
 /*主体部分*/
 .zhuti {
 	width: 100%;

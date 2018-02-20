@@ -1,0 +1,789 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <link rel="stylesheet" href="../../css/amazeui.min.css">
+    <link rel="stylesheet" href="../../css/wap.css">
+    <title>C14服务墙 - 易舍</title>
+    <!-- 配置HTML页面不缓存 -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+</head>
+<body>
+
+<div class="pet_mian" >
+  <div class="e_head">
+  <header class="am-header ehead">
+    <ul><!--顶部菜单-->
+      <li class="ehead_menu2"><label id="head1" onclick="head1();"></label></li>
+      <li class="ehead_menu"><spen class="underline"><label id="head2" onclick="head2();"></label></spen></li>
+      <li class="ehead_menu2"><label id="head3" onclick="head3();"></label></li>
+      <li  class="ehead_menu2"><span id="opencomputer"><label id="head4" ></label></span>
+<!--弹出二维码-->
+    <div id="ADcomputer" class="hide"><div id="closecomputer-1" class="layout"></div>
+      <div class="tc"><div><div id="closecomputer-2" class="cle"></div>
+        <img src="../../img/eyellow.svg"><span class="st">请扫描二维码</span></div>
+          <div><img src="../../img/white.svg">
+            <div><img src="../../img/focusyowo.jpg" class="ss"></div>
+          </div></div></div></li>
+    </ul>
+
+<!--弹出加号-->
+    <div class="am-header-right am-header-nav">
+        <a href="javascript:;" class="iconfont gd_ico emore">&#xe61f;</a></div>
+  </header>
+</div>
+
+<!--菜单弹出页▽-->
+    <div class="pet_more_list"><div class="more_block">
+    <div class="iconfont pet_more_close">×
+      </div><!--弹出页关闭按钮-->
+    <div class="more_block">
+        <!--弹出菜单Part1-->
+        <div class="more_title"><label id="kind1"></label></div>
+        <!--选项1-1-->
+        <div class="more_line" onclick="link101();">
+            <i class="iconfont nav_orange more_ico">&#xe602;</i>
+            <div class="more_font"><label id="kind101" ></label></div>
+        </div>
+        <!--选项1-2-->
+        <div class="more_line" onclick="link102();">
+            <i class="iconfont nav_pink more_ico">&#xec3d;</i>
+            <div class="more_font"><label id="kind102" ></label></div>
+        </div>
+        <!--选项1-3-->
+        <div class="more_line" onclick="link103();">
+            <i class="iconfont nav_purple more_ico">&#xe689;</i>
+            <div class="more_font"><label id="kind103" ></label></div>
+        </div>
+        <!--选项1-4-->
+        <div class="more_line" onclick="link104();">
+            <i class="iconfont nav_red more_ico">&#xe637;</i>
+            <div class="more_font"><label id="kind104" ></label></div>
+        </div>
+        <!--选项1-5-->
+        <div class="more_line" onclick="link105();">
+            <i class="iconfont nav_cyan more_ico">&#xe62d;</i>
+            <div class="more_font"><label id="kind105" ></label></div>
+        </div>
+        <!--选项1-6-->
+        <div class="more_line" onclick="link106();">
+            <i class="iconfont nav_blue more_ico">&#xe667;</i>
+            <div class="more_font"><label id="kind106" ></label></div>
+        </div>
+        <!--选项1-7-->
+        <div class="more_line" onclick="link107();">
+            <i class="iconfont nav_green more_ico">&#xe600;</i>
+            <div class="more_font"><label id="kind107" ></label></div>
+        </div>
+        <!--选项1-8-->
+        <div class="more_line" onclick="link108();">
+            <i class="iconfont nav_yellow more_ico">&#xe676;</i>
+            <div class="more_font"><label id="kind108" ></label></div>
+        </div>
+        <!--选项1-9-->
+        <div class="more_line" onclick="link109();" id="idkind109">
+            <i class="iconfont nav_qt more_ico">&#xe677;</i>
+            <div class="more_font"><label id="kind109" ></label></div>
+        </div>
+        <!--弹出菜单Part2-->
+ <div class="more_title more_part2"><label id="kind2"></label></div>
+        <!--选项2-1-->
+        <div class="more_line" onclick="link201();" >
+            <i class="iconfont nav_orange more_ico">&#xe62a;</i>
+            <div class="more_font"><label id="kind201" ></label></div>
+        </div>
+        <!--选项2-2-->
+        <div class="more_line" onclick="link202();" >
+            <i class="iconfont nav_pink more_ico">&#xe604;</i>
+            <div class="more_font"><label id="kind202" ></label></div>
+        </div>
+        <!--选项2-3-->
+        <div class="more_line" onclick="link203();" >
+            <i class="iconfont nav_purple more_ico">&#xe601;</i>
+            <div class="more_font"><label id="kind203" ></label></div>
+        </div>
+        <!--选项2-4-->
+        <div class="more_line" onclick="link204();" >
+            <i class="iconfont nav_red more_ico">&#xe6fb;</i>
+            <div class="more_font"><label id="kind204" ></label></div>
+        </div>
+        <!--选项2-5-->
+        <div class="more_line" onclick="link205();" >
+            <i class="iconfont nav_cyan more_ico">&#xe61b;</i>
+            <div class="more_font"><label id="kind205" ></label></div>
+        </div>
+        <!--选项2-6-->
+        <div class="more_line" onclick="link206();" >
+            <i class="iconfont nav_blue more_ico">&#xe603;</i>
+            <div class="more_font"><label id="kind206" ></label></div>
+        </div>
+        <!--选项2-7-->
+        <div class="more_line" onclick="link207();" >
+            <i class="iconfont nav_green more_ico">&#xe618;</i>
+            <div class="more_font"><label id="kind207" ></label></div>
+        </div>
+        <!--选项2-8-->
+        <div class="more_line" onclick="link208();" >
+            <i class="iconfont nav_yellow more_ico">&#xe60d;</i>
+            <div class="more_font"><label id="kind208" ></label></div>
+        </div>
+        <!--选项2-9-->
+        <div class="more_line" onclick="link209();" id="idkind209">
+            <i class="iconfont nav_qt more_ico">&#xe605;</i>
+            <div class="more_font"><label id="kind209" ></label></div>
+        </div>
+        
+    </div>
+    </div></div>
+    <!--菜单弹出页△-->
+
+    <div class="e_content">
+    <div class="content_block hd_con">
+
+<!--服务墙▽-->
+<div class="serwall_border"><div class="pet_content_main">
+  <div data-am-widget="list_news" class="am-list-news am-list-news-default">
+    <div class="am-list-news-bd">
+      <ul class="am-list">
+
+<!--/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /-->
+
+<!--图片命名对应编号，例：服务01为01.jpg-->
+<!--二维码命名为"q+编号"，例：服务01二维码为q01.jpg-->
+<!--服务01▽-->
+<div id="id01">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title01"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail01"></label></div>
+    <!--图--><div id="img01">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="01.jpg"></figure></div>
+    <div class="serwall"><span id="open1" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone01();">电话</div></span>
+    <span class="duanhao"><div onclick="dh01();">短号</div></span>
+    <!--备注--><label id="remark01"></label></div>
+    <!--二维码-->
+      <div id="AD1" class="hide"><div id="close1-1" class="layout"></div>
+        <div class="tc"><div><div id="close1-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q01.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务02▽-->
+<div id="id02">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title02"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail02"></label></div>
+    <!--图--><div id="img02">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="02.jpg"></figure></div>
+    <div class="serwall"><span id="open2" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone02();">电话</div></span>
+    <span class="duanhao"><div onclick="dh02();">短号</div></span>
+    <!--备注--><label id="remark02"></label></div>
+    <!--二维码-->
+      <div id="AD2" class="hide"><div id="close2-1" class="layout"></div>
+        <div class="tc"><div><div id="close2-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q02.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务03▽-->
+<div id="id03">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title03"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail03"></label></div>
+    <!--图--><div id="img03">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="03.jpg"></figure></div>
+    <div class="serwall"><span id="open3" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone03();">电话</div></span>
+    <span class="duanhao"><div onclick="dh03();">短号</div></span>
+    <!--备注--><label id="remark03"></label></div>
+    <!--二维码-->
+      <div id="AD3" class="hide"><div id="close3-1" class="layout"></div>
+        <div class="tc"><div><div id="close3-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q03.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务04▽-->
+<div id="id04">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title04"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail04"></label></div>
+    <!--图--><div id="img04">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="04.jpg"></figure></div>
+    <div class="serwall"><span id="open4" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone04();">电话</div></span>
+    <span class="duanhao"><div onclick="dh04();">短号</div></span>
+    <!--备注--><label id="remark04"></label></div>
+    <!--二维码-->
+      <div id="AD4" class="hide"><div id="close4-1" class="layout"></div>
+        <div class="tc"><div><div id="close4-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q04.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务05▽-->
+<div id="id05">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title05"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail05"></label></div>
+    <!--图--><div id="img05">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="05.jpg"></figure></div>
+    <div class="serwall"><span id="open5" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone05();">电话</div></span>
+    <span class="duanhao"><div onclick="dh05();">短号</div></span>
+    <!--备注--><label id="remark05"></label></div>
+    <!--二维码-->
+      <div id="AD5" class="hide"><div id="close5-1" class="layout"></div>
+        <div class="tc"><div><div id="close5-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q05.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务06▽-->
+  <div id="id06">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title06"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail06"></label></div>
+    <!--图--><div id="img06">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="06.jpg"></figure></div>
+    <div class="serwall"><span id="open6" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone06();">电话</div></span>
+    <span class="duanhao"><div onclick="dh06();">短号</div></span>
+    <!--备注--><label id="remark06"></label></div>
+    <!--二维码-->
+      <div id="AD6" class="hide"><div id="close6-1" class="layout"></div>
+        <div class="tc"><div><div id="close6-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q06.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务07▽-->
+<div id="id07">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title07"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail07"></label></div>
+    <!--图--><div id="img07">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="07.jpg"></figure></div>
+    <div class="serwall"><span id="open7" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone07();">电话</div></span>
+    <span class="duanhao"><div onclick="dh07();">短号</div></span>
+    <!--备注--><label id="remark07"></label></div>
+    <!--弹出二维码-->
+      <div id="AD7" class="hide"><div id="close7-1" class="layout"></div>
+        <div class="tc"><div><div id="close7-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q07.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务08▽-->
+<div id="id08">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title08"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail08"></label></div>
+    <!--图--><div id="img08">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="08.jpg"></figure></div>
+    <div class="serwall"><span id="open8" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone08();">电话</div></span>
+    <span class="duanhao"><div onclick="dh08();">短号</div></span>
+    <!--备注--><label id="remark08"></label></div>
+    <!--二维码-->
+      <div id="AD8" class="hide"><div id="close8-1" class="layout"></div>
+        <div class="tc"><div><div id="close8-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q08.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务09▽-->
+<div id="id09">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title09"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail09"></label></div>
+    <!--图--><div id="img09">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="09.jpg"></figure></div>
+    <div class="serwall"><span id="open9" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone09();">电话</div></span>
+    <span class="duanhao"><div onclick="dh09();">短号</div></span>
+    <!--备注--><label id="remark09"></label></div>
+    <!--二维码-->
+      <div id="AD9" class="hide"><div id="close9-1" class="layout"></div>
+        <div class="tc"><div><div id="close9-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q09.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务10▽-->
+<div id="id10">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title10"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail10"></label></div>
+    <!--图--><div id="img10">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="10.jpg"></figure></div>
+    <div class="serwall"><span id="open10" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone10();">电话</div></span>
+    <span class="duanhao"><div onclick="dh10();">短号</div></span>
+    <!--备注--><label id="remark10"></label></div>
+    <!--二维码-->
+      <div id="AD10" class="hide"><div id="close10-1" class="layout"></div>
+        <div class="tc"><div><div id="close10-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q10.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务11▽-->
+<div id="id11">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title11"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail11"></label></div>
+    <!--图--><div id="img11">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="11.jpg"></figure></div>
+    <div class="serwall"><span id="open11" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone11();">电话</div></span>
+    <span class="duanhao"><div onclick="dh11();">短号</div></span>
+    <!--备注--><label id="remark11"></label></div>
+    <!--二维码-->
+      <div id="AD11" class="hide"><div id="close11-1" class="layout"></div>
+        <div class="tc"><div><div id="close11-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q11.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务12▽-->
+<div id="id12">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title12"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail12"></label></div>
+    <!--图--><div id="img12">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="12.jpg"></figure></div>
+    <div class="serwall"><span id="open12" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone12();">电话</div></span>
+    <span class="duanhao"><div onclick="dh12();">短号</div></span>
+    <!--备注--><label id="remark12"></label></div>
+    <!--二维码-->
+      <div id="AD12" class="hide"><div id="close12-1" class="layout"></div>
+        <div class="tc"><div><div id="close12-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q012.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务13▽-->
+<div id="id13">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title13"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail13"></label></div>
+    <!--图--><div id="img13">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="13.jpg"></figure></div>
+    <div class="serwall"><span id="open13" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone13();">电话</div></span>
+    <span class="duanhao"><div onclick="dh13();">短号</div></span>
+    <!--备注--><label id="remark13"></label></div>
+    <!--二维码▽-->
+      <div id="AD13" class="hide"><div id="close13-1" class="layout"></div>
+        <div class="tc"><div><div id="close13-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q13.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务14▽-->
+<div id="id14">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title14"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail14"></label></div>
+    <!--图--><div id="img14">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="14.jpg"></figure></div>
+    <div class="serwall"><span id="open14" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone14();">电话</div></span>
+    <span class="duanhao"><div onclick="dh14();">短号</div></span>
+    <!--备注--><label id="remark14"></label></div>
+    <!--二维码-->
+      <div id="AD14" class="hide"><div id="close14-1" class="layout"></div>
+        <div class="tc"><div><div id="close14-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q14.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务15▽-->
+<div id="id15">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title15"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail15"></label></div>
+    <!--图--><div id="img15">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="15.jpg"></figure></div>
+    <div class="serwall"><span id="open15" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone15();">电话</div></span>
+    <span class="duanhao"><div onclick="dh15();">短号</div></span>
+    <!--备注--><label id="remark15"></label></div>
+    <!--二维码-->
+      <div id="AD15" class="hide"><div id="close15-1" class="layout"></div>
+        <div class="tc"><div><div id="close15-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q15.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务16▽-->
+<div id="id16">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title16"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail16"></label></div>
+    <!--图--><div id="img16">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="16.jpg"></figure></div>
+    <div class="serwall"><span id="open16" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone16();">电话</div></span>
+    <span class="duanhao"><div onclick="dh16();">短号</div></span>
+    <!--备注--><label id="remark16"></label></div>
+    <!--二维码-->
+      <div id="AD16" class="hide"><div id="close16-1" class="layout"></div>
+        <div class="tc"><div><div id="close16-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q16.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务17▽-->
+<div id="id17">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title17"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail17"></label></div>
+    <!--图--><div id="img17">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="17.jpg"></figure></div>
+    <div class="serwall"><span id="open17" class="weixin">微信</span>
+    <!--电话--><span class="phone"><div onclick="phone17();">电话</div></span>
+    <span class="duanhao"><div onclick="dh17();">短号</div></span>
+    <!--备注--><label id="remark17"></label></div>
+    <!--二维码-->
+      <div id="AD17" class="hide"><div id="close17-1" class="layout"></div>
+        <div class="tc"><div><div id="close17-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q17.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务18▽-->
+<div id="id18">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title18"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail18"></label></div>
+    <!--图--><div id="img18">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="18.jpg"></figure></div>
+    <div class="serwall"><span id="open18" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone18();">电话</div></span>
+    <span class="duanhao"><div onclick="dh18();">短号</div></span>
+    <!--备注--><label id="remark18"></label></div>
+    <!--二维码-->
+      <div id="AD18" class="hide"><div id="close18-1" class="layout"></div>
+        <div class="tc"><div><div id="close18-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q18.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务19▽-->
+<div id="id19">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title19"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail19"></label></div>
+    <!--图--><div id="img19">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="19.jpg"></figure></div>
+    <div class="serwall"><span id="open19" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone19();">电话</div></span>
+    <span class="duanhao"><div onclick="dh19();">短号</div></span>
+    <!--备注--><label id="remark19"></label></div>
+    <!--二维码-->
+      <div id="AD19" class="hide"><div id="close19-1" class="layout"></div>
+        <div class="tc"><div><div id="close19-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q19.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务20▽-->
+<div id="id20">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title20"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail20"></label></div>
+    <!--图--><div id="img20">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="20.jpg"></figure></div>
+    <div class="serwall"><span id="open20" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone20();">电话</div></span>
+    <span class="duanhao"><div onclick="dh20();">短号</div></span>
+    <!--备注--><label id="remark20"></label></div>
+    <!--二维码-->
+      <div id="AD20" class="hide"><div id="close20-1" class="layout"></div>
+        <div class="tc"><div><div id="close20-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q20.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务21▽-->
+<div id="id21">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title21"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail21"></label></div>
+    <!--图--><div id="img21">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="21.jpg"></figure></div>
+    <div class="serwall"><span id="open21" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone21();">电话</div></span>
+    <span class="duanhao"><div onclick="dh21();">短号</div></span>
+    <!--备注--><label id="remark21"></label></div>
+    <!--二维码-->
+      <div id="AD21" class="hide"><div id="close21-1" class="layout"></div>
+        <div class="tc"><div><div id="close21-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q21.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务22▽-->
+<div id="id22">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title22"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail22"></label></div>
+    <!--图--><div id="img22">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="22.jpg"></figure></div>
+    <div class="serwall"><span id="open22" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone22();">电话</div></span>
+    <span class="duanhao"><div onclick="dh22();">短号</div></span>
+    <!--备注--><label id="remark22"></label></div>
+    <!--二维码-->
+      <div id="AD22" class="hide"><div id="close22-1" class="layout"></div>
+        <div class="tc"><div><div id="close22-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q22.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务23▽-->
+<div id="id23">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title23"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail23"></label></div>
+    <!--图--><div id="img23">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="23.jpg"></figure></div>
+    <div class="serwall"><span id="open23" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone23();">电话</div></span>
+    <span class="duanhao"><div onclick="dh23();">短号</div></span>
+    <!--备注--><label id="remark23"></label></div>
+    <!--二维码-->
+      <div id="AD23" class="hide"><div id="close23-1" class="layout"></div>
+        <div class="tc"><div><div id="close23-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q23.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务24▽-->
+  <div id="id24">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title24"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail24"></label></div>
+    <!--图--><div id="img24">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="24.jpg"></figure></div>
+    <div class="serwall"><span id="open24" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone24();">电话</div></span>
+    <span class="duanhao"><div onclick="dh24();">短号</div></span>
+    <!--备注--><label id="remark24"></label></div>
+    <!--二维码-->
+      <div id="AD24" class="hide"><div id="close24-1" class="layout"></div>
+        <div class="tc"><div><div id="close24-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q24.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务25▽-->
+<div id="id25">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title25"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail25"></label></div>
+    <!--图--><div id="img25">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="25.jpg"></figure></div>
+    <div class="serwall"><span id="open25" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone25();">电话</div></span>
+    <span class="duanhao"><div onclick="dh25();">短号</div></span>
+    <!--备注--><label id="remark25"></label></div>
+    <!--二维码-->
+      <div id="AD25" class="hide"><div id="close25-1" class="layout"></div>
+        <div class="tc"><div><div id="close25-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q25.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务26▽-->
+<div id="id26">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title26"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail26"></label></div>
+    <!--图--><div id="img26">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="26.jpg"></figure></div>
+    <div class="serwall"><span id="open26" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone26();">电话</div></span>
+    <span class="duanhao"><div onclick="dh26();">短号</div></span>
+    <!--备注--><label id="remark26"></label></div>
+    <!--二维码-->
+      <div id="AD26" class="hide"><div id="close26-1" class="layout"></div>
+        <div class="tc"><div><div id="close26-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q26.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务27▽-->
+<div id="id27">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title27"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail27"></label></div>
+    <!--图--><div id="img27">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="27.jpg"></figure></div>
+    <div class="serwall"><span id="open27" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone27();">电话</div></span>
+    <span class="duanhao"><div onclick="dh27();">短号</div></span>
+    <!--备注--><label id="remark27"></label></div>
+    <!--二维码▽-->
+      <div id="AD27" class="hide"><div id="close27-1" class="layout"></div>
+        <div class="tc"><div><div id="close27-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q27.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务28▽-->
+<div id="id28">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title28"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail28"></label></div>
+    <!--图--><div id="img28">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="28.jpg"></figure></div>
+    <div class="serwall"><span id="open28" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone28();">电话</div></span>
+    <span class="duanhao"><div onclick="dh28();">短号</div></span>
+    <!--备注--><label id="remark28"></label></div>
+    <!--弹出二维码-->
+      <div id="AD28" class="hide"><div id="close28-1" class="layout"></div>
+        <div class="tc"><div><div id="close28-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q28.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务29▽-->
+<div id="id29">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title29"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail29"></label></div>
+    <!--图--><div id="img29">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="29.jpg"></figure></div>
+    <div class="serwall"><span id="open29" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone29();">电话</div></span>
+    <span class="duanhao"><div onclick="dh29();">短号</div></span>
+    <!--备注--><label id="remark29"></label></div>
+    <!--二维码-->
+      <div id="AD29" class="hide"><div id="close29-1" class="layout"></div>
+        <div class="tc"><div><div id="close29-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q29.jpg" class="ss"></div></div></div></div></div>
+  </li>
+<!--服务30▽-->
+<div id="id30">
+  <li class="am-list-item-desced list">
+    <!--标题--><div class="serwall_title"><label id="title30"></label></div>
+    <!--描述--><div class="serwall_ms"><label id="detail30"></label></div>
+    <!--图--><div id="img30">
+  <figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}"><img src="30.jpg"></figure></div>
+    <div class="serwall"><span id="open30" class="weixin">微信</span>
+    <span class="phone"><div onclick="phone30();">电话</div></span>
+    <span class="duanhao"><div onclick="dh30();">短号</div></span>
+    <!--备注--><label id="remark30"></label></div>
+    <!--二维码-->
+      <div id="AD30" class="hide"><div id="close30-1" class="layout"></div>
+        <div class="tc"><div><div id="close30-2" class="cle"></div>
+          <img src="../../img/egreen.svg"><span class="st">微信联系</span></div>
+            <div><img src="../../img/white.svg">
+              <div><img src="q30.jpg" class="ss"></div></div></div></div></div>
+  </li>
+
+<!--/ / / / / / / / / / / / / / / / / / / / / / / / / / / / / / /-->
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--服务墙△-->
+  </div>
+</div>
+
+<!--轮播-->
+<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
+  <ul class="am-slides">
+      <li>
+  <!--图1--><img src="../../img/slider1.jpg">
+          <div id="s1" onclick="links1();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_101"></label></span>
+                <span><label id="slider_102"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图2--><img src="../../img/slider2.jpg">
+          <div id="s2" onclick="links2();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_201"></label></span>
+                <span><label id="slider_202"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图3--><img src="../../img/slider3.jpg">
+          <div id="s3" onclick="links3();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_301"></label></span>
+                <span><label id="slider_302"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+  </ul>
+</div>
+
+<!--易舍介绍▽-->
+<div class="eabout">
+      <div class="eabout_title">关于 易舍服务墙</div>
+      <div class="eabout_content"><div class="eabout_triangle"></div>
+      <div class="eabout_ico"><img src="../../img/logo.png"></div>
+      <div class="eabout_content_font">
+服务墙是易舍向商家提供的信息展示位，服务由商家提供，商家对服务内容、真实性及有效性承担全部责任。
+      </div>
+      <div class="eabout_all">
+        <span id="openfocus" class="eabout_focus"> 关注我们</span>
+<!--弹出二维码▽-->
+    <div id="ADfocus" class="hide">
+      <div id="closefocus-1" class="layout"></div>
+        <div class="tc">
+          <div>
+            <div id="closefocus-2" class="cle"></div>
+              <img src="../../img/egreen.svg">
+  <!--文字描述--><span class="st">扫码关注“易舍”</span></div>
+                  <div>
+                  <img src="../../img/white.svg">
+<!--二维码地址--><div><img src="../../img/focus.jpg" class="ss"></div>
+                </div>
+              </div>
+            </div>
+
+<!--提交收录按钮▽-->
+<a href="../../menu/contact.html" target="_blank" class="eabout_us"> 我要上墙</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--版权说明▽-->
+<div class="eabout_footer_info">©2017 易舍 保留所有权利 - 技术支持 优务科技</div>
+</div></div>
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/amazeui.min.js"></script>
+<script src="../../js/menu.js"></script>
+<script src="../../js/jump.js"></script>
+
+<script src="../../js/serwallqr.js"></script>
+<script src="../../serwall/ser14.js"></script>
+
+</body>
+</html>

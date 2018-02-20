@@ -1,0 +1,37 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body,html{height:100%;} 
+body{min-width:320px; font:12px/1.5 "Microsoft Yahei","Arial";margin: 0; padding: 0; -webkit-text-size-adjust:none}
+a{outline:none; color:#333; text-decoration:none;}
+a:hover{ text-decoration:none;}
+img { border:0px; max-width:100%;}
+table { border-collapse: collapse; border-spacing: 0; }
+li { list-style: none; }
+.cl:after{ content:'\20'; display:block; height:0; clear:both; }
+.cl{ *zoom:1;}
+
+
+.main{width:100%; min-height:100%; position:relative; margin:13px auto 0; overflow:hidden;}
+
+/* my_create */
+.round_border{ -webkit-border-radius:5px; overflow:hidden; border-radius:5px;}
+
+/* 周次 */
+
+.zhouci{color:#ffba00; font-weight:700;  background-image:url(../img/zhouci.png);}
+.zhouci_boder{border-top:1px solid #F5F5F5;}
+.yuefen{background-color:#EEE;}
+.anpai{border-left:1px solid #F5F5F5;}
+.shixiang{color:#06b0b0; font-weight:700;}
+.day{}
+.day_m{color:#999;}
+.day_jiaqi{color:#68E0EA;}
+.day_zhongyao{color:#F00;}
+
+
+
+
+
+
+
+

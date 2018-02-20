@@ -1,0 +1,522 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <link rel="stylesheet" href="../css/amazeui.min.css">
+    <link rel="stylesheet" href="../css/wap.css">
+    <title>华广开网教程 - 易舍</title><!--标题-->
+    <!-- 配置HTML页面不缓存 -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+</head>
+<body>
+
+<div class="pet_mian" >
+  <div class="e_head">
+  <header class="am-header ehead">
+    <ul><!--顶部菜单-->
+      <li class="ehead_menu2"><label id="head1" onclick="head1();"></label></li>
+      <li class="ehead_menu2"><label id="head2" onclick="head2();"></label></li>
+      <li class="ehead_menu2"><label id="head3" onclick="head3();"></label></li>
+      <li  class="ehead_menu2"><span id="opencomputer"><label id="head4" ></label></span>
+<!--弹出二维码-->
+    <div id="ADcomputer" class="hide"><div id="closecomputer-1" class="layout"></div>
+      <div class="tc"><div><div id="closecomputer-2" class="cle"></div>
+        <img src="../img/eyellow.svg"><span class="st">请扫描二维码</span></div>
+          <div><img src="../img/white.svg">
+            <div><img src="../img/focusyowo.jpg" class="ss"></div>
+          </div></div></div></li>
+    </ul>
+
+<!--弹出加号-->
+    <div class="am-header-right am-header-nav ">
+        <a href="javascript:;" class="iconfont gd_ico emore">&#xe61f;</a></div>
+  </header>
+</div>
+
+<!--菜单弹出页▽-->
+    <div class="pet_more_list"><div class="more_block">
+    <div class="iconfont pet_more_close">×
+      </div><!--弹出页关闭按钮-->
+    <div class="more_block">
+        <!--弹出菜单Part1-->
+        <div class="more_title"><label id="kind1"></label></div>
+        <!--选项1-1-->
+        <div class="more_line" onclick="link101();">
+            <i class="iconfont nav_orange more_ico">&#xe602;</i>
+            <div class="more_font"><label id="kind101" ></label></div>
+        </div>
+        <!--选项1-2-->
+        <div class="more_line" onclick="link102();">
+            <i class="iconfont nav_pink more_ico">&#xec3d;</i>
+            <div class="more_font"><label id="kind102" ></label></div>
+        </div>
+        <!--选项1-3-->
+        <div class="more_line" onclick="link103();">
+            <i class="iconfont nav_purple more_ico">&#xe689;</i>
+            <div class="more_font"><label id="kind103" ></label></div>
+        </div>
+        <!--选项1-4-->
+        <div class="more_line" onclick="link104();">
+            <i class="iconfont nav_red more_ico">&#xe637;</i>
+            <div class="more_font"><label id="kind104" ></label></div>
+        </div>
+        <!--选项1-5-->
+        <div class="more_line" onclick="link105();">
+            <i class="iconfont nav_cyan more_ico">&#xe62d;</i>
+            <div class="more_font"><label id="kind105" ></label></div>
+        </div>
+        <!--选项1-6-->
+        <div class="more_line" onclick="link106();">
+            <i class="iconfont nav_blue more_ico">&#xe667;</i>
+            <div class="more_font"><label id="kind106" ></label></div>
+        </div>
+        <!--选项1-7-->
+        <div class="more_line" onclick="link107();">
+            <i class="iconfont nav_green more_ico">&#xe600;</i>
+            <div class="more_font"><label id="kind107" ></label></div>
+        </div>
+        <!--选项1-8-->
+        <div class="more_line" onclick="link108();">
+            <i class="iconfont nav_yellow more_ico">&#xe676;</i>
+            <div class="more_font"><label id="kind108" ></label></div>
+        </div>
+        <!--选项1-9-->
+        <div class="more_line" onclick="link109();" id="idkind109">
+            <i class="iconfont nav_qt more_ico">&#xe677;</i>
+            <div class="more_font"><label id="kind109" ></label></div>
+        </div>
+        <!--弹出菜单Part2-->
+ <div class="more_title more_part2"><label id="kind2"></label></div>
+        <!--选项2-1-->
+        <div class="more_line" onclick="link201();" >
+            <i class="iconfont nav_orange more_ico">&#xe62a;</i>
+            <div class="more_font"><label id="kind201" ></label></div>
+        </div>
+        <!--选项2-2-->
+        <div class="more_line" onclick="link202();" >
+            <i class="iconfont nav_pink more_ico">&#xe604;</i>
+            <div class="more_font"><label id="kind202" ></label></div>
+        </div>
+        <!--选项2-3-->
+        <div class="more_line" onclick="link203();" >
+            <i class="iconfont nav_purple more_ico">&#xe601;</i>
+            <div class="more_font"><label id="kind203" ></label></div>
+        </div>
+        <!--选项2-4-->
+        <div class="more_line" onclick="link204();" >
+            <i class="iconfont nav_red more_ico">&#xe6fb;</i>
+            <div class="more_font"><label id="kind204" ></label></div>
+        </div>
+        <!--选项2-5-->
+        <div class="more_line" onclick="link205();" >
+            <i class="iconfont nav_cyan more_ico">&#xe61b;</i>
+            <div class="more_font"><label id="kind205" ></label></div>
+        </div>
+        <!--选项2-6-->
+        <div class="more_line" onclick="link206();" >
+            <i class="iconfont nav_blue more_ico">&#xe603;</i>
+            <div class="more_font"><label id="kind206" ></label></div>
+        </div>
+        <!--选项2-7-->
+        <div class="more_line" onclick="link207();" >
+            <i class="iconfont nav_green more_ico">&#xe618;</i>
+            <div class="more_font"><label id="kind207" ></label></div>
+        </div>
+        <!--选项2-8-->
+        <div class="more_line" onclick="link208();" >
+            <i class="iconfont nav_yellow more_ico">&#xe60d;</i>
+            <div class="more_font"><label id="kind208" ></label></div>
+        </div>
+        <!--选项2-9-->
+        <div class="more_line" onclick="link209();" id="idkind209">
+            <i class="iconfont nav_qt more_ico">&#xe605;</i>
+            <div class="more_font"><label id="kind209" ></label></div>
+        </div>
+        
+    </div>
+    </div></div>
+    <!--菜单弹出页△-->
+
+    <div class="e_content">
+    <div class="content_block hd_con">
+<p><br></p>
+<!--标题-->
+<div class="etitle_1">
+  <p style="text-align: justify; white-space: normal; line-height: 1.2em;color: #4d4d4d; font-size: 18px;">
+    <span style="color: #27cc9d;">█&nbsp;</span>
+ 开网三部曲
+</p>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+1.账号预注册<br>
+2.安装客户端<br>
+3.申请移动宽带账号<br>
+  </p></div>
+
+<!--标题-->
+<div class="etitle_1">
+  <p style="text-align: justify; white-space: normal; line-height: 1.2em;color: #4d4d4d; font-size: 18px;">
+    <span style="color: #27cc9d;">①&nbsp;</span>
+账号预注册
+  </p>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+以下三个途径可以进行账号预注册<br>
+1.关注“华广校园网”，在“我的账号”菜单中找到预注册<br>
+2.通过校园网络（登录校园网或者校园WIFI的设备上）<br>
+登录网址 <a href="http://10.1.1.7:8080" target="_blank" >http://10.1.1.7:8080 </a>进行预注册<br>
+3.到行政楼二楼8号窗口处进行人工预注册。<br>
+  </p></div>
+
+<!--正文注释-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+温馨提示
+线上预注册后，只要资料没有填写错误会在当天晚上通过预注册便可以进行下一步，如果没有通过预注册请耐心等待一个工作日。
+  </p></div>
+
+<!--标题-->
+<div class="etitle_1">
+  <p style="text-align: justify; white-space: normal; line-height: 1.2em;color: #4d4d4d; font-size: 18px;">
+    <span style="color: #27cc9d;">②&nbsp;</span>
+安装客户端
+  </p>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+下载客户端有三个途径<br>
+1.关注“华广校园网”，在“校园网络”菜单中找到客户端下载。<br>
+2.百度搜索inode3.6客户端下载。<br>
+3.带U盘到行政楼二楼8号窗口处拷贝。<br>
+  </p></div>
+
+<!--标题-->
+<div class="etitle_1">
+  <p style="text-align: justify; white-space: normal; line-height: 1.2em;color: #4d4d4d; font-size: 18px;">
+    <span style="color: #27cc9d;">█&nbsp;</span>
+安装流程
+  </p>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+把客户端软件压缩包解压到独立的目录中，暂时关闭360安全卫士等安全软件，双击 iNodeSetup3.6-6210 .exe，按照程序提示完成安装，安装完成后在桌面会生成名为iNode 智能客户端的快捷方式。
+  </p></div>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+1.双击运行
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw01.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+2.接受条款
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw02.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+3.选择安装路径<br>
+注意不要安装到有中文名的文件夹中
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw03.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+4.始终接受安装此驱动程序软件（没有弹出该页面则跳过）
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw04.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+5.不重启计算机，选择完成
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw05.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+6.打开桌面中的iNode 智能客户端
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw06.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+7.来到新建连接向导页面
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw07.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+8.选择802.1X协议
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw08.png">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+9.下一步选择普通连接
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw09.png">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+10.输入用户名密码
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw10.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+11.选择带有PCIe字符的网卡<br>
+勾选红色框框所框住的地方<br>
+如显示网络电缆没插好可逐个网卡选择尝试连接
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw11.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+12.完成创建
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw12.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+13.双击连接
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw13.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+14.能获取IP地址即为成功
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw14.jpg">
+</figure>
+
+<!--标题-->
+<div class="etitle_1">
+  <p style="text-align: justify; white-space: normal; line-height: 1.2em;color: #4d4d4d; font-size: 18px;">
+    <span style="color: #27cc9d;">③&nbsp;</span>
+申请移动宽带帐号
+  </p>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+当客户端认证成功后获取相应的IP地址后就可以随便打开一个网页会自动跳转移动宽带页面，万一不跳转可以手动输入网址1.1.1.1
+  </p></div>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+1.找到开通校园宽带业务
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw15.jpg">
+</figure>
+
+<!--正文注释居中-->
+<div class="etitle_2">
+  <p style="text-align: center; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+2.填写相关资料，选择宽带套餐
+  </p></div>
+
+<!--可放大图片-->
+<figure class="am-figure am-figure-default" data-am-figure="{pureview:'true'}">
+    <img src="../img/net/kw16.jpg">
+</figure>
+
+<!--正文注释居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+注意：<br>
+必须是广州移动的手机卡才可以开通校园网宽带业务<br>
+如果没有广州移动的手机卡<br>
+方案A：办一张广州移动卡<br>
+方案B：携带身份证，乘坐花7路公交车在人民公园站下车，到移动营业厅办理。
+  </p></div>
+
+<!--标题-->
+<div class="etitle_1">
+  <p style="text-align: justify; white-space: normal; line-height: 1.2em;color: #4d4d4d; font-size: 18px;">
+    <span style="color: #27cc9d;">█&nbsp;</span>
+注意事项</span>
+  </p>
+</div>
+
+<!--正文注释居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+1、此上网流程需要完成两次登录，第一次H3C认证客户端登录成功后才能打开校内网以及弹出移动宽带登录界面，第二次登录移动宽带页面成功后才能连接外网。<br>
+2、H3C认证客户端密码是预注册时自己设置的密码，移动宽带网页登录密码是开通移动宽带帐号时设置的六位数字密码，不要混淆。<br>
+3、请认真阅读客户端软件压缩包中软件安装说明及常见问题处理方法。
+  </p></div>
+
+<p><br></p>
+
+
+        <!--主体结束-->
+  </div>
+</div>
+
+<!--轮播-->
+<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
+  <ul class="am-slides">
+      <li>
+  <!--图1--><img src="../img/slider1.jpg">
+          <div id="s1" onclick="links1();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_101"></label></span>
+                <span><label id="slider_102"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图2--><img src="../img/slider2.jpg">
+          <div id="s2" onclick="links2();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_201"></label></span>
+                <span><label id="slider_202"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图3--><img src="../img/slider3.jpg">
+          <div id="s3" onclick="links3();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_301"></label></span>
+                <span><label id="slider_302"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+  </ul>
+</div>
+
+<!--易舍介绍▽-->
+<div class="eabout">
+    <div class="eabout_title">关于 易舍</div>
+    <div class="eabout_content"><div class="eabout_triangle"></div>
+    <div class="eabout_ico"><img src="../img/logo.png"></div>
+    <div class="eabout_content_font">
+华广【易舍】团队，由一群心怀梦想的华广学生组成，始终致力于为华广学生提供最贴心，实用，便捷的校园服务。
+    </div>
+      <div class="eabout_all">
+        <span id="openfocus" class="eabout_focus"> 关注我们</span>
+<!--弹出二维码▽-->
+    <div id="ADfocus" class="hide">
+      <div id="closefocus-1" class="layout"></div>
+        <div class="tc">
+          <div>
+            <div id="closefocus-2" class="cle"></div>
+              <img src="../img/egreen.svg">
+  <!--文字描述--><span class="st">扫码关注“易舍”</span></div>
+                  <div>
+                  <img src="../img/white.svg">
+<!--二维码图--><div><img src="../img/focus.jpg" class="ss"></div>
+                </div>
+              </div>
+            </div>
+
+<!--联系易舍按钮▽-->
+<a href="contact.html" target="_blank" class="eabout_us"> 联系我们</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--版权说明▽-->
+<div class="eabout_footer_info">©2017 易舍 保留所有权利 - 技术支持 优务科技</div>
+</div></div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/amazeui.min.js"></script>
+<script src="../js/menu.js"></script>
+<script src="../js/jump.js"></script>
+
+</body>
+</html>

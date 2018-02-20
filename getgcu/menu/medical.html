@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <link rel="stylesheet" href="../css/amazeui.min.css">
+    <link rel="stylesheet" href="../css/wap.css">
+    <title>华广医疗指引 - 易舍</title><!--标题-->
+    <!-- 配置HTML页面不缓存 -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+</head>
+<body>
+
+<div class="pet_mian" >
+  <div class="e_head">
+  <header class="am-header ehead">
+    <ul><!--顶部菜单-->
+      <li class="ehead_menu2"><label id="head1" onclick="head1();"></label></li>
+      <li class="ehead_menu2"><label id="head2" onclick="head2();"></label></li>
+      <li class="ehead_menu2"><label id="head3" onclick="head3();"></label></li>
+      <li  class="ehead_menu2"><span id="opencomputer"><label id="head4" ></label></span>
+<!--弹出二维码-->
+    <div id="ADcomputer" class="hide"><div id="closecomputer-1" class="layout"></div>
+      <div class="tc"><div><div id="closecomputer-2" class="cle"></div>
+        <img src="../img/eyellow.svg"><span class="st">请扫描二维码</span></div>
+          <div><img src="../img/white.svg">
+            <div><img src="../img/focusyowo.jpg" class="ss"></div>
+          </div></div></div></li>
+    </ul>
+
+<!--弹出加号-->
+    <div class="am-header-right am-header-nav ">
+        <a href="javascript:;" class="iconfont gd_ico emore">&#xe61f;</a></div>
+  </header>
+</div>
+
+<!--菜单弹出页▽-->
+    <div class="pet_more_list"><div class="more_block">
+    <div class="iconfont pet_more_close">×
+      </div><!--弹出页关闭按钮-->
+    <div class="more_block">
+        <!--弹出菜单Part1-->
+        <div class="more_title"><label id="kind1"></label></div>
+        <!--选项1-1-->
+        <div class="more_line" onclick="link101();">
+            <i class="iconfont nav_orange more_ico">&#xe602;</i>
+            <div class="more_font"><label id="kind101" ></label></div>
+        </div>
+        <!--选项1-2-->
+        <div class="more_line" onclick="link102();">
+            <i class="iconfont nav_pink more_ico">&#xec3d;</i>
+            <div class="more_font"><label id="kind102" ></label></div>
+        </div>
+        <!--选项1-3-->
+        <div class="more_line" onclick="link103();">
+            <i class="iconfont nav_purple more_ico">&#xe689;</i>
+            <div class="more_font"><label id="kind103" ></label></div>
+        </div>
+        <!--选项1-4-->
+        <div class="more_line" onclick="link104();">
+            <i class="iconfont nav_red more_ico">&#xe637;</i>
+            <div class="more_font"><label id="kind104" ></label></div>
+        </div>
+        <!--选项1-5-->
+        <div class="more_line" onclick="link105();">
+            <i class="iconfont nav_cyan more_ico">&#xe62d;</i>
+            <div class="more_font"><label id="kind105" ></label></div>
+        </div>
+        <!--选项1-6-->
+        <div class="more_line" onclick="link106();">
+            <i class="iconfont nav_blue more_ico">&#xe667;</i>
+            <div class="more_font"><label id="kind106" ></label></div>
+        </div>
+        <!--选项1-7-->
+        <div class="more_line" onclick="link107();">
+            <i class="iconfont nav_green more_ico">&#xe600;</i>
+            <div class="more_font"><label id="kind107" ></label></div>
+        </div>
+        <!--选项1-8-->
+        <div class="more_line" onclick="link108();">
+            <i class="iconfont nav_yellow more_ico">&#xe676;</i>
+            <div class="more_font"><label id="kind108" ></label></div>
+        </div>
+        <!--选项1-9-->
+        <div class="more_line" onclick="link109();" id="idkind109">
+            <i class="iconfont nav_qt more_ico">&#xe677;</i>
+            <div class="more_font"><label id="kind109" ></label></div>
+        </div>
+        <!--弹出菜单Part2-->
+ <div class="more_title more_part2"><label id="kind2"></label></div>
+        <!--选项2-1-->
+        <div class="more_line" onclick="link201();" >
+            <i class="iconfont nav_orange more_ico">&#xe62a;</i>
+            <div class="more_font"><label id="kind201" ></label></div>
+        </div>
+        <!--选项2-2-->
+        <div class="more_line" onclick="link202();" >
+            <i class="iconfont nav_pink more_ico">&#xe604;</i>
+            <div class="more_font"><label id="kind202" ></label></div>
+        </div>
+        <!--选项2-3-->
+        <div class="more_line" onclick="link203();" >
+            <i class="iconfont nav_purple more_ico">&#xe601;</i>
+            <div class="more_font"><label id="kind203" ></label></div>
+        </div>
+        <!--选项2-4-->
+        <div class="more_line" onclick="link204();" >
+            <i class="iconfont nav_red more_ico">&#xe6fb;</i>
+            <div class="more_font"><label id="kind204" ></label></div>
+        </div>
+        <!--选项2-5-->
+        <div class="more_line" onclick="link205();" >
+            <i class="iconfont nav_cyan more_ico">&#xe61b;</i>
+            <div class="more_font"><label id="kind205" ></label></div>
+        </div>
+        <!--选项2-6-->
+        <div class="more_line" onclick="link206();" >
+            <i class="iconfont nav_blue more_ico">&#xe603;</i>
+            <div class="more_font"><label id="kind206" ></label></div>
+        </div>
+        <!--选项2-7-->
+        <div class="more_line" onclick="link207();" >
+            <i class="iconfont nav_green more_ico">&#xe618;</i>
+            <div class="more_font"><label id="kind207" ></label></div>
+        </div>
+        <!--选项2-8-->
+        <div class="more_line" onclick="link208();" >
+            <i class="iconfont nav_yellow more_ico">&#xe60d;</i>
+            <div class="more_font"><label id="kind208" ></label></div>
+        </div>
+        <!--选项2-9-->
+        <div class="more_line" onclick="link209();" id="idkind209">
+            <i class="iconfont nav_qt more_ico">&#xe605;</i>
+            <div class="more_font"><label id="kind209" ></label></div>
+        </div>
+        
+    </div>
+    </div></div>
+    <!--菜单弹出页△-->
+
+    <div class="e_content">
+    <div class="content_block hd_con">
+
+<!--带下划线标题-->
+<div class="e_article">
+  <div class="underline_title">开诊时间</div>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+<b>工作日：</b> 08：40-12:00 14:30-21:00<br>
+<b>周末及节假日：</b>08:40-12:00 14:30-18:00<br>
+
+其余时间，值班人员负责突发事件的处理、急危病人的救治和转诊<br>
+学校卫生所急救电话：<a href="tel:02036903191">020-36903191</a>
+  </p></div>
+
+<!--带下划线标题-->
+<div class="e_article">
+  <div class="underline_title">门诊医保报销所需资料</div>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+1.审核单 (填写《参保学生医疗费报销审核单》一张)<br>
+2.正式发票原件 (如有几张发票，按日期顺序粘贴在一张A4纸上)<br>
+3.费用明细清单 (如有几张门诊医疗费用明细清单，按日期顺序粘贴在一张A4纸上)<br>
+4.病历复印件 (只需复印与发票相对应的就诊医疗机构门诊病历页，并出示原件)<br>
+5.学生证复印件 (复印第一页和注册页，并出示原件)<br>
+6.医保卡复印件 (正反两面复印件，并出示原件)<br>
+7转诊单 (由卫生所同意转诊开的转诊单)
+  </p></div>
+
+<!--正文注释-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.2;color: #aaaaaa; font-size: 13px;letter-spacing: 1px">
+注意<br>
+1）【审核单】可在卫生所领取或进入学校官网 》 后勤处 》 医疗保健<br>
+<a href="http://hg.gcu.edu.cn/8s/Medical" target="_blank">http://hg.gcu.edu.cn/8s/Medical</a><br>
+2. 【门诊医疗费用明细清单】在就诊的医院打印并盖章。<br>
+3. 请备齐以上资料资料，资料不全者，不予接收。<br>
+4. 每周二、周四下午14:15~17:15，交资料到卫生所102室。
+  </p></div>
+
+<!--带下划线标题-->
+<div class="e_article">
+ <div class="underline_title">住院医保报销所需资料</div>
+</div>
+
+<!--正文居左-->
+<div class="etitle_2">
+  <p style="text-align: justify; white-space: normal; line-height: 1.5;color: #4d4d4d; font-size: 15px;letter-spacing: 1px">
+1、 参保人医保卡正反面复印件<br>
+2、 参保人身份证和户口本复印件<br>
+3、 出院小结复印件<br>
+4、 出院诊断证明书复印件<br>
+5、 住院明细清单(医院盖章，汇总分类打印)<br>
+6、 发票原件(或广东省医疗收费票据)<br>
+7、 住院病案首页或入院记录复印件(此复印件需回就诊医院申请复印， 需盖病历管理章或医院公章)<br>
+8、 个人申请<br>
+9、 学校证明<br>
+10、 填写学校审核单一张<br>
+11、 代办人身份证复印件(无需本人准备)
+  </p>
+<p><br></p>
+</div>
+
+
+      <!--主体结束-->
+  </div>
+</div>
+
+<!--轮播-->
+<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
+  <ul class="am-slides">
+      <li>
+  <!--图1--><img src="../img/slider1.jpg">
+          <div id="s1" onclick="links1();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_101"></label></span>
+                <span><label id="slider_102"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图2--><img src="../img/slider2.jpg">
+          <div id="s2" onclick="links2();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_201"></label></span>
+                <span><label id="slider_202"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图3--><img src="../img/slider3.jpg">
+          <div id="s3" onclick="links3();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_301"></label></span>
+                <span><label id="slider_302"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+  </ul>
+</div>
+
+<!--易舍介绍▽-->
+<div class="eabout">
+    <div class="eabout_title">关于 易舍</div>
+    <div class="eabout_content"><div class="eabout_triangle"></div>
+    <div class="eabout_ico"><img src="../img/logo.png"></div>
+    <div class="eabout_content_font">
+华广【易舍】团队，由一群心怀梦想的华广学生组成，始终致力于为华广学生提供最贴心，实用，便捷的校园服务。
+    </div>
+    <div class="eabout_all">
+        <span id="openfocus" class="eabout_focus"> 关注我们</span>
+<!--弹出二维码▽-->
+    <div id="ADfocus" class="hide">
+      <div id="closefocus-1" class="layout"></div>
+        <div class="tc">
+          <div>
+            <div id="closefocus-2" class="cle"></div>
+              <img src="../img/egreen.svg">
+  <!--文字描述--><span class="st">扫码关注“易舍”</span></div>
+                  <div>
+                  <img src="../img/white.svg">
+<!--二维码图--><div><img src="../img/focus.jpg" class="ss"></div>
+                </div>
+              </div>
+            </div>
+
+<!--联系易舍按钮▽-->
+<a href="contact.html" target="_blank" class="eabout_us"> 联系我们</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--版权说明▽-->
+<div class="eabout_footer_info">©2017 易舍 保留所有权利 - 技术支持 优务科技</div>
+</div></div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/amazeui.min.js"></script>
+<script src="../js/menu.js"></script>
+<script src="../js/jump.js"></script>
+
+</body>
+</html>

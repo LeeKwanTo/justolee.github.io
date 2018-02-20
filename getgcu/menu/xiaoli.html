@@ -1,0 +1,684 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+    <link rel="stylesheet" href="../css/amazeui.min.css">
+    <link rel="stylesheet" href="../css/wap.css">
+    <link rel="stylesheet" href="../css/xiaoli.css">
+    <title>华广校历 - 易舍</title><!--标题-->
+    <!-- 配置HTML页面不缓存 -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+</head>
+<body onload="showLeftTime()">
+  <script language="javascript" type="text/javascript">
+    var initializationTime=(new Date()).getTime();
+    function showLeftTime()
+    {
+    var now=new Date();
+    var year=now.getFullYear();
+    var month=now.getMonth();
+    var day=now.getDate();
+    var week=now.getDay();
+    var show_day=new Array('日','一','二','三','四','五','六'); 
+    monthture=(month+1)
+    document.all.show.innerHTML=""+year+"年"+monthture+"月"+day+"日 星期"+show_day[week]+"";
+    }
+  </script>
+<div class="pet_mian" >
+  <div class="e_head">
+  <header class="am-header ehead">
+    <ul><!--顶部菜单-->
+      <li class="ehead_menu2"><label id="head1" onclick="head1();"></label></li>
+      <li class="ehead_menu2"><label id="head2" onclick="head2();"></label></li>
+      <li class="ehead_menu2"><label id="head3" onclick="head3();"></label></li>
+      <li  class="ehead_menu2"><span id="opencomputer"><label id="head4" ></label></span>
+<!--弹出二维码-->
+    <div id="ADcomputer" class="hide"><div id="closecomputer-1" class="layout"></div>
+      <div class="tc"><div><div id="closecomputer-2" class="cle"></div>
+        <img src="../img/eyellow.svg"><span class="st">请扫描二维码</span></div>
+          <div><img src="../img/white.svg">
+            <div><img src="../img/focusyowo.jpg" class="ss"></div>
+          </div></div></div></li>
+    </ul>
+
+<!--弹出加号-->
+      <div class="am-header-right am-header-nav ">
+          <a href="javascript:;" class="iconfont gd_ico emore">&#xe61f;</a></div>
+  </header>
+</div>
+
+<!--菜单弹出页▽-->
+    <div class="pet_more_list"><div class="more_block">
+    <div class="iconfont pet_more_close">×
+      </div><!--弹出页关闭按钮-->
+    <div class="more_block">
+        <!--弹出菜单Part1-->
+        <div class="more_title"><label id="kind1"></label></div>
+        <!--选项1-1-->
+        <div class="more_line" onclick="link101();">
+            <i class="iconfont nav_orange more_ico">&#xe602;</i>
+            <div class="more_font"><label id="kind101" ></label></div>
+        </div>
+        <!--选项1-2-->
+        <div class="more_line" onclick="link102();">
+            <i class="iconfont nav_pink more_ico">&#xec3d;</i>
+            <div class="more_font"><label id="kind102" ></label></div>
+        </div>
+        <!--选项1-3-->
+        <div class="more_line" onclick="link103();">
+            <i class="iconfont nav_purple more_ico">&#xe689;</i>
+            <div class="more_font"><label id="kind103" ></label></div>
+        </div>
+        <!--选项1-4-->
+        <div class="more_line" onclick="link104();">
+            <i class="iconfont nav_red more_ico">&#xe637;</i>
+            <div class="more_font"><label id="kind104" ></label></div>
+        </div>
+        <!--选项1-5-->
+        <div class="more_line" onclick="link105();">
+            <i class="iconfont nav_cyan more_ico">&#xe62d;</i>
+            <div class="more_font"><label id="kind105" ></label></div>
+        </div>
+        <!--选项1-6-->
+        <div class="more_line" onclick="link106();">
+            <i class="iconfont nav_blue more_ico">&#xe667;</i>
+            <div class="more_font"><label id="kind106" ></label></div>
+        </div>
+        <!--选项1-7-->
+        <div class="more_line" onclick="link107();">
+            <i class="iconfont nav_green more_ico">&#xe600;</i>
+            <div class="more_font"><label id="kind107" ></label></div>
+        </div>
+        <!--选项1-8-->
+        <div class="more_line" onclick="link108();">
+            <i class="iconfont nav_yellow more_ico">&#xe676;</i>
+            <div class="more_font"><label id="kind108" ></label></div>
+        </div>
+        <!--选项1-9-->
+        <div class="more_line" onclick="link109();" id="idkind109">
+            <i class="iconfont nav_qt more_ico">&#xe677;</i>
+            <div class="more_font"><label id="kind109" ></label></div>
+        </div>
+        <!--弹出菜单Part2-->
+ <div class="more_title more_part2"><label id="kind2"></label></div>
+        <!--选项2-1-->
+        <div class="more_line" onclick="link201();" >
+            <i class="iconfont nav_orange more_ico">&#xe62a;</i>
+            <div class="more_font"><label id="kind201" ></label></div>
+        </div>
+        <!--选项2-2-->
+        <div class="more_line" onclick="link202();" >
+            <i class="iconfont nav_pink more_ico">&#xe60d;</i>
+            <div class="more_font"><label id="kind202" ></label></div>
+        </div>
+        <!--选项2-3-->
+        <div class="more_line" onclick="link203();" >
+            <i class="iconfont nav_purple more_ico">&#xe601;</i>
+            <div class="more_font"><label id="kind203" ></label></div>
+        </div>
+        <!--选项2-4-->
+        <div class="more_line" onclick="link204();" >
+            <i class="iconfont nav_red more_ico">&#xe6fb;</i>
+            <div class="more_font"><label id="kind204" ></label></div>
+        </div>
+        <!--选项2-5-->
+        <div class="more_line" onclick="link205();" >
+            <i class="iconfont nav_cyan more_ico">&#xe61b;</i>
+            <div class="more_font"><label id="kind205" ></label></div>
+        </div>
+        <!--选项2-6-->
+        <div class="more_line" onclick="link206();" >
+            <i class="iconfont nav_blue more_ico">&#xe603;</i>
+            <div class="more_font"><label id="kind206" ></label></div>
+        </div>
+        <!--选项2-7-->
+        <div class="more_line" onclick="link207();" >
+            <i class="iconfont nav_green more_ico">&#xe618;</i>
+            <div class="more_font"><label id="kind207" ></label></div>
+        </div>
+        <!--选项2-8-->
+        <div class="more_line" onclick="link208();" >
+            <i class="iconfont nav_yellow more_ico">&#xe60d;</i>
+            <div class="more_font"><label id="kind208" ></label></div>
+        </div>
+        <!--选项2-9-->
+        <div class="more_line" onclick="link209();" id="idkind209">
+            <i class="iconfont nav_qt more_ico">&#xe605;</i>
+            <div class="more_font"><label id="kind209" ></label></div>
+        </div>
+        
+    </div>
+    </div></div>
+    <!--菜单弹出页△-->
+
+    <div class="e_content">
+    <div class="content_block hd_con">
+
+<!--内容开始-->
+
+<div class="main">
+<div style="height:80px; background-color:#eff0f2;">
+
+     <div style="width:70%; height:80px; float:left; color:#666;">
+         <div style="line-height:29px; border-bottom:1px solid #FFF; font-weight:700; text-align:center; font-size:14px;">
+         2017-2018学年 第一学期
+         </div>
+         <div style="line-height:20px; margin-top:5px; padding-left:10px; font-size:12px;">今日：
+          
+
+    <label id="show"></label></div>
+         <div style="line-height:20px; padding-left:10px; font-size:12px;">提醒：
+            </div>
+     </div>
+     <div style="width:30%; border-left:1px solid #FFF; margin-right:-1px; height:80px; float:left; color:#FFF;">
+         <div class="round_border" style="margin:10px; background-color:#ffba00;">
+            <div style="height:20px; text-align:center; font-size:12px; border-bottom:1px solid #fdd25f;">距离四六级</div>
+            <div style="height:40px; line-height:35px; text-align:center; font-weight:700; font-size:24px;">
+    <DIV id="CountMsg" class="HotDate">
+    
+    <span id="t_d"></span>
+    </DIV>
+    <script type="text/javascript">
+    function getRTime(){
+        var EndTime= new Date('2017/12/16 00:00:00'); //这里改终止时间
+        var NowTime = new Date();
+        var t =EndTime.getTime() - NowTime.getTime();
+        /*var d=Math.floor(t/1000/60/60/24);
+        t-=d*(1000*60*60*24);
+        var h=Math.floor(t/1000/60/60);
+        t-=h*60*60*1000;
+        var m=Math.floor(t/1000/60);
+        t-=m*60*1000;
+        var s=Math.floor(t/1000);*/
+        var d=Math.floor(t/1000/60/60/24);
+        document.getElementById("t_d").innerHTML = d + "天";
+    }
+    setInterval(getRTime,1000);
+    </script>
+    </div>
+         </div>
+     </div>
+</div>
+<div class="round_border" style="border:1px solid #ccc; overflow:hidden; margin:10px 5px 5px;">
+   <div style="border-bottom:1px solid #CCC;">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50" height="35" align="center" valign="middle" bgcolor="#ccc" style=" position:relative; color:#FFF;">
+             <div style=" position:absolute; top:0px; right:2px;">星期</div>
+             <div style=" position:absolute; bottom:0px; left:2px;">周次</div>
+        </td>
+        <td height="35" align="center" valign="middle">一</td>
+        <td height="35" align="center" valign="middle">二</td>
+        <td height="35" align="center" valign="middle">三</td>
+        <td height="35" align="center" valign="middle">四</td>
+        <td height="35" align="center" valign="middle">五</td>
+        <td height="35" align="center" valign="middle">六</td>
+        <td height="35" align="center" valign="middle">日</td>
+        <td width="50" height="35" align="center" valign="middle" bgcolor="#ccc" style="color:#FFF;">月份</td>
+      </tr>
+    </table>
+   </div>
+
+   <div style="border-bottom:1px solid #CCC;">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50" height="30" align="center" valign="middle" class="zhouci">0</td>
+        <td height="30" align="center" valign="middle" class="day_m">28</td>
+        <td height="30" align="center" valign="middle" class="day_m">29</td>
+        <td height="30" align="center" valign="middle" class="day_m">30</td>
+        <td height="30" align="center" valign="middle" class="day_m">31</td>
+        <td height="30" align="center" valign="middle" class="day_m">1</td>
+        <td height="30" align="center" valign="middle" class="day_m">2</td>
+        <td height="30" align="center" valign="middle" class="day_m">3</td>
+        <td width="50" rowspan="6" align="center" valign="middle" class="yuefen">9月</td>
+      </tr>
+        <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">1</td>
+        <td height="30" align="center" valign="middle" class="day">4</td>
+        <td height="30" align="center" valign="middle" class="day">5</td>
+        <td height="30" align="center" valign="middle" class="day">6</td>
+        <td height="30" align="center" valign="middle" class="day">7</td>
+        <td height="30" align="center" valign="middle" class="day">8</td>
+        <td height="30" align="center" valign="middle" class="day">9</td>
+        <td height="30" align="center" valign="middle" class="day">10</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">2</td>
+        <td height="30" align="center" valign="middle" class="day">11</td>
+        <td height="30" align="center" valign="middle" class="day">12</td>
+        <td height="30" align="center" valign="middle" class="day">13</td>
+        <td height="30" align="center" valign="middle" class="day">14</td>
+        <td height="30" align="center" valign="middle" class="day">15</td>
+        <td height="30" align="center" valign="middle" class="day">16</td>
+        <td height="30" align="center" valign="middle" class="day">17</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">3</td>
+        <td height="30" align="center" valign="middle" class="day">18</td>
+        <td height="30" align="center" valign="middle" class="day">19</td>
+        <td height="30" align="center" valign="middle" class="day">20</td>
+        <td height="30" align="center" valign="middle" class="day">21</td>
+        <td height="30" align="center" valign="middle" class="day">22</td>
+        <td height="30" align="center" valign="middle" class="day">23</td>
+        <td height="30" align="center" valign="middle" class="day">24</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">4</td>
+        <td height="30" align="center" valign="middle" class="day">25</td>
+        <td height="30" align="center" valign="middle" class="day">26</td>
+        <td height="30" align="center" valign="middle" class="day">27</td>
+        <td height="30" align="center" valign="middle" class="day">28</td>
+        <td height="30" align="center" valign="middle" class="day">29</td>
+        <td height="30" align="center" valign="middle" class="day">30</td>
+        <td height="30" align="center" valign="middle" class="day" style="background-color:#FFDFDF;">1</td>
+       </tr>
+    </table>
+   </div>
+
+
+
+   <div style="border-bottom:1px solid #CCC;">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">5</td>
+        <td height="30" align="center" valign="middle" class="day" style="background-color:#FFDFDF;">2</td>
+        <td height="30" align="center" valign="middle" class="day" style="background-color:#FFDFDF;">3</td>
+        <td height="30" align="center" valign="middle" class="day" style="background-color:#FFDFDF;">4</td>
+        <td height="30" align="center" valign="middle" class="day">5</td>
+        <td height="30" align="center" valign="middle" class="day">6</td>
+        <td height="30" align="center" valign="middle" class="day">7</td>
+        <td height="30" align="center" valign="middle" class="day">8</td>
+        <td width="50" rowspan="4" align="center" valign="middle" class="yuefen">10月</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">6</td>
+        <td height="30" align="center" valign="middle" class="day">9</td>
+        <td height="30" align="center" valign="middle" class="day">10</td>
+        <td height="30" align="center" valign="middle" class="day">11</td>
+        <td height="30" align="center" valign="middle" class="day">12</td>
+        <td height="30" align="center" valign="middle" class="day">13</td>
+        <td height="30" align="center" valign="middle" class="day">14</td>
+        <td height="30" align="center" valign="middle" class="day">15</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">7</td>
+        <td height="30" align="center" valign="middle" class="day">16</td>
+        <td height="30" align="center" valign="middle" class="day">17</td>
+        <td height="30" align="center" valign="middle" class="day">18</td>
+        <td height="30" align="center" valign="middle" class="day">19</td>
+        <td height="30" align="center" valign="middle" class="day">20</td>
+        <td height="30" align="center" valign="middle" class="day">21</td>
+        <td height="30" align="center" valign="middle" class="day">22</td>
+       </tr>
+       <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">8</td>
+        <td height="30" align="center" valign="middle" class="day">23</td>
+        <td height="30" align="center" valign="middle" class="day">24</td>
+        <td height="30" align="center" valign="middle" class="day">25</td>
+        <td height="30" align="center" valign="middle" class="day">26</td>
+        <td height="30" align="center" valign="middle" class="day">27</td>
+        <td height="30" align="center" valign="middle" class="day">28</td>
+        <td height="30" align="center" valign="middle" class="day">29</td>
+       </tr>
+    </table>
+   </div>
+
+   <div style="border-bottom:1px solid #CCC;">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr >
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">9</td>
+        <td height="30" align="center" valign="middle" class="day">30</td>
+        <td height="30" align="center" valign="middle" class="day">31</td>
+        <td height="30" align="center" valign="middle" class="day">1</td>
+        <td height="30" align="center" valign="middle" class="day">2</td>
+        <td height="30" align="center" valign="middle" class="day">3</td>
+        <td height="30" align="center" valign="middle" class="day">4</td>
+        <td height="30" align="center" valign="middle" class="day">5</td>
+        <td width="50" rowspan="5" align="center" valign="middle" class="yuefen">11月</td>
+      </tr>
+      <tr class="zhouci_boder" >
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">10</td>
+        <td height="30" align="center" valign="middle" class="day">6</td>
+        <td height="30" align="center" valign="middle" class="day">7</td>
+        <td height="30" align="center" valign="middle" class="day">8</td>
+        <td height="30" align="center" valign="middle" class="day">9</td>
+        <td height="30" align="center" valign="middle" class="day">10</td>
+        <td height="30" align="center" valign="middle" class="day">11</td>
+        <td height="30" align="center" valign="middle" class="day">12</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">11</td>
+        <td height="30" align="center" valign="middle" class="day">13</td>
+        <td height="30" align="center" valign="middle" class="day">14</td>
+        <td height="30" align="center" valign="middle" class="day">15</td>
+        <td height="30" align="center" valign="middle" class="day">16</td>
+        <td height="30" align="center" valign="middle" class="day">17</td>
+        <td height="30" align="center" valign="middle" class="day">18</td>
+        <td height="30" align="center" valign="middle" class="day">19</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">12</td>
+        <td height="30" align="center" valign="middle" class="day">20</td>
+        <td height="30" align="center" valign="middle" class="day">21</td>
+        <td height="30" align="center" valign="middle" class="day">22</td>
+        <td height="30" align="center" valign="middle" class="day">23</td>
+        <td height="30" align="center" valign="middle" class="day">24</td>
+        <td height="30" align="center" valign="middle" class="day">25</td>
+        <td height="30" align="center" valign="middle" class="day">26</td>
+       </tr>
+       <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">13</td>
+        <td height="30" align="center" valign="middle" class="day">27</td>
+        <td height="30" align="center" valign="middle" class="day">28</td>
+        <td height="30" align="center" valign="middle" class="day">29</td>
+        <td height="30" align="center" valign="middle" class="day">30</td>
+        <td height="30" align="center" valign="middle" class="day">1</td>
+        <td height="30" align="center" valign="middle" class="day">2</td>
+        <td height="30" align="center" valign="middle" class="day">3</td>
+       </tr>
+    </table>
+   </div>
+
+
+   <div style="border-bottom:1px solid #CCC;">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">14</td>
+        <td height="30" align="center" valign="middle" class="day">4</td>
+        <td height="30" align="center" valign="middle" class="day">5</td>
+        <td height="30" align="center" valign="middle" class="day">6</td>
+        <td height="30" align="center" valign="middle" class="day">7</td>
+        <td height="30" align="center" valign="middle" class="day">8</td>
+        <td height="30" align="center" valign="middle" class="day">9</td>
+        <td height="30" align="center" valign="middle" class="day">10</td>
+        <td width="50" rowspan="5" align="center" valign="middle" class="yuefen">12月</td>
+      </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">15</td>
+        <td height="30" align="center" valign="middle" class="day">11</td>
+        <td height="30" align="center" valign="middle" class="day">12</td>
+        <td height="30" align="center" valign="middle" class="day">13</td>
+        <td height="30" align="center" valign="middle" class="day">14</td>
+        <td height="30" align="center" valign="middle" class="day">15</td>
+        <td height="30" align="center" valign="middle" class="day">16</td>
+        <td height="30" align="center" valign="middle" class="day">17</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">16</td>
+        <td height="30" align="center" valign="middle" class="day">18</td>
+        <td height="30" align="center" valign="middle" class="day">19</td>
+        <td height="30" align="center" valign="middle" class="day">20</td>
+        <td height="30" align="center" valign="middle" class="day">21</td>
+        <td height="30" align="center" valign="middle" class="day">22</td>
+        <td height="30" align="center" valign="middle" class="day">23</td>
+        <td height="30" align="center" valign="middle" class="day">24</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">17</td>
+        <td height="30" align="center" valign="middle" class="day">25</td>
+        <td height="30" align="center" valign="middle" class="day">26</td>
+        <td height="30" align="center" valign="middle" class="day">27</td>
+        <td height="30" align="center" valign="middle" class="day">28</td>
+        <td height="30" align="center" valign="middle" class="day">29</td>
+        <td height="30" align="center" valign="middle" class="day">30</td>
+        <td height="30" align="center" valign="middle" class="day">31</td>
+       </tr>
+
+
+    </table>
+   </div>
+   
+   <div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">18</td>
+        <td height="30" align="center" valign="middle" class="day"  style="background-color:#FFDFDF;">1</td>
+        <td height="30" align="center" valign="middle" class="day">2</td>
+        <td height="30" align="center" valign="middle" class="day">3</td>
+        <td height="30" align="center" valign="middle" class="day">4</td>
+        <td height="30" align="center" valign="middle" class="day">5</td>
+        <td height="30" align="center" valign="middle" class="day">6</td>
+        <td height="30" align="center" valign="middle" class="day">7</td>
+                <td width="50" rowspan="4" align="center" valign="middle" class="yuefen">1月</td>
+       </tr>
+      <tr>
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">19</td>
+        <td height="30" align="center" valign="middle" class="day">8</td>
+        <td height="30" align="center" valign="middle" class="day">9</td>
+        <td height="30" align="center" valign="middle" class="day">10</td>
+        <td height="30" align="center" valign="middle" class="day">11</td>
+        <td height="30" align="center" valign="middle" class="day">12</td>
+        <td height="30" align="center" valign="middle" class="day">13</td>
+        <td height="30" align="center" valign="middle" class="day">14</td>
+      </tr>
+      <tr class="zhouci_boder"">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci"></td>
+        <td height="30" align="center" valign="middle" class="day_m">15</td>
+        <td height="30" align="center" valign="middle" class="day_m">16</td>
+        <td height="30" align="center" valign="middle" class="day_m">17</td>
+        <td height="30" align="center" valign="middle" class="day_m">18</td>
+        <td height="30" align="center" valign="middle" class="day_m">19</td>
+        <td height="30" align="center" valign="middle" class="day_m">20</td>
+        <td height="30" align="center" valign="middle" class="day_m">21</td>
+       </tr>
+     <tr class="zhouci_boder"">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">寒</td>
+        <td height="30" align="center" valign="middle" class="day_m">22</td>
+        <td height="30" align="center" valign="middle" class="day_m">23</td>
+        <td height="30" align="center" valign="middle" class="day_m">24</td>
+        <td height="30" align="center" valign="middle" class="day_m">25</td>
+        <td height="30" align="center" valign="middle" class="day_m">26</td>
+        <td height="30" align="center" valign="middle" class="day_m">27</td>
+        <td height="30" align="center" valign="middle" class="day_m">28</td>
+       </tr>
+    
+    </table>
+
+   </div>
+ <div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci"></td>
+        <td height="30" align="center" valign="middle" class="day_m">29</td>
+        <td height="30" align="center" valign="middle" class="day_m">30</td>
+        <td height="30" align="center" valign="middle" class="day_m">31</td>
+        <td height="30" align="center" valign="middle" class="day_m">1</td>
+        <td height="30" align="center" valign="middle" class="day_m">2</td>
+        <td height="30" align="center" valign="middle" class="day_m">3</td>
+        <td height="30" align="center" valign="middle" class="day_m">4</td>
+                <td width="50" rowspan="5" align="center" valign="middle" class="yuefen">2月</td>
+       </tr>
+      <tr class="zhouci_boder">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci"></td>
+        <td height="30" align="center" valign="middle" class="day_m">5</td>
+        <td height="30" align="center" valign="middle" class="day_m">6</td>
+        <td height="30" align="center" valign="middle" class="day_m">7</td>
+        <td height="30" align="center" valign="middle" class="day_m">8</td>
+        <td height="30" align="center" valign="middle" class="day_m">9</td>
+        <td height="30" align="center" valign="middle" class="day_m">10</td>
+        <td height="30" align="center" valign="middle" class="day_m">11</td>
+      </tr>
+      <tr class="zhouci_boder"">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci">假</td>
+        <td height="30" align="center" valign="middle" class="day_m">12</td>
+        <td height="30" align="center" valign="middle" class="day_m">13</td>
+        <td height="30" align="center" valign="middle" class="day_m">14</td>
+        <td height="30" align="center" valign="middle" class="day_m">15</td>
+        <td height="30" align="center" valign="middle" class="day_m">16</td>
+        <td height="30" align="center" valign="middle" class="day_m">17</td>
+        <td height="30" align="center" valign="middle" class="day_m">18</td>
+       </tr>
+     <tr class="zhouci_boder"">
+        <td width="50" height="30" align="center" valign="middle"  class="zhouci"></td>
+        <td height="30" align="center" valign="middle" class="day_m">19</td>
+        <td height="30" align="center" valign="middle" class="day_m">20</td>
+        <td height="30" align="center" valign="middle" class="day_m">21</td>
+        <td height="30" align="center" valign="middle" class="day_m">22</td>
+        <td height="30" align="center" valign="middle" class="day_m">23</td>
+        <td height="30" align="center" valign="middle" class="day_m">24</td>
+        <td height="30" align="center" valign="middle" class="day_m">25</td>
+       </tr>
+    </table>
+   </div>
+</div>
+
+
+<div style="line-height:30px; margin-top:15px; text-align:center; font-weight:700;">假期 &amp; 安排</div> 
+<div class="round_border" style="border:1px solid #EFEFEF; overflow:hidden; margin:5px 5px 30px;">
+   <div style="border-bottom:1px solid #CCC; background-color:#EFEFEF; font-size:12px;">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <td height="35" align="center" valign="middle">事项</td>
+         <td width="120" height="35" align="center" valign="middle" style="border-left:1px solid #fff;">校定</td>
+         <td width="120" height="35" align="center" valign="middle" style="border-left:1px solid #fff;">法定</td>
+       </tr>
+      </table>
+   </div>
+   <div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr  style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">学生注册报到</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">9月1日、2日</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai"></td>
+       </tr>
+       <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">正式上课</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">9月4日</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai"></td>
+       </tr>
+         <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">国庆节</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">10月1、2、3日</td>
+        <td width="120" height="30" align="center" valign="middle" class="anpai">10月1日至8日</td>
+       </tr> 
+        <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">中秋节</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">10月4日</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">10月4日</td>
+       </tr> 
+        <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">校运动会</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">11月9日下午、10日全</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai"></td>
+       </tr>
+       <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">英语四、六级考试</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">12月16日</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai"></td>
+       </tr>
+        <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">元旦</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">待定</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">1月1日</td>
+        <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">考试周</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">第19周</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai"></td>
+     </tr>
+       <tr class="zhouci_boder" style="background-color:#EEFFEE;">
+         <td height="30" align="center" valign="middle" class="shixiang">寒假</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai">1月15日-2月25日</td>
+         <td width="120" height="30" align="center" valign="middle" class="anpai"></td>
+       </tr> 
+      </table>
+   </div>
+</div>
+<div style="margin:15px 10px 50px;color: #4d4d4d;">         
+特别提示<br />
+1、以上校定安排仅供参考，可能会根据实际情况有所调整。<br />
+2、如有错误欢迎联系我们进行更正，重要事件如全校性活动、相关资格考试等可联系我们进行添加。
+</div>  
+
+
+</div>
+
+
+      <!--主体结束-->
+  </div>
+</div>
+
+<!--轮播-->
+<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
+  <ul class="am-slides">
+      <li>
+  <!--图1--><img src="../img/slider1.jpg">
+          <div id="s1" onclick="links1();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_101"></label></span>
+                <span><label id="slider_102"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图2--><img src="../img/slider2.jpg">
+          <div id="s2" onclick="links2();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_201"></label></span>
+                <span><label id="slider_202"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+      <li>
+  <!--图3--><img src="../img/slider3.jpg">
+          <div id="s3" onclick="links3();">
+            <div class="slider_font">
+                <span class="slider_font2"><label id="slider_301"></label></span>
+                <span><label id="slider_302"></label></span>
+            </div>
+            <div class="slider_shadow"></div>
+         </div>
+      </li>
+  </ul>
+</div>
+
+<!--易舍介绍▽-->
+<div class="eabout">
+    <div class="eabout_title">关于 知华广</div>
+    <div class="eabout_content"><div class="eabout_triangle"></div>
+    <div class="eabout_ico"><img src="../img/logo.png"></div>
+    <div class="eabout_content_font">
+华广【易舍】团队，由一群心怀梦想的华广学生组成，始终致力于为华广学生提供最贴心，实用，便捷的校园服务。
+    </div>
+      <div class="eabout_all">
+        <span id="openfocus" class="eabout_focus"> 关注我们</span>
+<!--弹出二维码▽-->
+    <div id="ADfocus" class="hide">
+      <div id="closefocus-1" class="layout"></div>
+        <div class="tc">
+          <div>
+            <div id="closefocus-2" class="cle"></div>
+              <img src="http://edorm.yowoit.com/img/egreen.svg">
+  <!--文字描述--><span class="st">扫码关注“易舍”</span></div>
+                  <div>
+                  <img src="../img/white.svg">
+<!--二维码图片--><div><img src="../img/focus.jpg" class="ss"></div>
+                </div>
+              </div>
+            </div>
+
+<!--联系易舍按钮▽-->
+<a href="contact.html" target="_blank" class="eabout_us"> 联系更正</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--版权说明▽-->
+<div class="eabout_footer_info">©2017 易舍 保留所有权利 - 技术支持 优务科技</div>
+</div></div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/amazeui.min.js"></script>
+<script src="../js/menu.js"></script>
+<script src="../js/jump.js"></script>
+
+
+</body>
+</html>
