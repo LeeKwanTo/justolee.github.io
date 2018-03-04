@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
+  <title>书剑钧陶博客</title>
+  <id>http://justo.top/blog</id>
+  <updated>2018-03-04T15:37:29+08:00</updated>
+  <subtitle>一个能写点文字即将到工地报到搬砖的理工男</subtitle>
+  <link href="http://justo.top/blog"></link>
+  <author>
+    <name>书剑钧陶博客</name>
+  </author>
+  <entry>
+    <title>“是不是越长大就越难爱上一个人”</title>
+    <updated>2017-07-21T17:00:00+08:00</updated>
+    <id>tag:justo.top,2017-07-21:/blog/170721.html</id>
+    <content type="html">&lt;p&gt;原因更多的，不是喜欢和以往的作对比，而是我们不会再像小时候，爱她做了个自己喜欢的内卷，穿了件喜欢的白Tee，现在即便是心动也只是适可而止的欣赏。&lt;/p&gt;&#xA;</content>
+    <link href="http://justo.top/blog/170721.html"></link>
+    <author>
+      <name>书剑钧陶</name>
+    </author>
+  </entry>
+  <entry>
+    <title>工资永远是兼职最大的陷阱</title>
+    <updated>2017-07-13T18:00:00+08:00</updated>
+    <id>tag:justo.top,2017-07-13:/blog/170713.html</id>
+    <content type="html">&lt;p&gt;赶紧摆脱低水平的勤奋。&lt;/p&gt;&#xA;</content>
+    <link href="http://justo.top/blog/170713.html"></link>
+    <author>
+      <name>书剑钧陶</name>
+    </author>
+  </entry>
+</feed>
